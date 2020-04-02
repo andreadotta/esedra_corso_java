@@ -35,6 +35,5 @@ public class ArrayMaxMinOld {
 		double[] rtval = { sum, avg, max, min };
 
 		return rtval;
-
 	}
 }
