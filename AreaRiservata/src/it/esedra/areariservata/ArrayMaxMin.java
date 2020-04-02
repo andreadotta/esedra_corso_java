@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.math3.util.MathUtils;
-
 public class ArrayMaxMin {
 
 	public static Results run(List<Integer> values) {
