@@ -2,6 +2,7 @@ package it.esedra.corso;
 
 public class Snipppet1706 {
 
+	
 	public static void main(String[] args) {
 		Snipppet1706.operators();
 		
