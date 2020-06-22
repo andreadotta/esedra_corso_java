@@ -9,6 +9,8 @@ public class Prova1 {
 		String cittaDiNascita = "Zulu";
 
 		System.out.println("L'utente é nome" + cognome);
+		
+		
 	}
 
 }
