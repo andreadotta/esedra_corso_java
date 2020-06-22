@@ -1,13 +1,13 @@
 package it.esedra.corso;
 //package rappresenta  la dichiarazione di package.
 // deve essere la prima istruzione
-//indica il nome del package a cui questa classe appartiene
+// indica il nome del package a cui questa classe appartiene
 // se non indichiamo il package la calsse farà parte  del unnamed package
 
 
 //è una dichiarazione di  importazione che consente di fare riferimento a un tipo oppure a un membro staticp.
-
 import java.lang.*;
+
 //importazione di tipo singolo 
 import java.lang.String;
 
