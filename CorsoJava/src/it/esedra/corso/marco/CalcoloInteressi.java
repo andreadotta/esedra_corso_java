@@ -19,13 +19,12 @@ public class CalcoloInteressi {
 		System.out.println("Inserire il numero di anni su cui devono essere calcolati gli interessi: ");
 		numeroAnni = inputTastiera.nextDouble();
 		
-		interesse = capitaleIniziale * (tassoInteresse / 100);
-		capitaleFinale = (capitaleIniziale + interesse) * numeroAnni;
+		interesse = capitaleIniziale * (tassoInteresse / 100) * numeroAnni;
+		capitaleFinale = (capitaleIniziale + interesse);
 		
-		System.out.println("Il capitale dopo " + numeroAnni + " anni è: " + capitaleFinale);
+		System.out.println("Il capitale dopo " + (int)numeroAnni + " anno(i) è: " + capitaleFinale);
 		inputTastiera.close();
 				
-
 	}
 
 }
