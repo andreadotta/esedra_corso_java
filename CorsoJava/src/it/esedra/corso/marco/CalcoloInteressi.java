@@ -25,7 +25,6 @@ public class CalcoloInteressi {
 		System.out.println("Il capitale dopo " + (int)numeroAnni + " anno(i) è: " + capitaleFinale);
 		inputTastiera.close();
 				
-
 	}
 
 }
