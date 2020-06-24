@@ -22,7 +22,7 @@ public class Time {
 			this.seconds = s;
 		} else {
 			this.seconds = 0;
-			
+		
 		}
 
 	}
