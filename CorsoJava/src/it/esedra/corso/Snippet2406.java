@@ -27,7 +27,7 @@ public class Snippet2406 {
 		System.out.println(str0);
 		System.out.println(str1);
 	}
-
+ 
 	/**
 	 * OVERLOAD
 	 * Le informazioni che rappresentano la segnatura del metodo sono:
