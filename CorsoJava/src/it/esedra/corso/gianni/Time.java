@@ -15,7 +15,11 @@ public class Time {
 	private int hours;
 	private int minutes;
 	private int seconds;
-
+	
+	public String getTime() {
+		return this.hours + ":" + this.minutes + ":" + this.seconds;
+	}
+	
 	public void setTime(int h, int m, int s) {
 
 		if (h < 24 && h >= 0) {
