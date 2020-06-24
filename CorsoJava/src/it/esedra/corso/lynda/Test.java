@@ -10,7 +10,6 @@ public class Test {
 		}
 		System.out.print("\n");
 		String[] names = { "Joke", "Layo", "Tola", "Busi" };
-
 		for (String name : names) {
 			System.out.print(name);
 			System.out.print(",");
