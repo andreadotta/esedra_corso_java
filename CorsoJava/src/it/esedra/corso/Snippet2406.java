@@ -26,6 +26,9 @@ public class Snippet2406 {
 		System.out.println(y);
 		System.out.println(str0);
 		System.out.println(str1);
+		
+		Time time = new Time();
+		
 	}
  
 	/**
