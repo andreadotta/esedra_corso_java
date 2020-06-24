@@ -16,18 +16,31 @@ public class Time {
 	private int minutes;
 	private int seconds;
 
-	public Time(int h, int m, int s) {
-		this.hours = h;
-		this.minutes = m;
-		this.seconds = s;
+	public void setTime(int h, int m, int s) {
+
+		if (h < 24 && h >= 0) {
+			this.hours = h;
+		} else {
+			this.hours = 0;
+		}
+
+		if (m < 60 && m >= 0) {
+			this.minutes = m;
+		} else {
+			this.minutes = 0;
+		}
+
+		if (s < 60 && s >= 0) {
+			this.seconds = m;
+		} else {
+			this.seconds = 0;
+		}
+
 	}
-	
+
 	public Time() {
-		this.hours = 0;
-		this.minutes = 0;
-		this.seconds = 0;
+		this.hours = this.minutes = this.seconds = 0;
 	}
-	
 
 	public static void main(String[] args) {
 
