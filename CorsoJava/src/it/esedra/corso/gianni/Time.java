@@ -16,11 +16,6 @@ public class Time {
 	private int minutes;
 	private int seconds;
 	
-	/**
-	 * 
-	 * 
-	 */
-	
 	public String getTime() {
 		return this.hours + ":" + this.minutes + ":" + this.seconds;
 	}
