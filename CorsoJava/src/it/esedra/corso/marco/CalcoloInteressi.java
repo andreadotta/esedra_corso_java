@@ -22,7 +22,7 @@ public class CalcoloInteressi {
 		interesse = capitaleIniziale * (tassoInteresse / 100);
 		capitaleFinale = (capitaleIniziale + interesse) * numeroAnni;
 		
-		System.out.println("Il capitale dopo " + numeroAnni + " anni è: " + capitaleFinale);
+		System.out.println("Il capitale dopo " + (int)numeroAnni + " anno(i) è: " + capitaleFinale);
 		inputTastiera.close();
 				
 
