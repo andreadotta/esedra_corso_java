@@ -1,16 +1,18 @@
 package it.esedra.corso.marco;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class Time {
 
+	// Vengono dichiarate le variabili di classe necessarie al programma
 	private int hours;
 	private int minutes;
 	private int seconds;
 	private int milliseconds;
 
 	/*
-	 *  questo metodo permette di impostare l'ora; vengono previsti i limiti numerici per le ore (0-24), per minuti e secondi (0-60), e
+	 *  questo costruttore permette di impostare l'ora; vengono previsti i limiti numerici per le ore (0-24), per minuti e secondi (0-60), e
 	 *  per i millisecondi (0-1000) 
 	 */
 	public void setTime(int h, int m, int s, int ms) {
@@ -46,18 +48,17 @@ public class Time {
 
 	}
 
-	// questo metodo inizializza tutte le variabili di classe a 0
+	// questo costruttore fornisce i valori dell'orario al momento dell'esecuzione del programma
 	public Time() {
 
-		this.hours = this.minutes = this.seconds = this.milliseconds = 0;
+		Date now = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(now);				
 		
-		it.esedra.corso.marco.Time marcoTime = new it.esedra.corso.marco.Time();
-		
-		Calendar cal = null;
-		
+		it.esedra.corso.marco.Time marcoTime = new it.esedra.corso.marco.Time();		
 		marcoTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND), cal.get(Calendar.MILLISECOND));
 		System.out.println(marcoTime.getTime()); 
-
+                
 	}
 	
 	// questa classe permette di formattare l'ora in formato 'HH:MM:SS:MS'
