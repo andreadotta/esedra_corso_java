@@ -51,10 +51,9 @@ public class Time {
 
 		this.hours = this.minutes = this.seconds = this.milliseconds = 0;
 		
-		it.esedra.corso.marco.Time gianniTime = new it.esedra.corso.marco.Time();
+		it.esedra.corso.marco.Time marcoTime = new it.esedra.corso.marco.Time();
 		
-		Calendar cal;
-		Time marcoTime;
+		Calendar cal = null;
 		
 		marcoTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND), cal.get(Calendar.MILLISECOND));
 		System.out.println(marcoTime.getTime()); 
