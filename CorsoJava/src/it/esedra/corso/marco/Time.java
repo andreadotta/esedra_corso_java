@@ -1,5 +1,7 @@
 package it.esedra.corso.marco;
 
+import java.util.Calendar;
+
 public class Time {
 
 	private int hours;
@@ -7,7 +9,10 @@ public class Time {
 	private int seconds;
 	private int milliseconds;
 
-	// questo metodo permette di impostare l'ora; vengono previsti i limiti numerici per le ore (0-24) e per minuti e secondi (0-60)
+	/*
+	 *  questo metodo permette di impostare l'ora; vengono previsti i limiti numerici per le ore (0-24), per minuti e secondi (0-60), e
+	 *  per i millisecondi (0-1000) 
+	 */
 	public void setTime(int h, int m, int s, int ms) {
 
 		this.hours = h;
@@ -45,6 +50,14 @@ public class Time {
 	public Time() {
 
 		this.hours = this.minutes = this.seconds = this.milliseconds = 0;
+		
+		it.esedra.corso.marco.Time gianniTime = new it.esedra.corso.marco.Time();
+		
+		Calendar cal;
+		Time marcoTime;
+		
+		marcoTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND), cal.get(Calendar.MILLISECOND));
+		System.out.println(marcoTime.getTime()); 
 
 	}
 	
@@ -53,5 +66,6 @@ public class Time {
 		
 		return hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
 	}
-
+	
+	
 }
