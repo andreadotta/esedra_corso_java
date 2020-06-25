@@ -15,7 +15,7 @@ public class Time {
 	 * (variabili) che servono per fornire i PARAMETRI formali
 	 */
 
-	public void setTime(int h, int mn, int s ,int ms) {
+	public void setTime(int h, int mn, int s, int ms) {
 
 		if (h < 24 && h >= 0) {
 			this.hours = h;
@@ -42,22 +42,23 @@ public class Time {
 
 	// creazione di un metodo gettime per la restituzione dei valori
 	public String getTime() {
-		return hours + ":" + minutes + ":" + seconds;
+		return hours + ":" + minutes + ":" + seconds + ": " + milliseconds;
 
 	}
 
 //creazione di un constructore che inizialisa i variabili a 0
-	
+
 	public Time() {
 		Date now = new Date();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(now);
 
 		it.esedra.corso.oussein.Time ousseinTime = new it.esedra.corso.oussein.Time();
-		ousseinTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),cal.get(Calendar.MILLISECOND));
+		ousseinTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
+				cal.get(Calendar.MILLISECOND));
 		System.out.println(ousseinTime.getTime());
 
-		this.hours = this.minutes = this.seconds = 0;
+		this.hours = this.minutes = this.seconds= this.milliseconds = 0;
 
 	}
 
@@ -73,14 +74,12 @@ public class Time {
 
 		return t + ": " + n + i;
 	}
+
 	public static String dicrement(int i, int z, String t) {
 		int n = 6;
 
-		return n - i+ " è = a " + t;
+		return n - i + " è = a " + t;
 	}
-
-
-	
 
 	public static void main(String[] args) {
 
