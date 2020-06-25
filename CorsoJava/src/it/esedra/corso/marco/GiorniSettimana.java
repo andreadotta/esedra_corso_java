@@ -47,6 +47,8 @@ public class GiorniSettimana {
 						
 		}
 		
+		tastiera.close();
+		
 	}
 	
 }
