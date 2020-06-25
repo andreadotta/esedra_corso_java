@@ -48,7 +48,7 @@ public class Time {
 
 	}
 	
-	// questa classe permette di formattare l'ora in formato 'HH:MM:SS'
+	// questa classe permette di formattare l'ora in formato 'HH:MM:SS:MS'
 	public String getTime() {
 		
 		return hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
