@@ -45,8 +45,8 @@ public class Time {
 	}
 
 	/**
-	 *  Creazione di un metodo gettime per la restituzione dei valori
-	 * @return string  ( hours,minutes,seconds,milliseconds)
+	 * Creazione di un metodo gettime per la restituzione dei valori
+	 * @return String con i valori hours,minutes,seconds,milliseconds nella forma es. 15:11:12:07
 	 
 	 */
 	public String getTime() {
