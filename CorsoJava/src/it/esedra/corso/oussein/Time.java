@@ -54,7 +54,11 @@ public class Time {
 
 	}
 
-//creazione di un constructore che inizialisa i variabili a 0
+	/**
+	 * Questo costruttore fornisce i valori dell'orario al momento dell'esecuzione
+	 * del programma ( Date,calendar, Time)
+	   
+	 */
 
 	public Time() {
 		Date now = new Date();
