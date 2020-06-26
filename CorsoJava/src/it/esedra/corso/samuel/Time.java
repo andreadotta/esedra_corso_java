@@ -28,7 +28,7 @@ public class Time {
 		this.minutes = 0;
 		this.seconds = 0;
 	}
-	public void seTime(int h, int m, int s, int ms) {
+	public void setTime(int h, int m, int s, int ms) {
 	
 	if (h < 24 && h >= 0) {
 		this.hours = h;
@@ -43,7 +43,7 @@ public class Time {
 	}
 
 	if (s < 60 && s >= 0) {
-		this.seconds = m;
+		this.seconds = s;
 	} else {
 		this.seconds = 0;
 	}
@@ -58,8 +58,8 @@ public class Time {
 /** creazione di un metodo per la restituzione dei valori
  * 
  */
-public String geTime ( ) {
-	return hours + " : " + minutes + " :" +  seconds + ":" + milliseconds ;
+public String getTime ( ) {
+	return hours + ":" + minutes + ":" +  seconds + ":" + milliseconds ;
 	
  
 
