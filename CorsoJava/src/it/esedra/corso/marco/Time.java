@@ -1,8 +1,5 @@
 package it.esedra.corso.marco;
 
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  * Questa classe crea le variabili di classe HOURS, MINUTES, SECONDS,
  * MILLISECONDS, e contiene i metodi per ricevere l'orario, e per visualizzarlo
@@ -31,34 +28,13 @@ public class Time {
 	 */
 	public void setTime(int h, int m, int s, int ms) {
 
-		this.hours = h;
-		this.minutes = m;
-		this.seconds = s;
-		this.milliseconds = ms;
+		this.setHours(h);
 
-		if (h < 24 && h >= 0) {
-			this.hours = h;
-		} else {
-			hours = 0;
-		}
+		this.setMinutes(m);
 
-		if (m < 60 && m >= 0) {
-			this.minutes = m;
-		} else {
-			minutes = 0;
-		}
+		this.setSeconds(s);
 
-		if (s < 60 && s >= 0) {
-			this.seconds = s;
-		} else {
-			seconds = 0;
-		}
-
-		if (ms < 1000 && ms >= 0) {
-			this.milliseconds = ms;
-		} else {
-			milliseconds = 0;
-		}
+		this.setMilliseconds(ms);
 
 	}
 
@@ -80,6 +56,54 @@ public class Time {
 	public String getTime() {
 
 		return hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+	}
+
+	public int getHours() {
+		return hours;
+	}
+
+	public void setHours(int h) {
+		if (h < 24 && h >= 0) {
+			this.hours = h;
+		} else {
+			hours = 0;
+		}
+	}
+
+	public int getMinutes() {
+		return minutes;
+	}
+
+	public void setMinutes(int m) {
+		if (m < 60 && m >= 0) {
+			this.minutes = m;
+		} else {
+			minutes = 0;
+		}
+	}
+
+	public int getSeconds() {
+		return seconds;
+	}
+
+	public void setSeconds(int s) {
+		if (s < 60 && s >= 0) {
+			this.seconds = s;
+		} else {
+			seconds = 0;
+		}
+	}
+
+	public int getMilliseconds() {
+		return milliseconds;
+	}
+
+	public void setMilliseconds(int ms) {
+		if (ms < 1000 && ms >= 0) {
+			this.milliseconds = ms;
+		} else {
+			milliseconds = 0;
+		};
 	}
 
 }
