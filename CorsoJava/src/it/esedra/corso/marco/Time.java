@@ -63,8 +63,7 @@ public class Time {
 	}
 
 	/**
-	 * Questo costruttore fornisce i valori dell'orario al momento dell'esecuzione
-	 * del programma
+	 * Questo costruttore inizializza i valori di tutte le variabili a 0
 	 */
 	public Time() {
 
