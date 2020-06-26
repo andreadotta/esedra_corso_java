@@ -27,4 +27,39 @@ public class Snippet2606 {
 	 * I metodi che non hanno parametri non hanno nemmeno righe e non hanno un valore di ritorno non hanno @return 
 	 * 
 	 */
+	
+	/** metodi getter e setter*/
+	
+	
+	/*
+	 * Per generare automaticamente i metodo getters and setters utilizzo una funzionalità dell'IDE
+	 * Eclipse. 
+	 * Cliccando sul file .vava si apre il menu
+	 * seleziono quindi "Source" e quindi "Generate Getters and setters"
+	 * seleziono quindi le variabili per cui voglio create i metodi
+	 * clicco su "Generate"
+	 */
+	private int age;
+	
+	private String name;
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
+	
+	
 }
