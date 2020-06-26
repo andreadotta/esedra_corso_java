@@ -60,6 +60,19 @@ public class Snippet2606 {
 	}
 	
 	
+	/*
+	 * Gli oggetti sono entità di un programma e sono solo dotati di tre proprietà caratteristiche fondamentali
+	 * , lo stato 
+	 *   il comportamento 
+	 *   l'identità 
+	 *  
+	 *  L'insieme di tutte le informazioni conservate da un oggetto costituisce 
+	 *  lo STATO dell'oggetto stesso 
+	 *  Lo stato di un oggetto può modificarsi nel tempo ma soltanto in occasione 
+	 *  di un'operazione che venga compiuta sull'oggetto stesso che ne provoca 
+	 *  un cambiamento di stato 
+	 */
+	
 	
 	
 }
