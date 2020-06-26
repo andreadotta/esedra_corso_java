@@ -5,15 +5,23 @@ import java.util.Date;
 
 public class Time {
 
-	// Vengono dichiarate le variabili di classe necessarie al programma
+	/*
+	 * Vengono dichiarate le variabili di classe
+	 */
 	private int hours;
 	private int minutes;
 	private int seconds;
 	private int milliseconds;
 
-	/*
-	 *  questo costruttore permette di impostare l'ora; vengono previsti i limiti numerici per le ore (0-24), per minuti e secondi (0-60), e
-	 *  per i millisecondi (0-1000) 
+	/**
+	 * Questo costruttore permette di impostare l'ora; vengono previsti i limiti
+	 * numerici per le ore (0-24), per minuti e secondi (0-60), e Per i millisecondi
+	 * (0-1000) Vengono forniti i seguenti parametri:
+	 * 
+	 * @param int h hours
+	 * @param int m minutes
+	 * @param int s seconds
+	 * @param int ms milliseconds
 	 */
 	public void setTime(int h, int m, int s, int ms) {
 
@@ -39,7 +47,7 @@ public class Time {
 		} else {
 			seconds = 0;
 		}
-		
+
 		if (ms < 1000 && ms >= 0) {
 			this.milliseconds = ms;
 		} else {
@@ -48,24 +56,34 @@ public class Time {
 
 	}
 
-	// questo costruttore fornisce i valori dell'orario al momento dell'esecuzione del programma
+	/**
+	 * Questo costruttore fornisce i valori dell'orario al momento dell'esecuzione
+	 * del programma
+	 * 
+	 * @param Date     now
+	 * @param Calendar cal
+	 * @param Time     marcoTime
+	 */
 	public Time() {
 
 		Date now = new Date();
 		Calendar cal = Calendar.getInstance();
-		cal.setTime(now);				
-		
-		it.esedra.corso.marco.Time marcoTime = new it.esedra.corso.marco.Time();		
-		marcoTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND), cal.get(Calendar.MILLISECOND));
-		System.out.println(marcoTime.getTime()); 
-                
+		cal.setTime(now);
+
+		it.esedra.corso.marco.Time marcoTime = new it.esedra.corso.marco.Time();
+		marcoTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
+				cal.get(Calendar.MILLISECOND));
+		System.out.println(marcoTime.getTime());
+
 	}
-	
-	// questa classe permette di formattare l'ora in formato 'HH:MM:SS:MS'
+
+	/**
+	 * @return String restituisce i valori hours, minutes, seconds, milliseconds
+	 *         nella forma HH:MM:SS:MS
+	 */
 	public String getTime() {
-		
+
 		return hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
 	}
-	
-	
+
 }
