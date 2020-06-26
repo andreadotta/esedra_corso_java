@@ -1,29 +1,22 @@
 package it.esedra.corso.lynda;
 
-/**
- * In questa classe dovete creare 3 variabili di classe (proprietà)
- * 
- * hours
- * minutes
- * seconds
- * 
- * 
- * Quindi create un costruttore  che inizializzi queste variabili a 0.
- * @author bauhausk
- *
- */
 public class Time {
 private int hours ;
 private int minutes;
 private int seconds;
+private int milliseconds;
+  
+//An hour is represented by an integer from 0 to 23, (h < 24)
+//A minute & seconds are represented by an integer from o to 59 (m,s <59)
 
-public Time () {
-	this.hours= 0;
+public void setTime () {
+	// ((int h, int mn, int s, int ms))
+	this.hours= 0; 
 	this.minutes=0;
 	this.seconds=0;
 	
-}
-public void setTime(int h,int m, int s) {
+	}
+public void setTime(int h,int m, int s , int ms) {
 	if (h < 24 && h >= 0) {
 		this.hours = h;
 	} else {
@@ -41,8 +34,12 @@ public void setTime(int h,int m, int s) {
 	} else {
 		this.seconds = 0;
 	}
-}
+	
+	if (ms <1000 && ms >= 0) {
+		}
+	}
 public String getTime() {
  return hours +":"+minutes + ":"+ seconds+":";
 }
 }
+	
