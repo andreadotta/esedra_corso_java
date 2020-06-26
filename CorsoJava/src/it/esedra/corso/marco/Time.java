@@ -3,20 +3,26 @@ package it.esedra.corso.marco;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Questa classe crea le variabili di classe HOURS, MINUTES, SECONDS,
+ * MILLISECONDS, e contiene i metodi per ricevere l'orario, e per visualizzarlo
+ * nel formato (HH:MM:SS:MS).
+ * 
+ * @author marco
+ *
+ */
+
 public class Time {
 
-	/*
-	 * Vengono dichiarate le variabili di classe
-	 */
-	private int hours;
-	private int minutes;
-	private int seconds;
-	private int milliseconds;
+	private int hours; // ore
+	private int minutes; // minuti
+	private int seconds; // secondi
+	private int milliseconds; // millisecondi
 
 	/**
-	 * Questo costruttore permette di impostare l'ora; vengono previsti i limiti
-	 * numerici per le ore (0-24), per minuti e secondi (0-60), e Per i millisecondi
-	 * (0-1000) Vengono forniti i seguenti parametri:
+	 * Questo costruttore permette di impostare l'ora. Vengono previsti i limiti
+	 * numerici per le ore (0-24), per minuti e secondi (0-60), e per i millisecondi
+	 * (0-1000). Vengono forniti i seguenti parametri:
 	 * 
 	 * @param int h hours
 	 * @param int m minutes
@@ -59,10 +65,6 @@ public class Time {
 	/**
 	 * Questo costruttore fornisce i valori dell'orario al momento dell'esecuzione
 	 * del programma
-	 * 
-	 * @param Date     now
-	 * @param Calendar cal
-	 * @param Time     marcoTime
 	 */
 	public Time() {
 
@@ -78,6 +80,8 @@ public class Time {
 	}
 
 	/**
+	 * Questo metodo restituisce l'orario nel formato (HH:MM:SS:MS).
+	 * 
 	 * @return String restituisce i valori hours, minutes, seconds, milliseconds
 	 *         nella forma HH:MM:SS:MS
 	 */
