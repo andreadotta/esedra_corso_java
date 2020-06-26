@@ -10,9 +10,13 @@ public class Time {
 	private int seconds;
 	private int milliseconds;
 	/*
-	 * creazione di un classe proprieta con parametri creazione di un metodo settime
+	 *  Creazione di un metodo settime
 	 * che accetta questi input lista di argomenti cioè una serie di espressioni
 	 * (variabili) che servono per fornire i PARAMETRI formali
+	 * @param int h hours
+	 * @param int mn minutes
+	 * @param int s seconds
+	 * @param int ms milliseconds
 	 */
 
 	public void setTime(int h, int mn, int s, int ms) {
@@ -22,12 +26,12 @@ public class Time {
 		} else {
 			this.hours = 0;
 		}
-		if (h < 60 && h >= 0) {
+		if (mn < 60 && mn >= 0) {
 			this.minutes = mn;
 		} else {
 			this.minutes = 0;
 		}
-		if (h < 24 && h >= 0) {
+		if (s < 60 && s >= 0) {
 			this.seconds = s;
 		} else {
 			this.seconds = 0;
@@ -40,7 +44,11 @@ public class Time {
 		}
 	}
 
-	// creazione di un metodo gettime per la restituzione dei valori
+	/**
+	 *  Creazione di un metodo gettime per la restituzione dei valori
+	 * @return string  ( hours,minutes,seconds,milliseconds)
+	 
+	 */
 	public String getTime() {
 		return hours + ":" + minutes + ":" + seconds + ": " + milliseconds;
 
