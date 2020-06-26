@@ -68,14 +68,7 @@ public class Time {
 	 */
 	public Time() {
 
-		Date now = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(now);
-
-		it.esedra.corso.marco.Time marcoTime = new it.esedra.corso.marco.Time();
-		marcoTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
-				cal.get(Calendar.MILLISECOND));
-		System.out.println(marcoTime.getTime());
+		this.hours = this.minutes = this.seconds = this.milliseconds = 0;
 
 	}
 

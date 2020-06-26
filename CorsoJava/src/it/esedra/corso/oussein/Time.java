@@ -50,7 +50,7 @@ public class Time {
 	 
 	 */
 	public String getTime() {
-		return hours + ":" + minutes + ":" + seconds + ": " + milliseconds;
+		return hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
 
 	}
 
@@ -61,14 +61,6 @@ public class Time {
 	 */
 
 	public Time() {
-		Date now = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(now);
-
-		it.esedra.corso.oussein.Time ousseinTime = new it.esedra.corso.oussein.Time();
-		ousseinTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
-				cal.get(Calendar.MILLISECOND));
-		System.out.println(ousseinTime.getTime());
 
 		this.hours = this.minutes = this.seconds = this.milliseconds = 0;
 

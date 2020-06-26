@@ -51,7 +51,7 @@ public class Time {
 		}
 
 		if (s < 60 && s >= 0) {
-			this.seconds = m;
+			this.seconds = s;
 		} else {
 			this.seconds = 0;
 		}
