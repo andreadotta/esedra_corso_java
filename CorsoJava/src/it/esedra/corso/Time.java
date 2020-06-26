@@ -6,35 +6,36 @@ import java.util.Date;
 /**
  * In questa classe dovete creare 3 variabili di classe (proprietà)
  * 
- * hours
- * minutes
- * seconds
+ * hours minutes seconds
  * 
  * 
- * Quindi create un costruttore  che inizializzi queste variabili a 0.
+ * Quindi create un costruttore che inizializzi queste variabili a 0.
+ * 
  * @author bauhausk
  *
  */
 public class Time {
-	
-
 
 	public Time() {
-		
+
 		Date now = new Date();
 		Calendar cal = Calendar.getInstance();
-		cal.setTime(now);  
+		cal.setTime(now);
+
+		it.esedra.corso.oussein.Time ousseinTime = new it.esedra.corso.oussein.Time();
+		ousseinTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
+				cal.get(Calendar.MILLISECOND));
+		System.out.println(ousseinTime.getTime());
 
 		it.esedra.corso.gianni.Time gianniTime = new it.esedra.corso.gianni.Time();
-		gianniTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
+		gianniTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
+				cal.get(Calendar.MILLISECOND));
 		System.out.println(gianniTime.getTime());
-		
+
 		it.esedra.corso.lynda.Time lyndaTime = new it.esedra.corso.lynda.Time();
 		lyndaTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND));
 		System.out.println(lyndaTime.getTime());
-		
-		
-		
+
 	}
-	
+
 }

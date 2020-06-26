@@ -8,7 +8,7 @@ public class Prova1 {
 		String cognome = "Musa";
 		String cittaDiNascita = "Zulu";
 
-		System.out.println("L'utente È nome" + cognome);
+		System.out.println("L'utente √® nome" + cognome);
 		
 		
 	}
@@ -18,9 +18,9 @@ public class Prova1 {
 //sona attraverso la creazione di quattro variabili usando String e tipi primitivi le variabili dovranno rappresentare:
 //Nome e cognome
 //Citta di nascita
-//Et‡ ( e un interger) if /else
+//Et√† ( e un interger) if /else
 //Altezza in metri ( e un double)
 //Maschio o femmina (m o f) string sex
-//Stampare l'et‡ se Ë maggiore di 18 anni altrimenti stampare la scritta "Utente minorenne"
-//Usare switch-case fare stampare "L'utente Ë un maschio" oppure "L'utente Ë una femmina(line 23)
+//Stampare l'et√† se √® maggiore di 18 anni altrimenti stampare la scritta "Utente minorenne"
+//Usare switch-case fare stampare "L'utente √® un maschio" oppure "L'utente √® una femmina(line 23)
 //Reference materials
