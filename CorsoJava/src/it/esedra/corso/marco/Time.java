@@ -63,19 +63,11 @@ public class Time {
 	}
 
 	/**
-	 * Questo costruttore fornisce i valori dell'orario al momento dell'esecuzione
-	 * del programma
+	 * Questo costruttore inizializza i valori di tutte le variabili a 0
 	 */
 	public Time() {
 
-		Date now = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(now);
-
-		it.esedra.corso.marco.Time marcoTime = new it.esedra.corso.marco.Time();
-		marcoTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
-				cal.get(Calendar.MILLISECOND));
-		System.out.println(marcoTime.getTime());
+		this.hours = this.minutes = this.seconds = this.milliseconds = 0;
 
 	}
 
