@@ -58,7 +58,7 @@ public class Time {
 				cal.get(Calendar.MILLISECOND));
 		System.out.println(ousseinTime.getTime());
 
-		this.hours = this.minutes = this.seconds= this.milliseconds = 0;
+		this.hours = this.minutes = this.seconds = this.milliseconds = 0;
 
 	}
 
