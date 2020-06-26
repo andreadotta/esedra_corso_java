@@ -19,7 +19,7 @@ public class Time {
 	private int milliseconds;
 	
 	/**
-	 * questo metodo ritorna una stringa di ore minuti secondi e millisecondi.
+	 * Questo metodo ritorna una stringa di ore minuti secondi e millisecondi.
 	 * 
 	 * @return String orario in forma ore:minuti:secondi:millisecondi
 	 */
@@ -29,7 +29,7 @@ public class Time {
 	}
 	
 	/**
-	 * questo metodo setta ore minuti secondi e millisecondi ai valori che gli vengono passati controllando che siano valori corretti. 
+	 * Questo metodo setta ore minuti secondi e millisecondi ai valori che gli vengono passati controllando che siano valori corretti. 
 	 * 
 	 * @param h ore
 	 * @param m minuti
@@ -51,7 +51,7 @@ public class Time {
 		}
 
 		if (s < 60 && s >= 0) {
-			this.seconds = m;
+			this.seconds = s;
 		} else {
 			this.seconds = 0;
 		}
@@ -65,7 +65,7 @@ public class Time {
 	}
 	
 	/**
-	 * questo costruttore setta ore minuti secondi e millisecondi a 0.
+	 * Questo costruttore setta ore minuti secondi e millisecondi a 0.
 	 * 
 	 */
 
