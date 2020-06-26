@@ -12,6 +12,7 @@ package it.esedra.corso.gianni;
 
 public class Time {
 
+	
 	private int hours;
 	private int minutes;
 	private int seconds;
