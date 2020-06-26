@@ -15,7 +15,8 @@ public class Time {
 	private int hours;
 	private int minutes;
 	private int seconds;
-
+    private int milliseconds;
+    
 	public Time(int h, int m, int s) {
 		this.hours = h;
 		this.minutes = m;
@@ -27,7 +28,7 @@ public class Time {
 		this.minutes = 0;
 		this.seconds = 0;
 	}
-	public void seTime(int h, int m, int s) {
+	public void seTime(int h, int m, int s, int ms) {
 	
 	if (h < 24 && h >= 0) {
 		this.hours = h;
@@ -47,4 +48,20 @@ public class Time {
 		this.seconds = 0;
 	}
 	
-	}}
+	
+	if (ms< 1000 && ms >= 0) {
+		this.milliseconds = ms;
+} else {
+	   milliseconds = 0 ;
+}
+}
+/** creazione di un metodo per la restituzione dei valori
+ * 
+ */
+public String geTime ( ) {
+	return hours + " : " + minutes + " :" +  seconds + ":" + milliseconds ;
+	
+ 
+
+}
+}
