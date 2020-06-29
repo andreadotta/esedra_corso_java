@@ -23,19 +23,13 @@ public class Time {
 		cal.setTime(now);
 
 		
-		now = new Date();
-		cal.setTime(now);
-		it.esedra.corso.gianni.Time gianniTime = new it.esedra.corso.gianni.Time();
-		gianniTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
-				cal.get(Calendar.MILLISECOND));
-		System.out.println(gianniTime.getTime());
 
-		now = new Date();
-		cal.setTime(now);
-		it.esedra.corso.lynda.Time lyndaTime = new it.esedra.corso.lynda.Time();
-		lyndaTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
-				cal.get(Calendar.MILLISECOND));
-		System.out.println(lyndaTime.getTime());
+//		now = new Date();
+//		cal.setTime(now);
+//		it.esedra.corso.lynda.Time lyndaTime = new it.esedra.corso.lynda.Time();
+//		lyndaTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
+//				cal.get(Calendar.MILLISECOND));
+//		System.out.println(lyndaTime.getTime());
 		
 		now = new Date();
 		cal.setTime(now);
@@ -44,12 +38,12 @@ public class Time {
 				cal.get(Calendar.MILLISECOND));
 		System.out.println(samuelTime.getTime());
 		
-		now = new Date();
-		cal.setTime(now);
-		it.esedra.corso.marco.Time marcoTime = new it.esedra.corso.marco.Time();
-		marcoTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
-				cal.get(Calendar.MILLISECOND));
-		System.out.println(marcoTime.getTime());
+//		now = new Date();
+//		cal.setTime(now);
+//		it.esedra.corso.marco.Time marcoTime = new it.esedra.corso.marco.Time();
+//		marcoTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
+//				cal.get(Calendar.MILLISECOND));
+//		System.out.println(marcoTime.getTime());
 		
 
 	}
