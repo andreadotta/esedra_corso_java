@@ -7,18 +7,18 @@ public class TimeClient {
 	
 	public static void main(String[] args) {
 
-		Calendar calend = Calendar.getInstance();
+		Calendar cal = Calendar.getInstance();
 		Date now = new Date();
 
-		calend.setTime(now);
-		it.esedra.corso.libs.Time yourTimeNow = new it.esedra.corso.libs.Time();
+		cal.setTime(now);
+		it.esedra.corso.libs.Time marcoTime = new it.esedra.corso.libs.Time();
 
-		yourTimeNow.setHours(calend.get(Calendar.HOUR_OF_DAY));
-		yourTimeNow.setMinutes(calend.get(Calendar.MINUTE));
-		yourTimeNow.setSeconds(calend.get(Calendar.SECOND));
-		yourTimeNow.setMilliseconds(calend.get(Calendar.MILLISECOND));
+		marcoTime.setHours(cal.get(Calendar.HOUR_OF_DAY));
+		marcoTime.setMinutes(cal.get(Calendar.MINUTE));
+		marcoTime.setSeconds(cal.get(Calendar.SECOND));
+		marcoTime.setMilliseconds(cal.get(Calendar.MILLISECOND));
 
-		System.out.println(yourTimeNow.getTime());
+		System.out.println(marcoTime.getTime());
 		
 		System.out.println(it.esedra.corso.libs.Time.getCurrentTime());
 
