@@ -3,7 +3,7 @@ package it.esedra.corso.oussein;
 import java.util.Calendar;
 import java.util.Date;
 
-import it.esedra.corso.marco.Time;
+import it.esedra.corso.libs.Time;
 
 public class TimeClient {
 	private int Giorni;
