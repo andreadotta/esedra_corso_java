@@ -93,6 +93,7 @@ public class Time {
 			this.minutes = mn;
 		} else {
 			this.minutes = 0;
+			
 		}
 
 	}
