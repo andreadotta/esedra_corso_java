@@ -104,7 +104,7 @@ public class Time {
 		} else {
 			milliseconds = 0;
 		}
-		;
+
 	}
 
 }
