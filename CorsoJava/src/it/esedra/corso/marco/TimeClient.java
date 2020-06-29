@@ -13,8 +13,10 @@ public class TimeClient {
 		calend.setTime(now);
 		it.esedra.corso.marco.Time yourTimeNow = new it.esedra.corso.marco.Time();
 
-		yourTimeNow.setTime(calend.get(Calendar.HOUR_OF_DAY), calend.get(Calendar.MINUTE), calend.get(Calendar.SECOND),
-				calend.get(Calendar.MILLISECOND));
+		yourTimeNow.setHours(calend.get(Calendar.HOUR_OF_DAY));
+		yourTimeNow.setMinutes(calend.get(Calendar.MINUTE));
+		yourTimeNow.setSeconds(calend.get(Calendar.SECOND));
+		yourTimeNow.setMilliseconds(calend.get(Calendar.MILLISECOND));
 
 		System.out.println(yourTimeNow.getTime());
 
