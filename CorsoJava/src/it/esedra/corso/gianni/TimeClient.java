@@ -20,6 +20,7 @@ public class TimeClient {
 		gianniTime.setSeconds(cal.get(Calendar.SECOND));
 		gianniTime.setMilliseconds(cal.get(Calendar.MILLISECOND));
 		System.out.println(gianniTime.getTime());
+		System.out.println(Time.getCurrentTime());
 		
 	}
 
