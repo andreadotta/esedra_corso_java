@@ -16,7 +16,7 @@ public class TimeClient {
 
 		yourTimeNow.setTime(calend.get(Calendar.HOUR_OF_DAY), calend.get(Calendar.MINUTE), calend.get(Calendar.SECOND),
 				calend.get(Calendar.MILLISECOND));
-		
+
 		System.out.println(yourTimeNow.getTime());
 
 	}
