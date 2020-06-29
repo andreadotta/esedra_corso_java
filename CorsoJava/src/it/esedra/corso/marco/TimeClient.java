@@ -11,7 +11,7 @@ public class TimeClient {
 		Date now = new Date();
 
 		calend.setTime(now);
-		Time yourTimeNow = new Time();
+		it.esedra.corso.libs.Time yourTimeNow = new it.esedra.corso.libs.Time();
 
 		yourTimeNow.setHours(calend.get(Calendar.HOUR_OF_DAY));
 		yourTimeNow.setMinutes(calend.get(Calendar.MINUTE));
@@ -20,7 +20,7 @@ public class TimeClient {
 
 		System.out.println(yourTimeNow.getTime());
 		
-		System.out.println(Time.getCurrentTime());
+		System.out.println(it.esedra.corso.libs.Time.getCurrentTime());
 
 	}
 
