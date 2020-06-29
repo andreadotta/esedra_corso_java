@@ -15,9 +15,12 @@ public class TimeClient {
 		Date now = new Date();
 		cal.setTime(now);
 		it.esedra.corso.gianni.Time gianniTime = new it.esedra.corso.gianni.Time();
-		gianniTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
-				cal.get(Calendar.MILLISECOND));
+		gianniTime.setHours(cal.get(Calendar.HOUR_OF_DAY));
+		gianniTime.setMinutes(cal.get(Calendar.MINUTE));
+		gianniTime.setSeconds(cal.get(Calendar.SECOND));
+		gianniTime.setMilliseconds(cal.get(Calendar.MILLISECOND));
 		System.out.println(gianniTime.getTime());
+		
 	}
 
 }
