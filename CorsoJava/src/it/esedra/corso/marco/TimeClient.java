@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class TimeClient {
-
+	
 	public static void main(String[] args) {
 
 		Calendar calend = Calendar.getInstance();
@@ -19,6 +19,8 @@ public class TimeClient {
 		yourTimeNow.setMilliseconds(calend.get(Calendar.MILLISECOND));
 
 		System.out.println(yourTimeNow.getTime());
+		
+		System.out.println(Time.getCurrentTime());
 
 	}
 
