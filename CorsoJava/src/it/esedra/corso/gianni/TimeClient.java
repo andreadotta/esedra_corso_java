@@ -2,6 +2,7 @@ package it.esedra.corso.gianni;
 
 import java.util.Calendar;
 import java.util.Date;
+import it.esedra.corso.libs.Time;
 /**
  * Questa classe utilizza Time e restituisce l'orario corrente.
  * @author gpaol
@@ -14,7 +15,7 @@ public class TimeClient {
 		Calendar cal = Calendar.getInstance();
 		Date now = new Date();
 		cal.setTime(now);
-		it.esedra.corso.gianni.Time gianniTime = new it.esedra.corso.gianni.Time();
+		Time gianniTime = new Time();
 		gianniTime.setHours(cal.get(Calendar.HOUR_OF_DAY));
 		gianniTime.setMinutes(cal.get(Calendar.MINUTE));
 		gianniTime.setSeconds(cal.get(Calendar.SECOND));
