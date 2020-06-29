@@ -3,6 +3,8 @@ package it.esedra.corso.oussein;
 import java.util.Calendar;
 import java.util.Date;
 
+import it.esedra.corso.marco.Time;
+
 public class TimeClient {
 	private int Giorni;
 	private int mese;
@@ -17,7 +19,7 @@ public class TimeClient {
 		cal.setTime(ora);
 
 		
-		it.esedra.corso.oussein.Time yourTimeNow = new it.esedra.corso.oussein.Time();
+		Time yourTimeNow = new Time();
 
 		yourTimeNow.setHours(cal.get(Calendar.HOUR_OF_DAY));
 		yourTimeNow.setMinutes(cal.get(Calendar.MINUTE));
@@ -25,6 +27,7 @@ public class TimeClient {
 		yourTimeNow.setMilliseconds(cal.get(Calendar.MILLISECOND));
 
 		System.out.println(yourTimeNow.getTime());
+		System.out.println(Time.getCurrentTime());
 
 	}
 

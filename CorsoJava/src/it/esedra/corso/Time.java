@@ -22,11 +22,7 @@ public class Time {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(now);
 
-		it.esedra.corso.oussein.Time ousseinTime = new it.esedra.corso.oussein.Time();
-		ousseinTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
-				cal.get(Calendar.MILLISECOND));
-		System.out.println(ousseinTime.getTime());
-
+		
 		now = new Date();
 		cal.setTime(now);
 		it.esedra.corso.gianni.Time gianniTime = new it.esedra.corso.gianni.Time();
