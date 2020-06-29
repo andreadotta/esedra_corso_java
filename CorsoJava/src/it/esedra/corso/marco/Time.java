@@ -1,8 +1,5 @@
 package it.esedra.corso.marco;
 
-import java.util.Calendar;
-import java.util.Date;
-
 /**
  * Questa classe crea le variabili di classe HOURS, MINUTES, SECONDS,
  * MILLISECONDS, e contiene i metodi per ricevere l'orario, e per visualizzarlo

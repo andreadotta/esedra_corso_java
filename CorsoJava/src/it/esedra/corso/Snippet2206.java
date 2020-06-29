@@ -5,12 +5,6 @@ package it.esedra.corso;
 // se non indichiamo il package la calsse farà parte  del unnamed package
 
 
-//è una dichiarazione di  importazione che consente di fare riferimento a un tipo oppure a un membro staticp.
-import java.lang.*;
-
-//importazione di tipo singolo 
-import java.lang.String;
-
 import it.esedra.corso.helpers.StringHelper;
 
 public class Snippet2206 {
