@@ -10,4 +10,6 @@ public class PrintHelper {
 	//IL messaggio può essere NULL e quindi printa
 	
 	// [ORE:MINUTI:SECONDI:MILLISECONDI] - STRINGA
+	
+
 }
