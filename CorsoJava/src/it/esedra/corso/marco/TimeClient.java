@@ -10,7 +10,6 @@ public class TimeClient {
 		Calendar calend = Calendar.getInstance();
 		Date now = new Date();
 
-		now = new Date();
 		calend.setTime(now);
 		it.esedra.corso.marco.Time yourTimeNow = new it.esedra.corso.marco.Time();
 
