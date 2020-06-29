@@ -1,5 +1,8 @@
 package it.esedra.corso.gianni;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * In questa classe dovete creare 3 variabili di classe (proprietà)
  * 
@@ -12,10 +15,16 @@ package it.esedra.corso.gianni;
 
 public class Time {
 
+	private static String msg;
+
 	private int hours;
 	private int minutes;
 	private int seconds;
 	private int milliseconds;
+	
+	static {
+		msg = "current time is:";
+	}
 
 	/**
 	 * Questo metodo ritorna una stringa di ore minuti secondi e millisecondi.
@@ -99,6 +108,17 @@ public class Time {
 		} else {
 			this.milliseconds = 0;
 		}
+	}
+
+	public static String getCurrentTime() {
+		Time time = new Time();
+		Calendar cal = Calendar.getInstance();
+		Date now = new Date();
+		cal.setTime(now);
+		time.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
+				cal.get(Calendar.MILLISECOND));
+		return Time.msg + "" + time.getTime();
+
 	}
 
 	public static void main(String[] args) {

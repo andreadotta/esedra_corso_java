@@ -4,8 +4,9 @@ package it.esedra.corso.oussein;
 
 
 		import java.awt.BorderLayout;
-		import javax.swing.JFrame;
-		import javax.swing.JTable;
+
+import javax.swing.JFrame;
+import javax.swing.JTable;
 
 
 		public class Tablebis {

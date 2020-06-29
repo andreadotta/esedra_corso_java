@@ -1,5 +1,8 @@
 package it.esedra.corso.marco;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Questa classe crea le variabili di classe HOURS, MINUTES, SECONDS,
  * MILLISECONDS, e contiene i metodi per ricevere l'orario, e per visualizzarlo
@@ -11,10 +14,19 @@ package it.esedra.corso.marco;
 
 public class Time {
 
+	private static String msg;
+
 	private int hours; // ore
 	private int minutes; // minuti
 	private int seconds; // secondi
 	private int milliseconds; // millisecondi
+	
+	// Inizializzatore statico
+	static {
+		
+		msg = "Current time is: ";
+		
+	}
 
 	/**
 	 * Questo costruttore permette di impostare l'ora. Vengono previsti i limiti
@@ -56,6 +68,19 @@ public class Time {
 	public String getTime() {
 
 		return hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+	}
+
+	public static String getCurrentTime() {
+		Time time = new Time();
+		Calendar calend = Calendar.getInstance();
+		Date now = new Date();
+
+		calend.setTime(now);
+
+		time.setTime(calend.get(Calendar.HOUR_OF_DAY), calend.get(Calendar.MINUTE), calend.get(Calendar.SECOND),
+				calend.get(Calendar.MILLISECOND));
+		return Time.msg + " " + time.getTime();
+
 	}
 
 	public int getHours() {
@@ -103,7 +128,8 @@ public class Time {
 			this.milliseconds = ms;
 		} else {
 			milliseconds = 0;
-		};
+		}
+
 	}
 
 }
