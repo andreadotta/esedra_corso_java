@@ -9,7 +9,7 @@ class ArrayMaxMinTest {
 	@Test
 	void test() {
 		ArrayMaxMin art = new ArrayMaxMin();
-		art.main(new String[0]);
+		ArrayMaxMin.main(new String[0]);
 		fail("Not yet implemented");
 	}
 

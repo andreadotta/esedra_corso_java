@@ -1,8 +1,5 @@
 package it.esedra.corso.oussein;
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class Time {
 //dicheriazione dei variablili di classe
 	private int hours;
