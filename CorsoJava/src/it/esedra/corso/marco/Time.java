@@ -103,7 +103,8 @@ public class Time {
 			this.milliseconds = ms;
 		} else {
 			milliseconds = 0;
-		};
+		}
+		;
 	}
 
 }
