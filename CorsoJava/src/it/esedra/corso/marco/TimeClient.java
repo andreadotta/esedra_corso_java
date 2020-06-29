@@ -1,6 +1,7 @@
 package it.esedra.corso.marco;
 
 import java.util.Calendar;
+import it.esedra.corso.libs.Time;
 import java.util.Date;
 
 public class TimeClient {
@@ -11,7 +12,7 @@ public class TimeClient {
 		Date now = new Date();
 
 		cal.setTime(now);
-		it.esedra.corso.libs.Time marcoTime = new it.esedra.corso.libs.Time();
+		Time marcoTime = new Time();
 
 		marcoTime.setHours(cal.get(Calendar.HOUR_OF_DAY));
 		marcoTime.setMinutes(cal.get(Calendar.MINUTE));
@@ -20,7 +21,7 @@ public class TimeClient {
 
 		System.out.println(marcoTime.getTime());
 		
-		System.out.println(it.esedra.corso.libs.Time.getCurrentTime());
+		System.out.println(Time.getCurrentTime());
 
 	}
 
