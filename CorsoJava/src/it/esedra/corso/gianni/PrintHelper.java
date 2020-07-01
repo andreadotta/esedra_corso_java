@@ -8,10 +8,10 @@ public class PrintHelper {
 		Time time = new Time();
 
 		if (msg == null) {
-			System.out.println("[" + time.getTime() + "]" + "-" + out);
+			System.out.println("[" + time.getCurrentTime() + "] " + "- " + out);
 
 		} else {
-			System.out.println("[" + time.getTime() + "]" + "-" + msg + "-" + out);
+			System.out.println("[" + time.getCurrentTime() + "] " + "- " + msg + " - " + out);
 		}
 
 	}
