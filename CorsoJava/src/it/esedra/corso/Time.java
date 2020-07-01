@@ -31,12 +31,12 @@ public class Time {
 //				cal.get(Calendar.MILLISECOND));
 //		System.out.println(lyndaTime.getTime());
 		
-		now = new Date();
-		cal.setTime(now);
-		it.esedra.corso.samuel.Time samuelTime = new it.esedra.corso.samuel.Time();
-		samuelTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
-				cal.get(Calendar.MILLISECOND));
-		System.out.println(samuelTime.getTime());
+//		now = new Date();
+//		cal.setTime(now);
+//		it.esedra.corso.samuel.Time samuelTime = new it.esedra.corso.samuel.Time();
+//		samuelTime.setTime(cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), cal.get(Calendar.SECOND),
+//				cal.get(Calendar.MILLISECOND));
+//		System.out.println(samuelTime.getTime());
 		
 //		now = new Date();
 //		cal.setTime(now);
