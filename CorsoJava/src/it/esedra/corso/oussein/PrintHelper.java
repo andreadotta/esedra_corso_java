@@ -6,13 +6,11 @@ public class PrintHelper {
 
 	public static void out(String info, String out) {
 
-		Time ora = new Time();
-
 		if (info == null) {
-			System.out.println("[" + ora.getCurrentTime() + "]" + "-" + out);
+			System.out.println("[" + Time.getCurrentTime() + "]" + "-" + out);
 
 		} else {
-			System.out.println("[" + ora.getCurrentTime() + "]" + "-" + info + "-" + out);
+			System.out.println("[" + Time.getCurrentTime() + "]" + "-" + info + "-" + out);
 		}
 
 	}
