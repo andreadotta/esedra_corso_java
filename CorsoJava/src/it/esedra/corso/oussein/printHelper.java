@@ -5,6 +5,7 @@ import it.esedra.corso.libs.Time;
 public class printHelper {
 
 	public static void out(String info, String out) {
+		
 		Time Ora = new Time();
 
 		if (info == null) {
