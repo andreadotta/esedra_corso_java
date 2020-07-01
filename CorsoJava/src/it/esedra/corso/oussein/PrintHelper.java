@@ -17,6 +17,7 @@ static {
 		
 		
 		
+		
 		Time ora = new Time();
 
 		if (info == null) {
