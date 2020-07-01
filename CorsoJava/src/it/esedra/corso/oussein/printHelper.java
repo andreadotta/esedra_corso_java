@@ -5,7 +5,7 @@ import java.util.Date;
 
 import it.esedra.corso.libs.Time;
 
-public class TimeClient {
+public class printHelper {
 
 	public static void main(String[] args) {
 
@@ -24,6 +24,15 @@ public class TimeClient {
 
 		System.out.println(yourTimeNow.getTime());
 		System.out.println(Time.getCurrentTime());
+
+	}
+
+	private static String info;
+
+	// Inizializzatore statico
+	static {
+
+		info = "Current time is: ";
 
 	}
 
