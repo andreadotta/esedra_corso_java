@@ -47,6 +47,3 @@ vengono dichiarati una variabile (ovviamente) intera ed un metodo che stamperà 
 Scrivere, compilare ed eseguire una classe che:
 - istanzierà almeno due oggetti dalla classe NumeroIntero (contenente ovviamente un metodo main()), 
 - cambierà il valore delle relative variabili 
-
-
-
