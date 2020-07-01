@@ -1,39 +1,18 @@
 package it.esedra.corso.oussein;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import it.esedra.corso.libs.Time;
 
 public class printHelper {
 
-	public static void main(String[] args) {
+	public static void out(String info, String out) {
+		
+		Time Ora = new Time();
 
-		Date ora = new Date();
-		ora = new Date();
+		if (info == null) {
+			System.out.println("[" + Ora.getTime() + "]" + "-" + out);
 
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(ora);
-
-		Time yourTimeNow = new Time();
-
-		yourTimeNow.setHours(cal.get(Calendar.HOUR_OF_DAY));
-		yourTimeNow.setMinutes(cal.get(Calendar.MINUTE));
-		yourTimeNow.setSeconds(cal.get(Calendar.SECOND));
-		yourTimeNow.setMilliseconds(cal.get(Calendar.MILLISECOND));
-
-		System.out.println(yourTimeNow.getTime());
-		System.out.println(Time.getCurrentTime());
-
+		} else {
+			System.out.println("[" + Ora.getTime() + "]" + "-" + info + "-" + out);
+		}
 	}
-
-	private static String info;
-
-	// Inizializzatore statico
-	static {
-
-		info = "Current time is: ";
-
-	}
-
 }
