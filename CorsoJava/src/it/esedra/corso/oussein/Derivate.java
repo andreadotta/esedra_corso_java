@@ -10,4 +10,5 @@ public class Derivate extends Base {
 		System.out.println(sig.getSalary());
 
 	}
+	
 }
