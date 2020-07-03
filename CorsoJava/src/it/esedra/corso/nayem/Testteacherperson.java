@@ -9,6 +9,7 @@ public class Testteacherperson {
 	       t1.setAge(00);
 	       t1.setQualification("Engineer");
 	        
+	        
 	       t1.dis1();
        
 	}
