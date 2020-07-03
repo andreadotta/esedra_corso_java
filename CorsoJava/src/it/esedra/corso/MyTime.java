@@ -26,5 +26,15 @@ public class MyTime extends Time {
 		return getDayName() + " " + this.getTime();
 	}
 	
+	/**
+	 * Questo metodo restituisce l'orario nel formato (HH:MM:SS).
+	 * 
+	 * @return String restituisce i valori hours, minutes, seconds
+	 *         nella forma HH:MM:SS
+	 */
+	public String getTime() {
+
+		return this.getHours() + ":" + this.getMinutes() + ":" + this.getSeconds();
+	}
 	
 }
