@@ -7,6 +7,7 @@ public class Exec {
 		Anagrafica anagrafica = new Anagrafica();
 		anagrafica.setNome("Marco");
 		anagrafica.setCognome("Simi");
+		anagrafica.setGenere("maschio");
 		anagrafica.setEta("37 anni");
 		anagrafica.setIndirizzo("via del Tufo 1, Grosseto(GR)");
 		

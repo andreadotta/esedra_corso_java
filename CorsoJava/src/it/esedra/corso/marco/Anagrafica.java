@@ -14,7 +14,7 @@ public class Anagrafica extends Individuo {
 
 	public String getAnagrafica() {
 		
-		return getNome() + " " + getCognome() + " " + getEta() + " " + getIndirizzo();
+		return getNome() + " " + getCognome() + " - " + getGenere() + " - " + getEta() + " - " + getIndirizzo();
 		
 	}	
 
