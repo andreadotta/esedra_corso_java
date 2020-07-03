@@ -2,13 +2,18 @@ package it.esedra.corso.oussein;
 
 public class Derivate extends Base {
 
-	public static void main(String[] args) {
-		Derivate sig = new Derivate();
-		sig.setNome("andrea");
-		sig.setSalary(5300);
-		System.out.println(sig.getNome());
-		System.out.println(sig.getSalary());
+	private int CAP;
 
+	public int getCAP() {
+		return CAP;
+	}
+
+	public void setCAP(int cAP) {
+		CAP = cAP;
 	}
 	
+
+	public  void print() {
+		
+	}
 }

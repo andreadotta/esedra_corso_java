@@ -21,5 +21,8 @@ public class Base {
 		this.salary = salary;
 	}
 
+	public void print() {
+		System.out.println(nome + " " + salary);
+	}
 }
 
