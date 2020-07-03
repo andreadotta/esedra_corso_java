@@ -2,10 +2,10 @@ package it.esedra.corso.marco;
 
 public class Individuo {
 
-	public String eta;
-	public String nome;
-	public String cognome;
-	public String genere;
+	private String eta;
+	private String nome;
+	private String cognome;
+	private String genere;
 	
 	public String getGenere() {
 		return genere;
