@@ -6,5 +6,8 @@ public class DerivateClient {
 		
 		Derivate derivate = new Derivate();
 		derivate.setNome("Oussein");
+		
+		
+		derivate.print();
 	}
 }
