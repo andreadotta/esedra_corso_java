@@ -1,6 +1,6 @@
 package it.esedra.corso.marco;
 
-public class Exec {
+public class SuperClasse {
 
 	public static void main(String[] args) {
 		
