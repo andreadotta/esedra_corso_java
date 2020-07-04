@@ -58,8 +58,8 @@ public class Anagrafica extends Individuo {
 	/**
 	 * Override del metodo setNome
 	 */
-	public void setNome(String nome) {
-		this.nome = "***" + nome + "***";
+	public void setSecondoNome (String secondoNome) {
+		this.secondoNome = "***" + secondoNome + "***";
 	}
 		
 }

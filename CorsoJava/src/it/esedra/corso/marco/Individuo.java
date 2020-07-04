@@ -3,8 +3,8 @@ package it.esedra.corso.marco;
 public class Individuo {
 
 	private String eta;
-	protected String nome;
-	private String secondoNome;
+	private String nome;
+	protected String secondoNome;
 	private String cognome;
 	private String genere;
 	private String codiceFiscale;
