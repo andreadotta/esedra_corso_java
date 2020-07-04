@@ -36,6 +36,7 @@ public class Anagrafica extends Individuo {
 		return getNome() + " " + getCognome() + " - " + getGenere() + " - " + getEta() + " - " + getCodiceFiscale();
 
 	}
+	
 	/**
 	 * Restituisce il nome con l'aggiunta del secondo nome (se previsto):
 	 * @return String restituisce il nome e il secondo nome (se previsto) nella forma: getNome() + " " + getSecondoNome()
@@ -53,5 +54,12 @@ public class Anagrafica extends Individuo {
 		return this.getNomeExtended() + " " + getCognome() + " - " + getGenere() + " - " + getEta() + " - " + getCodiceFiscale();
 
 	}
-
+	
+	/**
+	 * Override del metodo setNome
+	 */
+	public void setNome(String nome) {
+		this.nome = "***" + nome + "***";
+	}
+		
 }
