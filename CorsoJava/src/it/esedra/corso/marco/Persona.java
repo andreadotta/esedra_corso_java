@@ -9,7 +9,6 @@ public abstract class Persona {
 
 	public Persona(String nome, String cognome, String dataDiNascita, int eta) {
 
-		super();
 		this.setNome(nome);
 		this.setCognome(cognome);
 		this.setDataDiNascita(dataDiNascita);
@@ -50,8 +49,10 @@ public abstract class Persona {
 	
 	public abstract String getGenere();
 	
-	public void print() {
+	private Persona() {
 		
 	}
+	
+	public abstract void print();
 
 }
