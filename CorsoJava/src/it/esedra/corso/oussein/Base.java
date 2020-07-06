@@ -2,12 +2,19 @@ package it.esedra.corso.oussein;
 
 /** metodi getter e setter*/
 
-public class Base {
+public abstract class Base {
+	
 
 	private String nome;
 	private int salary;
-
-	public String getNome() {
+public Base(String nome, int salary) {
+	super();
+	this.nome=nome;
+	this.salary=salary;
+	
+}
+	
+public String getNome() {
 		return nome;
 	}
 
@@ -26,5 +33,6 @@ public class Base {
 	public void print() {
 		System.out.println(nome + " " + salary);
 	}
+	public abstract String getInsegnante();
 }
 

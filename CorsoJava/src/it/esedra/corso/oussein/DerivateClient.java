@@ -9,7 +9,7 @@ public class DerivateClient {
 
 	public static void main(String args[]) {
 
-		Derivate derivate = new Derivate();
+		Derivate derivate = new Derivate("oussein",5300 );
 		derivate.setNome("Oussein");
 		System.out.println(derivate.getNome());
 

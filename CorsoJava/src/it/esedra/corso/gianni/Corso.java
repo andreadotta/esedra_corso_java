@@ -1,11 +1,16 @@
 package it.esedra.corso.gianni;
 
-import it.esedra.corso.classiAstratte.*;
 public class Corso {
 	public static void main (String[] args) {
-		//Cane cane = new Cane();
-
-		//System.out.println(cane.getVerso());
+		Poligono rettangolo = new Rettangolo(5, 10);
+		
+		Poligono quadrato = new Quadrato(2);
+		
+		rettangolo.calcolaArea();
+		rettangolo.calcolaPerimetro();
+		
+		quadrato.calcolaArea();
+		quadrato.calcolaPerimetro();
 	}
 
 }
