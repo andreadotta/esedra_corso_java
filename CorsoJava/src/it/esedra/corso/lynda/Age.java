@@ -11,7 +11,7 @@ public class Age {
 		
 		
 		NumeroIntero numero21 = new NumeroIntero (); 
-		NumeroIntero.numero = 60; //object becomes a local variable
+		numero21.numeroIntero = 60; //object becomes a local variable
 		numero21.stampaNumero();
 		
 		
