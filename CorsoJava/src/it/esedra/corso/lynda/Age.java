@@ -2,13 +2,12 @@ package it.esedra.corso.lynda;
 
 public class Age {
 	
+	private static int numero21;
+
 	public static void main(String[] args) {
 	
 		  int numero1 = 40 ;
-	      int numero21
-		  
-		 
-		NumeroIntero numero = new NumeroIntero (); //instance
+	      NumeroIntero numero = new NumeroIntero (); //instance
 		numero.numeroIntero = 40; //object ("forty"); becomes a local variable
 		numero.stampaNumero();
 		
