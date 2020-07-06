@@ -1,5 +1,7 @@
 package it.esedra.corso.oussein;
 
+/**(la classe Derivate è la classe derivata dalla superclasse Base)*/
+
 public class Derivate extends Base {
 
 	private int CAP;
