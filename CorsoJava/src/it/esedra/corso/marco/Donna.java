@@ -1,10 +1,10 @@
 package it.esedra.corso.marco;
 
-public class PersonaDonna extends Persona {
+public class Donna extends Persona {
 
 	public final String genere = "Femminile";
 	
-	public PersonaDonna(String nome, String cognome, String dataDiNascita, int eta) {
+	public Donna(String nome, String cognome, String dataDiNascita, int eta) {
 		super(nome, cognome, dataDiNascita, eta);
 		
 	}
