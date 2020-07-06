@@ -8,7 +8,9 @@ public class Age {
 		  int numero2 = 60 ;
 		NumeroIntero numero = new NumeroIntero (); //instance
 		numero.numeroIntero = 40; //object ("forty"); becomes a local variable
-        numero.numeroIntero = 60;
+		numero.stampaNumero();
+		
+		
 		
 		
 		/*** Questa classe definisce il concetto di numero intero come oggetto. In essa
