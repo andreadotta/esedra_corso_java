@@ -1,6 +1,6 @@
 package it.esedra.corso.marco;
 
-public class Persona {
+public abstract class Persona {
 
 	private String nome;
 	private String cognome;
@@ -47,6 +47,8 @@ public class Persona {
 	public void setEta(int eta) {
 		this.eta = eta;
 	}
+	
+	public abstract String getGenere();
 	
 	public void print() {
 		
