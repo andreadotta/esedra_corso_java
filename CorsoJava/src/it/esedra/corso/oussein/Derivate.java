@@ -14,6 +14,7 @@ public class Derivate extends Base {
 	
 
 	public  void print() {
+		System.out.println(  CAP ) ;
 		
 	} 
 }
