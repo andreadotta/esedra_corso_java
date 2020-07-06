@@ -2,33 +2,33 @@ Codice Java, Vero o Falso:
 
 1. La seguente dichiarazione del metodo main() è corretta:
 public static main(String argomenti[]) {...}
-
+V
 2. La seguente dichiarazione del metodo main() è corretta:
 public static void Main(String args[]){...}
-
+F
 3. La seguente dichiarazione del metodo main() è corretta:
 public static void main(String argomenti[]) {...}
-
+V
 4. La seguente dichiarazione del metodo main() è corretta:
 public static void main(String Argomenti[]) {...}
-
+V
 5. La seguente dichiarazione di classe è corretta:
 public class {...}
-
+F
 6. La seguente dichiarazione di classe è corretta:
 public Class Auto {...}
-
+F
 7. La seguente dichiarazione di classe è corretta:
 public class Auto {...}
-
+F
 8. È possibile dichiarare un metodo al di fuori del blocco di codice che definisce una classe.
 
 9. Il blocco di codice che definisce un metodo è delimitato da due parentesi
 tonde.
-
+F
 10. Il blocco di codice che definisce un metodo è delimitato da due parentesi
 quadre.
-
+V
 
 =======================================
 
