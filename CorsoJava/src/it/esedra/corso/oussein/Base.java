@@ -1,5 +1,7 @@
 package it.esedra.corso.oussein;
 
+/** metodi getter e setter*/
+
 public class Base {
 
 	private String nome;
