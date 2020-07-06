@@ -5,7 +5,7 @@ package it.esedra.corso.marco;
  * @author marco
  *
  */
-public class DesktopPcFinal {
+public class DesktopPcClient {
 
 	public static void main(String[] args) {
 		
