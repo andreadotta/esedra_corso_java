@@ -44,6 +44,10 @@ public class DesktopPcAssembly extends DesktopPc {
 		
 	}
 
+	/**
+	 * Questo metodo fa l'overload del metodo getGpuAssembly e permette di ricevere anche la quantità di memoria e il tipo di chip grafico della scheda grafica
+	 * @return String restituisce le specifiche della scheda grafica come nel metodo getGpuAssembly, ma con l'aggiunta della memoria e del tipo di chip grafico
+	 */
 	public String getGpuAssemblyExtended() {
 		
 		return "Graphics Assenbly ===> " + getGraphicCardVendorName() + " - " + getGraphicsCardMemory() + " - " + getGraphicsCardChipType();

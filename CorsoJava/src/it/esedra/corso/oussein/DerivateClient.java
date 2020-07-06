@@ -1,5 +1,10 @@
 package it.esedra.corso.oussein;
 
+  /**
+ * Questa classe permette di settare i valori delle componenti di Base, e ritorna a schermo la configurazione scelta
+ * @author pc
+ *
+ */
 public class DerivateClient {
 
 	public static void main(String args[]) {
