@@ -1,13 +1,20 @@
 package it.esedra.corso.gianni;
 
-import java.util.*;
-import java.lang.*;
-import java.io.*;
-
-
+/**
+ * Questa classe eredita da animale
+ * 
+ * @author gpaol
+ *
+ */
 class Gatto extends Animale {
-    
-    public void cheColore(String c, String c1) {
-    	System.out.printf(c, c1);
-    }
+	
+	/**
+	 * questo metodo fa l'overloaad del metodo della classe base e stampa il colore. 
+	 * 
+	 * @author gpaol
+	 *
+	 */
+	public void cheColore(String c, String c1) {
+		System.out.printf(c, c1);
+	}
 }
