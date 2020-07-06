@@ -1,5 +1,10 @@
 package it.esedra.corso.marco;
 
+/**
+ * Questa classe permette di settare i valori delle componenti del pc, e ritorna a schermo la configurazione scelta
+ * @author marco
+ *
+ */
 public class DesktopPcFinal {
 
 	public static void main(String[] args) {

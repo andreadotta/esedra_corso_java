@@ -1,5 +1,10 @@
 package it.esedra.corso.marco;
 
+/**
+ * Questa classe contiene override dei metodi della classe DesktopPcAssemnly, e permette di ridefinirne i metodi per aggiungere reminders e alerts
+ * @author marco
+ *
+ */
 public class DesktopPcAssemblyAlerts extends DesktopPcAssembly {
 	
 	public String getMotherboardCpuSocketType() {

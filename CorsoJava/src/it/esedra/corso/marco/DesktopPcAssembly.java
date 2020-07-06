@@ -1,5 +1,10 @@
 package it.esedra.corso.marco;
 
+/**
+ * Questa classe deriva dalla classe DesktopPc, e permette di creare i modelli di assemblaggio pc
+ * @author marco
+ *
+ */
 public class DesktopPcAssembly extends DesktopPc {
 	
 	private String graphicsCardMemory;

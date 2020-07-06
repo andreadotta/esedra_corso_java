@@ -1,5 +1,10 @@
 package it.esedra.corso.marco;
 
+/**
+ * Questa classe contiene i metodi che definiscono le componenti base del pc da assemblare
+ * @author marco
+ *
+ */
 public class DesktopPc {
 
 	private String motherboardFormat;
