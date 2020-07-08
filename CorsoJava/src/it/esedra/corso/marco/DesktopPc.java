@@ -96,6 +96,12 @@ public class DesktopPc {
 
 	public void setHddCapacity(String hddCapacity) {
 		this.hddCapacity = hddCapacity;
+<<<<<<< HEAD
 	}	
+=======
+	}
+
+	
+>>>>>>> branch 'master' of https://github.com/andreadotta/esedra_corso_java.git
 
 }

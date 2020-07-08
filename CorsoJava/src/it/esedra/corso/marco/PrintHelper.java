@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package it.esedra.corso.marco;
 
 import java.util.Calendar;
@@ -36,3 +37,23 @@ public class PrintHelper {
 	}
 
 }
+=======
+package it.esedra.corso.marco;
+
+import it.esedra.corso.libs.Time;
+
+public class PrintHelper {
+	
+	public static void out(String info, String out) {
+
+		if (info == null) {
+			System.out.println("[" + Time.getCurrentTime() + "]" + "-" + out);
+
+		} else {
+			System.out.println("[" + Time.getCurrentTime() + "]" + "-" + info + "-" + out);
+		}
+		
+	}
+	
+}
+>>>>>>> branch 'master' of https://github.com/andreadotta/esedra_corso_java.git

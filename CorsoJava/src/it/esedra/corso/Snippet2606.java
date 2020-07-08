@@ -43,6 +43,7 @@ public class Snippet2606 {
 	
 	private String name;
 
+	
 	public int getAge() {
 		return age;
 	}

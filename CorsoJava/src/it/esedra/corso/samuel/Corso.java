@@ -8,5 +8,19 @@ public class Corso {
 		
 	}
 
+	public int numeroIntero;
+	public void stampaNumero()
+	{
+		System.out.println(numeroIntero);
+	}
 }
+
+
+
+
+
+
+
+
+
 
