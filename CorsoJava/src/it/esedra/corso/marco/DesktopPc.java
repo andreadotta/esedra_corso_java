@@ -91,17 +91,11 @@ public class DesktopPc {
 	}
 
 	public String getHddCapacity() {
-		return "HDD Capacity: " + hddCapacity;
+		return hddCapacity;
 	}
 
 	public void setHddCapacity(String hddCapacity) {
 		this.hddCapacity = hddCapacity;
-<<<<<<< HEAD
-	}	
-=======
 	}
-
-	
->>>>>>> branch 'master' of https://github.com/andreadotta/esedra_corso_java.git
 
 }
