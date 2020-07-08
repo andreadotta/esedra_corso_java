@@ -9,7 +9,10 @@ public class B extends A {
 		PrintHelper.out("foo in B");
 	}
 	
+
 	public B() {
+		super(); //per assicurare una corretta inizializzazione
+				 // della classe base
 		//super.x permette di accedere al campo x in A nascosto dal campo x in B
 		
 		System.out.printf("x in B = %d, x in A = %d%n", x, super.x);

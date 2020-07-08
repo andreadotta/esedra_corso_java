@@ -12,13 +12,12 @@ public class Cane extends Animale {
 
 	private final String verso = "bau";
 	
-	private Cane() {
+	public Cane(Testa testa, Tronco tronco, Zampa[] zampe) {
+		super(testa, tronco, zampe); //richiamo il costruttore della superclasse
 		
 	}
-	public Cane(String colore, String genere) {
-		super.setColore(colore);
-		super.setGenere(genere);
-	}
+	
+	
 	
 	/**
 	 * Questo metodo sovrascrive il metodo della classe base e stampa il verso.

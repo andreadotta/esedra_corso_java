@@ -12,14 +12,13 @@ public class Gatto extends Animale {
 
 	private final String verso = "miao";
 	
-	private Gatto() {
+
+	public Gatto(Testa testa, Tronco tronco, Zampa[] zampe) {
+		super(testa, tronco, zampe); //richiamo il costruttore della superclasse
 		
 	}
 	
-	public Gatto(String colore, String genere) {
-		super.setColore(colore);
-		super.setGenere(genere);
-	}
+
 	
 	@Override
 	public void faiVerso() {
