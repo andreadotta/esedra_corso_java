@@ -28,12 +28,28 @@ public class Cane extends Animale {
 	public void faiVerso() {
 		PrintHelper.out(getVerso(), "cane");
 	}
+	/**
+	 * OVERLOAD del metodo della classe base faiVerso() con differenti parametri
+	 * @param abbaia
+	 */
+	public void faiVerso(String abbaia) {
+		PrintHelper.out(getVerso() + abbaia, "cane");
+	}
 
+	
 	@Override
 	public String getVerso() {
 		return verso;
 	}
+	/**
+	 * E' consentito soltanto l'overload
+	 * @param h
+	 */
+	public void siMuove(String h) {
+		
+	}
 
+	
 
 	
 

@@ -66,6 +66,13 @@ public abstract class Animale {
 
 	public abstract String getVerso();
 
+	/**
+	 * Essendo final il metodo non può essere sovrascritto
+	 */
+	public final void siMuove() {
+		
+	}
+	
 
 	/**
 	 * Questo metodo stampa il verso dell'animale.
