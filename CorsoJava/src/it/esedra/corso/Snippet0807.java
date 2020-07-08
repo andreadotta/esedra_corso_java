@@ -80,13 +80,13 @@ public class Snippet0807 {
 			PrintHelper.out("drago è diverso da romeo"); 						
 		}
 
-		Museo uffizzi = new Museo();
+		Museo uffizi = new Museo();
 
 		
-		uffizzi.setQuadri(quadri);
-		uffizzi.setStatue(statue);
+		uffizi.setQuadri(quadri);
+		uffizi.setStatue(statue);
 		
-		if (uffizzi.equals(louvre)) {
+		if (uffizi.equals(louvre)) {
 			PrintHelper.out("I musei sono uguali");			
 		} else {
 			PrintHelper.out("I musei sono diversi");						
