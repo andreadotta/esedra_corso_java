@@ -11,6 +11,8 @@ public class Corso {
 		
 		quadrato.calcolaArea();
 		quadrato.calcolaPerimetro();
+		
+		System.out.println(quadrato instanceof Poligono);
 	}
 
 }
