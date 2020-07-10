@@ -16,6 +16,7 @@ public class Chef {
 	}
 
 	protected void setNazione(String nazione) {
+		
 		this.nazione = nazione;
 	}
 
