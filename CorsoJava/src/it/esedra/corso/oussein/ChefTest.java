@@ -29,7 +29,15 @@ public class ChefTest {
 		
 		Chef normalchef = new Chef();
 		normalchef.faChicken();
+		
 		ItalianChef italianchef = new ItalianChef();
+		Coltelli coltelliChefItaliano = new Coltelli();
+		italianchef.setColtelli(coltelliChefItaliano);
+		italianchef.setNazione("Islanda");
+		PrintHelper.out(italianchef.getNazione());
+		
+		
+		
 		italianchef.faPasta();
 		CineseChef cineschef = new CineseChef();
 		cineschef.faFriedsRice();
