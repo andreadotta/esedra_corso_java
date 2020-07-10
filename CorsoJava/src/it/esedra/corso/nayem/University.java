@@ -1,10 +1,22 @@
 package it.esedra.corso.nayem;
 
-public class University {
+public class University extends Student {
 	
-	final void display() {
+	private String Student[];
+	
+	
+	public void display() {
 		
-	System.out.println("University info");
+		
 	}
 
+	public String[] getStudent() {
+		return Student;
+	}
+
+	public void setStudent(String[] student) {
+		Student = student;
+	}
+	
 }
+	

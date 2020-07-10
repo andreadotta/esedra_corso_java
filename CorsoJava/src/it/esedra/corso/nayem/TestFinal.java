@@ -4,10 +4,11 @@ public class TestFinal {
 
 	public static void main(String[] args) {
 		
-       Student s1 = new Student();
+       University s1 = new University();
+       s1.getName("nayem");
        
-       s1.display();
-       s1.display2();
+       
+      
        
        
        
