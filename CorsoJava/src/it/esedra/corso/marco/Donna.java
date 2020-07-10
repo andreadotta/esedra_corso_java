@@ -4,7 +4,7 @@ public class Donna extends Persona {
 
 	public final String genere = "Femminile";
 	
-	public Donna(String nome, String cognome, String dataDiNascita, int eta) {
+	public Donna(Nome nome, Cognome cognome, DataDiNascita dataDiNascita, Eta eta) {
 		super(nome, cognome, dataDiNascita, eta);
 		
 	}

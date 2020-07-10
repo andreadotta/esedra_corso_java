@@ -4,7 +4,7 @@ public class Uomo extends Persona {
 
 	public final String genere = "Maschile";
 	
-	public Uomo(String nome, String cognome, String dataDiNascita, int eta) {
+	public Uomo(Nome nome, Cognome cognome, DataDiNascita dataDiNascita, Eta eta) {
 		super(nome, cognome, dataDiNascita, eta);
 
 	}

@@ -2,51 +2,61 @@ package it.esedra.corso.marco;
 
 public abstract class Persona {
 
-	private String nome;
-	private String cognome;
-	private String dataDiNascita;
-	private int eta;
+	private Nome nome;
+	private Cognome cognome;
+	private DataDiNascita dataDiNascita;
+	private Eta eta;
 
-	public Persona(String nome, String cognome, String dataDiNascita, int eta) {
+	public Persona(Nome nome, Cognome cognome, DataDiNascita dataDiNascita, Eta eta) {
 
-		this.setNome(nome);
-		this.setCognome(cognome);
-		this.setDataDiNascita(dataDiNascita);
-		this.setEta(eta);
-	}
+		}
 
-	public String getNome() {
+	public Nome getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+
+
+	public void setNome(Nome nome) {
 		this.nome = nome;
 	}
 
-	public String getCognome() {
+
+
+	public Cognome getCognome() {
 		return cognome;
 	}
 
-	public void setCognome(String cognome) {
+
+
+	public void setCognome(Cognome cognome) {
 		this.cognome = cognome;
 	}
 
-	public String getDataDiNascita() {
+
+
+	public DataDiNascita getDataDiNascita() {
 		return dataDiNascita;
 	}
 
-	public void setDataDiNascita(String dataDiNascita) {
+
+
+	public void setDataDiNascita(DataDiNascita dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
 
-	public int getEta() {
+
+
+	public Eta getEta() {
 		return eta;
 	}
 
-	public void setEta(int eta) {
+
+
+	public void setEta(Eta eta) {
 		this.eta = eta;
 	}
-	
+
 	public abstract String getGenere();
 	
 	private Persona() {
