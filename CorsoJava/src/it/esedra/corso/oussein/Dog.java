@@ -7,6 +7,7 @@ public class Dog implements Animal {
 	@Override
 	public void eat() {
 		PrintHelper.out("dog eats some kibles");
+
 		
 	}
 
