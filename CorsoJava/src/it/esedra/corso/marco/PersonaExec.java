@@ -1,7 +1,7 @@
 package it.esedra.corso.marco;
 
 import it.esedra.corso.marco.Persona;
-import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.helpers.*;
 
 public class PersonaExec {
 
@@ -28,10 +28,17 @@ public class PersonaExec {
 		uomo.print();
 		donna.print();
 		
+		if (uomo instanceof Persona) {
+			PrintHelper.out("'uomo' è una persona");
+		}
+		
+		if (donna instanceof Persona) {
+			PrintHelper.out("'donna' è una persona");
+		}
+		
 		/**
 		 * Overload
 		 */
-		
 		Uomo marco = new Uomo(new Nome(), new Cognome(), new DataDiNascita(), new Eta());
 		Donna francesca = new Donna(new Nome(), new Cognome(), new DataDiNascita(), new Eta());
 		
