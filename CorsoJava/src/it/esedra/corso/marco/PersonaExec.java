@@ -30,11 +30,15 @@ public class PersonaExec {
 		
 		if (uomo instanceof Persona) {
 			PrintHelper.out("'uomo' è una persona");
+		} else {
+			PrintHelper.out("'uomo' è un bot!");
 		}
 		
 		if (donna instanceof Persona) {
 			PrintHelper.out("'donna' è una persona");
-		}
+		} else {
+			PrintHelper.out("'donna' è un bot!");
+		}	
 		
 		/**
 		 * Overload
