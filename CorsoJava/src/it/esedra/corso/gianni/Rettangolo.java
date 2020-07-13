@@ -1,5 +1,9 @@
 package it.esedra.corso.gianni;
 
+/*
+ *  Questa classe estende quadrilatero, calcola l'area e il permietro di un rettangolo.
+ *  
+ */
 public class Rettangolo extends Quadrilatero {
 	
 	private float area = 0;

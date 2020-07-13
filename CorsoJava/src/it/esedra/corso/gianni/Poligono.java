@@ -1,14 +1,23 @@
 package it.esedra.corso.gianni;
 
+/*
+ * 
+ */
 abstract public class Poligono {
 
 	private float base;
 	private float altezza;
 	private Lato lato;
 	private Angolo angolo;
-
+	
+	/*
+	 * 
+	 */
 	public abstract float calcolaArea();
-
+	
+	/*
+	 * 
+	 */
 	public abstract float calcolaPerimetro();
 
 	public float getBase() {

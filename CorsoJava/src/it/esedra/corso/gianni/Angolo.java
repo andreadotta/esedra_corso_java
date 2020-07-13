@@ -1,5 +1,9 @@
 package it.esedra.corso.gianni;
 
+/*
+ * 
+ * 
+ */
 public class Angolo {
 	private float ampiezza;
 

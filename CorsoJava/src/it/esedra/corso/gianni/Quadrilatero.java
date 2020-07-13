@@ -1,5 +1,9 @@
 package it.esedra.corso.gianni;
 
+/*
+ * Questa è una classe astratta che estende Poligono.
+ * 
+ */
 abstract public class Quadrilatero extends Poligono {
 	final private int nLati = 4;
 	final private int nAngoli = 4;

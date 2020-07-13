@@ -1,5 +1,9 @@
 package it.esedra.corso.gianni;
 
+/*
+ * 
+ * 
+ */
 public class Lato {
 	private float lunghezza;
 
