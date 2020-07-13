@@ -16,7 +16,9 @@ public class Esercizio {
 	    numero40.numeroIntero = 40;
 	    numero40.stampaNumero();
 	    
-	    
+	    Cane fuffi = new Cane ();
+	    fuffi.setNome("fuffi");
+	    		
 	    
 	  
 	}
