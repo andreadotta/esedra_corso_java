@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Questa classe è un capitolo del diario
  * @author bauhausk
- *
+ * 
  */
 public class Chapter {
 	private Date date;
