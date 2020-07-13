@@ -23,7 +23,10 @@ public class PersonaExec {
 		// p1.stampaDatiIndirizzo();
 		
 		StampaPersona s = new Uomo("Marco", "Simi", "29/09/82", 37);
+		StampaIndirizzo i = new Indirizzo("Via del Tufo", "1", "58100", "Grosseto");
 		s.stampaDatiPersona();
+		i.stampaDatiIndirizzo();
+		
 	}
 
 }
