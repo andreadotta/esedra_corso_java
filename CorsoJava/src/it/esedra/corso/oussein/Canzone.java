@@ -1,6 +1,6 @@
 package it.esedra.corso.oussein;
 
-public class Canzone {
+public  class Canzone {
 private String titoli;
 private String artist;
 private int length;

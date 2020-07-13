@@ -1,17 +1,19 @@
 package it.esedra.corso.oussein;
 
+import it.esedra.corso.helpers.PrintHelper;
+
 public class Cow implements Animal {
 
 	@Override
 	public void eat() {
-		System.out.println(" eats some grass");
+		PrintHelper.out("cow eats some grass");
 
 		
 	}
 
 	@Override
 	public void speak() {
-		System.out.println(" moof");
+		PrintHelper.out(" cow fa moof moof");
 
 		
 	}

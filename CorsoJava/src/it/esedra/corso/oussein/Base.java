@@ -1,5 +1,6 @@
 package it.esedra.corso.oussein;
 
+
 /** metodi getter e setter*/
 
 public abstract class Base {

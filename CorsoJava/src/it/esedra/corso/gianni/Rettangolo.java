@@ -1,7 +1,7 @@
 package it.esedra.corso.gianni;
 
-public class Rettangolo extends Poligono {
-
+public class Rettangolo extends Quadrilatero {
+	
 	private float area = 0;
 	private float perimetro = 0;
 	
