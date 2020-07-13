@@ -2,7 +2,7 @@ package it.esedra.corso.marco;
 
 import it.esedra.corso.helpers.PrintHelper;
 
-public class Indirizzo {
+public class Indirizzo implements StampaIndirizzo {
 
 	private String via;
 	private String civico;
@@ -43,6 +43,11 @@ public class Indirizzo {
 
 	public void setCitta(String citta) {
 		this.citta = citta;
+	}
+
+	@Override
+	public void StampaDatiIndirizzo() {
+		
 	}
 
 }
