@@ -6,27 +6,26 @@ package it.esedra.corso.gianni;
  */
 public final class Quadrato extends Quadrilatero {
 
-	private float area = 0;
-	private float perimetro = 0;
-
-	private Quadrato() {
+	public Quadrato(Lato[] lati, Angolo[] angoli) {
+		super(lati, angoli);
 
 	}
 
-	public Quadrato(float b) {
-		super.setBase(b);
+
+	public void calcolaArea() {
+		super.setArea( super.getBase() * super.getBase() );
 	}
 
-	public float calcolaArea() {
-		area = super.getBase() * super.getBase();
-		System.out.println(area);
-		return area;
+	public void calcolaPerimetro() {
+			
 	}
 
-	public float calcolaPerimetro() {
-		perimetro = super.getBase() * super.getNlati();
-		System.out.println(perimetro);
-		return perimetro;
+
+	@Override
+	public void disegna(Shape s) {
+		// TODO Auto-generated method stub
+		
 	}
+
 
 }

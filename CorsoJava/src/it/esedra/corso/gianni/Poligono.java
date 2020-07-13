@@ -3,22 +3,31 @@ package it.esedra.corso.gianni;
 /*
  * 
  */
-abstract public class Poligono {
+abstract public class Poligono implements Calcoli, Disegna {
 
 	private float base;
 	private float altezza;
-	private Lato lato;
-	private Angolo angolo;
+	private Lato[] lato;
+	private Angolo[] angolo;
+	private Float area = Float.valueOf(0);
+	private Float perimetro = Float.valueOf(0);
 	
-	/*
-	 * 
-	 */
-	public abstract float calcolaArea();
-	
-	/*
-	 * 
-	 */
-	public abstract float calcolaPerimetro();
+	public Float getArea() {
+		return area;
+	}
+
+	public void setArea(Float area) {
+		this.area = area;
+	}
+
+	public Float getPerimetro() {
+		return perimetro;
+	}
+
+	public void setPerimetro(Float perimetro) {
+		this.perimetro = perimetro;
+	}
+
 
 	public float getBase() {
 		return base;

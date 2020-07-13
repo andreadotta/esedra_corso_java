@@ -6,27 +6,26 @@ package it.esedra.corso.gianni;
  */
 public class Rettangolo extends Quadrilatero {
 	
-	private float area = 0;
-	private float perimetro = 0;
+	public Rettangolo(Lato[] lati, Angolo[] angoli) {
+		super(lati, angoli);
+
+	}
+
 	
-    private Rettangolo() {
+
+	public void calcolaArea() {
+		super.setArea( super.getBase() * super.getAltezza() );
+	}
+
+	public void calcolaPerimetro() {
+		super.setPerimetro (  (super.getBase() + super.getAltezza()) * 2 );
+	}
+
+
+
+	@Override
+	public void disegna(Shape s) {
+		// TODO Auto-generated method stub
 		
-	}
-
-	public Rettangolo(float b, float h) {
-		super.setBase(b);
-		super.setAltezza(h);
-	}
-
-	public float calcolaArea() {
-		area = super.getBase() * super.getAltezza();
-		System.out.println(area);
-		return area;
-	}
-
-	public float calcolaPerimetro() {
-		perimetro = (super.getBase() + super.getAltezza()) * 2;
-		System.out.println(perimetro);
-		return perimetro;
 	}
 }

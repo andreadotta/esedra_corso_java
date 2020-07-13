@@ -2,17 +2,17 @@ package it.esedra.corso.gianni;
 
 public class Corso {
 	public static void main(String[] args) {
-		Poligono rettangolo = new Rettangolo(5, 10);
+		Poligono rettangolo = null;//new Rettangolo(5, 10);
 
-		Poligono quadrato = new Quadrato(2);
 
 		rettangolo.calcolaArea();
 		rettangolo.calcolaPerimetro();
 
-		quadrato.calcolaArea();
-		quadrato.calcolaPerimetro();
+		PrintHelper.out("Area del rettangolo", rettangolo.getArea().toString());
+		PrintHelper.out("Perimentro del rettangolo", rettangolo.getPerimetro().toString());
+		
 
-		System.out.println(quadrato instanceof Poligono);
+
 	}
 
 }
