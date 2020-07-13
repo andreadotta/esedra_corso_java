@@ -2,7 +2,7 @@ package it.esedra.corso.marco;
 
 import it.esedra.corso.helpers.*;
 
-public class Donna extends Persona {
+public class Donna extends Persona implements StampaPersona, StampaIndirizzo {
 
 	public final String genere = "Femminile";
 
@@ -10,11 +10,22 @@ public class Donna extends Persona {
 		super(nome, cognome, dataDiNascita, eta);
 
 	}
-
 	
 	@Override
 	public String getGenere() {
 		return genere;
+	}
+
+	@Override
+	public void StampaDatiIndirizzo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void StampaDatiPersona() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

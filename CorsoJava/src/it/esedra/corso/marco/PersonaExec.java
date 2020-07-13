@@ -8,19 +8,19 @@ public class PersonaExec {
 	public static void main(String[] args) {
 
 		Uomo u1 = new Uomo("Marco", "Simi", "29/09/82", 37);
-		Donna d1 = new Donna("Francesca", "Rossi", "20/07/1994", 25);
+		Indirizzo indirizzoU1 = new Indirizzo("Via del Tufo", "1", "58100", "Grosseto");
 
 		if (u1 instanceof Persona) {
-			PrintHelper.out("'uomo' è una persona");
+			PrintHelper.out("'u1' è una persona");
 		} else {
-			PrintHelper.out("'uomo' è un bot!");
+			PrintHelper.out("'u1' è un bot!");
 		}
-
-		if (d1 instanceof Persona) {
-			PrintHelper.out("'donna' è una persona");
-		} else {
-			PrintHelper.out("'donna' è un bot!");
-		}
+		
+		Anagrafica p1 = new Anagrafica();
+		p1.setPersona(u1);
+		p1.setIndirizzo(indirizzoU1);
+		p1.StampaDatiPersona();
+		p1.StampaDatiIndirizzo();
 
 	}
 

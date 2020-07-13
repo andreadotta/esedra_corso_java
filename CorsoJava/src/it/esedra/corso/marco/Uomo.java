@@ -2,7 +2,7 @@ package it.esedra.corso.marco;
 
 import it.esedra.corso.helpers.*;
 
-public class Uomo extends Persona {
+public class Uomo extends Persona implements StampaPersona, StampaIndirizzo {
 
 	public final String genere = "Maschile";
 
@@ -11,17 +11,19 @@ public class Uomo extends Persona {
 
 	}
 
-	public void print() {
-
-		PrintHelper.out("Nome e Cognome: " + this.getNome() + " " + this.getCognome() + " - Genere: " + this.getGenere()
-				+ " - Data di nascita: " + this.getDataDiNascita() + " - Età: " + this.getEta());
-		PrintHelper.out("********************************************************");
-
-	}
-
 	@Override
 	public String getGenere() {
 		return genere;
+	}
+
+	@Override
+	public void StampaDatiIndirizzo() {
+		
+	}
+
+	@Override
+	public void StampaDatiPersona() {
+		
 	}
 
 }

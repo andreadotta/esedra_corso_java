@@ -1,5 +1,7 @@
 package it.esedra.corso.marco;
 
+import it.esedra.corso.helpers.PrintHelper;
+
 public class Indirizzo {
 
 	private String via;
@@ -7,9 +9,7 @@ public class Indirizzo {
 	private String CAP;
 	private String citta;
 	
-	public Indirizzo() {
-		
-		
+	public Indirizzo(String via, String civico, String CAP, String citta) {
 		
 	}
 

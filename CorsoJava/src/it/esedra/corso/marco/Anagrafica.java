@@ -1,6 +1,8 @@
 package it.esedra.corso.marco;
 
-public class Anagrafica {
+import it.esedra.corso.helpers.PrintHelper;
+
+public class Anagrafica implements StampaPersona, StampaIndirizzo {
 
 	private Persona persona;
 	private Indirizzo indirizzo;
@@ -20,4 +22,23 @@ public class Anagrafica {
 	public void setIndirizzo(Indirizzo indirizzo) {
 		this.indirizzo = indirizzo;
 	}
+
+	@Override
+	public void StampaDatiPersona() {
+		
+		PrintHelper.out("Dati Persona: " + this.getPersona());
+		
+	}
+
+	@Override
+	public void StampaDatiIndirizzo() {
+		
+		PrintHelper.out("Indirizzo: " + this.getIndirizzo());
+		
+	}
+
+	
+	
+	
+	
 }
