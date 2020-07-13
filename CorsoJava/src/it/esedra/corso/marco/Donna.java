@@ -17,14 +17,12 @@ public class Donna extends Persona implements StampaPersona, StampaIndirizzo {
 	}
 
 	@Override
-	public void StampaDatiIndirizzo() {
-		// TODO Auto-generated method stub
+	public void stampaDatiIndirizzo() {
 		
 	}
 
 	@Override
-	public void StampaDatiPersona() {
-		// TODO Auto-generated method stub
+	public void stampaDatiPersona() {
 		
 	}
 

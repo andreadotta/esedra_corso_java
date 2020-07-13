@@ -19,8 +19,8 @@ public class PersonaExec {
 		Anagrafica p1 = new Anagrafica();
 		p1.setPersona(u1);
 		p1.setIndirizzo(indirizzoU1);
-		p1.StampaDatiPersona();
-		p1.StampaDatiIndirizzo();
+		p1.stampaDatiPersona();
+		p1.stampaDatiIndirizzo();
 
 	}
 

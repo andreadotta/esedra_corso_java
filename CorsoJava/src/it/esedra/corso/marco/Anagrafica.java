@@ -24,14 +24,14 @@ public class Anagrafica implements StampaPersona, StampaIndirizzo {
 	}
 
 	@Override
-	public void StampaDatiPersona() {
+	public void stampaDatiPersona() {
 		
 		PrintHelper.out("Dati Persona: " + this.getPersona());
 		
 	}
 
 	@Override
-	public void StampaDatiIndirizzo() {
+	public void stampaDatiIndirizzo() {
 		
 		PrintHelper.out("Indirizzo: " + this.getIndirizzo());
 		
