@@ -46,7 +46,7 @@ public class Indirizzo implements StampaIndirizzo {
 	}
 
 	@Override
-	public void StampaDatiIndirizzo() {
+	public void stampaDatiIndirizzo() {
 		
 	}
 
