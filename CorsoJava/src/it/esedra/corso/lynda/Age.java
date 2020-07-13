@@ -4,11 +4,11 @@ public class Age {
 	
 	public static void main (String[] args) {
 	
-		
+
 	      NumeroIntero numero = new NumeroIntero (); //instance
 		numero.numeroIntero = 40; //object ("forty"); becomes a local variable
 		numero.stampaNumero();
-		
+
 		
 		NumeroIntero numero21 = new NumeroIntero (); 
 		numero21.numeroIntero = 60; //object becomes a local variable
@@ -24,5 +24,4 @@ public class Age {
          **/
 	}
 	}
-
 

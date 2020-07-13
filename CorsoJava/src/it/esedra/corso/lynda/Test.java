@@ -2,6 +2,7 @@ package it.esedra.corso.lynda;
 public class Test {
 
 	public static void main(String args[]) {
+	    
 		int[] age = { 28, 32, 36, 40 };
 
 		for (int x : age) {
