@@ -1,7 +1,7 @@
-package it.esedra.corso.marco;
+package it.esedra.corso.marco.persona;
 
-import it.esedra.corso.marco.Persona;
 import it.esedra.corso.helpers.*;
+import it.esedra.corso.marco.persona.Persona;
 
 public class PersonaExec {
 

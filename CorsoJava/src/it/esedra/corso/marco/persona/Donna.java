@@ -1,4 +1,4 @@
-package it.esedra.corso.marco;
+package it.esedra.corso.marco.persona;
 
 import it.esedra.corso.helpers.*;
 
