@@ -17,12 +17,12 @@ public class Uomo extends Persona implements StampaPersona, StampaIndirizzo {
 	}
 
 	@Override
-	public void StampaDatiIndirizzo() {
+	public void stampaDatiIndirizzo() {
 		
 	}
 
 	@Override
-	public void StampaDatiPersona() {
+	public void stampaDatiPersona() {
 		
 	}
 
