@@ -12,4 +12,12 @@ public class Anagrafica {
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
+
+	public Indirizzo getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(Indirizzo indirizzo) {
+		this.indirizzo = indirizzo;
+	}
 }
