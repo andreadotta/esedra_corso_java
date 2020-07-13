@@ -1,6 +1,7 @@
 package it.esedra.corso.oussein;
 
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.oussein.animal.Animal;
 
 public class Dog implements Animal {
 

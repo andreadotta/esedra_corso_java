@@ -1,4 +1,6 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.animal;
+
+import it.esedra.corso.oussein.Dog;
 
 public class AnimalTest {
 

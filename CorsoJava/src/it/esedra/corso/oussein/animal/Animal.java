@@ -1,4 +1,4 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.animal;
 
 public interface Animal {
 	 void eat();
