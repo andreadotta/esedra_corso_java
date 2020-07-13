@@ -1,19 +1,22 @@
 package it.esedra.corso.marco;
 
+import it.esedra.corso.helpers.*;
+
 public class Uomo extends Persona {
 
 	public final String genere = "Maschile";
-	
-	public Uomo(Nome nome, Cognome cognome, DataDiNascita dataDiNascita, Eta eta) {
+
+	public Uomo(String nome, String cognome, String dataDiNascita, int eta) {
 		super(nome, cognome, dataDiNascita, eta);
 
 	}
 
 	public void print() {
 
-		System.out.println("Nome e Cognome: " + this.getNome() + " " + this.getCognome() + " - Genere: " + this.getGenere() + " - Data di nascita: " + this.getDataDiNascita() + " - Età: " + this.getEta());
-		System.out.println("********************************************************");
-		
+		PrintHelper.out("Nome e Cognome: " + this.getNome() + " " + this.getCognome() + " - Genere: " + this.getGenere()
+				+ " - Data di nascita: " + this.getDataDiNascita() + " - Età: " + this.getEta());
+		PrintHelper.out("********************************************************");
+
 	}
 
 	@Override

@@ -1,30 +1,26 @@
 package it.esedra.corso.marco;
 
 import it.esedra.corso.marco.Persona;
-import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.helpers.*;
 
 public class PersonaExec {
 
 	public static void main(String[] args) {
 
-		/**
-		 * Faccio la composizione dei parametri che compongono Persona, istanziando
-		 * perciò le classi Nome, Cognome, DataDiNascita, Eta
-		 */
-		Nome nome = new Nome();
-		Cognome cognome = new Cognome();
-		DataDiNascita dataDiNascita = new DataDiNascita();
-		Eta eta = new Eta();
-		
-		/**
-		 * Istanzio un nuovo oggetto della classe Uomo
-		 */
-		Uomo uomo = new Uomo(nome, cognome, dataDiNascita, eta);
-		/**
-		 * Istanzio un nuovo oggetto della classe Donna
-		 */
-		Donna donna = new Donna(nome, cognome, dataDiNascita, eta);
-		
+		Uomo u1 = new Uomo("Marco", "Simi", "29/09/82", 37);
+		Donna d1 = new Donna("Francesca", "Rossi", "20/07/1994", 25);
+
+		if (u1 instanceof Persona) {
+			PrintHelper.out("'uomo' è una persona");
+		} else {
+			PrintHelper.out("'uomo' è un bot!");
+		}
+
+		if (d1 instanceof Persona) {
+			PrintHelper.out("'donna' è una persona");
+		} else {
+			PrintHelper.out("'donna' è un bot!");
+		}
 
 	}
 
