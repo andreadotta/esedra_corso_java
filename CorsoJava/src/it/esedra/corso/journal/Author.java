@@ -10,8 +10,9 @@ public class Author {
 	private String name;
 	private String email;
 	
-	public Author() {
-		// TODO Auto-generated constructor stub
+	public Author(String name , String email) {
+		this.name = name ;
+		this.email = email ;
 	}
 
 }

@@ -1,6 +1,6 @@
 package it.esedra.corso.lynda;
 
-public class JournalData {
+public class JournalData implements Gossip {
 	public JournalData() {
 		    String genre = "narative";
 			System.out.println("my jornal type is " + genre);
@@ -14,5 +14,11 @@ public class JournalData {
 	        String author = "Lyn Mcbrain";
 			System.out.printf ("the protagonist of" , "tittle"  + author);			
 	}
-	
+
+	@Override
+	public void read() {
+		// TODO Auto-generated method stub
+		
+	}
+	 
 }

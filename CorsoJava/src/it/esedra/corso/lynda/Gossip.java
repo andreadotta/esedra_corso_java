@@ -1,5 +1,6 @@
 package it.esedra.corso.lynda;
 
-public interface Jornal {
+public interface Gossip {
+void read();
 
 }
