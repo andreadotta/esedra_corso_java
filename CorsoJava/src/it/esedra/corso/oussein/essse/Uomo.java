@@ -1,4 +1,4 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.essse;
 
 public class Uomo extends EssereHuman {
 

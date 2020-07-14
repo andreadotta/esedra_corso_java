@@ -1,4 +1,4 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.Derivate;
 
 /** (la classe Derivate è la classe derivata dalla superclasse Base) */
 

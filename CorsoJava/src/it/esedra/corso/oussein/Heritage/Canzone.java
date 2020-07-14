@@ -1,4 +1,4 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.Heritage;
 
 public  class Canzone {
 private String titoli;

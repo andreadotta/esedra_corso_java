@@ -1,4 +1,6 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.Forme;
+
+
 
 public class Carre implements Forme {
 	protected int cote = 4;

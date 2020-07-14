@@ -1,4 +1,4 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.essse;
 
 public class EssereHuman {
 	private String nome;

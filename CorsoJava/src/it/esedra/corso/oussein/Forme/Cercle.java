@@ -1,4 +1,6 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.Forme;
+
+
 
 public class Cercle implements Forme {
 	protected int rayon = 4;

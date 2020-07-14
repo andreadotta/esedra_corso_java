@@ -1,4 +1,4 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.Forme;
 
 public class Triangle implements Forme {
 	protected int base = 4;

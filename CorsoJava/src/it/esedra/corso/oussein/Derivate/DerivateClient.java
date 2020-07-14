@@ -1,6 +1,4 @@
-package it.esedra.corso.oussein;
-
-
+package it.esedra.corso.oussein.Derivate;
 
 /**
  * Questa classe permette di settare i valori delle componenti di Base, e ritorna a schermo la configurazione scelta

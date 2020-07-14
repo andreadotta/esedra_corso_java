@@ -7,8 +7,14 @@ package it.esedra.corso.journal;
  */
 public class Video extends MultimediaResource {
 
-	public Video() {
-		// TODO Auto-generated constructor stub
+	public Video(String name,String src) {
+		super(name,src);
+		
 	}
+	public void print() {
+		System.out.println("quadro di padre Pio");
+		System.out.println(this.getName()+" " + this.getSrc() );
+		
 
+}
 }
