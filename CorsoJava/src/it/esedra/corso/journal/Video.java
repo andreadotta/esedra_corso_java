@@ -11,10 +11,5 @@ public class Video extends MultimediaResource {
 		super(name,src);
 		
 	}
-	public void print() {
-		System.out.println("quadro di padre Pio");
-		System.out.println(this.getName()+" " + this.getSrc() );
-		
 
-}
 }

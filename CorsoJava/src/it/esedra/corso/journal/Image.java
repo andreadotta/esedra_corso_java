@@ -10,9 +10,5 @@ public class Image extends MultimediaResource {
 	public Image(String name, String src) {
 		super(name,src);
 	}
-	public void print() {
-		System.out.println();
-		System.out.println(this.getName()+" " + this.getSrc() );
-		
-}
+
 }
