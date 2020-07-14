@@ -4,5 +4,4 @@ public interface DaoInterface {
 	void update();
 	void delete();
 	void get();
-
 }
