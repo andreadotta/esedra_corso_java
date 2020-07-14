@@ -7,8 +7,12 @@ package it.esedra.corso.journal;
  */
 public class Image extends MultimediaResource {
 
-	public Image() {
-		// TODO Auto-generated constructor stub
+	public Image(String name, String src) {
+		super(name,src);
 	}
-
+	public void print() {
+		System.out.println();
+		System.out.println(this.getName()+" " + this.getSrc() );
+		
+}
 }

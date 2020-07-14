@@ -17,7 +17,7 @@ public class Chapter {
 	private Video[] videos;
 	
 	public Chapter() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

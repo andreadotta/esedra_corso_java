@@ -1,6 +1,6 @@
 package it.esedra.corso.oussein.animal;
 
-import it.esedra.corso.oussein.Dog;
+import it.esedra.corso.oussein.Forme.Dog;
 
 public class AnimalTest {
 
