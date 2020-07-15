@@ -1,6 +1,6 @@
 package it.esedra.corso.journal.dao;
 
-
+import it.esedra.corso.journal.Author;
 
 public class MultimediaResourceDao implements DaoInterface {
 

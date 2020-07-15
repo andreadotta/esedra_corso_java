@@ -1,6 +1,6 @@
 package it.esedra.corso.journal.dao;
 
-
+import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.Chapter;
 
 public class ChapterDao implements DaoInterface {
