@@ -1,4 +1,4 @@
-package it.esedra.corso.marco;
+package it.esedra.corso.marco.desktopPc;
 
 /**
  * Questa classe contiene override dei metodi della classe DesktopPcAssemnly, e permette di ridefinirne i metodi per aggiungere reminders e alerts

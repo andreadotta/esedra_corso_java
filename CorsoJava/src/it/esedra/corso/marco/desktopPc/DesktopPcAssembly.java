@@ -1,4 +1,4 @@
-package it.esedra.corso.marco;
+package it.esedra.corso.marco.desktopPc;
 
 /**
  * Questa classe deriva dalla classe DesktopPc, e permette di creare i modelli di assemblaggio pc

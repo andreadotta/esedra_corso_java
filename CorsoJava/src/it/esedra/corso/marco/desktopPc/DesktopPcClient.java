@@ -1,4 +1,4 @@
-package it.esedra.corso.marco;
+package it.esedra.corso.marco.desktopPc;
 
 /**
  * Questa classe permette di settare i valori delle componenti del pc, e ritorna a schermo la configurazione scelta
