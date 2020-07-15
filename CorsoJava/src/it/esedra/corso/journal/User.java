@@ -11,6 +11,7 @@ package it.esedra.corso.journal;
  *
  */
 public class User {
+	
 	private String userEmail;
 	private String userName;
 	public String getUserEmail() {
