@@ -5,7 +5,7 @@ import it.esedra.corso.journal.Journal;
 
 public class JournalDao implements DaoInterface {
 
-	private Journal journal;
+	private Journal journal; 
 	
 	public JournalDao(Journal journal) {
 		super();
