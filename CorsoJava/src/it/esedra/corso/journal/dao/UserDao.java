@@ -9,7 +9,6 @@ public class UserDao implements DaoInterface {
 		super();
 		this.user = user;
 	}
-
 	@Override
 	public void delete() {
 		// TODO Auto-generated method stub
