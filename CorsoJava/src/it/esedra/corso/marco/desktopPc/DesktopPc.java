@@ -1,4 +1,4 @@
-package it.esedra.corso.marco;
+package it.esedra.corso.marco.desktopPc;
 
 /**
  * Questa classe contiene i metodi che definiscono le componenti base del pc da assemblare
