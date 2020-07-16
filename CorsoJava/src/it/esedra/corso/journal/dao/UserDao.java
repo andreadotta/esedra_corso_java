@@ -27,29 +27,34 @@ public class UserDao implements DaoInterface<User> {
 
 	@Override
 	public List<User> getAll() {
+		//istanzia una lista vuota di User
 		List<User> users = new ArrayList<>();
 		try {
 
-			
+			//effettua la connessione al database
 			Connection connection = DbConnect.connect(Journal.DBPATH);	
-			
+			//crea lo statemente
 			Statement stm = connection.createStatement();			
-
+			//crea il result set al quale passa la query
 			ResultSet rs = stm.executeQuery("SELECT * FROM user");
 			
+			//ottiene il result set 
 			while (rs.next()) {
+				// e quindi per ogni tupla crea un oggetto di tipo User
 				User user = new User();
+				//inserisce i dati nelle proprietà dell'oggetto
 				user.setUserEmail(rs.getString("userEmail"));
 				user.setUserName(rs.getString("userName"));
+				//aggiunge l'oggetto alla lista
 				users.add(user);
 			}
+			//chiude le connessioni e il result set
 			rs.close();
 			connection.close();
 		} catch (Exception e) {
-
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
-
+		//resituisce la lista 
 		return users;
 		
 	}
