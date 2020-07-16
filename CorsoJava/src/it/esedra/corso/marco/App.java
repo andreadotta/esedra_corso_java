@@ -29,7 +29,7 @@ public class App {
 			List<User> users = userdao.getAll();
 
 			for (User user : users) {
-				PrintHelper.out(user.getUserName());
+				PrintHelper.out(user.getUserName() + " (" + user.getUserEmail() + ")");
 			}
 
 			connection.close();
