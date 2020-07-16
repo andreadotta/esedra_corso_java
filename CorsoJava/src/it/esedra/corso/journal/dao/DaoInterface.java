@@ -1,5 +1,6 @@
 package it.esedra.corso.journal.dao;
 
+import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -10,6 +11,11 @@ import java.util.List;
  */
 public interface DaoInterface<T> {
 	
+	/**
+	 * Imposta una connessione
+	 * @param con
+	 */
+	void setConnection(Connection con);
 	/**
 	 * Aggiorna o inserisce un record
 	 */

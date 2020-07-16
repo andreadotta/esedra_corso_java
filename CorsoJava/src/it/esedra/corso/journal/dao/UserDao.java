@@ -13,7 +13,8 @@ import it.esedra.corso.journal.User;
 
 public class UserDao implements DaoInterface<User> {
 	private User user;
-
+	private Connection conn;
+	
 	public UserDao(User user) {
 		super();
 		this.user = user;
@@ -31,10 +32,8 @@ public class UserDao implements DaoInterface<User> {
 		List<User> users = new ArrayList<>();
 		try {
 
-			//effettua la connessione al database
-			Connection connection = DbConnect.connect(Journal.DBPATH);	
 			//crea lo statemente
-			Statement stm = connection.createStatement();			
+			Statement stm = this.conn.createStatement();			
 			//crea il result set al quale passa la query
 			ResultSet rs = stm.executeQuery("SELECT * FROM user");
 			
@@ -50,7 +49,6 @@ public class UserDao implements DaoInterface<User> {
 			}
 			//chiude le connessioni e il result set
 			rs.close();
-			connection.close();
 		} catch (Exception e) {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
@@ -63,5 +61,10 @@ public class UserDao implements DaoInterface<User> {
 	public void update() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void setConnection(Connection con) {
+		this.conn = con;
 	}
 }
