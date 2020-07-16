@@ -1,11 +1,17 @@
 package it.esedra.corso.journal.dao;
 
 
-import it.esedra.corso.journal.Image;
+import java.sql.Connection;
+import java.util.List;
 
-public class ImageDao implements DaoInterface {
+import it.esedra.corso.journal.Image;
+import it.esedra.corso.journal.Journal;
+import it.esedra.corso.journal.Video;
+
+public class ImageDao implements DaoInterface<Image> {
 
 	private Image image;
+	private Connection conn;
 	
 	public ImageDao(Image image) {
 		super();
@@ -24,9 +30,14 @@ public class ImageDao implements DaoInterface {
 	}
 
 	@Override
-	public void get() {
+	public List<Image> getAll() {
 		
-
+		return null;
+		
 	}
 
+	@Override
+	public void setConnection(Connection con) {
+		this.conn = con;
+	}
 }
