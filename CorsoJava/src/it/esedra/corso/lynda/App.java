@@ -22,7 +22,7 @@ public class App {
 		try {
 			// Esempio di iterazione
 			// effettua la connessione al database
-			Connection connection = DbConnect.connect(Journal.DBPATH);
+			Connection connection = DbConnect.connect(DBPATH);
 
 			UserDao userdao = new UserDao(new User());
 			userdao.setConnection(connection);
