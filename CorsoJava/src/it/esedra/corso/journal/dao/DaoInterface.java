@@ -2,6 +2,12 @@ package it.esedra.corso.journal.dao;
 
 import java.util.List;
 
+/**
+ * Questa è una semplice implementazione del DAO Pattern in Java
+ * @author bauhausk
+ *
+ * @param <T>
+ */
 public interface DaoInterface<T> {
 	
 	/**
