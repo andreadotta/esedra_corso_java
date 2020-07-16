@@ -14,6 +14,8 @@ class JournalDbConnectTest {
 			assumeTrue(true);
 		} catch (Exception e) {
 			fail(e.getMessage());
+			
+			
 		}
 
 
