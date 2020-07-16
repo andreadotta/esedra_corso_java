@@ -41,7 +41,6 @@ public class UserDao implements DaoInterface<User> {
 				User user = new User();
 				user.setUserEmail(rs.getString("userEmail"));
 				user.setUserName(rs.getString("userName"));
-				user.setUserSurname(rs.getString("userSurname"));	
 				users.add(user);
 			}
 			rs.close();
