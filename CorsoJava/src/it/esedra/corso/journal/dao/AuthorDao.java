@@ -1,10 +1,15 @@
 package it.esedra.corso.journal.dao;
 
-import it.esedra.corso.journal.Author;
+import java.sql.Connection;
+import java.util.List;
 
-public class AuthorDao implements DaoInterface {
+import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.Video;
+
+public class AuthorDao implements DaoInterface<Author> {
 
 	private Author author;
+	private Connection conn;
 	
 	public AuthorDao(Author author) {
 		super();
@@ -22,9 +27,15 @@ public class AuthorDao implements DaoInterface {
 	}
 
 	@Override
-	public void get() {
+	public List<Author> getAll() {
 		
-
+		return null;
+		
+	}
+	@Override
+	public void setConnection(Connection con) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

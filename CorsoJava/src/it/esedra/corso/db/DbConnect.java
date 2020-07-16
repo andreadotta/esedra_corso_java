@@ -1,4 +1,4 @@
-package it.esedra.corso.journal.db;
+package it.esedra.corso.db;
 
 
 import java.sql.Connection;
@@ -7,19 +7,21 @@ import java.sql.SQLException;
 
 import it.esedra.corso.gianni.PrintHelper;
 
-public class JournalDbConnect {
+public class DbConnect {
+	
+    
 	/**
-     * Connect to a sample database
-     */
-    public static Connection connect()  {
+	 * Connect to a sample database
+	 * @param dbpath 
+	 * @return
+	 */
+	public static Connection connect(String dbpath)  {
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:/home/bauhausk/workspace-java/esedra_corso_java/CorsoJava/sqlite/db/journal.sql";
+            String url = "jdbc:sqlite:" + dbpath;
             // create a connection to the database
             conn = DriverManager.getConnection(url);
-            
-            System.out.println("Connection to SQLite has been established.");
 
             
         } catch (SQLException e) {
