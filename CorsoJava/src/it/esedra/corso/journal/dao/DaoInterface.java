@@ -1,7 +1,9 @@
 package it.esedra.corso.journal.dao;
 
-public interface DaoInterface {
+import java.util.List;
+
+public interface DaoInterface<T> {
 	void update();
 	void delete();
-	void get();
+    List<T> getAll();
 }

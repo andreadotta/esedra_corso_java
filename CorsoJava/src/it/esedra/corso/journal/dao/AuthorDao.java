@@ -1,8 +1,11 @@
 package it.esedra.corso.journal.dao;
 
-import it.esedra.corso.journal.Author;
+import java.util.List;
 
-public class AuthorDao implements DaoInterface {
+import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.Video;
+
+public class AuthorDao implements DaoInterface<Author> {
 
 	private Author author;
 	
@@ -22,9 +25,10 @@ public class AuthorDao implements DaoInterface {
 	}
 
 	@Override
-	public void get() {
+	public List<Author> getAll() {
 		
-
+		return null;
+		
 	}
 
 }

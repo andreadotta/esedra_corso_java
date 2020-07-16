@@ -3,12 +3,15 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import it.esedra.corso.db.DbConnect;
 import it.esedra.corso.gianni.PrintHelper;
+import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.User;
-import it.esedra.corso.journal.db.JournalDbConnect;
 
-public class UserDao implements DaoInterface {
+public class UserDao implements DaoInterface<User> {
 	private User user;
 
 	public UserDao(User user) {
@@ -23,17 +26,23 @@ public class UserDao implements DaoInterface {
 	}
 
 	@Override
-	public void get() {
-
+	public List<User> getAll() {
+		List<User> users = new ArrayList<>();
 		try {
-			Connection connection = JournalDbConnect.connect();	
+
+			
+			Connection connection = DbConnect.connect(Journal.DBPATH);	
 			
 			Statement stm = connection.createStatement();			
 
 			ResultSet rs = stm.executeQuery("SELECT * FROM user");
 			
 			while (rs.next()) {
-				PrintHelper.out("Dato utente", rs.getString("userEmail") + " " + rs.getString("userName"));
+				User user = new User();
+				user.setUserEmail(rs.getString("userEmail"));
+				user.setUserName(rs.getString("userName"));
+				user.setUserSurname(rs.getString("userSurname"));	
+				users.add(user);
 			}
 			rs.close();
 			connection.close();
@@ -42,6 +51,7 @@ public class UserDao implements DaoInterface {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
 
+		return users;
 		
 	}
 

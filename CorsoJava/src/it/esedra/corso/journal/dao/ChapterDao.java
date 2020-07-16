@@ -1,9 +1,12 @@
 package it.esedra.corso.journal.dao;
 
+import java.util.List;
+
 import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.Chapter;
+import it.esedra.corso.journal.Video;
 
-public class ChapterDao implements DaoInterface {
+public class ChapterDao implements DaoInterface<Chapter> {
 
 	private Chapter chapter;
 	
@@ -24,8 +27,9 @@ public class ChapterDao implements DaoInterface {
 	}
 
 	@Override
-	public void get() {
+	public List<Chapter> getAll() {
 		
-
+		return null;
+		
 	}
 }

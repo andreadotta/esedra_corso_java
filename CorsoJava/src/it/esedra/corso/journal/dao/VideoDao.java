@@ -1,9 +1,10 @@
 package it.esedra.corso.journal.dao;
 
-import it.esedra.corso.journal.Author;
+import java.util.List;
+
 import it.esedra.corso.journal.Video;
 
-public class VideoDao implements DaoInterface { 
+public class VideoDao implements DaoInterface<Video> { 
 
 	private Video video;
 	
@@ -24,9 +25,10 @@ public class VideoDao implements DaoInterface {
 	}
 
 	@Override
-	public void get() {
+	public List<Video> getAll() {
 		
-
+		return null;
+		
 	}
 
 }
