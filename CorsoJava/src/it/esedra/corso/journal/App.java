@@ -16,11 +16,12 @@ public class App {
 		// Esempio di iterazione
 		UserDao userdao = new UserDao(new User());
 		List<User> users = userdao.getAll();
-		ListIterator<User> userListIterator = users.listIterator();
-		while (userListIterator.hasNext()) {
-			User user = userListIterator.next();
-			PrintHelper.out(user.getUserName());
+		
+		for (User user : users) {
+			PrintHelper.out(user.getUserName());			
 		}
+		
+
 		
 	}
 
