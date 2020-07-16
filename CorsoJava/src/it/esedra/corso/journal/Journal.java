@@ -8,6 +8,7 @@ package it.esedra.corso.journal;
  */
 public class Journal {
 
+	public static final String DBPATH = System.getProperty("user.dir") + "/sqlite/db/journal.sql";
 	private Chapter[] chapters;
 
 	private Author author;

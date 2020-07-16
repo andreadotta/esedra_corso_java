@@ -1,11 +1,14 @@
 package it.esedra.corso.journal.dao;
 
-import it.esedra.corso.journal.Author;
+import java.sql.Connection;
+import java.util.List;
+
 import it.esedra.corso.journal.Video;
 
-public class VideoDao implements DaoInterface { 
+public class VideoDao implements DaoInterface<Video> { 
 
 	private Video video;
+	private Connection conn;
 	
 	public VideoDao(Video video) {
 		super();
@@ -24,9 +27,14 @@ public class VideoDao implements DaoInterface {
 	}
 
 	@Override
-	public void get() {
+	public List<Video> getAll() {
 		
-
+		return null;
+		
 	}
 
+	@Override
+	public void setConnection(Connection con) {
+		this.conn = con;
+	}
 }
