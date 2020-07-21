@@ -1,0 +1,27 @@
+  .catal-index {
+			background-color: #fdeb74;
+			text-align: justify;
+			}
+	.list-index {
+			background-image: url(https://static.vecteezy.com/system/resources/previews/000/113/392/original/vector-food-icon-pattern.jpg);
+			background-repeat: repeat;
+			background-clip: padding-box;
+			width: 70%;
+			margin: 20px 200px 20px 200px;
+			box-sizing: border-box;
+            padding: 20px 40px 40px 40px;
+			border-color: black;
+			border-width: 1px 3px 1px 1px;
+			border-style: solid;
+			}
+	.list-item {
+			color: #6A151F;
+			font: 18px Berlin Sans FB;
+			font-weight: bold;
+			}
+	#parag-ident1, #parag-ident2, #parag-ident3, #parag-ident4 {
+			color: navy;
+			font-size: 14px;
+			font-style: italic;
+			font-weight: normal;
+			}
