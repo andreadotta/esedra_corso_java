@@ -30,10 +30,12 @@ h1{
   z-index: 5;
   width: 60%;
   padding: 40px 0;
+  max-width: 800px;
+  min-width: 800px;
   text-align: justify;
   border-top-left-radius: 40px;
   border-bottom-right-radius: 40px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
   color: #663300;
   font-weight: regular;
   border: 10px inset #fff;
