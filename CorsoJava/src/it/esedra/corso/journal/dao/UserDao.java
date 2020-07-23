@@ -19,6 +19,7 @@ public class UserDao implements DaoInterface<User> {
 		super();
 		this.user = user;
 	}
+	
 
 	@Override
 	public void delete() {
