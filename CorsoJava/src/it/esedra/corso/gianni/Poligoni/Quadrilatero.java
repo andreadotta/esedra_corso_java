@@ -1,4 +1,4 @@
-package it.esedra.corso.gianni;
+package it.esedra.corso.gianni.Poligoni;
 
 /*
  * Questa è una classe astratta che estende Poligono.

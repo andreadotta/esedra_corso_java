@@ -1,4 +1,6 @@
-package it.esedra.corso.gianni;
+package it.esedra.corso.gianni.Poligoni;
+
+import it.esedra.corso.gianni.PrintHelper;
 
 public class Corso {
 	public static void main(String[] args) {
