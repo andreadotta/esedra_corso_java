@@ -2,7 +2,13 @@ package it.esedra.corso.nayem;
 
 public class Teacher extends Person {
 
-    private String qualification;
+    public Teacher() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	private String qualification;
 
     public String getQualification() {
     return qualification;
