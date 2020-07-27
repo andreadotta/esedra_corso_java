@@ -1,4 +1,4 @@
-package it.esedra.corso.gianni;
+package it.esedra.corso.gianni.Poligoni;
 
 /* 
  * Questa classe estende quadrilatero, calcola l'area e il permietro di un quadrato.
@@ -23,7 +23,6 @@ public final class Quadrato extends Quadrilatero {
 
 	@Override
 	public void disegna(Shape s) {
-		// TODO Auto-generated method stub
 		
 	}
 

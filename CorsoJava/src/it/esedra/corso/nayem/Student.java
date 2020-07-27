@@ -1,15 +1,33 @@
 package it.esedra.corso.nayem;
 
 public class Student {
-	private String Name;
-	private String Surename;
-	private int age;
+	 private String Name;
+	 private String Surename;
+	 private int age;
+	 private University university;
+	
+	 
 
-	public void display() {
-
+	public University getUniversity() {
+		return university;
 	}
 
-	public String getName() {
+
+
+	public void setUniversity(University university) {
+		this.university = university;
+	}
+
+
+
+	public void display() {
+	
+			
+		}
+			
+		
+		
+    public String getName() {
 		return Name;
 	}
 
@@ -32,5 +50,5 @@ public class Student {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
+   
 }
