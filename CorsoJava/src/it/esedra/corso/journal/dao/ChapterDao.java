@@ -3,18 +3,20 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.util.List;
 
+import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.Video;
 
-public class VideoDao implements DaoInterface<Video> { 
+public class ChapterDao implements DaoInterface<Chapter> {
 
-	private Video video;
+	private Chapter chapter;
 	private Connection conn;
 	
-	public VideoDao(Video video) {
+	public ChapterDao(Chapter chapter) {
 		super();
-		this.video = video;
+		this.chapter = chapter;
 	}
-
+    
     @Override
 	public void update() {
 		
@@ -27,12 +29,12 @@ public class VideoDao implements DaoInterface<Video> {
 	}
 
 	@Override
-	public List<Video> getAll() {
+	public List<Chapter> getAll() {
 		
 		return null;
 		
 	}
-
+	
 	@Override
 	public void setConnection(Connection con) {
 		this.conn = con;
