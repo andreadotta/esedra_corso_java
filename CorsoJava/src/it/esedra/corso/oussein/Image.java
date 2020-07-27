@@ -1,4 +1,4 @@
-package it.esedra.corso.journal;
+package it.esedra.corso.oussein;
 
 import it.esedra.corso.journal.MultimediaResource;
 
