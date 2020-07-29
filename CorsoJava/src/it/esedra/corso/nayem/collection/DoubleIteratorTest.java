@@ -1,5 +1,6 @@
 package it.esedra.corso.nayem.collection;
 
+import it.esedra.corso.helpers.PrintHelper;
 
 
 public class DoubleIteratorTest {
@@ -12,9 +13,9 @@ public class DoubleIteratorTest {
 		
 		Collection<Double> DoubleCollection = new DoubleCollection();
 
-		DoubleCollection.add((Double) 2.1);
-		DoubleCollection.add((Double) 2.2);
-		DoubleCollection.add((Double) 2.3);
+		DoubleCollection.add( 2.1);
+		DoubleCollection.add( 2.2);
+		DoubleCollection.add( 2.3);
 
 		
 		Iterator<Double> iterator = DoubleCollection.createIterator();
