@@ -12,7 +12,7 @@ public class MyEsedra implements EsedraIterator {
 	}
 
 	@Override
-	public void quelcosa() {
+	public void next() {
 		System.out.println("io lavoro li");
 	}
 
@@ -21,17 +21,27 @@ public class MyEsedra implements EsedraIterator {
 		return new Iterator<MyEsedra>() {
 
 			@Override
-			public boolean hasNext() {
-
-				return false;
-			}
-
-			@Override
 			public MyEsedra next() {
 
 				return null;
 			}
+
+			@Override
+			public boolean hasNext() {
+				
+				return false;
+			}
 		};
+
+	}
+
+	@Override
+	public void isDone() {
+
+	}
+
+	@Override
+	public void currentItem() {
 
 	}
 }
