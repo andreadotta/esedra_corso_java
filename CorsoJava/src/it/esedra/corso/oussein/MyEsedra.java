@@ -2,6 +2,8 @@ package it.esedra.corso.oussein;
 
 import java.util.Iterator;
 
+import it.esedra.corso.oussein.Collections.EsedraIterator;
+
 public class MyEsedra implements EsedraIterator {
 
 	public static void main(String[] args) {

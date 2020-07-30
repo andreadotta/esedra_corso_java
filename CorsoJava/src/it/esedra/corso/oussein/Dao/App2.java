@@ -1,4 +1,4 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.Dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
