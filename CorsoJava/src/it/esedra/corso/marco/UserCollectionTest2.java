@@ -1,19 +1,16 @@
 package it.esedra.corso.marco;
 
-import it.esedra.corso.collections.Collection;
+import java.util.ArrayList;
+
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.User;
 
-public class UserCollectionTest extends User {
-
-	public UserCollectionTest() {
-
-	}
+public class UserCollectionTest2 extends User {
 
 	public static void main(String[] args) {
-
-		Collection<User> userCollection = new UserCollection();
-
+		
+		ArrayList<User> userCollection = new ArrayList<User>();
+		
 		User username1 = new User();
 		User username2 = new User();
 		User username3 = new User();
@@ -31,8 +28,10 @@ public class UserCollectionTest extends User {
 		userCollection.add(username3);
 		userCollection.add(username4);
 		userCollection.add(username5);
-
-		userCollection.test();
+		
+		for ( int i = 0; i < userCollection.size(); i++) {
+			System.out.println(userCollection);
+		}
 
 	}
 
