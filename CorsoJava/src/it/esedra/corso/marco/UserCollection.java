@@ -39,9 +39,9 @@ public class UserCollection implements Collection<User> {
 	@Override
 	public void test() {
 
-		for (int i = 0; i < array.length; i++) {
-			PrintHelper.out(array[i] + "");
-		}
+		for (User user : array) {
+			PrintHelper.out(user.getUserName() + "");			
+		} 
 
 	}
 
