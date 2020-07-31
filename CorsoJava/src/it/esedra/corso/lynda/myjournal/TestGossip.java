@@ -1,4 +1,4 @@
-package it.esedra.corso.lynda;
+package it.esedra.corso.lynda.myjournal;
 
 public class TestGossip {
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.esedra.corso.lynda;
+package it.esedra.corso.lyndaZ;
 
 /**
  * @author mcbra

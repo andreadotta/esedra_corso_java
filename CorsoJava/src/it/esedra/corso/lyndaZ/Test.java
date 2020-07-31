@@ -1,4 +1,4 @@
-package it.esedra.corso.lynda;
+package it.esedra.corso.lyndaZ;
 public class Test {
 
 	public static void main(String args[]) {
