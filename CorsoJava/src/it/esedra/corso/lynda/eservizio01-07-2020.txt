@@ -18,7 +18,7 @@ vero
 6. La seguente dichiarazione di classe è corretta:
 public Class Auto {...}
 falso
-7. La seguente dichiarazione di classe è corretta:
+7. La seguente dichiarazione di classe è corrett:
 public class Auto {...}
 vero
 8. È possibile dichiarare un metodo al di fuori del blocco di codice che definisce una classe.
