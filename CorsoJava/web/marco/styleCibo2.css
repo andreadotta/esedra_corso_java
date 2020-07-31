@@ -1,0 +1,56 @@
+*{
+  box-sizing: border-box;
+}
+body, html{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Bahnschrift;
+}
+h1{
+  font-size: 50px;
+  text-transform: uppercase;
+  margin: 5px;
+  text-align: center;
+}
+.banner-img{
+  background-image: url(https://thumbs.dreamstime.com/b/seamless-beige-croissant-pattern-food-ingredients-background-73655189.jpg);
+  -moz-background-size: cover;
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center center;
+  height: 100%;
+  filter: blur(5px);
+}
+.banner-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  width: 60%;
+  padding: 40px 0;
+  max-width: 800px;
+  min-width: 800px;
+  text-align: justify;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #663300;
+  font-weight: regular;
+  border: 10px inset #fff;
+}
+.banner-text p{
+  padding: 0 8%;
+  font-family: merienda;
+}
+#list-item1, #list-item2, #list-item3, #list-item4 {
+  color: #000;
+  font: 20px Bahnschrift;
+  font-weight: bold;
+}
+#parag-ident1, #parag-ident2, #parag-ident3, #parag-ident4 {
+  color: #331f00;
+  font: 14px Bahnschrift;
+  font-weight: normal;
+}

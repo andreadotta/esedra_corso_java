@@ -1,4 +1,4 @@
-package it.esedra.corso.gianni;
+package it.esedra.corso.gianni.Poligoni;
 
 /*
  *  Questa classe estende quadrilatero, calcola l'area e il permietro di un rettangolo.
@@ -21,11 +21,10 @@ public class Rettangolo extends Quadrilatero {
 		super.setPerimetro (  (super.getBase() + super.getAltezza()) * 2 );
 	}
 
-
-
+	
+	
 	@Override
 	public void disegna(Shape s) {
-		// TODO Auto-generated method stub
 		
 	}
 }
