@@ -1,9 +1,6 @@
 package it.esedra.corso.marco;
 
-import it.esedra.corso.collections.Collection;
-import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.gianni.PrintHelper;
-import it.esedra.corso.journal.User;
 
 public class UserIteratorTest {
 

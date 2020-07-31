@@ -1,12 +1,7 @@
 package it.esedra.corso.marco;
 
 import java.util.Arrays;
-
-import it.esedra.corso.collections.Collection;
-import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.helpers.PrintHelper;
-
-import it.esedra.corso.journal.User;
 
 public class UserCollection implements Collection<User> {
 

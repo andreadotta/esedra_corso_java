@@ -1,9 +1,5 @@
 package it.esedra.corso.marco;
 
-import it.esedra.corso.collections.Iterator;
-import it.esedra.corso.journal.User;
-
-
 public class UserIterator implements Iterator<User> {
 
 	private User[] array;

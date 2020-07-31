@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.User;
 
-public class UserCollectionTest2 extends User {
+public class UserCollectionTest2 {
 
 	public static void main(String[] args) {
 		

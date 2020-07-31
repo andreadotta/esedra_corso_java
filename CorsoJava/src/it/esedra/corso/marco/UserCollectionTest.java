@@ -1,10 +1,8 @@
 package it.esedra.corso.marco;
 
-import it.esedra.corso.collections.Collection;
 import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.User;
 
-public class UserCollectionTest extends User {
+public class UserCollectionTest {
 
 	public UserCollectionTest() {
 
