@@ -1,7 +1,7 @@
 package it.esedra.corso.marco;
 /**
  * Dovete creare una nuova classe User questa 
- * classe rapprensenta l'utente che fa login e avrà i campi 
+ * classe rappresenta l'utente che fa login e avrà i campi 
  * userEmail 
  * userName 
  * userPassword 
@@ -48,7 +48,7 @@ public class User {
 	private String  userSurname;
 	private java.util.Date dataRegistration;
 	public User() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }
