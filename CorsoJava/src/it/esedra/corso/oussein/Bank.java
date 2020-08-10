@@ -11,7 +11,7 @@ public Bank(String name) {
 public String getName() {
 	return name;
 }
-public void transfer(Account<Character> sourceAccount, Account<String> targetAccount, int amount) {
+public <T, S> void transfer(Account<T> sourceAccount, Account<S> targetAccount, int amount) {
 	if(sourceAccount.getAmount()>amount);
 	sourceAccount.remouveMoney(amount);
 	targetAccount.addMoney(amount);
