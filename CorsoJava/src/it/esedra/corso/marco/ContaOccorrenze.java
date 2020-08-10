@@ -8,8 +8,6 @@ public class ContaOccorrenze {
 	public static void main(String[] args) {
 
 		int contatoreParola = 0;
-		// int carattere = 0;
-		// int riga = 0;
 
 		Scanner tastiera = new Scanner(System.in);
 
