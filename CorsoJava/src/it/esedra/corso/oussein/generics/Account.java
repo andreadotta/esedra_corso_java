@@ -1,4 +1,4 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.generics;
 
 public class Account<T> {
 	private String owner;

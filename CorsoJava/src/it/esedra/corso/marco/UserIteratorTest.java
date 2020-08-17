@@ -7,6 +7,7 @@ public class UserIteratorTest {
 	public UserIteratorTest() {
 
 	}
+	
 
 	public static void main(String[] args) {
 

@@ -5,7 +5,7 @@ import it.esedra.corso.helpers.PrintHelper;
 public class UserCollectionTest {
 
 	public UserCollectionTest() {
-		
+
 	}
 
 	public static void main(String[] args) {
@@ -23,13 +23,13 @@ public class UserCollectionTest {
 		username3.setUserName("Gennaro Verdi");
 		username4.setUserName("Cinzia Neri");
 		username5.setUserName("Gianna Panna");
-		
+
 		userCollection.add(username1);
 		userCollection.add(username2);
 		userCollection.add(username3);
 		userCollection.add(username4);
 		userCollection.add(username5);
-		
+
 		userCollection.test();
 
 	}
