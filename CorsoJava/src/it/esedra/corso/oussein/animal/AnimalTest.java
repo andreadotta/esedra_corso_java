@@ -10,6 +10,7 @@ public class AnimalTest {
 		mycow.eat();
 		mycow.speak();
 		Animal mydog = new Dog();
+		
 		mydog.eat();
 		mydog.speak();
 		

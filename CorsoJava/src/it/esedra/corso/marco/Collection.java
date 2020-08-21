@@ -13,4 +13,5 @@ public interface Collection<T> {
 	 * Fa System.out del contenuto della collection
 	 */
 	void test();
+	
 }
