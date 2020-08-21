@@ -1,8 +1,8 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
-import java.util.List;
 
+import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Video;
 
 public class VideoDao implements DaoInterface<Video> { 
@@ -27,7 +27,7 @@ public class VideoDao implements DaoInterface<Video> {
 	}
 
 	@Override
-	public List<Video> getAll() {
+	public Collection<Video> getAll() {
 		
 		return null;
 		

@@ -2,9 +2,9 @@ package it.esedra.corso.journal;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.ListIterator;
 
+import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.db.DbConnect;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.dao.UserDao;
@@ -24,9 +24,10 @@ public class App {
 
 			UserDao userdao = new UserDao(new User());
 			userdao.setConnection(connection);
-			List<User> users = userdao.getAll();
-
-			for (User user : users) {
+			Collection<User> users = userdao.getAll();
+			Iterator<User> userIterator = users.createIterator();
+			while(userIterator.hasNext()) {
+				User user = userIterator.next();
 				PrintHelper.out(user.getUserName());
 			}
 
