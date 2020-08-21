@@ -20,7 +20,8 @@ public class IntegerIteratorTest {
 
 		while (iterator.hasNext()) {
 			PrintHelper.out(iterator.next() + "");	
-			PrintHelper.out(iterator.currentItem() + "");				
+			PrintHelper.out(iterator.currentItem() + "");
+			
 			PrintHelper.out(iterator.isDone() + "");	
 	}
 
