@@ -14,6 +14,7 @@ public class UserIteratorTest {
 
 	public static void main(String[] args) {
 
+
 		Collection<User> userCollection = new UserCollection();
 
 		User username1 = new User();
