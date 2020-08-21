@@ -1,23 +1,28 @@
-package it.esedra.corso.nayem.collection;
+package it.esedra.corso.collections;
 
-public class DoubleIterator implements Iterator<Double> {
+import it.esedra.corso.collections.interfaces.Iterator;
 
-	private Double[] array;
+public class StringIterator implements Iterator<String> {
+
+	private String[] array;
 	private int current = -1;
 	private boolean isDone = false;
-
-	public DoubleIterator(Double[] inputArray) {
+	/**
+	 * Accetta in inpout una array di float
+	 * @param array
+	 */
+	public StringIterator(String[] inputArray) {
 		array = inputArray;
 	}
 
 	@Override
-	public Double next() {
+	public String next() {
 		current++;
 		return array[current];
 	}
 
 	@Override
-	public Double currentItem() {
+	public String currentItem() {
 		return array[current];
 	}
 
@@ -47,5 +52,4 @@ public class DoubleIterator implements Iterator<Double> {
 		isDone = !((current + 1) < size);
 		return isDone;
 	}
-
 }

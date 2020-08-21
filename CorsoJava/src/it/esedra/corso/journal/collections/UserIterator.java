@@ -1,4 +1,7 @@
-package it.esedra.corso.marco;
+package it.esedra.corso.journal.collections;
+
+import it.esedra.corso.collections.interfaces.Iterator;
+import it.esedra.corso.journal.User;
 
 public class UserIterator implements Iterator<User> {
 

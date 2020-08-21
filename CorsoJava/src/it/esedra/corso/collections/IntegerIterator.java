@@ -1,6 +1,6 @@
-package it.esedra.corso.oussein.Collections;
+package it.esedra.corso.collections;
 
-import it.esedra.corso.collections.Iterator;
+import it.esedra.corso.collections.interfaces.Iterator;
 
 public class IntegerIterator implements Iterator<Integer> {
 

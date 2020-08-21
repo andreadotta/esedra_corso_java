@@ -1,5 +1,7 @@
 package it.esedra.corso.collections;
 
+import it.esedra.corso.collections.interfaces.Iterator;
+
 public class FloatIterator implements Iterator<Float> {
 
 	private Float[] array;

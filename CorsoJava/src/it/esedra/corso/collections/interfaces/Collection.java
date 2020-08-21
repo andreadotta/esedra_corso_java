@@ -1,7 +1,11 @@
-package it.esedra.corso.marco;
+package it.esedra.corso.collections.interfaces;
 
 public interface Collection<T> {
 
+	/**
+	 * Crea un iteratore
+	 * @return
+	 */
 	Iterator<T> createIterator();
 	/**
 	 * Aggiunge un elemento
@@ -10,8 +14,7 @@ public interface Collection<T> {
 	void add(T item);
 	
 	/**
-	 * Fa System.out del contenuto della collection
+	 * Fa System out del contenuto della collention
 	 */
 	void test();
-	
 }

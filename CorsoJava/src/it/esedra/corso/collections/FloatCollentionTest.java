@@ -1,6 +1,6 @@
 package it.esedra.corso.collections;
 
-
+import it.esedra.corso.collections.interfaces.Collection;
 
 public class FloatCollentionTest {
 
@@ -10,7 +10,7 @@ public class FloatCollentionTest {
 	
 	public static void main(String[] args) {
 		
-		Collection<Float> floatCollention = new FloatCollention();
+		Collection<Float> floatCollention = new FloatCollection();
 		
 		floatCollention.add((float) 2.1);
 		floatCollention.add((float) 2.2);

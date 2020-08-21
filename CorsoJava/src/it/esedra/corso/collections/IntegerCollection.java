@@ -1,9 +1,9 @@
-package it.esedra.corso.oussein.Collections;
+package it.esedra.corso.collections;
 
 import java.util.Arrays;
 
-import it.esedra.corso.collections.Collection;
-import it.esedra.corso.collections.Iterator;
+import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.helpers.PrintHelper;
 
 public class IntegerCollection implements Collection<Integer> {

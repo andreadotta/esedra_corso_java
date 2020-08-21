@@ -8,8 +8,7 @@ public class Account<T> {
 	public Account(String owner, double amount, T currency) {
 		this.owner = owner;
 		this.amount = amount;
-		
-		
+
 		this.currency = currency;
 
 	}
@@ -25,14 +24,17 @@ public class Account<T> {
 	public T getCurrency() {
 		return currency;
 	}
+
 	public void addMoney(int amount) {
-		
+
 	}
-  public void remouveMoney(int amount) {
-	  
-  }
-  public void showBalance() {
-	  
-	  System.out.println("avete ora "  +   amount  + "" + currency   +   " nel vostro conto!");
-  }
+
+	public void remouveMoney(int amount) {
+
+	}
+
+	public void showBalance() {
+
+		System.out.println("avete ora " + amount + "" + currency + " nel vostro conto!");
+	}
 }
