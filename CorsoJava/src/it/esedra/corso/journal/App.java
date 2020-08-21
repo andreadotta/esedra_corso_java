@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import it.esedra.corso.db.DbConnect;
-import it.esedra.corso.gianni.PrintHelper;
+import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.dao.UserDao;
 
 public class App {

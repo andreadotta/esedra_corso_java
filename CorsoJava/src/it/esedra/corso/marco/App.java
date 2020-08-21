@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import it.esedra.corso.db.DbConnect;
-import it.esedra.corso.gianni.PrintHelper;
+import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.dao.UserDao;
