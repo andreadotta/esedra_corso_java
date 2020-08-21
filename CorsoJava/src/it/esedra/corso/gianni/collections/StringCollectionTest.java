@@ -16,17 +16,17 @@ public class StringCollectionTest {
 		
 		Collection<String> StringCollention = new StringCollection();
 		
-		StringCollention.add((String) "Ciao");
-		StringCollention.add((String) "Oggi");
-		StringCollention.add((String) "Domani");
-		StringCollention.add((String) "Ieri");
-		StringCollention.add((String) "Corso");
-		StringCollention.add((String) "Scuola");
-		StringCollention.add((String) "Java");
-		StringCollention.add((String) "Iteratore");
-		StringCollention.add((String) "Gianni");
-		StringCollention.add((String) "Collection");
-		StringCollention.add((String) "Computer");
+		StringCollention.add("Ciao");
+		StringCollention.add("Oggi");
+		StringCollention.add("Domani");
+		StringCollention.add("Ieri");
+		StringCollention.add("Corso");
+		StringCollention.add("Scuola");
+		StringCollention.add("Java");
+		StringCollention.add("Iteratore");
+		StringCollention.add("Gianni");
+		StringCollention.add("Collection");
+		StringCollention.add("Computer");
 		
 		StringCollention.test();
 		

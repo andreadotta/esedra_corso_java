@@ -16,9 +16,9 @@ public class StringIteratorTest {
 
 		Collection<String> StringCollection = new StringCollection();
 
-		StringCollection.add((String) "Ciao");
-		StringCollection.add((String) "Oggi");
-		StringCollection.add((String) "Domani");
+		StringCollection.add("Ciao");
+		StringCollection.add("Oggi");
+		StringCollection.add("Domani");
 
 		
 		Iterator<String> iterator = StringCollection.createIterator();
