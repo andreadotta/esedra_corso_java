@@ -1,28 +1,25 @@
-package it.esedra.corso.collections;
+package it.esedra.corso.journal.collections;
 
 import it.esedra.corso.collections.interfaces.Iterator;
+import it.esedra.corso.journal.User;
 
-public class FloatIterator implements Iterator<Float> {
+public class UserIterator implements Iterator<User> {
 
-	private Float[] array;
+	private User[] array;
 	private int current = -1;
 	private boolean isDone = false;
-	/**
-	 * Accetta in inpout una array di float
-	 * @param array
-	 */
-	public FloatIterator(Float[] inputArray) {
+
+	public UserIterator(User[] inputArray) {
 		array = inputArray;
 	}
 
 	@Override
-	public Float next() {
-		current++;
-		return array[current];
+	public User next() {
+		return null;
 	}
 
 	@Override
-	public Float currentItem() {
+	public User currentItem() {
 		return array[current];
 	}
 

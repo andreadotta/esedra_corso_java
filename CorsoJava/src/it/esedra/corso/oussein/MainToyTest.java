@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import it.esedra.corso.collections.Collection;
+import it.esedra.corso.collections.interfaces.Collection;
 
 public class MainToyTest {
 
