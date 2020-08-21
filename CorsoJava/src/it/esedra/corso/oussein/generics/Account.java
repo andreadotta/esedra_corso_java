@@ -8,6 +8,8 @@ public class Account<T> {
 	public Account(String owner, double amount, T currency) {
 		this.owner = owner;
 		this.amount = amount;
+		
+		
 		this.currency = currency;
 
 	}
