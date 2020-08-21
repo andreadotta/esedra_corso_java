@@ -1,10 +1,6 @@
-package it.esedra.corso.gianni.collections;
+package it.esedra.corso.collections;
 
-import java.util.Arrays;
-import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.collections.Collection;
-import it.esedra.corso.collections.FloatCollention;
-import it.esedra.corso.collections.Iterator;
+import it.esedra.corso.collections.interfaces.Collection;
 
 public class StringCollectionTest {
 

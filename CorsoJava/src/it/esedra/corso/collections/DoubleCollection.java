@@ -1,27 +1,30 @@
-package it.esedra.corso.gianni.collections;
+package it.esedra.corso.collections;
+
 
 import java.util.Arrays;
+
+import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.collections.Collection;
-import it.esedra.corso.collections.Iterator;
 
-public class StringCollection implements Collection<String> {
 
-	private final int DEFAULT_SIZE = 10;
+public class DoubleCollection implements Collection<Double>{
 	
-	private String[] array;
+private final int DEFAULT_SIZE = 10;
+	
+	private Double[] array;
 		
-	public StringCollection() {
-		array = new String[DEFAULT_SIZE];
+	public DoubleCollection() {
+		array = new Double[DEFAULT_SIZE];
 	}
 
 	@Override
-	public Iterator<String> createIterator() {
-		return new StringIterator(array);
+	public Iterator<Double> createIterator() {
+		return new DoubleIterator(array);
 	}
 
 	@Override
-	public void add(String item) {
+	public void add(Double item) {
 	
 		boolean flag = false;
 		for (int i = 0; i < array.length; i++) {
@@ -43,5 +46,6 @@ public class StringCollection implements Collection<String> {
 				PrintHelper.out(array[i] + "");
 		}
 	}
+
 
 }

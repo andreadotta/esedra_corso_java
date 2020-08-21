@@ -1,6 +1,6 @@
-package it.esedra.corso.nayem.collection;
+package it.esedra.corso.collections;
 
-
+import it.esedra.corso.collections.interfaces.Collection;
 
 public class DoubleCollectionTest {
 

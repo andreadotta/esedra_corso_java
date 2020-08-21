@@ -1,29 +1,27 @@
-package it.esedra.corso.nayem.collection;
-
+package it.esedra.corso.collections;
 
 import java.util.Arrays;
-
-
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.collections.interfaces.Iterator;
 
+public class StringCollection implements Collection<String> {
 
-public class DoubleCollection implements Collection<Double>{
+	private final int DEFAULT_SIZE = 10;
 	
-private final int DEFAULT_SIZE = 10;
-	
-	private Double[] array;
+	private String[] array;
 		
-	public DoubleCollection() {
-		array = new Double[DEFAULT_SIZE];
+	public StringCollection() {
+		array = new String[DEFAULT_SIZE];
 	}
 
 	@Override
-	public Iterator<Double> createIterator() {
-		return new DoubleIterator(array);
+	public Iterator<String> createIterator() {
+		return new StringIterator(array);
 	}
 
 	@Override
-	public void add(Double item) {
+	public void add(String item) {
 	
 		boolean flag = false;
 		for (int i = 0; i < array.length; i++) {
@@ -45,6 +43,5 @@ private final int DEFAULT_SIZE = 10;
 				PrintHelper.out(array[i] + "");
 		}
 	}
-
 
 }

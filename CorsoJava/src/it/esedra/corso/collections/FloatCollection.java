@@ -2,17 +2,19 @@ package it.esedra.corso.collections;
 
 import java.util.Arrays;
 
+import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.helpers.PrintHelper;
 
 
 
-public class FloatCollention implements Collection<Float> {
+public class FloatCollection implements Collection<Float> {
 
 	private final int DEFAULT_SIZE = 10;
 	
 	private Float[] array;
 		
-	public FloatCollention() {
+	public FloatCollection() {
 		array = new Float[DEFAULT_SIZE];
 	}
 

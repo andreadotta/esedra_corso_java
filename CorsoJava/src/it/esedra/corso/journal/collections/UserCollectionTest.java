@@ -1,13 +1,13 @@
-package it.esedra.corso.marco;
+package it.esedra.corso.journal.collections;
 
-import it.esedra.corso.gianni.PrintHelper;
+import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.journal.User;
 
-public class UserIteratorTest {
+public class UserCollectionTest {
 
-	public UserIteratorTest() {
+	public UserCollectionTest() {
 
 	}
-	
 
 	public static void main(String[] args) {
 
@@ -25,13 +25,13 @@ public class UserIteratorTest {
 		username4.setUserName("Cinzia Neri");
 		username5.setUserName("Gianna Panna");
 
-		Iterator<User> iterator = userCollection.createIterator();
+		userCollection.add(username1);
+		userCollection.add(username2);
+		userCollection.add(username3);
+		userCollection.add(username4);
+		userCollection.add(username5);
 
-		while (iterator.hasNext()) {
-			PrintHelper.out(iterator.next() + "");
-			PrintHelper.out(iterator.currentItem() + "");
-			PrintHelper.out(iterator.isDone() + "");
-		}
+		userCollection.test();
 
 	}
 

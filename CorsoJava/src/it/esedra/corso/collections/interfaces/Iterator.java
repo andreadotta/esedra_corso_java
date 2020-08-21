@@ -1,4 +1,4 @@
-package it.esedra.corso.collections;
+package it.esedra.corso.collections.interfaces;
 
 public interface Iterator<T> {
 	/**

@@ -1,31 +1,25 @@
-package it.esedra.corso.gianni.collections;
+package it.esedra.corso.collections;
 
-import java.util.Arrays;
-import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.collections.Collection;
-import it.esedra.corso.collections.Iterator;
+import it.esedra.corso.collections.interfaces.Iterator;
 
-public class StringIterator implements Iterator<String> {
+public class DoubleIterator implements Iterator<Double> {
 
-	private String[] array;
+	private Double[] array;
 	private int current = -1;
 	private boolean isDone = false;
-	/**
-	 * Accetta in inpout una array di float
-	 * @param array
-	 */
-	public StringIterator(String[] inputArray) {
+
+	public DoubleIterator(Double[] inputArray) {
 		array = inputArray;
 	}
 
 	@Override
-	public String next() {
+	public Double next() {
 		current++;
 		return array[current];
 	}
 
 	@Override
-	public String currentItem() {
+	public Double currentItem() {
 		return array[current];
 	}
 
@@ -55,4 +49,5 @@ public class StringIterator implements Iterator<String> {
 		isDone = !((current + 1) < size);
 		return isDone;
 	}
+
 }
