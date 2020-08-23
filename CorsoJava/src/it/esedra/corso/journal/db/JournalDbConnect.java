@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import it.esedra.corso.gianni.PrintHelper;
+import it.esedra.corso.helpers.PrintHelper;
 
 public class JournalDbConnect {
 	/**

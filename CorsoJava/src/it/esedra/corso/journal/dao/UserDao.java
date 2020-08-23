@@ -6,10 +6,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.esedra.corso.db.DbConnect;
-import it.esedra.corso.gianni.PrintHelper;
-import it.esedra.corso.journal.Journal;
+import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.User;
+import it.esedra.corso.journal.collections.UserCollection;
 
 public class UserDao implements DaoInterface<User> {
 	private User user;
@@ -28,9 +28,9 @@ public class UserDao implements DaoInterface<User> {
 	}
 
 	@Override
-	public List<User> getAll() {
+	public Collection<User> getAll() {
 		//istanzia una lista vuota di User
-		List<User> users = new ArrayList<>();
+		Collection<User> users = new UserCollection();
 		try {
 
 			//crea lo statemente

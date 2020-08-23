@@ -1,7 +1,8 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
-import java.util.List;
+
+import it.esedra.corso.collections.interfaces.Collection;
 
 /**
  * Questa è una semplice implementazione del DAO Pattern in Java
@@ -28,5 +29,5 @@ public interface DaoInterface<T> {
 	 * Restituisce tutti i record della tabella
 	 * @return T
 	 */
-    List<T> getAll();
+    Collection<T> getAll();
 }

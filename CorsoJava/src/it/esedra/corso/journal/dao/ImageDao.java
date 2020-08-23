@@ -2,11 +2,9 @@ package it.esedra.corso.journal.dao;
 
 
 import java.sql.Connection;
-import java.util.List;
 
+import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Image;
-import it.esedra.corso.journal.Journal;
-import it.esedra.corso.journal.Video;
 
 public class ImageDao implements DaoInterface<Image> {
 
@@ -30,7 +28,7 @@ public class ImageDao implements DaoInterface<Image> {
 	}
 
 	@Override
-	public List<Image> getAll() {
+	public Collection<Image> getAll() {
 		
 		return null;
 		

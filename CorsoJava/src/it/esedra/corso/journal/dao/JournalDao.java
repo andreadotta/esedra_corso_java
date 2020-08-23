@@ -1,11 +1,9 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
-import java.util.List;
 
-import it.esedra.corso.journal.Author;
+import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Journal;
-import it.esedra.corso.journal.Video;
 
 public class JournalDao implements DaoInterface<Journal> {
 
@@ -28,7 +26,7 @@ public class JournalDao implements DaoInterface<Journal> {
 	}
 
 	@Override
-	public List<Journal> getAll() {
+	public Collection<Journal> getAll() {
 		
 		return null;
 		
