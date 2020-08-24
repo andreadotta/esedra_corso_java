@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Questa classe è un capitolo del diario
  * 
- * @author Oussein
+
  * 
  */
 public class Chapter {
@@ -14,7 +14,7 @@ public class Chapter {
 
 	private Date date;
 
-	private String[] paragraph;
+
 
 	
 	public String getTitle() {
@@ -33,13 +33,7 @@ public class Chapter {
 		this.date = date;
 	}
 
-	public String[] getParagraph() {
-		return paragraph;
-	}
 
-	public void setParagraph(String[] paragraph) {
-		this.paragraph = paragraph;
-	}
 
 	public Chapter() {
 		// TODO Auto-generated constructor stub
