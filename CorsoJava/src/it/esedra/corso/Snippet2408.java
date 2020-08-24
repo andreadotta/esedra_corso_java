@@ -95,7 +95,7 @@ public class Snippet2408 {
 //		Object list = new Object();
 //		List<String> esem = (List<String>)list;
 //		String data = esem.get(0);
-		
+		  
 		/**
 		 * IDENTIFICATORE VAR
 		 */
