@@ -7,7 +7,7 @@ package it.esedra.corso.journal;
  * userPassword 
  * userSurname 
  * dataRegistration (java.util.data)
- * @author bauhausk
+ * @author Marco
  *
  */
 public class User {

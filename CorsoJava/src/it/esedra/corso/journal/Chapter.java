@@ -3,7 +3,7 @@ package it.esedra.corso.journal;
 /**
  * Questa classe è un capitolo del diario
  * 
- * @author bauhausk
+ * @author Oussein
  * 
  */
 public class Chapter {
