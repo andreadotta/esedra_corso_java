@@ -1,35 +1,52 @@
 package it.esedra.corso.marco;
 
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class ContaOccorrenze {
 
-	public static void main(String[] args) {
+	// Costruttore della classe
+	public ContaOccorrenze() {
+
+	}
+
+	// variabili di classe che verranno usate dal metodo contaOccorrenze
+	public String text;
+	public String word;
+
+	// Getters e Setters
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public String getWord() {
+		return word;
+	}
+
+	public void setWord(String word) {
+		this.word = word;
+	}
+
+	// Questo è il metodo che utilizza lo StringTokenizer per poi contare le
+	// occorrenze della variabile word
+	public String contaOccorrenze(String text, String word) {
 
 		int contatoreParola = 0;
 
-		Scanner tastiera = new Scanner(System.in);
-
-		System.out.println("Inserire testo: ");
-		String t = tastiera.nextLine();
-
-		System.out.println("Inserire la parola di cui conteggiare le occorrenze: ");
-		String w = tastiera.nextLine();
-
-		StringTokenizer st = new StringTokenizer(t, ". , : ;");
+		StringTokenizer st = new StringTokenizer(text, ". , : ;");
 
 		while (st.hasMoreTokens()) {
-			t = st.nextToken();
-			if (t.equals(w)) {
+			text = st.nextToken();
+			if (text.equals(word)) {
 				contatoreParola++;
 			}
 
 		}
 
-		System.out.println("Numero occorrenze: " + contatoreParola);
-
-		tastiera.close();
+		return "Numero occorrenze: " + contatoreParola;
 
 	}
 
