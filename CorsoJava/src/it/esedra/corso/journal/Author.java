@@ -1,5 +1,9 @@
 package it.esedra.corso.journal;
-
+/**
+ * 
+ * @author Lynda, Samuel
+ *
+ */
 public class Author {
 
 	private String name;
