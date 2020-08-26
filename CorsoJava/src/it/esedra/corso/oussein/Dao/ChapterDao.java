@@ -6,7 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.esedra.corso.gianni.PrintHelper;
+import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
 
 import it.esedra.corso.journal.User;
@@ -34,7 +35,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	}
 
 	@Override
-	public List<Chapter> getAll() {
+	public Collection<Chapter> getAll() {
 		List<Chapter> chapters = new ArrayList<>();
 		try {
 
@@ -63,7 +64,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 		}
 		// resituisce la lista
 
-		return chapters;
+		return (Collection<Chapter>) chapters;
 	
 
 	}
