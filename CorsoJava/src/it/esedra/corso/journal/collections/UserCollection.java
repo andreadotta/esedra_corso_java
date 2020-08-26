@@ -2,8 +2,8 @@ package it.esedra.corso.journal.collections;
 
 import java.util.Arrays;
 
+import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.User;
 
@@ -19,7 +19,7 @@ public class UserCollection implements Collection<User> {
 
 	@Override
 	public Iterator<User> createIterator() {
-		return new UserIterator(array);
+		return new Iterator<User>(array);
 	}
 
 	@Override
@@ -49,6 +49,12 @@ public class UserCollection implements Collection<User> {
 			PrintHelper.out(user.getDataRegistration() + "");			
 		} 
 
+	}
+
+	@Override
+	public User[] toArray() {
+
+		return array;
 	}
 
 }
