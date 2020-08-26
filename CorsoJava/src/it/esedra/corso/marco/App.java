@@ -22,7 +22,7 @@ public class App {
 
 	public static void main(String[] args) {
 		try {
-			// Esempio di iterazione
+			// esempio di iterazione
 			// effettua la connessione al database
 			Connection connection = DbConnect.connect(DBPATH);
 
