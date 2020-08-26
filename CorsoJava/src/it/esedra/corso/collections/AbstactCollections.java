@@ -5,7 +5,7 @@ import java.util.Arrays;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 
-abstract class AbstactCollections<T> implements Collection<T> {
+public abstract class AbstactCollections<T> implements Collection<T> {
 
 	public final static int DEFAULT_SIZE = 10;
 	
