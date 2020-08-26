@@ -17,4 +17,9 @@ public interface Collection<T> {
 	 * Fa System out del contenuto della collention
 	 */
 	void test();
+	
+	/**
+	 * Restituisce la array
+	 */
+	T[] toArray();
 }

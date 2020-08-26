@@ -4,25 +4,25 @@ import java.util.Arrays;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.helpers.PrintHelper;
 
+abstract class AbstactCollections<T> implements Collection<T> {
 
+	public final static int DEFAULT_SIZE = 10;
+	
+	public AbstactCollections() {
 
-public class GenericCollection<T> implements Collection<T> {
-
-
-	private final int DEFAULT_SIZE = 10;
+	}
+	
+	public AbstactCollections(T[] array) {
+		this.array = array;
+	}
 	
 	private T[] array;
-		
-	public GenericCollection() {
-		array = (T[]) new Object[DEFAULT_SIZE];
-	}
+	
 
 	@Override
 	public Iterator<T> createIterator() {
 		return null;
-//		return new Iterator(array);
 	}
 
 	@Override
@@ -42,13 +42,17 @@ public class GenericCollection<T> implements Collection<T> {
 		}
 		
 	}
-	
-	public void test() {
-		for (int i = 0; i < array.length; i++) {
-				PrintHelper.out(array[i] + "");
-		}
-	}
 
+	@Override
+	public void test() {
+
+		
+	}
 	
+	@Override
+	public T[] toArray() {
+		return this.array;
+		
+	}
 
 }
