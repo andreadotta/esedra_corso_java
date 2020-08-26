@@ -2,7 +2,6 @@ package it.esedra.corso.collections;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.helpers.PrintHelper;
 
 public class DoubleCollection extends AbstactCollections<Double> implements Collection<Double> {
 
