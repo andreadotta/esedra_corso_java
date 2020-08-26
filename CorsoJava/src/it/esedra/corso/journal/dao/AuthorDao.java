@@ -1,9 +1,15 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.User;
+import it.esedra.corso.journal.collections.AuthorCollection;
+
 
 public class AuthorDao implements DaoInterface<Author> {
 
@@ -28,8 +34,34 @@ public class AuthorDao implements DaoInterface<Author> {
 	@Override
 	public Collection<Author> getAll() {
 		
-		return null;
-		
+		//istanzia una lista vuota di User
+		Collection<Author> authors = new AuthorCollection();
+		try {
+
+			//crea lo statement
+			Statement stm = this.conn.createStatement();			
+			//crea il result set al quale passa la query
+			ResultSet rs = stm.executeQuery("SELECT * FROM author");
+			
+			//ottiene il result set 
+			while (rs.next()) {
+				// e quindi per ogni tupla crea un oggetto di tipo User
+				Author author = new Author();
+				//inserisce i dati nelle proprietÃ  dell'oggetto
+			    author.setName(rs.getString("name"));
+				author.setId(rs.getInt("id"));
+				author.setEmail(rs.getString("email"));
+				
+				//aggiunge l'oggetto alla lista
+				authors.add(author);
+			}
+			//chiude le connessioni e il result set
+			rs.close();
+		} catch (Exception e) {
+			PrintHelper.out("Errore user dao", e.getMessage());
+		}
+		//restituisce la lista 
+		return users;
 	}
 	@Override
 	public void setConnection(Connection con) {
