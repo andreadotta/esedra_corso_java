@@ -36,7 +36,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 			Statement stm = this.conn.createStatement();
 
-			ResultSet rs = stm.executeQuery("SELECT * FROM paragraph");
+			ResultSet rs = stm.executeQuery("SELECT * FROM Paragraph");
 
 			while (rs.next()) {
 
