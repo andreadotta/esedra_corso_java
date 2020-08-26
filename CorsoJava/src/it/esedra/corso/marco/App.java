@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.db.DbConnect;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
@@ -14,7 +15,7 @@ import it.esedra.corso.journal.dao.UserDao;
 public class App {
 
 	public static final String DBPATH = System.getProperty("user.dir") + "/sqlite/db/marco.sql";
-	
+
 	public App() {
 		// TODO Auto-generated constructor stub
 	}
@@ -28,8 +29,10 @@ public class App {
 			UserDao userdao = new UserDao(new User());
 			userdao.setConnection(connection);
 			Collection<User> users = userdao.getAll();
+			Iterator<User> userIterator = users.createIterator();
 
-			for (User user : users) {
+			while (userIterator.hasNext()) {
+				User user = userIterator.next();
 				PrintHelper.out(user.getUserName() + " " + user.getUserSurname());
 				PrintHelper.out(user.getUserEmail() + "");
 				PrintHelper.out(user.getDataRegistration() + "");
@@ -40,7 +43,7 @@ public class App {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }
