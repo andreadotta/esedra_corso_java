@@ -6,24 +6,29 @@ package it.esedra.corso.journal;
  * @author Oussein
  * 
  */
-public class Paragraph {
+public class Paragraph<T> {
 
 	private int id;
-	private String text;	
+	private T text;
+	
+	public Paragraph(int id, T text) {
+		this.id=id;
+		this.text= text;
+	}
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getText() {
+	public T getText() {
 		return text;
 	}
-	public void setText(String text) {
+	public void setText(T text) {
 		this.text = text;
 	}
 	public Paragraph() {
-		// TODO Auto-generated constructor stub
-	}
+		
 
+}
 }
