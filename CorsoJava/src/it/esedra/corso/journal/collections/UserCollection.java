@@ -8,7 +8,7 @@ import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.User;
 
 public class UserCollection implements Collection<User> {
-
+ 
 	private final int DEFAULT_SIZE = 5;
 
 	private User[] array;
