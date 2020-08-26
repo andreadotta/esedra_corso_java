@@ -1,7 +1,7 @@
 package it.esedra.corso.journal;
 /**
  * Dovete creare una nuova classe User questa 
- * classe rapprensenta l'utente che fa login e avrà i campi 
+ * classe rappresenta l'utente che fa login e avrà i campi 
  * userEmail 
  * userName 
  * userPassword 
@@ -12,8 +12,11 @@ package it.esedra.corso.journal;
  */
 public class User {
 	
-	private String userEmail;
 	private String userName;
+	private String userSurname;
+	private String userEmail;
+	private String userPassword;
+	private java.util.Date dataRegistration;
 	public String getUserEmail() {
 		return userEmail;
 	}
@@ -44,11 +47,9 @@ public class User {
 	public void setDataRegistration(java.util.Date dataRegistration) {
 		this.dataRegistration = dataRegistration;
 	}
-	private String userPassword;
-	private String  userSurname;
-	private java.util.Date dataRegistration;
+	
 	public User() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

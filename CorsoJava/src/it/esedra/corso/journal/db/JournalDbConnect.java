@@ -15,7 +15,7 @@ public class JournalDbConnect {
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:/Users/JesooBamboo/git/esedra_corso_java/CorsoJava/sqlite/db/journal.sql";
+            String url = "jdbc:sqlite:~/git/esedra_corso_java/CorsoJava/sqlite/db/marco.sql";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
             

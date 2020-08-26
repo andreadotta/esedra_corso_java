@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.db.DbConnect;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
@@ -26,10 +27,12 @@ public class App {
 
 			UserDao userdao = new UserDao(new User());
 			userdao.setConnection(connection);
-			List<User> users = userdao.getAll();
+			Collection<User> users = userdao.getAll();
 
 			for (User user : users) {
-				PrintHelper.out(user.getUserName() + " (" + user.getUserEmail() + ")");
+				PrintHelper.out(user.getUserName() + " " + user.getUserSurname());
+				PrintHelper.out(user.getUserEmail() + "");
+				PrintHelper.out(user.getDataRegistration() + "");
 			}
 
 			connection.close();

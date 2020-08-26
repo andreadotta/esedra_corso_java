@@ -33,7 +33,7 @@ public class UserDao implements DaoInterface<User> {
 		Collection<User> users = new UserCollection();
 		try {
 
-			//crea lo statemente
+			//crea lo statement
 			Statement stm = this.conn.createStatement();			
 			//crea il result set al quale passa la query
 			ResultSet rs = stm.executeQuery("SELECT * FROM user");
@@ -43,8 +43,11 @@ public class UserDao implements DaoInterface<User> {
 				// e quindi per ogni tupla crea un oggetto di tipo User
 				User user = new User();
 				//inserisce i dati nelle proprietà dell'oggetto
-				user.setUserEmail(rs.getString("userEmail"));
 				user.setUserName(rs.getString("userName"));
+				user.setUserSurname(rs.getString("userSurname"));
+				user.setUserEmail(rs.getString("userEmail"));
+				user.setUserPassword(rs.getString("userPassword"));
+				user.setDataRegistration(rs.getDate("dateRegistration"));
 				//aggiunge l'oggetto alla lista
 				users.add(user);
 			}
@@ -53,7 +56,7 @@ public class UserDao implements DaoInterface<User> {
 		} catch (Exception e) {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
-		//resituisce la lista 
+		//restituisce la lista 
 		return users;
 		
 	}
