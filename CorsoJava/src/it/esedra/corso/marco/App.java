@@ -33,11 +33,11 @@ public class App {
 
 			while (userIterator.hasNext()) {
 				User user = userIterator.next();
-				PrintHelper.out(user.getUserName());
-				PrintHelper.out(user.getUserSurname());
-				PrintHelper.out(user.getUserEmail());
-				PrintHelper.out(user.getUserPassword());
-				PrintHelper.out(user.getDataRegistration() + "");
+				PrintHelper.out(user.getName());
+				PrintHelper.out(user.getSurname());
+				PrintHelper.out(user.getEmail());
+				PrintHelper.out(user.getPassword());
+				PrintHelper.out(user.getRegistration() + "");
 			}
 
 			connection.close();
