@@ -1,11 +1,9 @@
 package it.esedra.corso.collections;
 
-import it.esedra.corso.collections.interfaces.Iterator;
+public class Iterator<T>  implements it.esedra.corso.collections.interfaces.Iterator<T> {
 
-public class AbstractIterator<T>  implements Iterator<T> {
-
-	public AbstractIterator() {
-		// TODO Auto-generated constructor stub
+	public Iterator() {
+		
 	}
 
 	
@@ -13,7 +11,7 @@ public class AbstractIterator<T>  implements Iterator<T> {
 	private int current = -1;
 	private boolean isDone = false;
 
-	public AbstractIterator(T[] array) {
+	public Iterator(T[] array) {
 		this.array = array;
 	}
 
