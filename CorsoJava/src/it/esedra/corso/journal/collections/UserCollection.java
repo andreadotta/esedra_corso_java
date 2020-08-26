@@ -44,7 +44,9 @@ public class UserCollection implements Collection<User> {
 	public void test() {
 
 		for (User user : array) {
-			PrintHelper.out(user.getUserName() + "");			
+			PrintHelper.out(user.getUserName() + " " + user.getUserSurname());
+			PrintHelper.out(user.getUserEmail() + "");
+			PrintHelper.out(user.getDataRegistration() + "");			
 		} 
 
 	}
