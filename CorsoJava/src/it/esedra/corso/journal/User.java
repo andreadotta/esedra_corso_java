@@ -17,6 +17,7 @@ public class User {
 	private String userEmail;
 	private String userPassword;
 	private java.util.Date dataRegistration;
+	
 	public String getUserEmail() {
 		return userEmail;
 	}
