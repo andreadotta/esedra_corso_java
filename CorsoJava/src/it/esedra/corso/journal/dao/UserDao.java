@@ -42,11 +42,11 @@ public class UserDao implements DaoInterface<User> {
 				// e quindi per ogni tupla crea un oggetto di tipo User
 				User user = new User();
 				// inserisce i dati nelle proprietà dell'oggetto
-				user.setUserName(rs.getString("userName"));
-				user.setUserSurname(rs.getString("userSurname"));
-				user.setUserEmail(rs.getString("userEmail"));
-				user.setUserPassword(rs.getString("userPassword"));
-				user.setDataRegistration(rs.getDate("dataRegistration"));
+				user.setName(rs.getString("userName"));
+				user.setSurname(rs.getString("userSurname"));
+				user.setEmail(rs.getString("userEmail"));
+				user.setPassword(rs.getString("userPassword"));
+				user.setRegistration(rs.getDate("dataRegistration"));
 				// aggiunge l'oggetto alla lista
 				users.add(user);
 			}

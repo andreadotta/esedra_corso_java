@@ -26,10 +26,10 @@ public class UserTest {
 		User username1 = new User();
 		User username2 = new User();
 
-		username1.setUserName("Andrea");
-		username1.setUserSurname("Dotta");
-		username2.setUserName("Roberto");
-		username2.setUserSurname("Baldi");
+		username1.setName("Andrea");
+		username1.setSurname("Dotta");
+		username2.setName("Roberto");
+		username2.setSurname("Baldi");
 
 		userCollection.add(username1);
 		userCollection.add(username2);
@@ -45,11 +45,11 @@ public class UserTest {
 
 			while (userIterator.hasNext()) {
 				User user = userIterator.next();
-				PrintHelper.out(user.getUserName());
-				PrintHelper.out(user.getUserSurname());
-				PrintHelper.out(user.getUserEmail());
-				PrintHelper.out(user.getUserPassword());
-				PrintHelper.out(user.getDataRegistration() + "");
+				PrintHelper.out(user.getName());
+				PrintHelper.out(user.getSurname());
+				PrintHelper.out(user.getEmail());
+				PrintHelper.out(user.getPassword());
+				PrintHelper.out(user.getRegistration() + "");
 			}
 
 			connection.close();

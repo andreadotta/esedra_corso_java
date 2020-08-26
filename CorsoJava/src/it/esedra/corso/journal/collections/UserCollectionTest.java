@@ -19,11 +19,11 @@ public class UserCollectionTest {
 		User username4 = new User();
 		User username5 = new User();
 
-		username1.setUserName("Mario Rossi");
-		username2.setUserName("Mario Bianchi");
-		username3.setUserName("Gennaro Verdi");
-		username4.setUserName("Cinzia Neri");
-		username5.setUserName("Gianna Panna");
+		username1.setName("Mario Rossi");
+		username2.setName("Mario Bianchi");
+		username3.setName("Gennaro Verdi");
+		username4.setName("Cinzia Neri");
+		username5.setName("Gianna Panna");
 
 		userCollection.add(username1);
 		userCollection.add(username2);

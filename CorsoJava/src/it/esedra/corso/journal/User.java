@@ -12,41 +12,41 @@ package it.esedra.corso.journal;
  */
 public class User {
 	
-	private String userName;
-	private String userSurname;
-	private String userEmail;
-	private String userPassword;
-	private java.util.Date dataRegistration;
+	private String name;
+	private String surname;
+	private String email;
+	private String password;
+	private java.util.Date registration;
 	
-	public String getUserEmail() {
-		return userEmail;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getUserPassword() {
-		return userPassword;
+	public String getPassword() {
+		return password;
 	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getUserSurname() {
-		return userSurname;
+	public String getSurname() {
+		return surname;
 	}
-	public void setUserSurname(String userSurname) {
-		this.userSurname = userSurname;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
-	public java.util.Date getDataRegistration() {
-		return dataRegistration;
+	public java.util.Date getRegistration() {
+		return registration;
 	}
-	public void setDataRegistration(java.util.Date dataRegistration) {
-		this.dataRegistration = dataRegistration;
+	public void setRegistration(java.util.Date registration) {
+		this.registration = registration;
 	}
 	
 	public User() {

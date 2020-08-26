@@ -28,7 +28,7 @@ public class App {
 			Iterator<User> userIterator = users.createIterator();
 			while(userIterator.hasNext()) {
 				User user = userIterator.next();
-				PrintHelper.out(user.getUserName());
+				PrintHelper.out(user.getName());
 			}
 
 			connection.close();
