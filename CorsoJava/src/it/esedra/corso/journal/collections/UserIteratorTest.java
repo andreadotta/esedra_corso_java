@@ -29,6 +29,8 @@ public class UserIteratorTest {
 		username4.setUserName("Cinzia Neri");
 		username5.setUserName("Gianna Panna");
 
+		userCollection.add(username1);
+		
 		Iterator<User> iterator = userCollection.createIterator();
 
 		while (iterator.hasNext()) {
