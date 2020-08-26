@@ -1,7 +1,7 @@
 package it.esedra.corso.collections;
 
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.Iterator;
+
 
 public class FloatCollection extends AbstactCollections<Float> implements Collection<Float> {
 
@@ -11,7 +11,7 @@ public class FloatCollection extends AbstactCollections<Float> implements Collec
 
 	@Override
 	public Iterator<Float> createIterator() {
-		return new FloatIterator(super.toArray());
+		return new Iterator<Float>(super.toArray());
 	}
 
 }
