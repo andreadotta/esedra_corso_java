@@ -14,12 +14,11 @@ import it.esedra.corso.journal.collections.UserCollection;
 public class UserDao implements DaoInterface<User> {
 	private User user;
 	private Connection conn;
-	
+
 	public UserDao(User user) {
 		super();
 		this.user = user;
 	}
-	
 
 	@Override
 	public void delete() {
@@ -29,36 +28,36 @@ public class UserDao implements DaoInterface<User> {
 
 	@Override
 	public Collection<User> getAll() {
-		//istanzia una lista vuota di User
+		// istanzia una lista vuota di User
 		Collection<User> users = new UserCollection();
 		try {
 
-			//crea lo statement
-			Statement stm = this.conn.createStatement();			
-			//crea il result set al quale passa la query
+			// crea lo statement
+			Statement stm = this.conn.createStatement();
+			// crea il result set al quale passa la query
 			ResultSet rs = stm.executeQuery("SELECT * FROM user");
-			
-			//ottiene il result set 
+
+			// ottiene il result set
 			while (rs.next()) {
 				// e quindi per ogni tupla crea un oggetto di tipo User
 				User user = new User();
-				//inserisce i dati nelle proprietà dell'oggetto
+				// inserisce i dati nelle proprietà dell'oggetto
 				user.setUserName(rs.getString("userName"));
 				user.setUserSurname(rs.getString("userSurname"));
 				user.setUserEmail(rs.getString("userEmail"));
 				user.setUserPassword(rs.getString("userPassword"));
-				user.setDataRegistration(rs.getDate("dateRegistration"));
-				//aggiunge l'oggetto alla lista
+				user.setDataRegistration(rs.getDate("dataRegistration"));
+				// aggiunge l'oggetto alla lista
 				users.add(user);
 			}
-			//chiude le connessioni e il result set
+			// chiude le connessioni e il result set
 			rs.close();
 		} catch (Exception e) {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
-		//restituisce la lista 
+		// restituisce la lista
 		return users;
-		
+
 	}
 
 	@Override
