@@ -6,7 +6,7 @@ import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Video;
 
 public class VideoDao implements DaoInterface<Video> {
-
+ 
 	private Video video;
 	private Connection conn;
 
