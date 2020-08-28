@@ -17,22 +17,11 @@ public class UserTest {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static final String DBPATH = System.getProperty("user.dir") + "/sqlite/db/marco.sql";
+	public static final String DBPATH = System.getProperty("user.dir") + "/sqlite/db/marco.db";
 
 	public static void main(String[] args) {
 
 		Collection<User> userCollection = new UserCollection();
-
-		User username1 = new User();
-		User username2 = new User();
-
-		username1.setName("Andrea");
-		username1.setSurname("Dotta");
-		username2.setName("Roberto");
-		username2.setSurname("Baldi");
-
-		userCollection.add(username1);
-		userCollection.add(username2);
 
 		try {
 			// effettua la connessione al database

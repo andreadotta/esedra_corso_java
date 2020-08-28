@@ -10,7 +10,7 @@ import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.dao.UserDao;
 
 public class App {
-	public static final String DBPATH = System.getProperty("user.dir") + "/sqlite/db/journal.sql";
+	public static final String DBPATH = System.getProperty("user.dir") + "/sqlite/db/marco.db";
 
 	public App() {
 		// TODO Auto-generated constructor stub

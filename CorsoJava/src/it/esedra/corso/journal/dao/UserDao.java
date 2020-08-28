@@ -46,7 +46,7 @@ public class UserDao implements DaoInterface<User> {
 				user.setSurname(rs.getString("userSurname"));
 				user.setEmail(rs.getString("userEmail"));
 				user.setPassword(rs.getString("userPassword"));
-				user.setRegistration(rs.getDate("dataRegistration"));
+				user.setRegistration(rs.getString("dataRegistration"));
 				// aggiunge l'oggetto alla lista
 				users.add(user);
 			}

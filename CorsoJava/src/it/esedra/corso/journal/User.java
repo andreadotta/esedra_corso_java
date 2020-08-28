@@ -16,7 +16,7 @@ public class User {
 	private String surname;
 	private String email;
 	private String password;
-	private java.util.Date registration;
+	private String registration;
 	
 	public String getEmail() {
 		return email;
@@ -42,10 +42,10 @@ public class User {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public java.util.Date getRegistration() {
+	public String getRegistration() {
 		return registration;
 	}
-	public void setRegistration(java.util.Date registration) {
+	public void setRegistration(String registration) {
 		this.registration = registration;
 	}
 	
