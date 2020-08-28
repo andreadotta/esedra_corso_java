@@ -34,11 +34,11 @@ public class UserTest {
 
 			while (userIterator.hasNext()) {
 				User user = userIterator.next();
-				PrintHelper.out(user.getName());
-				PrintHelper.out(user.getSurname());
-				PrintHelper.out(user.getEmail());
-				PrintHelper.out(user.getPassword());
-				PrintHelper.out(user.getRegistration() + "");
+				PrintHelper.out("Nome e cognome: " + user.getName() + " " + user.getSurname());
+				PrintHelper.out("Email: " + user.getEmail());
+				PrintHelper.out("Password: " + user.getPassword());
+				PrintHelper.out("Registration Date: " + user.getRegistration());
+				PrintHelper.out("*****************************");
 			}
 
 			connection.close();
