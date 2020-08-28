@@ -14,9 +14,10 @@ import it.esedra.corso.journal.dao.UserDao;
 public class UserTest {
 
 	public UserTest() {
-		// TODO Auto-generated constructor stub
+
 	}
 
+	// Parametri database 
 	public static final String DBPATH = System.getProperty("user.dir") + "/sqlite/db/marco.db";
 
 	public static void main(String[] args) {
@@ -24,14 +25,16 @@ public class UserTest {
 		Collection<User> userCollection = new UserCollection();
 
 		try {
-			// effettua la connessione al database
+			// Effettua la connessione al database
 			Connection connection = DbConnect.connect(DBPATH);
-
 			UserDao userdao = new UserDao(new User());
 			userdao.setConnection(connection);
+			// Chiamata metodo getAll() sulla Collection creata
 			userCollection = userdao.getAll();
+			// Inizializzazione iterator per ciclare sulla Collection
 			Iterator<User> userIterator = userCollection.createIterator();
-
+			// cicla sugli elementi User della userCollection e restituisce per ogni
+			// elemento i valori delle colonne della tabella user
 			while (userIterator.hasNext()) {
 				User user = userIterator.next();
 				PrintHelper.out("Nome e cognome: " + user.getName() + " " + user.getSurname());
@@ -43,7 +46,6 @@ public class UserTest {
 
 			connection.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
