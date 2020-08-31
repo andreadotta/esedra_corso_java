@@ -5,9 +5,13 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import it.esedra.corso.collections.ParagraphCollection;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.Paragraph;
+import it.esedra.corso.journal.collections.AuthorCollection;
 
 public class ParagraphDao implements DaoInterface<Paragraph> {
 
@@ -31,7 +35,9 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 	@Override
 	public Collection<Paragraph> getAll() {
-		List<Paragraph> paragraphs = new ArrayList<>();
+		Collection<Paragraph> paragraphs = new ParagraphCollection();
+		
+		//List<Paragraph> paragraphs = new ArrayList<>();
 		try {
 
 			Statement stm = this.conn.createStatement();

@@ -6,12 +6,12 @@ package it.esedra.corso.journal;
  * @author Oussein
  * 
  */
-public class Paragraph<T> {
+public class Paragraph {
 
 	private int id;
-	private T text;
+	private String text;
 	
-	public Paragraph(int id, T text) {
+	public Paragraph(int id, String text) {
 		this.id=id;
 		this.text= text;
 	}
@@ -21,10 +21,10 @@ public class Paragraph<T> {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public T getText() {
+	public String getText() {
 		return text;
 	}
-	public void setText(T text) {
+	public void setText(String text) {
 		this.text = text;
 	}
 	public Paragraph() {
