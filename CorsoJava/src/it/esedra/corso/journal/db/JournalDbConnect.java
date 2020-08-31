@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.Journal;
 
 public class JournalDbConnect {
 	/**
@@ -15,16 +16,16 @@ public class JournalDbConnect {
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:/home/jesoobamboo/git/esedra_corso_java/CorsoJava/sqlite/db/journal.db";
+            String url = "jdbc:sqlite:" +  System.getProperty("user.dir") + Journal.loadProperties().getDbpath();
             // create a connection to the database
             conn = DriverManager.getConnection(url);
             
             System.out.println("Connection to SQLite has been established.");
 
             
-        } catch (SQLException e) {
+        } catch (Exception e) {
             //throw new Exception(e.getMessage());
-        	PrintHelper.out("Errore di connessione", e.getMessage());
+        	PrintHelper.out("Errore", e.getMessage());
         } 
         
         return conn;

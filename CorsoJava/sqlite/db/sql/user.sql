@@ -5,5 +5,5 @@ CREATE TABLE "user" (
 	"email"	TEXT NOT NULL,
 	"password"	TEXT NOT NULL,
 	"registration"	TEXT NOT NULL,
-	PRIMARY KEY("userId" AUTOINCREMENT)
+	PRIMARY KEY("id" AUTOINCREMENT)
 )
