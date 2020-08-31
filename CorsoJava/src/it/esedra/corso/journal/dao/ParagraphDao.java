@@ -55,7 +55,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 			rs.close();
 		} catch (Exception e) {
-			PrintHelper.out("Errore user dao", e.getMessage());
+			PrintHelper.out("Errore paragraph dao", e.getMessage());
 		}
 
 		return (Collection<Paragraph>) paragraphs;
