@@ -37,7 +37,7 @@ public class ParagraphTest {
 			while (paragraphIterator.hasNext()) {
 				
 				Paragraph paragraph = paragraphIterator.next();
-				PrintHelper.out("id e text: " + paragraph.getId() + " " + paragraph.getText());
+				PrintHelper.out(" text: "  + " " + paragraph.getText());
 				
 
 			connection.close();

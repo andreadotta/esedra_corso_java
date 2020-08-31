@@ -48,9 +48,8 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 				Paragraph paragraph = new Paragraph();
 
-				paragraph.setText(rs.getString("Text"));
-				paragraph.setId(rs.getInt("id"));
-
+				paragraph.setText(rs.getString("text"));
+				
 				paragraphs.add(paragraph);
 			}
 
