@@ -61,7 +61,7 @@ public class AuthorDao implements DaoInterface<Author> {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
 		//restituisce la lista 
-		return users;
+		return authors;
 	}
 	@Override
 	public void setConnection(Connection con) {
