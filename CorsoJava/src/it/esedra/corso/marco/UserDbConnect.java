@@ -1,4 +1,4 @@
-package it.esedra.corso.journal.test;
+package it.esedra.corso.marco;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

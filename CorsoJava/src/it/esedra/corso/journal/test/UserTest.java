@@ -26,7 +26,7 @@ public class UserTest {
 
 		try {
 			// Effettua la connessione al database
-			Connection connection = UserDbConnect.connect();
+			Connection connection = DbConnect.connect(DBPATH);
 			UserDao userdao = new UserDao(new User());
 			userdao.setConnection(connection);
 						
