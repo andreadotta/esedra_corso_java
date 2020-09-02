@@ -50,7 +50,7 @@ public class ImageDao implements DaoInterface<Image> {
 			PrintHelper.out("Errore video dao", e.getMessage());
 		}
 
-		return images;
+		 return images;
 
 	}
 
