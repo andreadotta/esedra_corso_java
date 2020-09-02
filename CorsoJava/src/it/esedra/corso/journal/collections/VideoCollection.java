@@ -1,7 +1,5 @@
 package it.esedra.corso.journal.collections;
 
-import java.util.Arrays;
-
 import it.esedra.corso.collections.AbstactCollections;
 import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.collections.interfaces.Collection;

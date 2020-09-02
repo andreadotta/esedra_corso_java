@@ -1,7 +1,6 @@
-CREATE TABLE "video" (
-	"title"	TEXT NULL,
+CREATE TABLE "image" (
+	"name"	TEXT NULL,
 	"id"	INTEGER NOT NULL UNIQUE,
 	"src"	TEXT NOT NULL, 
-	"name"	TEXT NULL, 	
 	PRIMARY KEY("id" AUTOINCREMENT)
 );

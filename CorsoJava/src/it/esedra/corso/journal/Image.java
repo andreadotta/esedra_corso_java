@@ -7,11 +7,8 @@ package it.esedra.corso.journal;
  *
  */
 public class Image extends MultimediaResource  {
-	
+
+
 	
 
-	public Image(String name, String src) {
-		super(name,src);
-		
-	}
 }
