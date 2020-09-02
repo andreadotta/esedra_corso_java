@@ -45,7 +45,8 @@ public class DbUtil {
 			tables.add("paragraph");
 			tables.add("user");
 			tables.add("video");
-			tables.add("image");			
+			tables.add("image");
+			tables.add("chapter");
 
 			for (String table : tables) {
 				FileReader input = new FileReader(System.getProperty("user.dir") + "/sqlite/db/sql/" + table + ".sql");

@@ -14,7 +14,10 @@ public class DbUtilTest {
 		
 		try {
 			DbUtil.rebuildDb();
-
+			ChapterTest chapterTest = new ChapterTest();
+			chapterTest.testUpdate();
+			chapterTest.testGetAll();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -10,7 +10,19 @@ import java.util.Date;
  */
 public class Chapter {
 
+	private int id;
+	
 	private String title;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 
 	private Date date;
 
