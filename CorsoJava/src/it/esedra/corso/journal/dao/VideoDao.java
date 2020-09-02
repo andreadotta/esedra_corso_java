@@ -41,6 +41,8 @@ public class VideoDao implements DaoInterface<Video> {
 				Video video = new Video();
 				video.setId(rs.getInt("id"));
 				video.setSrc(rs.getString("src"));
+				video.setName(rs.getInt("name"));
+				video.setTitle(rs.getInt("title"));
 				videos.add(video);
 
 			}
