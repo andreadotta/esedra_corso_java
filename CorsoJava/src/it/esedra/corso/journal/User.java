@@ -1,12 +1,12 @@
 package it.esedra.corso.journal;
 /**
  * Dovete creare una nuova classe User questa 
- * classe rappresenta l'utente che fa login e avrà i campi 
- * userEmail 
- * userName 
- * userPassword 
- * userSurname 
- * dataRegistration (java.util.data)
+ * classe rappresenta l'utente che fa login e avrà i campi: 
+ * name 
+ * surname 
+ * email 
+ * password 
+ * registration
  * @author Marco
  *
  */
