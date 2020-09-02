@@ -1,6 +1,5 @@
 package it.esedra.corso.journal.dao;
 
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -15,20 +14,19 @@ public class ImageDao implements DaoInterface<Image> {
 
 	private Image image;
 	private Connection conn;
-	
+
 	public ImageDao(Image image) {
 		super();
 		this.image = image;
 	}
-    
-    @Override
+
+	@Override
 	public void update() {
-		
+
 	}
 
 	@Override
 	public void delete() {
-		
 
 	}
 
@@ -52,10 +50,8 @@ public class ImageDao implements DaoInterface<Image> {
 			PrintHelper.out("Errore video dao", e.getMessage());
 		}
 
-		return Image;
+		return images;
 
-		
-		
 	}
 
 	public Image getImage() {
