@@ -3,12 +3,10 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.journal.Video;
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.collections.VideoCollection;
 
 public class VideoDao implements DaoInterface<Video> {
@@ -41,9 +39,8 @@ public class VideoDao implements DaoInterface<Video> {
 			while (rs.next()) {
 
 				Video video = new Video();
-				video.setVideoTitle(rs.getString("title"));
-				video.setVideoId(rs.getString("id"));
-				video.setVideoUrl(rs.getString("url"));
+				video.setId(rs.getInt("id"));
+				video.setSrc(rs.getString("src"));
 				videos.add(video);
 
 			}

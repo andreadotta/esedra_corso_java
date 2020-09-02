@@ -5,6 +5,7 @@ import java.sql.Connection;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Image;
+import it.esedra.corso.journal.collections.ImageCollection;
 
 public class ImageDao implements DaoInterface<Image> {
 
@@ -29,6 +30,7 @@ public class ImageDao implements DaoInterface<Image> {
 
 	@Override
 	public Collection<Image> getAll() {
+		Collection<Image> images = new ImageCollection();
 		
 		return null;
 		
