@@ -1,5 +1,13 @@
 package it.esedra.corso.journal;
 
+/**
+ * Contiene le proprietà della application Journal
+ * 
+ * dbpath = percorso relativo del database sqlite "journal" 
+ * 
+ * @author bauhausk
+ *
+ */
 public class Config {
 
 	private String dbpath;

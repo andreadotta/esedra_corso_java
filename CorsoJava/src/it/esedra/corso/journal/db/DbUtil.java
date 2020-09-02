@@ -17,14 +17,26 @@ public class DbUtil {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Ricostruisce il database journal
+	 * 
+	 * @throws IOException
+	 */
 	public static void rebuildDb() throws IOException {
 
 		try {
+			//carichiamo il  percorso assoluto del file del database
 			String dbpath = System.getProperty("user.dir") + Journal.loadProperties().getDbpath();
 			// cancella il database vecchio
-			File oldDb = new File(dbpath);
+			File oldDb = new File(dbpath); //File fornisce varie operazioni per manipolare 
+										   // file già esistenti.
+										   // Non può leggere dati dal file
+										   // Consente ad esem,pio di cancellare un file, rinominarlo, etc
 			oldDb.delete();
+			
 			// crea il nuovo database
+			// in SQLITE creando una connessione al db se questo non esiste
+			// SQLITE lo crea 
 			Connection conn = JournalDbConnect.connect();
 			
 			// caricherei tutte le tabelle
@@ -57,17 +69,14 @@ public class DbUtil {
 		String fileReaded = new String();
 		try {
 
-			BufferedReader b;
-			b = new BufferedReader(f);
+			BufferedReader b = new BufferedReader(f);
 
 			String s;
-
 			while (true) {
-
 				s = b.readLine();
-
-				if (s == null)
-					break;
+				if (s == null)  {
+					break;					
+				}
 				fileReaded += s;
 			}
 
