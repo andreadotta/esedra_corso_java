@@ -12,7 +12,7 @@ import it.esedra.corso.journal.Video;
 
 public class VideoDao implements DaoInterface<Video> {
     
-	private Video video;
+	private Video video; 
 	private Connection conn;
 
 	public VideoDao(Video video) {
