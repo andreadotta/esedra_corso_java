@@ -3,15 +3,12 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
-import it.esedra.corso.collections.ParagraphCollection;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Author;
+
 import it.esedra.corso.journal.Paragraph;
-import it.esedra.corso.journal.collections.AuthorCollection;
+import it.esedra.corso.journal.collections.ParagraphCollection;
 
 public class ParagraphDao implements DaoInterface<Paragraph> {
 
@@ -36,8 +33,8 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	@Override
 	public Collection<Paragraph> getAll() {
 		Collection<Paragraph> paragraphs = new ParagraphCollection();
-		
-		//List<Paragraph> paragraphs = new ArrayList<>();
+
+		// List<Paragraph> paragraphs = new ArrayList<>();
 		try {
 
 			Statement stm = this.conn.createStatement();
@@ -49,7 +46,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 				Paragraph paragraph = new Paragraph();
 
 				paragraph.setText(rs.getString("text"));
-				
+
 				paragraphs.add(paragraph);
 			}
 

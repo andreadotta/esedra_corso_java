@@ -1,5 +1,7 @@
-package it.esedra.corso.collections;
+package it.esedra.corso.journal.collections;
 
+import it.esedra.corso.collections.AbstactCollections;
+import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Paragraph;
 
