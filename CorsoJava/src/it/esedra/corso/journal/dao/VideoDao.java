@@ -9,6 +9,7 @@ import java.util.List;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Video;
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.collections.VideoCollection;
 
 public class VideoDao implements DaoInterface<Video> {
     
