@@ -71,18 +71,9 @@ public class UserTest {
 				PrintHelper.out("Registration Date: " + user.getRegistration());
 				PrintHelper.out("*****************************");
 
-				if (user.getId() == 1) {
-					if (user.getName() == "Claudio") {
-						if (user.getSurname() == "Cini") {
-							if (user.getEmail() == "ccini@foo.com") {
-								if (user.getPassword() == "bge") {
-									if (user.getRegistration() == "01/06/2018") {
-
-									}
-								}
-							}
-						}
-					}
+				if (user.getName() == "Claudio" && user.getSurname() == "Cini" && 
+						user.getEmail() == "ccini@foo.com" && user.getPassword() == "bge" && 
+						user.getRegistration() == "01/06/2018") {
 					PrintHelper.out("I dati coincidono.");
 				} else {
 					PrintHelper.out("Errore output. I dati non coincidono.");
