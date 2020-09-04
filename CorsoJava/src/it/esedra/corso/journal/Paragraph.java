@@ -9,6 +9,15 @@ package it.esedra.corso.journal;
 public class Paragraph {
 
 	private String text;
+	private int id;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Paragraph() {
 

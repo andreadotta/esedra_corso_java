@@ -1,11 +1,72 @@
 <!doctype html>
-<html>
+<html lang="it">
 <head>
-<title>Esedra corso java Hello World</title>
+	<meta charset="UTF-8">
+	<title>Esedra corso java Hello World</title>
+	<style>
+		.container {
+			background: #FF0000; /*rgb(255,0,0)*/
+			padding-top: 50px;
+			padding-left: 50px;
+			padding-right: 50px;
+			padding-bottom: 50px;
+			text-align: center;
+					
+		}
+		#test {
+			font-size: 41px;
+		}
+						
+	</style>
 </head>
 <body>
 	<h1>Corso Java +  HTML</h1>
 	<p>Hello world</p>
-	<p>Ancora Hello world</p>
+	<p id="test">Ancora Hello world</p>
+	<!-- HTML Content Division -->
+	<div class="container" id="changeColor" >
+		<img src="https://www.w3schools.com/js/pic_htmltree.gif" />
+		<p>HTML DOM albero ad oggetti<p>
+		<p>
+			<button  onclick="changeColor()">Cambia colore</button>
+		</p>
+	</div>
+	
+	
+	<script type="text/javascript">
+		/* commento */
+		//commento
+		
+
+		const eta = 22;
+		var dataNascita;
+		
+		function sayHello(name) {
+			let cognome = "Baldi";
+			dataNascita = "Settembre";
+			//alert( "Ciao " + name );	
+		}	
+		
+		sayHello("Andrea");
+		//alert(dataNascita);		
+		//alert(eta);			
+		
+		var a = 1;
+		
+		if (a === undefined) {
+			alert("a non è definito");
+		} else {
+			console.log("A è uguale: " + a);	
+		}
+
+		document.getElementById("test").innerHTML = "Ciao";
+			
+	
+		function changeColor() {
+			console.log("ho cloccato su cambia colore");
+			document.getElementById("changeColor").style = "background: #00FF00"
+		}
+
+	</script>
 </body>
 </html>

@@ -22,14 +22,22 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 	@Override
 	public void update() {
+		if (paragraph == null) {
+			PrintHelper.out("Paragraph non può essere null");
+			return;
+		}
+		try {
+
+			Statement stm = this.conn.createStatement();
+			stm.executeUpdate("INSERT INTO paragraph (id, text) VALUES ( " + paragraph.getId() + ", '"
+					+ paragraph.getText() + "', '" + "' )");
+
+			conn.close();
+		} catch (Exception e) {
+			PrintHelper.out("Errore paragraph dao", e.getMessage());
+		}
 
 	}
-
-	@Override
-	public void delete() {
-
-	}
-
 	@Override
 	public Collection<Paragraph> getAll() {
 		Collection<Paragraph> paragraphs = new ParagraphCollection();
@@ -59,8 +67,14 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 	}
 
+	
 	@Override
 	public void setConnection(Connection con) {
+
+	}
+
+	@Override
+	public void delete() {
 
 	}
 

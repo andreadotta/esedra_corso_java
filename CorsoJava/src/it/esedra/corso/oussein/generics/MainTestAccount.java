@@ -9,6 +9,8 @@ public class MainTestAccount {
 		Account<String> otherAccount=new Account<>("Ndiemane",100, "euros");
 		otherAccount.showBalance();
 		
+		
+		
 		Bank bank =new Bank("WeusBank");
 		bank.transfer(myAccount, otherAccount,25);
 		
