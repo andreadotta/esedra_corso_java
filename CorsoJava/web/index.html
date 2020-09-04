@@ -3,7 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Esedra corso java Hello World</title>
+	<link href="https://fonts.googleapis.com/css2?family=Grandstander:ital@1&display=swap" rel="stylesheet"> 
+	 <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@600&display=swap" rel="stylesheet"> 
 	<style>
+		body {
+			background: #cccccc;
+			font-family: 'Grandstander', cursive;
+		}
+		h1, h2, h3 {
+			font-family: 'Kufam', cursive;
+		}
 		.container {
 			background: #FF0000; /*rgb(255,0,0)*/
 			padding-top: 50px;
@@ -16,22 +25,40 @@
 		#test {
 			font-size: 41px;
 		}
-						
+		.imgExample {
+			width: 251px;
+		}
+		.paragraph {
+			margin-top: 100px;
+			margin-bottom: 100px;			
+		}
+		.firstParagraph {
+		    margin-top: 0px;
+		}				
 	</style>
 </head>
 <body>
 	<h1>Corso Java +  HTML</h1>
-	<p>Hello world</p>
-	<p id="test">Ancora Hello world</p>
-	<!-- HTML Content Division -->
-	<div class="container" id="changeColor" >
-		<img src="https://www.w3schools.com/js/pic_htmltree.gif" />
-		<p>HTML DOM albero ad oggetti<p>
-		<p>
-			<button  onclick="changeColor()">Cambia colore</button>
-		</p>
-	</div>
-	
+		<div class="paragraph firstParagraph">
+		<h2>Introduzione a Java</h2>
+			<h3>le variabili</h3>
+				<p>Testo sulle vaibili bla bla blbla bla blbla bla bl</p>
+		</div>
+		
+		<div class="paragraph">
+		<h2>Introduzione a HTML</h2>
+			<h3>i TAG</h3>		
+			  <p>Testo sui tag bla bla bla bla</p>
+				<!-- HTML Content Division -->
+				<div class="container" id="changeColor" >
+					<img src="https://www.w3schools.com/js/pic_htmltree.gif" />
+					<p>HTML DOM albero ad oggetti<p>
+					<p>
+						<button  onclick="changeColor()">Cambia colore</button>
+					</p>
+				</div>
+		</div>
+
 	
 	<script type="text/javascript">
 		/* commento */
