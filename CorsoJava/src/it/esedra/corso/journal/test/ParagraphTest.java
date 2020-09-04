@@ -60,6 +60,7 @@ public class ParagraphTest {
 
 				Paragraph paragraph = paragraphIterator.next();
 				PrintHelper.out(" text: " + " " + paragraph.getText());
+				PrintHelper.out("id:" + "" + paragraph.getId());
 
 				connection.close();
 			}
