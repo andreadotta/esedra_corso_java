@@ -30,11 +30,6 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	}
 
 	@Override
-	public void delete() {
-
-	}
-
-	@Override
 	public Collection<Paragraph> getAll() {
 		Collection<Paragraph> paragraphs = new ParagraphCollection();
 
@@ -56,6 +51,11 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 	@Override
 	public void setConnection(Connection con) {
+
+	}
+
+	@Override
+	public void delete() {
 
 	}
 

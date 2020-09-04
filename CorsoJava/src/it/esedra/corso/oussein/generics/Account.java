@@ -4,7 +4,7 @@ public class Account<T> {
 	private String owner;
 	private double amount;
 	private T currency;
-
+    
 	public Account(String owner, double amount, T currency) {
 		this.owner = owner;
 		this.amount = amount;
