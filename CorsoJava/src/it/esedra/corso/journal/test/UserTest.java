@@ -50,7 +50,7 @@ public class UserTest {
 
 		try {
 			// Effettua la connessione al database
-			Connection connection = DbConnect.connect(DBPATH);
+			Connection connection = JournalDbConnect.connect();
 			UserDao userdao = new UserDao(new User());
 			userdao.setConnection(connection);
 
@@ -70,6 +70,24 @@ public class UserTest {
 				PrintHelper.out("Password: " + user.getPassword());
 				PrintHelper.out("Registration Date: " + user.getRegistration());
 				PrintHelper.out("*****************************");
+
+				if (user.getId() == 1) {
+					if (user.getName() == "Claudio") {
+						if (user.getSurname() == "Cini") {
+							if (user.getEmail() == "ccini@foo.com") {
+								if (user.getPassword() == "bge") {
+									if (user.getRegistration() == "01/06/2018") {
+
+									}
+								}
+							}
+						}
+					}
+					PrintHelper.out("I dati coincidono.");
+				} else {
+					PrintHelper.out("Errore output. I dati non coincidono.");
+				}
+
 			}
 
 			connection.close();
