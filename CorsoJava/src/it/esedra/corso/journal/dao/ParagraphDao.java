@@ -26,14 +26,6 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			PrintHelper.out("Paragraph non può essere null");
 			return;
 		}
-
-	}
-
-	@Override
-	public Collection<Paragraph> getAll() {
-		Collection<Paragraph> paragraphs = new ParagraphCollection();
-
-		// List<Paragraph> paragraphs = new ArrayList<>();
 		try {
 
 			Statement stm = this.conn.createStatement();
@@ -45,10 +37,37 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			PrintHelper.out("Errore paragraph dao", e.getMessage());
 		}
 
+	}
+	@Override
+	public Collection<Paragraph> getAll() {
+		Collection<Paragraph> paragraphs = new ParagraphCollection();
+
+		// List<Paragraph> paragraphs = new ArrayList<>();
+		try {
+
+			Statement stm = this.conn.createStatement();
+
+			ResultSet rs = stm.executeQuery("SELECT * FROM Paragraph");
+
+			while (rs.next()) {
+
+				Paragraph paragraph = new Paragraph();
+
+				paragraph.setText(rs.getString("text"));
+
+				paragraphs.add(paragraph);
+			}
+
+			rs.close();
+		} catch (Exception e) {
+			PrintHelper.out("Errore paragraph dao", e.getMessage());
+		}
+
 		return (Collection<Paragraph>) paragraphs;
 
 	}
 
+	
 	@Override
 	public void setConnection(Connection con) {
 
