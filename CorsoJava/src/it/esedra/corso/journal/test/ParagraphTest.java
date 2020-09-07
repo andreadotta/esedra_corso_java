@@ -61,9 +61,16 @@ public class ParagraphTest {
 				Paragraph paragraph = paragraphIterator.next();
 				PrintHelper.out(" text: " + " " + paragraph.getText());
 				PrintHelper.out("id:" + "" + paragraph.getId());
+				
+				if( paragraph.getText()=="il primo paragraph del diario") {
+					PrintHelper.out("i dati sono exact");
+				}else {
+					PrintHelper.out("che un errore");
+				}
 
 				connection.close();
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
