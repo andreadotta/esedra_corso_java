@@ -24,8 +24,6 @@ public class ImagedaoTest {
 			Connection connection = DbConnect.connect(DBPATH);
 			ImageDao imagedao = new ImageDao(new Image());
 			imagedao.setConnection(connection);
-			
-			
 
 			Collection<Image> imagesCollection = imagedao.getAll();
 
@@ -35,9 +33,8 @@ public class ImagedaoTest {
 
 				Image image = imageIterator.next();
 				PrintHelper.out("id :" + " " + image.getId());
-				PrintHelper.out("src :"+" "+image.getSrc());
-				
-				
+				PrintHelper.out("src :" + " " + image.getSrc());
+
 				connection.close();
 			}
 		} catch (SQLException e) {
