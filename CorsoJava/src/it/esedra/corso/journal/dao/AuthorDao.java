@@ -10,63 +10,63 @@ import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.collections.AuthorCollection;
 
-
 public class AuthorDao implements DaoInterface<Author> {
 
 	private Author author;
 	private Connection conn;
-	
+
 	public AuthorDao(Author author) {
 		super();
 		this.author = author;
 	}
+
 	@Override
 	public void update() {
-		
+
 	}
 
 	@Override
 	public void delete() {
-		
 
 	}
 
 	@Override
 	public Collection<Author> getAll() {
-		
-		//istanzia una lista vuota di User
+
+		// istanzia una lista vuota di User
 		Collection<Author> authors = new AuthorCollection();
 		try {
 
-			//crea lo statement
-			Statement stm = this.conn.createStatement();			
-			//crea il result set al quale passa la query
+			// crea lo statement
+			Statement stm = this.conn.createStatement();
+			// crea il result set al quale passa la query
 			ResultSet rs = stm.executeQuery("SELECT * FROM author");
-			
-			//ottiene il result set 
+
+			// ottiene il result set
 			while (rs.next()) {
 				// e quindi per ogni tupla crea un oggetto di tipo User
 				Author author = new Author();
-				//inserisce i dati nelle proprietÃ  dell'oggetto
-			    author.setName(rs.getString("name"));
+				// inserisce i dati nelle proprietÃ  dell'oggetto
+				author.setName(rs.getString("name"));
 				author.setId(rs.getInt("id"));
 				author.setEmail(rs.getString("email"));
-				
-				//aggiunge l'oggetto alla lista
+
+				// aggiunge l'oggetto alla lista
 				authors.add(author);
 			}
-			//chiude le connessioni e il result set
+			// chiude le connessioni e il result set
 			rs.close();
 		} catch (Exception e) {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
-		//restituisce la lista 
+		// restituisce la lista
 		return authors;
 	}
+
 	@Override
 	public void setConnection(Connection con) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
