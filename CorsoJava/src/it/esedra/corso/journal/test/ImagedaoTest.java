@@ -29,7 +29,7 @@ public class ImagedaoTest {
 
 			Iterator<Image> imageIterator = imagesCollection.createIterator();
 
-			while (imageIterator.hasNext()) {
+			   while (imageIterator.hasNext()) {
 
 				Image image = imageIterator.next();
 				PrintHelper.out("id :" + " " + image.getId());
@@ -45,6 +45,6 @@ public class ImagedaoTest {
 
 	public static String getDbpath() {
 		return DBPATH;
-	}
+	}      
 
 }
