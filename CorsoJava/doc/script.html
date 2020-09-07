@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<script> 
+
+var oussein={
+		nome:"oussein",
+		eta:15,
+		altezza:180
+}
+if(oussein.eta>=18 && oussein.eta>=25){
+	console.log("bravo! hai diritto al tariffo studenti")
+	
+}else {
+	console.log("non hai diritto!")
+}
+//exercizio eleve
+var classeA=[{nome:"linda",moyenne:15}, {nome:"samuel",moyenne:8},{nome:"gianni",moyenne:4}]
+var classeB=[{nome:"Andrea",moyenne:9}, {nome:"lidia",moyenne:14},{nome:"leticia",moyenne:6}]
+
+function afficheQuiALaMoyenne(eleves) {
+ for(var i=0; i< eleves.length;i++){
+
+    var eleve=eleves[i]
+    if(eleve.moyenne<10){
+        console.log(eleve.nome  +   " ha bociatto")
+}
+
+}
+
+
+    }
+    afficheQuiALaMoyenne(classeA)
+    afficheQuiALaMoyenne(classeB)
+    
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

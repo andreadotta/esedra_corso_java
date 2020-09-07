@@ -21,22 +21,6 @@ public class VideoDao implements DaoInterface<Video> {
 
 	@Override
 	public void update() {
-		
-		if (video == null) {
-			PrintHelper.out("video non può essere null");
-			return;
-		}
-		try {
-			Statement stm = this.conn.createStatement();
-			stm.executeUpdate("INSERT INTO video (id, src, name, title) VALUES ( "
-					+ video.getId() + ", '" + video.getSrc() + "', '" + video.getName() + "', '" + video.getTitle() + "' )");
-
-			conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			PrintHelper.out("Errore video dao", e.getMessage());
-		}
-
 
 	}
 

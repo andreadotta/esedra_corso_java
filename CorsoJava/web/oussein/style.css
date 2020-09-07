@@ -1,0 +1,20 @@
+h2 {
+    color: red;
+}
+
+body{
+    background-image: url('img_ristaurante-picture.jpg')
+
+}body {
+    background: #cccccc;
+    font-family: 'Grandstander', cursive;
+}
+table,
+td{
+    border:1px solid #333333;
+}
+thead,
+tfoot{
+    background-color: #333333;
+    color:#fff;
+}
