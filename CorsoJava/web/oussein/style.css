@@ -1,9 +1,31 @@
+.header{
+	background: grey;
+	padding: 20px;
+	marging-top:50px;
+	color: white;
+}
+.header img{
+	width:100%
+	height:auto;
+}
+.header-nav{
+	margin:20px 0;
+}
+.header-nav a{
+	margin:0 10px;
+	color:inherit;
+	
+}
+
 h2 {
     color: red;
 }
+.tittle-big{
+    color: green;
+}
 
 body{
-    background-image: url('img_ristaurante-picture.jpg')
+    background-image: url('img_suisse-picture.jpg')
 
 }body {
     background: #cccccc;
@@ -17,4 +39,8 @@ thead,
 tfoot{
     background-color: #333333;
     color:#fff;
+}
+.hero {
+    width: 50vh;
+    height: 30vh;
 }

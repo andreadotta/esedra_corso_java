@@ -11,7 +11,7 @@
         <nav>
             <ul>
                 <li><a href="color.html">Acceuil</a></li>
-                <li><a href="index.html">Menu</a></li>
+                <li><a href="menu.html">Menu</a></li>
                 <li><a href="contact.html">Contact</a></li>
 
             </ul>
@@ -19,11 +19,22 @@
         </nav>
         <h1>per Contact</h1>
         <form action="contact.html">
-        <fieldset>
-            <legend>per conttatarci</legend>
-            <label>vostro email</label>
-            <input type="text" name="email">
-        </fieldset>    
+        <div>
+            <label for="vostro email"> vostro email</label>
+            
+            
+            <input type="email" required id="email" name="email">
+             </div>
+             <div>
+            <label for="congnome"> vostro congnome</label>
+            
+            <input type="text" required id="congnome" name="congnome" >
+             </div>
+             <div>
+            <label for="message"> vostro message</label>
+            
+            <textarea  required id="message" name="message"></textarea>
+             </div>
         </form>
     </body>
 </html>
