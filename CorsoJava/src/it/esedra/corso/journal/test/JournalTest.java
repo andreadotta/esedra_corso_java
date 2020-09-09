@@ -15,6 +15,7 @@ public class JournalTest {
 
 	
 	public static void main(String[] args) {
+		
 		Config conf;
 		try {
 			

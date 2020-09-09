@@ -82,6 +82,7 @@ public class ParagraphTest {
 			}else {
 				PrintHelper.out(JournalTest.TEST_FAIL);
 				
+				
 			}
 			
 		} catch (SQLException e) {
