@@ -29,8 +29,10 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 		try {
 
 			Statement stm = this.conn.createStatement();
+			
+			
 			stm.executeUpdate("INSERT INTO paragraph (id, text) VALUES ( " + paragraph.getId() + ", '"
-					+ paragraph.getText() + "', '" + "' )");
+					+ paragraph.getText() + "' )");
 
 			conn.close();
 		} catch (Exception e) {
@@ -70,6 +72,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	
 	@Override
 	public void setConnection(Connection con) {
+		this.conn = con;
 
 	}
 
