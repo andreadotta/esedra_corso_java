@@ -59,11 +59,11 @@ public class UserTest {
 		try {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
-			UserDao userdao = new UserDao(new User());
-			userdao.setConnection(connection);
+			UserDao userDao = new UserDao(new User());
+			userDao.setConnection(connection);
 
 			// Chiamata metodo getAll() sulla Collection creata
-			userCollection = userdao.getAll();
+			userCollection = userDao.getAll();
 
 			// Inizializzazione iterator per ciclare sulla Collection
 			Iterator<User> userIterator = userCollection.createIterator();
@@ -105,6 +105,38 @@ public class UserTest {
 
 	}
 
+	public void testGet() {
+
+		try {
+			// Effettua la connessione al database
+			Connection connection = JournalDbConnect.connect();
+
+			User userMock = new User();
+			userMock.setId(ID);
+			UserDao userDao = new UserDao(userMock);
+			userDao.setConnection(connection);
+
+			User user = userDao.get();
+
+			if (user.getId() == ID && user.getName().equals(NAME) && user.getSurname().equals(SURNAME)
+					&& user.getEmail().equals(EMAIL) && user.getPassword().equals(PASSWORD)
+					&& user.getRegistration().equals(REGISTRATION)) {
+			}
+
+			connection.close();
+
+			if (user.getId() == ID) {
+				PrintHelper.out(JournalTest.TEST_OK);
+			} else {
+				PrintHelper.out(JournalTest.TEST_FAIL);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	public static void main(String[] args) {
 
 		try {
@@ -112,6 +144,7 @@ public class UserTest {
 			UserTest ut = new UserTest();
 			ut.testUpdate();
 			ut.testGetAll();
+			ut.testGet();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
