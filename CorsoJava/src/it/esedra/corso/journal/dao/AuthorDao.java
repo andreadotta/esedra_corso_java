@@ -8,6 +8,7 @@ import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.User;
+import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.collections.AuthorCollection;
 
 public class AuthorDao implements DaoInterface<Author> {
@@ -22,7 +23,19 @@ public class AuthorDao implements DaoInterface<Author> {
 
 	@Override
 	public void update() {
-
+		if (author == null) {
+			PrintHelper.out("author non può essere null.");
+			return;
+		}
+		try {
+			Statement stm = this.conn.createStatement();
+			stm.executeUpdate("INSERT INTO author (id, name,email) VALUES ( " + author.getId() + ", '"
+			 +author.getName() + "', '" + author.getEmail() + "')");
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			PrintHelper.out("Errore author dao", e.getMessage());
+		}
 	}
 
 	@Override
@@ -65,8 +78,31 @@ public class AuthorDao implements DaoInterface<Author> {
 
 	@Override
 	public void setConnection(Connection con) {
-		// TODO Auto-generated method stub
+		this.conn = con;
 
+	}
+
+	@Override
+	public Author get() {
+        Author author = null;
+		
+		try {
+			Statement stm = this.conn.createStatement();
+			ResultSet rs = stm.executeQuery("SELECT * FROM author WHERE id = " + this.author.getId());
+			
+			while (rs.next()) {
+				
+			    author = new Author();
+				author.setId(rs.getInt("id"));
+				author.setName(rs.getString("name"));
+				author.setEmail(rs.getString("email"));
+				
+			}
+			rs.close();
+		} catch (Exception e) {
+			PrintHelper.out("Errore author dao", e.getMessage());
+		}
+		return author;
 	}
 
 }
