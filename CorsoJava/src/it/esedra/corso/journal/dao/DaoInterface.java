@@ -30,4 +30,11 @@ public interface DaoInterface<T> {
 	 * @return T
 	 */
     Collection<T> getAll();
+    
+    /**
+	 * Restituisce tutti i record della tabella
+	 * @return T
+	 */
+    T get(T id);
+    
 }
