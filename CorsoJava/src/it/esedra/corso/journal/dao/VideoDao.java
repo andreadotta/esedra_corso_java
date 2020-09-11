@@ -10,8 +10,8 @@ import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.collections.VideoCollection;
 
 public class VideoDao implements DaoInterface<Video> {
-    
-	private Video video;  
+
+	private Video video;
 	private Connection conn;
 
 	public VideoDao(Video video) {
@@ -22,12 +22,26 @@ public class VideoDao implements DaoInterface<Video> {
 	@Override
 	public void update() {
 
+		if (video == null) {
+			PrintHelper.out("video non può essere null.");
+			return;
+		}
+		try {
+			Statement stm = this.conn.createStatement();
+			stm.executeUpdate("INSERT INTO video (id, src, name, title)" + video.getId() + ", '" + video.getSrc()
+					+ "', '" + video.getName() + "', '" + video.getTitle() + ")");
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			PrintHelper.out("Errore video dao", e.getMessage());
+		}
+
 	}
 
 	@Override
 	public void delete() {
 
-	} 
+	}
 
 	@Override
 	public Collection<Video> getAll() {
