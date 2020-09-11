@@ -11,11 +11,9 @@ import it.esedra.corso.db.DbConnect;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.Paragraph;
-import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.collections.ParagraphCollection;
 import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.dao.ParagraphDao;
-import it.esedra.corso.journal.dao.VideoDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
@@ -105,40 +103,5 @@ public class ParagraphTest {
 		}
 
 	}
-	
-	public void testGet() {
-
-		try {
-
-			Connection connection = JournalDbConnect.connect();
-			Paragraph paragraphMock = new Paragraph();
-			paragraphMock.setId(ID);
-			ParagraphDao paragraphDao = new ParagraphDao(paragraphMock);
-			paragraphDao.setConnection(connection);
-
-			Paragraph paragraph = paragraphDao.get();
-
-			connection.close();
-			if (paragraph.getId() == ID) {
-				PrintHelper.out(JournalTest.TEST_OK);
-
-			} else {
-				PrintHelper.out(JournalTest.TEST_FAIL);
-
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 
 }
-
-
-
-
-
-
-
-
-
-

@@ -23,6 +23,19 @@ public class ImageDao implements DaoInterface<Image> {
 	@Override
 	public void update() {
 
+		 if (image == null) {
+			PrintHelper.out("image non può essere null.");
+			return;
+		}
+		try {
+			Statement stm = this.conn.createStatement();
+			stm.executeUpdate("INSERT INTO image (id, src) VALUES ( " + image.getId() + ", '" + image.getSrc() + "')");
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			PrintHelper.out("Errore image dao", e.getMessage());
+		}
+
 	}
 
 	@Override
@@ -43,14 +56,13 @@ public class ImageDao implements DaoInterface<Image> {
 				image.setId(rs.getInt("id"));
 				image.setSrc(rs.getString("src"));
 				images.add(image);
-
 			}
 			rs.close();
 		} catch (Exception e) {
 			PrintHelper.out("Errore video dao", e.getMessage());
 		}
 
-		 return images;
+		return images;
 
 	}
 
@@ -73,5 +85,28 @@ public class ImageDao implements DaoInterface<Image> {
 	@Override
 	public void setConnection(Connection con) {
 		this.conn = con;
+	}
+
+	@Override
+	public Image get() {
+
+		Image image = null;
+
+		try {
+			Statement stm = this.conn.createStatement();
+			ResultSet rs = stm.executeQuery("SELECT * FROM image WHERE id = " + this.image.getId());
+
+			while (rs.next()) {
+
+				image = new Image();
+				image.setId(rs.getInt("id"));
+				image.setSrc(rs.getString("src"));
+
+			}
+			rs.close();
+		} catch (Exception e) {
+			PrintHelper.out("Error image dao", e.getMessage());
+		}
+		return image;
 	}
 }
