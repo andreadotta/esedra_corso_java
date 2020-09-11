@@ -8,6 +8,7 @@ import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 
 import it.esedra.corso.journal.Paragraph;
+import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.collections.ParagraphCollection;
 
 public class ParagraphDao implements DaoInterface<Paragraph> {
@@ -22,20 +23,23 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 	@Override
 	public void update() {
-		if (paragraph == null) {
-			PrintHelper.out("Paragraph non può essere null");
-			return;
-		}
+		
+			paragraph=this.get();
+			
+		
 		try {
 
 			Statement stm = this.conn.createStatement();
 			
-			
+			if (paragraph != null) {
 			stm.executeUpdate("INSERT INTO paragraph (id, text) VALUES ( " + paragraph.getId() + ", '"
 					+ paragraph.getText() + "' )");
 
+			
+		} 
 			conn.close();
-		} catch (Exception e) {
+		}
+			catch (Exception e) {
 			PrintHelper.out("Errore paragraph dao", e.getMessage());
 		}
 
@@ -76,6 +80,28 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 		this.conn = con;
 
 	}
+	@Override
+	public Paragraph get() {
+		Paragraph paragraph = null;
+		
+		try {
+			Statement stm = this.conn.createStatement();
+			ResultSet rs = stm.executeQuery("SELECT * FROM paragraph WHERE id = " + this.paragraph.getId());
+			
+			while (rs.next()) {
+				
+			    paragraph = new Paragraph();
+			    paragraph.setId(rs.getInt("id"));
+			    paragraph.setText(rs.getString("tex"));
+			}
+		
+		rs.close();
+	} catch (Exception e) {
+		PrintHelper.out("Errore video dao", e.getMessage());
+	}
+		return paragraph;
+	}
+				
 
 	@Override
 	public void delete() {
