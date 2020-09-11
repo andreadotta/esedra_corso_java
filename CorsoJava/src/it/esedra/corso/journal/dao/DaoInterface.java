@@ -35,6 +35,6 @@ public interface DaoInterface<T> {
 	 * Restituisce tutti i record della tabella
 	 * @return T
 	 */
-    T get(T id);
+    T get();
     
 }
