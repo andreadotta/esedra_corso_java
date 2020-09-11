@@ -28,8 +28,8 @@ public class VideoDao implements DaoInterface<Video> {
 		}
 		try {
 			Statement stm = this.conn.createStatement();
-			stm.executeUpdate("INSERT INTO video (id, src, name, title)" + video.getId() + ", '" + video.getSrc()
-					+ "', '" + video.getName() + "', '" + video.getTitle() + ")");
+			stm.executeUpdate("INSERT INTO video (id, src, name, title) VALUES ( " + video.getId() + ", '" + video.getSrc()
+					+ "', '" + video.getName() + "', '" + video.getTitle() + "')");
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -72,5 +72,29 @@ public class VideoDao implements DaoInterface<Video> {
 	@Override
 	public void setConnection(Connection con) {
 		this.conn = con;
+	}
+
+	@Override
+	public Video get() {
+		Video video = null;
+		
+		try {
+			Statement stm = this.conn.createStatement();
+			ResultSet rs = stm.executeQuery("SELECT * FROM video WHERE id = " + this.video.getId());
+			
+			while (rs.next()) {
+				
+			    video = new Video();
+				video.setId(rs.getInt("id"));
+				video.setSrc(rs.getString("src"));
+				video.setName(rs.getString("name"));
+				video.setTitle(rs.getString("title"));
+				
+			}
+			rs.close();
+		} catch (Exception e) {
+			PrintHelper.out("Errore video dao", e.getMessage());
+		}
+		return video;
 	}
 }
