@@ -66,7 +66,7 @@ public class ParagraphTest {
 
 				PrintHelper.out("id: " + paragraph.getId());
 				PrintHelper.out("text: " + paragraph.getText());
-				if (paragraph.getId() == ID && paragraph.getText() == TEXT) {
+				if (paragraph.getId() == ID && paragraph.getText().equals(TEXT)) {
 					found = true;
 					break;
 
