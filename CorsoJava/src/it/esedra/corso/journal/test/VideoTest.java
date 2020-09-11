@@ -95,13 +95,39 @@ public class VideoTest {
 	public static void main(String[] args) {
 		try {
 			DbUtil.rebuildDb();
-		    VideoTest videoTest = new VideoTest();
-		    videoTest.testUpdate();
-		    videoTest.testGetAll();
+			VideoTest videoTest = new VideoTest();
+			videoTest.testUpdate();
+			videoTest.testGetAll();
+			videoTest.testGet();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+	}
+
+	public void testGet() {
+
+		try {
+
+			Connection connection = JournalDbConnect.connect();
+			Video videoMock = new Video();
+			videoMock.setId(ID);
+			VideoDao videoDao = new VideoDao(videoMock);
+			videoDao.setConnection(connection);
+
+			Video video = videoDao.get();
+
+			connection.close();
+			if (video.getId() == ID) {
+				PrintHelper.out(JournalTest.TEST_OK);
+
+			} else {
+				PrintHelper.out(JournalTest.TEST_FAIL);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
