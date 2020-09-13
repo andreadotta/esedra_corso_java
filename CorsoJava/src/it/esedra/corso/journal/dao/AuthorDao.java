@@ -3,12 +3,9 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
-import it.esedra.corso.journal.User;
-import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.collections.AuthorCollection;
 
 public class AuthorDao implements DaoInterface<Author> {
@@ -60,8 +57,8 @@ public class AuthorDao implements DaoInterface<Author> {
 				// e quindi per ogni tupla crea un oggetto di tipo User
 				Author author = new Author();
 				// inserisce i dati nelle proprietÃ  dell'oggetto
-				author.setName(rs.getString("name"));
 				author.setId(rs.getInt("id"));
+				author.setName(rs.getString("name"));
 				author.setEmail(rs.getString("email"));
 
 				// aggiunge l'oggetto alla lista
