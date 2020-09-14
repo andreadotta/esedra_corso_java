@@ -9,7 +9,7 @@ public class JournalDao implements DaoInterface<Journal> {
 
 	private Journal journal; 
 	private Connection conn;
-	
+	 
 	public JournalDao(Journal journal) {
 		super();
 		this.journal = journal;
