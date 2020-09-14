@@ -15,13 +15,16 @@ public class JournalDao implements DaoInterface<Journal> {
 		this.journal = journal;
 	}
     @Override
-	public void update() {
+	public int update() {
+    	
+    	return 0;
 		
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
 		
+		return false;
 
 	}
 

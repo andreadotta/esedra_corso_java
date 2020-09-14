@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import it.esedra.corso.collections.interfaces.Collection;
@@ -23,20 +24,19 @@ public class AuthorTest {
 	public static final String NAME = " Mbrain Linda";
 	public static final String EMAIL = "info@mcbrain.com";
 
-	@Before
+	@BeforeAll
 	public void setup() {
-		
+
 		try {
 			DbUtil.rebuildDb();
-			
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
-		
+		}
+
 	}
-	
+
 	@Test
 	public void testUpdate() {
 		try {
@@ -49,7 +49,7 @@ public class AuthorTest {
 
 			AuthorDao authorDao = new AuthorDao(author);
 			authorDao.setConnection(connection);
-			
+
 			assertTrue(authorDao.update() > 0);
 
 		} catch (Exception e) {
@@ -58,6 +58,7 @@ public class AuthorTest {
 
 	}
 
+	@Test
 	public void testGetAll() {
 
 		Collection<Author> authorCollection = new AuthorCollection();
@@ -88,31 +89,11 @@ public class AuthorTest {
 
 			}
 			connection.close();
-			if (found == true) {
-				PrintHelper.out(JournalTest.TEST_OK);
-
-			} else {
-				PrintHelper.out(JournalTest.TEST_FAIL);
-
-			}
+			assertTrue(found);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void main(String[] args) {
-		try {
-			DbUtil.rebuildDb();
-			AuthorTest ct = new AuthorTest();
-			ct.testUpdate();
-			ct.testGetAll();
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-	
 }

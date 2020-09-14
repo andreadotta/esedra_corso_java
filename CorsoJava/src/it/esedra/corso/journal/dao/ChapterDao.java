@@ -22,14 +22,15 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	}
 
 	@Override
-	public void update() {
+	public int update() {
+		int affectedRows = 0;
 		if (chapter == null) {
 			PrintHelper.out("Chapter non può essere null");
-			return;
+			return affectedRows;
 		}
 		try {
 			Statement stm = this.conn.createStatement();
-			stm.executeUpdate("INSERT INTO chapter (id, title, date) VALUES ( " + chapter.getId() + ", '"
+			affectedRows = stm.executeUpdate("INSERT INTO chapter (id, title, date) VALUES ( " + chapter.getId() + ", '"
 					+ chapter.getTitle() + "', '" + chapter.getDate() + "' )");
 
 			conn.close();
@@ -37,10 +38,14 @@ public class ChapterDao implements DaoInterface<Chapter> {
 			e.printStackTrace();
 			PrintHelper.out("Errore chapter dao", e.getMessage());
 		}
+		
+		return affectedRows;
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
+		
+		return false;
 
 	}
 

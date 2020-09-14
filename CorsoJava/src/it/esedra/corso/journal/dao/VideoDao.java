@@ -20,7 +20,12 @@ public class VideoDao implements DaoInterface<Video> {
 	}
 
 	@Override
-	public void update() {
+	public int update() {
+		int affectedRows = 0;
+		if (video == null) {
+			PrintHelper.out("author non può essere null.");
+			return affectedRows;
+		}
 		Video videoCheck = this.get();
 
 		try {
@@ -29,7 +34,7 @@ public class VideoDao implements DaoInterface<Video> {
 				
 				
 			} else {
-				stm.executeUpdate("INSERT INTO video (id, src, name, title) VALUES ( " + video.getId() + ", '"
+				affectedRows = stm.executeUpdate("INSERT INTO video (id, src, name, title) VALUES ( " + video.getId() + ", '"
 						+ video.getSrc() + "', '" + video.getName() + "', '" + video.getTitle() + "')");
 			}
 			
@@ -38,11 +43,15 @@ public class VideoDao implements DaoInterface<Video> {
 			e.printStackTrace();
 			PrintHelper.out("Errore video dao", e.getMessage());
 		}
+		
+		return affectedRows;
 
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
+		
+		return false;
 
 	}
 

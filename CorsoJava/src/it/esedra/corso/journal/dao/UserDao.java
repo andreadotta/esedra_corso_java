@@ -19,8 +19,10 @@ public class UserDao implements DaoInterface<User> {
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
 
+		return false;
+		
 	}
 
 	@Override
@@ -59,8 +61,14 @@ public class UserDao implements DaoInterface<User> {
 	}
 
 	@Override
-	public void update() {
-
+	public int update() {
+		int affectedRows = 0;
+		
+		if (user == null) {
+			PrintHelper.out("user non può essere null.");
+			return affectedRows;
+		}
+		
 		User userCheck = this.get();
 
 		try {
@@ -69,7 +77,7 @@ public class UserDao implements DaoInterface<User> {
 			if (userCheck != null) {
 
 			} else {
-				stm.executeUpdate("INSERT INTO user (id, name, surname, email, password, registration) VALUES ( "
+				affectedRows = stm.executeUpdate("INSERT INTO user (id, name, surname, email, password, registration) VALUES ( "
 						+ user.getId() + ", '" + user.getName() + "', '" + user.getSurname() + "', '" + user.getEmail()
 						+ "', '" + user.getPassword() + "', '" + user.getRegistration() + "' )");
 			}
@@ -79,6 +87,8 @@ public class UserDao implements DaoInterface<User> {
 			e.printStackTrace();
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
+		
+		return affectedRows;
 
 	}
 

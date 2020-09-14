@@ -21,25 +21,30 @@ public class ImageDao implements DaoInterface<Image> {
 	}
 
 	@Override
-	public void update() {
-
+	public int update() {
+		 
+		int affectedRows = 0;
+		
 		 if (image == null) {
 			PrintHelper.out("image non può essere null.");
-			return;
+			return affectedRows;
 		}
 		try {
 			Statement stm = this.conn.createStatement();
-			stm.executeUpdate("INSERT INTO image (id, src) VALUES ( " + image.getId() + ", '" + image.getSrc() + "')");
+			affectedRows = stm.executeUpdate("INSERT INTO image (id, src) VALUES ( " + image.getId() + ", '" + image.getSrc() + "')");
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			PrintHelper.out("Errore image dao", e.getMessage());
 		}
+		return affectedRows;
 
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
+		
+		return false;
 
 	}
 

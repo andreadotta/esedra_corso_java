@@ -1,8 +1,13 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
@@ -21,11 +26,12 @@ import it.esedra.corso.journal.dao.ImageDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
-public class ImagedaoTest {
+public class ImageTest {
 
 	public static final int ID = 1;
 	public static final String SRC = "https:www.youtube.com";
 
+	@Test
 	public void testUpdate() {
 		try {
 			Connection connection = JournalDbConnect.connect();
@@ -36,7 +42,8 @@ public class ImagedaoTest {
 
 			ImageDao imageDao = new ImageDao(image);
 			imageDao.setConnection(connection);
-			imageDao.update();
+			
+			assertTrue(imageDao.update() > 0);
 
 		} catch (Exception e) {
 			 e.printStackTrace();
@@ -44,6 +51,7 @@ public class ImagedaoTest {
 
 	}
 
+	@Test
 	public void testGetAll() {
 
 		Collection<Image> images = new ImageCollection();
@@ -63,8 +71,7 @@ public class ImagedaoTest {
 
 				Image image = imageIterator.next();
 
-				PrintHelper.out("id: " + image.getId());
-				PrintHelper.out("Src: " + image.getSrc());
+				
 
 				if (image.getId() == ID && image.getSrc().equals(SRC)) {
 					found = true;
@@ -73,34 +80,31 @@ public class ImagedaoTest {
 				}
 
 			}
+			
 
 			connection.close();
-			if (found == true) {
-				PrintHelper.out(JournalTest.TEST_OK);
-
-			} else {
-				PrintHelper.out(JournalTest.TEST_FAIL);
-
-			}
+			assertTrue(found);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	public static void main(String[] args) {
+	@BeforeAll
+	public void setup() {
+
 		try {
 			DbUtil.rebuildDb();
-			ImagedaoTest imagedaoTest = new ImagedaoTest();
-			imagedaoTest.testUpdate();
-			imagedaoTest.testGetAll();
-			imagedaoTest.testGet();
+
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
 
+	@Test
 	public void testGet() {
 
 		try {
@@ -114,13 +118,12 @@ public class ImagedaoTest {
 			Image image = imageDao.get();
 
 			connection.close();
-			if (image.getId() == ID) {
-				PrintHelper.out(JournalTest.TEST_OK);
-
-			} else {
-				PrintHelper.out(JournalTest.TEST_FAIL);
+			boolean found = false;
+			if (image.getId() == ID && image.getSrc().equals(SRC)) {
+				found = true;
 
 			}
+			assertTrue(found);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

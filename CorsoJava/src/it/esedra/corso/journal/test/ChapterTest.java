@@ -1,8 +1,14 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
@@ -14,15 +20,12 @@ import it.esedra.corso.journal.collections.ChapterCollection;
 import it.esedra.corso.journal.collections.UserCollection;
 import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.dao.UserDao;
+import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
 public class ChapterTest {
 
-	public ChapterTest() {
-		// TODO Auto-generated constructor stub
-	}
-
-	
+	@Test	
 	public void testUpdate() {
 		
 		try {
@@ -35,7 +38,8 @@ public class ChapterTest {
 			
 			ChapterDao chapterDao = new ChapterDao(chapter);
 			chapterDao.setConnection(connection);
-			chapterDao.update();
+			
+			assertTrue(chapterDao.update() > 0);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,6 +47,7 @@ public class ChapterTest {
 		
 	}
 	
+	@Test
 	public void testGetAll() {
 		
 		Collection<Chapter> cCollection = new ChapterCollection();
@@ -63,10 +68,7 @@ public class ChapterTest {
 			// elemento i valori delle colonne della tabella user
 			while (cIterator.hasNext()) {
 				Chapter chapter = cIterator.next();
-				PrintHelper.out("Chapter ID: " + chapter.getId());
-				PrintHelper.out("Chapter Title: " + chapter.getTitle());
-				PrintHelper.out("Chapter Date: " + chapter.getDate());				
-				PrintHelper.out("*****************************");
+				
 			}
 
 			connection.close();
@@ -76,9 +78,16 @@ public class ChapterTest {
 		
 	}
 	
-	public static void main(String[] args) {
-		ChapterTest  ct = new ChapterTest();
-		ct.testUpdate();
-		ct.testGetAll();
+	@BeforeAll
+	public void setup() {
+
+		try {
+			DbUtil.rebuildDb();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

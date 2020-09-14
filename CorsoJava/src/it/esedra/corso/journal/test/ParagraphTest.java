@@ -1,9 +1,14 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
@@ -21,6 +26,7 @@ public class ParagraphTest {
 	public static final int ID = 1;
 	public static final String TEXT = "il primo paragraph del diario";
 
+	@Test
 	public void testUpdate() {
 		try {
 			Connection connection = JournalDbConnect.connect();
@@ -31,7 +37,8 @@ public class ParagraphTest {
 
 			ParagraphDao paragraphDao = new ParagraphDao(paragraph);
 			paragraphDao.setConnection(connection);
-			paragraphDao.update();
+			
+			assertTrue(paragraphDao.update() > 0);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,6 +46,7 @@ public class ParagraphTest {
 
 	}
 
+	@Test
 	public void testGetAll() {
 
 		Collection<Paragraph> paragraphs = new ParagraphCollection();
@@ -64,8 +72,6 @@ public class ParagraphTest {
 
 				Paragraph paragraph = paragraphIterator.next();
 
-				PrintHelper.out("id: " + paragraph.getId());
-				PrintHelper.out("text: " + paragraph.getText());
 				if (paragraph.getId() == ID && paragraph.getText().equals(TEXT)) {
 					found = true;
 					break;
@@ -76,27 +82,20 @@ public class ParagraphTest {
 			
 			}
 			connection.close();
-			if(found == true) {
-				PrintHelper.out(JournalTest.TEST_OK);
-				
-			}else {
-				PrintHelper.out(JournalTest.TEST_FAIL);
-				
-				
-			}
+			
+			assertTrue(found);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public static void main(String[] args) {
+	@BeforeAll
+	public void setup() {
+
 		try {
 			DbUtil.rebuildDb();
-			ParagraphTest ct = new ParagraphTest();
-			ct.testUpdate();
-			ct.testGetAll();
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

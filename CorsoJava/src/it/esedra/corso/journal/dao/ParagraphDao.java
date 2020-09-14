@@ -22,18 +22,17 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	}
 
 	@Override
-	public void update() {
+	public int update() {
+		int affectedRows = 0;
 		if (paragraph == null) {
 			PrintHelper.out("Paragraph non può essere null");
-			return;
+			return affectedRows;
 		}
 		try {
 
 			Statement stm = this.conn.createStatement();
-			
-			
-			
-			stm.executeUpdate("INSERT INTO paragraph (id, text) VALUES ( " + paragraph.getId() + ", '"
+
+			affectedRows = stm.executeUpdate("INSERT INTO paragraph (id, text) VALUES ( " + paragraph.getId() + ", '"
 					+ paragraph.getText() + "' )");
 
 			conn.close();
@@ -41,7 +40,10 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			PrintHelper.out("Errore paragraph dao", e.getMessage());
 		}
 
+		return affectedRows;
+
 	}
+
 	@Override
 	public Collection<Paragraph> getAll() {
 		Collection<Paragraph> paragraphs = new ParagraphCollection();
@@ -72,7 +74,6 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 	}
 
-	
 	@Override
 	public void setConnection(Connection con) {
 		this.conn = con;
@@ -80,7 +81,9 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
+
+		return false;
 
 	}
 
@@ -97,7 +100,6 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 				paragraph = new Paragraph();
 				paragraph.setId(rs.getInt("id"));
 				paragraph.setText(rs.getString("text"));
-				
 
 			}
 			rs.close();
@@ -106,6 +108,4 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 		}
 		return paragraph;
 	}
-	}
-
-
+}
