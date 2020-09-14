@@ -1,8 +1,13 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
@@ -29,6 +34,7 @@ public class UserTest {
 
 	}
 
+	@Test
 	public void testUpdate() {
 
 		try {
@@ -44,7 +50,8 @@ public class UserTest {
 
 			UserDao userDao = new UserDao(user);
 			userDao.setConnection(connection);
-			userDao.update();
+			
+			assertTrue(userDao.update() > 0);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -52,6 +59,7 @@ public class UserTest {
 
 	}
 
+	@Test
 	public void testGetAll() {
 
 		Collection<User> userCollection = new UserCollection();
@@ -59,11 +67,11 @@ public class UserTest {
 		try {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
-			UserDao userdao = new UserDao(new User());
-			userdao.setConnection(connection);
+			UserDao userDao = new UserDao(new User());
+			userDao.setConnection(connection);
 
 			// Chiamata metodo getAll() sulla Collection creata
-			userCollection = userdao.getAll();
+			userCollection = userDao.getAll();
 
 			// Inizializzazione iterator per ciclare sulla Collection
 			Iterator<User> userIterator = userCollection.createIterator();
@@ -93,11 +101,7 @@ public class UserTest {
 
 			connection.close();
 
-			if (found == true) {
-				PrintHelper.out(JournalTest.TEST_OK);
-			} else {
-				PrintHelper.out(JournalTest.TEST_FAIL);
-			}
+			assertTrue(found);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -105,14 +109,45 @@ public class UserTest {
 
 	}
 
-	public static void main(String[] args) {
+	@Test
+	public void testGet() {
+
+		try {
+			// Effettua la connessione al database
+			Connection connection = JournalDbConnect.connect();
+
+			User userMock = new User();
+			userMock.setId(ID);
+			UserDao userDao = new UserDao(userMock);
+			userDao.setConnection(connection);
+
+			User user = userDao.get();
+			boolean found = false;
+
+			if (user.getId() == ID && user.getName().equals(NAME) && user.getSurname().equals(SURNAME)
+					&& user.getEmail().equals(EMAIL) && user.getPassword().equals(PASSWORD)
+					&& user.getRegistration().equals(REGISTRATION)) {
+			found = true;
+			} 
+
+			connection.close();
+
+			assertTrue(found);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@BeforeAll
+	public void setup() {
 
 		try {
 			DbUtil.rebuildDb();
-			UserTest ut = new UserTest();
-			ut.testUpdate();
-			ut.testGetAll();
+
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

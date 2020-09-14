@@ -1,8 +1,13 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
@@ -26,6 +31,7 @@ public class VideoTest {
 
 	}
 
+	@Test
 	public void testUpdate() {
 
 		try {
@@ -39,7 +45,8 @@ public class VideoTest {
 
 			VideoDao videoDao = new VideoDao(video);
 			videoDao.setConnection(connection);
-			videoDao.update();
+			
+			assertTrue(videoDao.update() > 0);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,6 +54,7 @@ public class VideoTest {
 
 	}
 
+	@Test
 	public void testGetAll() {
 
 		Collection<Video> videoCollection = new VideoCollection();
@@ -65,11 +73,7 @@ public class VideoTest {
 			while (videoIterator.hasNext()) {
 
 				Video video = videoIterator.next();
-
-				PrintHelper.out("id: " + video.getId());
-				PrintHelper.out("Src: " + video.getSrc());
-				PrintHelper.out("Name: " + video.getName());
-				PrintHelper.out("Title: " + video.getTitle());
+				
 				if (video.getId() == ID && video.getSrc().equals(SRC) && video.getName().equals(NAME)
 						&& video.getTitle().equals(TITLE)) {
 					found = true;
@@ -79,32 +83,28 @@ public class VideoTest {
 
 			}
 			connection.close();
-			if (found == true) {
-				PrintHelper.out(JournalTest.TEST_OK);
-
-			} else {
-				PrintHelper.out(JournalTest.TEST_FAIL);
-
-			}
+			assertTrue(found);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	public static void main(String[] args) {
+	@BeforeAll
+	public void setup() {
+
 		try {
 			DbUtil.rebuildDb();
-			VideoTest videoTest = new VideoTest();
-			videoTest.testUpdate();
-			videoTest.testGetAll();
-			videoTest.testGet();
+
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
 
+	@Test
 	public void testGet() {
 
 		try {
@@ -118,13 +118,13 @@ public class VideoTest {
 			Video video = videoDao.get();
 
 			connection.close();
-			if (video.getId() == ID) {
-				PrintHelper.out(JournalTest.TEST_OK);
-
-			} else {
-				PrintHelper.out(JournalTest.TEST_FAIL);
+			boolean found = false;
+			if (video.getId() == ID && video.getSrc().equals(SRC) && video.getName().equals(NAME)
+					&& video.getTitle().equals(TITLE)) {
+				found = true;
 
 			}
+			assertTrue(found);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
