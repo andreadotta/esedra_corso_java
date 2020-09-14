@@ -7,6 +7,7 @@ import java.sql.Statement;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Chapter;
+import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.collections.ChapterCollection;
 
 public class ChapterDao implements DaoInterface<Chapter> {
@@ -21,14 +22,15 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	}
 
 	@Override
-	public void update() {
+	public int update() {
+		int affectedRows = 0;
 		if (chapter == null) {
 			PrintHelper.out("Chapter non può essere null");
-			return;
+			return affectedRows;
 		}
 		try {
 			Statement stm = this.conn.createStatement();
-			stm.executeUpdate("INSERT INTO chapter (id, title, date) VALUES ( " + chapter.getId() + ", '"
+			affectedRows = stm.executeUpdate("INSERT INTO chapter (id, title, date) VALUES ( " + chapter.getId() + ", '"
 					+ chapter.getTitle() + "', '" + chapter.getDate() + "' )");
 
 			conn.close();
@@ -36,10 +38,14 @@ public class ChapterDao implements DaoInterface<Chapter> {
 			e.printStackTrace();
 			PrintHelper.out("Errore chapter dao", e.getMessage());
 		}
+		
+		return affectedRows;
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
+		
+		return false;
 
 	}
 
@@ -71,6 +77,28 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	@Override
 	public void setConnection(Connection con) {
 		this.conn = con;
+	}
+
+	@Override
+	public Chapter get() {
+		Chapter chapter = null;
+
+		try {
+			Statement stm = this.conn.createStatement();
+			ResultSet rs = stm.executeQuery("SELECT * FROM chapter WHERE id = " + this.chapter.getId());
+
+			while (rs.next()) {
+
+				chapter = new Chapter();
+				chapter.setId(rs.getInt("id"));
+				chapter.setTitle(rs.getString("title"));
+
+			}
+			rs.close();
+		} catch (Exception e) {
+			PrintHelper.out("Errore video dao", e.getMessage());
+		}
+		return chapter;
 	}
 
 }

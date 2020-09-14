@@ -20,26 +20,38 @@ public class VideoDao implements DaoInterface<Video> {
 	}
 
 	@Override
-	public void update() {
-
+	public int update() {
+		int affectedRows = 0;
 		if (video == null) {
-			PrintHelper.out("video non può essere null.");
-			return;
+			PrintHelper.out("author non può essere null.");
+			return affectedRows;
 		}
+		Video videoCheck = this.get();
+
 		try {
 			Statement stm = this.conn.createStatement();
-			stm.executeUpdate("INSERT INTO video (id, src, name, title) VALUES ( " + video.getId() + ", '" + video.getSrc()
-					+ "', '" + video.getName() + "', '" + video.getTitle() + "')");
-			conn.close();
+			if (videoCheck != null) {
+				
+				
+			} else {
+				affectedRows = stm.executeUpdate("INSERT INTO video (id, src, name, title) VALUES ( " + video.getId() + ", '"
+						+ video.getSrc() + "', '" + video.getName() + "', '" + video.getTitle() + "')");
+			}
+			
+			stm.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			PrintHelper.out("Errore video dao", e.getMessage());
 		}
+		
+		return affectedRows;
 
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
+		
+		return false;
 
 	}
 
@@ -77,19 +89,19 @@ public class VideoDao implements DaoInterface<Video> {
 	@Override
 	public Video get() {
 		Video video = null;
-		
+
 		try {
 			Statement stm = this.conn.createStatement();
 			ResultSet rs = stm.executeQuery("SELECT * FROM video WHERE id = " + this.video.getId());
-			
+
 			while (rs.next()) {
-				
-			    video = new Video();
+
+				video = new Video();
 				video.setId(rs.getInt("id"));
 				video.setSrc(rs.getString("src"));
 				video.setName(rs.getString("name"));
 				video.setTitle(rs.getString("title"));
-				
+
 			}
 			rs.close();
 		} catch (Exception e) {

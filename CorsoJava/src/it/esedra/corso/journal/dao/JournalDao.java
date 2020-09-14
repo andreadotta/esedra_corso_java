@@ -9,19 +9,22 @@ public class JournalDao implements DaoInterface<Journal> {
 
 	private Journal journal; 
 	private Connection conn;
-	
+	 
 	public JournalDao(Journal journal) {
 		super();
 		this.journal = journal;
 	}
     @Override
-	public void update() {
+	public int update() {
+    	
+    	return 0;
 		
 	}
 
 	@Override
-	public void delete() {
+	public boolean delete() {
 		
+		return false;
 
 	}
 
@@ -35,5 +38,10 @@ public class JournalDao implements DaoInterface<Journal> {
 	@Override
 	public void setConnection(Connection con) {
 		this.conn = con;
+	}
+	@Override
+	public Journal get() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
