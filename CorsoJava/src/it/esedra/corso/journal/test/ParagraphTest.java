@@ -14,10 +14,8 @@ import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Paragraph;
-import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.collections.ParagraphCollection;
 import it.esedra.corso.journal.dao.ParagraphDao;
-import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
@@ -37,7 +35,7 @@ public class ParagraphTest {
 
 			ParagraphDao paragraphDao = new ParagraphDao(paragraph);
 			paragraphDao.setConnection(connection);
-			
+
 			assertTrue(paragraphDao.update() > 0);
 
 		} catch (Exception e) {
@@ -77,19 +75,18 @@ public class ParagraphTest {
 					break;
 
 				}
-				
 
-			
 			}
 			connection.close();
-			
+
 			assertTrue(found);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
+
 	@Test
 	public void testGet() {
 
@@ -106,8 +103,8 @@ public class ParagraphTest {
 			boolean found = false;
 
 			if (paragraph.getId() == ID && paragraph.getText().equals(TEXT)) {
-			found = true;
-			} 
+				found = true;
+			}
 
 			connection.close();
 
@@ -118,7 +115,6 @@ public class ParagraphTest {
 		}
 
 	}
-	
 
 	@BeforeClass
 	public static void setup() {
