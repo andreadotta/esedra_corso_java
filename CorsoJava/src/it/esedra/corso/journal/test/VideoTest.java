@@ -65,11 +65,7 @@ public class VideoTest {
 			while (videoIterator.hasNext()) {
 
 				Video video = videoIterator.next();
-
-				PrintHelper.out("id: " + video.getId());
-				PrintHelper.out("Src: " + video.getSrc());
-				PrintHelper.out("Name: " + video.getName());
-				PrintHelper.out("Title: " + video.getTitle());
+				
 				if (video.getId() == ID && video.getSrc().equals(SRC) && video.getName().equals(NAME)
 						&& video.getTitle().equals(TITLE)) {
 					found = true;

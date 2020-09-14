@@ -21,11 +21,11 @@ public class VideoDao implements DaoInterface<Video> {
 
 	@Override
 	public void update() {
-		video = this.get();
+		Video videoCheck = this.get();
 
 		try {
 			Statement stm = this.conn.createStatement();
-			if (video != null) {
+			if (videoCheck != null) {
 				
 				
 			} else {
