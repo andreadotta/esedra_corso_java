@@ -36,4 +36,9 @@ public class JournalDao implements DaoInterface<Journal> {
 	public void setConnection(Connection con) {
 		this.conn = con;
 	}
+	@Override
+	public Journal get() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
