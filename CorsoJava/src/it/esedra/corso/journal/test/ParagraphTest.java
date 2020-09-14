@@ -5,29 +5,27 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.db.DbConnect;
-import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.collections.ParagraphCollection;
-import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ParagraphTest {
 	public static final int ID = 1;
 	public static final String TEXT = "il primo paragraph del diario";
 
 	@Test
-	public void testUpdate() {
+	public void testAUpdate() {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
@@ -90,8 +88,8 @@ public class ParagraphTest {
 		}
 	}
 
-	@BeforeAll
-	public void setup() {
+	@BeforeClass
+	public static void setup() {
 
 		try {
 			DbUtil.rebuildDb();

@@ -3,6 +3,7 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;

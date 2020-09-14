@@ -18,7 +18,7 @@ public class TestRunner {
 			
 		}
 		
-		PrintHelper.out(result.wasSuccessful() + "");
+		PrintHelper.out(TestRunner.class +  " " + result.wasSuccessful());
 	}
 
 }

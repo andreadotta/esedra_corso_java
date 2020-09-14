@@ -10,7 +10,6 @@ import org.junit.runners.Suite.SuiteClasses;
 	AuthorTest.class,
 	ChapterTest.class,
 	ImageTest.class,
-	JournalTest.class,
 	ParagraphTest.class,
 	UserTest.class,
 	VideoTest.class
