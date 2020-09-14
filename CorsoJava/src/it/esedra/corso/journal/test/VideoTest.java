@@ -98,7 +98,7 @@ public class VideoTest {
 			DbUtil.rebuildDb();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
