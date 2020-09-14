@@ -20,11 +20,11 @@ public interface DaoInterface<T> {
 	/**
 	 * Aggiorna o inserisce un record
 	 */
-	void update();
+	int update();
 	/**
 	 * Elimina un record
 	 */
-	void delete();
+	boolean delete();
 	/**
 	 * Restituisce tutti i record della tabella
 	 * @return T

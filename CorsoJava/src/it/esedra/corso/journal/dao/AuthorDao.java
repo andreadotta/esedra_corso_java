@@ -19,25 +19,27 @@ public class AuthorDao implements DaoInterface<Author> {
 	}
 
 	@Override
-	public void update() {
+	public int update() {
+		int affectedRows = 0;
 		if (author == null) {
 			PrintHelper.out("author non può essere null.");
-			return;
+			return affectedRows;
 		}
 		try {
 			Statement stm = this.conn.createStatement();
-			stm.executeUpdate("INSERT INTO author (id, name,email) VALUES ( " + author.getId() + ", '"
+			affectedRows = stm.executeUpdate("INSERT INTO author (id, name,email) VALUES ( " + author.getId() + ", '"
 			 +author.getName() + "', '" + author.getEmail() + "')");
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			PrintHelper.out("Errore author dao", e.getMessage());
 		}
+		return affectedRows;
 	}
 
 	@Override
-	public void delete() {
-
+	public boolean delete() {
+		return false;
 	}
 
 	@Override

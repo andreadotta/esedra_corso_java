@@ -61,12 +61,12 @@ public class UserDao implements DaoInterface<User> {
 	@Override
 	public void update() {
 
-		user = this.get();
+		User userCheck = this.get();
 
 		try {
 			Statement stm = this.conn.createStatement();
 
-			if (user != null) {
+			if (userCheck != null) {
 
 			} else {
 				stm.executeUpdate("INSERT INTO user (id, name, surname, email, password, registration) VALUES ( "
