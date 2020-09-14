@@ -86,7 +86,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 		return false;
 
 	}
-
+ 
 	@Override
 	public Paragraph get() {
 		Paragraph paragraph = null;
