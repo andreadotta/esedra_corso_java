@@ -32,6 +32,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			Statement stm = this.conn.createStatement();
 			
 			
+			
 			stm.executeUpdate("INSERT INTO paragraph (id, text) VALUES ( " + paragraph.getId() + ", '"
 					+ paragraph.getText() + "' )");
 
