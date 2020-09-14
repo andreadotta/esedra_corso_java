@@ -48,6 +48,20 @@ public class Author {
 		this.email = email;
 	}
 
+
+
+	public void setText(String name2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	public String getText() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

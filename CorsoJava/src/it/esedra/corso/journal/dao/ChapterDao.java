@@ -73,4 +73,10 @@ public class ChapterDao implements DaoInterface<Chapter> {
 		this.conn = con;
 	}
 
+	@Override
+	public Chapter get() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
