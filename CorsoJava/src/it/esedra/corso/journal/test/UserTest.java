@@ -6,18 +6,20 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.collections.UserCollection;
 import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserTest {
 
 	// Parametri database
@@ -35,7 +37,7 @@ public class UserTest {
 	}
 
 	@Test
-	public void testUpdate() {
+	public void testAUpdate() {
 
 		try {
 			Connection connection = JournalDbConnect.connect();
@@ -140,8 +142,8 @@ public class UserTest {
 
 	}
 
-	@BeforeAll
-	public void setup() {
+	@BeforeClass
+	public static void setup() {
 
 		try {
 			DbUtil.rebuildDb();

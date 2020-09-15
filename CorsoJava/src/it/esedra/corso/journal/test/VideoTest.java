@@ -6,20 +6,21 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.db.DbConnect;
-import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.collections.VideoCollection;
 import it.esedra.corso.journal.dao.VideoDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class VideoTest {
 
 	public static final int ID = 1;
@@ -32,7 +33,7 @@ public class VideoTest {
 	}
 
 	@Test
-	public void testUpdate() {
+	public void testAUpdate() {
 
 		try {
 			Connection connection = JournalDbConnect.connect();
@@ -55,7 +56,7 @@ public class VideoTest {
 	}
 
 	@Test
-	public void testGetAll() {
+	public void testBGetAll() {
 
 		Collection<Video> videoCollection = new VideoCollection();
 
@@ -91,8 +92,8 @@ public class VideoTest {
 
 	}
 
-	@BeforeAll
-	public void setup() {
+	@BeforeClass
+	public static void setup() {
 
 		try {
 			DbUtil.rebuildDb();
@@ -105,7 +106,7 @@ public class VideoTest {
 	}
 
 	@Test
-	public void testGet() {
+	public void testCGet() {
 
 		try {
 

@@ -19,10 +19,7 @@ public class JournalDbConnect {
             String url = "jdbc:sqlite:" +  System.getProperty("user.dir") + Journal.loadProperties().getDbpath();
             // create a connection to the database
             conn = DriverManager.getConnection(url);
-            
-            System.out.println("Connection to SQLite has been established.");
 
-            
         } catch (Exception e) {
             //throw new Exception(e.getMessage());
         	PrintHelper.out("Errore", e.getMessage());

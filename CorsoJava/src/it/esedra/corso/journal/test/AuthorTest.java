@@ -6,26 +6,27 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuthorTest {
 	public static final int ID = 1;
 	public static final String NAME = " Mbrain Linda";
 	public static final String EMAIL = "info@mcbrain.com";
 
-	@BeforeAll
-	public void setup() {
+	@BeforeClass
+	public static void setup() {
 
 		try {
 			DbUtil.rebuildDb();
@@ -37,26 +38,7 @@ public class AuthorTest {
 
 	}
 
-	@Test
-	public void testUpdate() {
-		try {
-			Connection connection = JournalDbConnect.connect();
-
-			Author author = new Author();
-			author.setId(ID);
-			author.setText(NAME);
-			author.setText(EMAIL);
-
-			AuthorDao authorDao = new AuthorDao(author);
-			authorDao.setConnection(connection);
-
-			assertTrue(authorDao.update() > 0);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
+	
 
 	@Test
 	public void testGetAll() {
@@ -84,7 +66,6 @@ public class AuthorTest {
 				if (author1.getId() == ID && author1.getName().equals(NAME)) {
 					found = true;
 					break;
-
 				}
 
 			}
@@ -94,6 +75,27 @@ public class AuthorTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void testAUpdate() {
+		try {
+			Connection connection = JournalDbConnect.connect();
+
+			Author author = new Author();
+			author.setId(ID);
+			author.setName(NAME);
+			author.setEmail(EMAIL);
+
+			AuthorDao authorDao = new AuthorDao(author);
+			authorDao.setConnection(connection);
+
+			assertTrue(authorDao.update() > 0);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
