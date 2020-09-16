@@ -85,10 +85,10 @@ public class UserDao implements DaoInterface<User> {
 				stm.setString(5, user.getRegistration());
 
 				stm.setInt(6, user.getId());
-				
+
 				affectedRows = stm.executeUpdate();
 				stm.close();
-				
+
 			} else {
 				String sql = "INSERT INTO user (id, name, surname, email, password, registration) VALUES ( ?, ?, ?, ?, ?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
