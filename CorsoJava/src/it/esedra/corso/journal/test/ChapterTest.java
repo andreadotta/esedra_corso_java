@@ -29,7 +29,7 @@ import it.esedra.corso.journal.db.JournalDbConnect;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ChapterTest {
 
-	private static final int ID = 1;
+	private static final int ID = 0;
 	private static final String TITLE = "TITLE";
 
 	@Test
@@ -39,9 +39,9 @@ public class ChapterTest {
 			Connection connection = JournalDbConnect.connect();
 
 			Chapter chapter = new Chapter();
-		    chapter.setId(ID);
+			chapter.setId(1);
 			chapter.setTitle("Capitolo di esempio");
-			
+			chapter.setDate(new Date());
 
 			ChapterDao chapterDao = new ChapterDao(chapter);
 			chapterDao.setConnection(connection);
@@ -64,10 +64,10 @@ public class ChapterTest {
 
 			Connection connection = JournalDbConnect.connect();
 			ChapterDao chapterdao = new ChapterDao(new Chapter());
-			
-			chapterdao.setConnection(connection);
+			ChapterDao chapterdao1 = null;
+			chapterdao1.setConnection(connection);
 
-			chapterCollection = chapterdao.getAll();
+			chapterCollection = chapterdao1.getAll();
 
 			Iterator<Chapter> chapterIterator = chapterCollection.createIterator();
 
