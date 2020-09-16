@@ -8,7 +8,7 @@ import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 
 import it.esedra.corso.journal.Paragraph;
-import it.esedra.corso.journal.Video;
+
 import it.esedra.corso.journal.collections.ParagraphCollection;
 
 public class ParagraphDao implements DaoInterface<Paragraph> {
