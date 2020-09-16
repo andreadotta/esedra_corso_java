@@ -39,7 +39,7 @@ public class ChapterTest {
 			Connection connection = JournalDbConnect.connect();
 
 			Chapter chapter = new Chapter();
-			chapter.setId(1);
+		    	chapter.setId(1);
 			chapter.setTitle("Capitolo di esempio");
 			
 
