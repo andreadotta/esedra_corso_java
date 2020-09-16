@@ -18,8 +18,8 @@ public class TestOperaiDetail {
 
 	@Test
 	public void testCalculateSalaryAnnuale() {
-		operai.setNome("oussein");
-		operai.setSalaryMensile(8000.0);
+		operai.setNome("giacomo");
+		operai.setSalaryMensile(7000.0);
 		operai.setAge(25);
 
 		double salary = operaiBusiness.CalculateSalaryAnnuale(operai);

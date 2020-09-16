@@ -1,6 +1,7 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -8,7 +9,6 @@ import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 
 import it.esedra.corso.journal.Paragraph;
-
 import it.esedra.corso.journal.collections.ParagraphCollection;
 
 public class ParagraphDao implements DaoInterface<Paragraph> {
@@ -28,14 +28,27 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			PrintHelper.out("Paragraph non può essere null");
 			return affectedRows;
 		}
+		Paragraph paragraphCheck = this.get();
+
 		try {
+			if (paragraphCheck != null) {
+				String sql = "UPDATE paragraph SET text = ?  WHERE id = ? ;";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+				stm.setString(1, paragraph.getText());
+				stm.setInt(2, paragraph.getId());
 
-			Statement stm = this.conn.createStatement();
+				affectedRows = stm.executeUpdate();
 
-			affectedRows = stm.executeUpdate("INSERT INTO paragraph (id, text) VALUES ( " + paragraph.getId() + ", '"
-					+ paragraph.getText() + "' )");
+				stm.close();
 
-			conn.close();
+			} else {
+				String sql = "INSERT INTO paragraph (id, text) VALUES ( ?, ?);";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+				stm.setInt(1, paragraph.getId());
+				stm.setString(2, paragraph.getText());
+
+				affectedRows = stm.executeUpdate();
+			}
 		} catch (Exception e) {
 			PrintHelper.out("Errore paragraph dao", e.getMessage());
 		}
@@ -86,7 +99,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 		return false;
 
 	}
- 
+
 	@Override
 	public Paragraph get() {
 		Paragraph paragraph = null;
