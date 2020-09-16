@@ -15,15 +15,22 @@ import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
+import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.Chapter;
+import it.esedra.corso.journal.User;
+import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.collections.ChapterCollection;
+import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.dao.ChapterDao;
+import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ChapterTest {
 
+	private static final int ID = 0;
+	private static final String TITLE ="TITLE";
 	@Test	
 	public void testAUpdate() {
 		
@@ -48,35 +55,73 @@ public class ChapterTest {
 	
 	@Test
 	public void testGetAll() {
-		
-		Collection<Chapter> cCollection = new ChapterCollection();
+
+		Collection<Chapter> chapterCollection = new ChapterCollection();
+
+		try {
+			// Effettua la connessione al database
+
+			Connection connection = JournalDbConnect.connect();
+			ChapterDao chapterdao = new ChapterDao(new Chapter());
+			ChapterDao chapterdao1 = null;
+			chapterdao1.setConnection(connection);
+
+			
+			chapterCollection = chapterdao1.getAll();
+
+			
+			Iterator<Chapter> chapterIterator = chapterCollection.createIterator();
+
+			boolean found = false;
+			while (chapterIterator.hasNext()) {
+
+				Chapter chapter1 = chapterIterator.next();
+
+				
+				if (chapter1.getId() == ID && chapter1.getTitle().equals(TITLE)) {
+					found = true;
+					break;
+				}
+
+			}
+			connection.close();
+			assertTrue(found);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testGet() {
 
 		try {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
-			ChapterDao cpdao = new ChapterDao(new Chapter());
-			cpdao.setConnection(connection);
-						
-			// Chiamata metodo getAll() sulla Collection creata
-			cCollection = cpdao.getAll();
+
+			Chapter chapterMock = new Chapter();
 			
-			// Inizializzazione iterator per ciclare sulla Collection
-			Iterator<Chapter> cIterator = cCollection.createIterator();
-			
-			// cicla sugli elementi User della userCollection e restituisce per ogni
-			// elemento i valori delle colonne della tabella user
-			while (cIterator.hasNext()) {
-				Chapter chapter = cIterator.next();
-				
-			}
+			chapterMock.setId(ID);
+			ChapterDao chapterDao = new ChapterDao(chapterMock);
+			chapterDao.setConnection(connection);
+
+			Chapter chapter = chapterDao.get();
+			boolean found = false;
+
+			if (chapter.getId() == ID && chapter.getTitle().equals(TITLE) ) {
+			found = true;
+			} 
 
 			connection.close();
+
+			assertTrue(found);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	@BeforeClass
 	public static void setup() {
 
