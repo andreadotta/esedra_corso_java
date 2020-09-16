@@ -1,4 +1,4 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.JUnit;
 
 import static org.junit.Assert.assertEquals;
 

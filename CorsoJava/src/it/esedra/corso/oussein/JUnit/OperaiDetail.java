@@ -1,4 +1,4 @@
-package it.esedra.corso.oussein;
+package it.esedra.corso.oussein.JUnit;
 
 public class OperaiDetail {
 	private String nome;
