@@ -63,10 +63,8 @@ public class UserTest {
 			user.setPassword(PREFIX + PASSWORD);
 			user.setRegistration(PREFIX + REGISTRATION);
 			
-			UserDao userDao_1 = new UserDao(user);
-			userDao_1.setConnection(connection);
-			
-			assertTrue(userDao_1.update() > 0);
+			userDao = new UserDao(user);
+			assertTrue(userDao.update() > 0);
 
 		} catch (Exception e) {
 			e.printStackTrace();
