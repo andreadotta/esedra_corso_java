@@ -35,8 +35,8 @@ public class JournalTest {
 			Connection connection = JournalDbConnect.connect();
 
 			Journal journal = new Journal();
-			Journal.setId(ID);
-			Journal.setName(NAME);
+			journal.setId(ID);
+			journal.setName(NAME);
 
 			JournalDao journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
@@ -105,7 +105,7 @@ public class JournalTest {
 			Connection connection = JournalDbConnect.connect();
 
 			Journal journalMock = new Journal();
-			Journal.setId(ID);
+			journalMock.setId(ID);
 			JournalDao journalDao = new JournalDao(journalMock);
 			journalDao.setConnection(connection);
 

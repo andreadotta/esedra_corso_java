@@ -35,8 +35,8 @@ public class JournalDao implements DaoInterface<Journal> {
 				// e quindi per ogni tupla crea un oggetto di tipo Journal
 				Journal journal = new Journal();
 				// inserisce i dati nelle proprietà dell'oggetto
-				Journal.setId(rs.getInt("id"));
-				Journal.setName(rs.getString("name"));
+				journal.setId(rs.getInt("id"));
+				journal.setName(rs.getString("name"));
 				// aggiunge l'oggetto alla lista
 			    journals.add(journal);
 			}
@@ -103,8 +103,8 @@ public class JournalDao implements DaoInterface<Journal> {
 				// istanzia l'elemento Journal
 				journal = new Journal();
 
-				Journal.setId(rs.getInt("id"));
-				Journal.setName(rs.getString("name"));
+				journal.setId(rs.getInt("id"));
+				journal.setName(rs.getString("name"));
 
 			}
 			// chiude le connessioni e il result set
