@@ -12,7 +12,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	ImageTest.class,
 	ParagraphTest.class,
 	UserTest.class,
-	VideoTest.class
+	VideoTest.class,
+	JournalTest.class
 	
 })
 public class AllTests {
