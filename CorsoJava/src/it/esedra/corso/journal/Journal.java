@@ -23,7 +23,7 @@ public class Journal {
 	}
 
 	public void setId(int id) {
-		
+		this.id = id;
 	}
 
 	public String getName() {
@@ -31,7 +31,7 @@ public class Journal {
 	}
 
 	public void setName(String name) {
-		
+		this.name = name;
 	}
 
 	public Journal() {
