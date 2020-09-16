@@ -28,6 +28,7 @@ public class JournalTest {
 		
 	}
 	
+	@Test
 	public void testAUpdate() {
 
 		try {
