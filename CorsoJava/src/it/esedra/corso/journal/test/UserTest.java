@@ -139,9 +139,9 @@ public class UserTest {
 			User user = userDao.get();
 			boolean found = false;
 
-			if (user.getId() == ID && user.getName().equals(NAME) && user.getSurname().equals(SURNAME)
-					&& user.getEmail().equals(EMAIL) && user.getPassword().equals(PASSWORD)
-					&& user.getRegistration().equals(REGISTRATION)) {
+			if (user.getId() == ID && user.getName().equals(PREFIX + NAME) && user.getSurname().equals(PREFIX + SURNAME)
+					&& user.getEmail().equals(PREFIX + EMAIL) && user.getPassword().equals(PREFIX + PASSWORD)
+					&& user.getRegistration().equals(PREFIX + REGISTRATION)) {
 			found = true;
 			} 
 
