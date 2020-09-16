@@ -40,7 +40,7 @@ public class ChapterTest {
 
 			Chapter chapter = new Chapter();
 			chapter.setId(1);
-			chapter.setTitle("Capitolo di esempio");
+			 chapter.setTitle("Capitolo di esempio");
 			chapter.setDate(new Date());
 
 			ChapterDao chapterDao = new ChapterDao(chapter);
