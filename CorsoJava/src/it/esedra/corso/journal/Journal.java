@@ -14,6 +14,25 @@ import it.esedra.corso.helpers.PrintHelper;
  *
  */
 public class Journal {
+	
+	private int id;
+	private String name;
+	
+	public int getId() {
+		return id;
+	}
+
+	public static void setId(int id) {
+		
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public static void setName(String name) {
+		
+	}
 
 	public Journal() {
 
