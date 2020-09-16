@@ -34,16 +34,9 @@ public class DbUtil {
 										   // file già esistenti.
 										   // Non può leggere dati dal file
 										   // Consente ad esem,pio di cancellare un file, rinominarlo, etc
-			if (oldDb.canWrite()) {
-				oldDb.delete();				
-			} else {
-				TimeUnit.SECONDS.sleep(1);
-				if (oldDb.canWrite()) {
-					oldDb.delete();
-				} else {
-					PrintHelper.out("DB NON SCRIVIBILE");
-				}
-			}
+
+			oldDb.delete();				
+
 
 			
 			// crea il nuovo database
