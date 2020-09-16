@@ -1,6 +1,7 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -22,7 +23,7 @@ public class UserDao implements DaoInterface<User> {
 	public boolean delete() {
 
 		return false;
-		
+
 	}
 
 	@Override
@@ -63,31 +64,50 @@ public class UserDao implements DaoInterface<User> {
 	@Override
 	public int update() {
 		int affectedRows = 0;
-		
+
 		if (user == null) {
 			PrintHelper.out("user non può essere null.");
 			return affectedRows;
 		}
-		
+
 		User userCheck = this.get();
 
 		try {
-			Statement stm = this.conn.createStatement();
 
 			if (userCheck != null) {
+				String sql = "UPDATE user SET name = ?, surname = ?, email = ?, password = ?, registration = ? WHERE id = ? ;";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
 
+				stm.setString(1, user.getName());
+				stm.setString(2, user.getSurname());
+				stm.setString(3, user.getEmail());
+				stm.setString(4, user.getPassword());
+				stm.setString(5, user.getRegistration());
+
+				stm.setInt(6, user.getId());
+				
+				affectedRows = stm.executeUpdate();
+				stm.close();
+				
 			} else {
-				affectedRows = stm.executeUpdate("INSERT INTO user (id, name, surname, email, password, registration) VALUES ( "
-						+ user.getId() + ", '" + user.getName() + "', '" + user.getSurname() + "', '" + user.getEmail()
-						+ "', '" + user.getPassword() + "', '" + user.getRegistration() + "' )");
+				String sql = "INSERT INTO user (id, name, surname, email, password, registration) VALUES ( ?, ?, ?, ?, ?, ?);";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+				stm.setInt(1, user.getId());
+				stm.setString(2, user.getName());
+				stm.setString(3, user.getSurname());
+				stm.setString(4, user.getEmail());
+				stm.setString(5, user.getPassword());
+				stm.setString(6, user.getRegistration());
+
+				affectedRows = stm.executeUpdate();
+				stm.close();
 			}
 
-			stm.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
-		
+
 		return affectedRows;
 
 	}
