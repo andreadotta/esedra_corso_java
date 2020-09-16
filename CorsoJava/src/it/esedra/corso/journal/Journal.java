@@ -2,10 +2,10 @@ package it.esedra.corso.journal;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
+
 import java.util.Properties;
 
-import it.esedra.corso.helpers.PrintHelper;
+
 
 /**
  * Classe base dell'applicazione
@@ -14,6 +14,25 @@ import it.esedra.corso.helpers.PrintHelper;
  *
  */
 public class Journal {
+	
+	private int id;
+	private String name;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		
+	}
 
 	public Journal() {
 
