@@ -64,6 +64,7 @@ public class UserTest {
 			user.setRegistration(PREFIX + REGISTRATION);
 			
 			userDao = new UserDao(user);
+			userDao.setConnection(connection);
 			assertTrue(userDao.update() > 0);
 
 		} catch (Exception e) {

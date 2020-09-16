@@ -7,7 +7,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
@@ -19,6 +21,7 @@ import it.esedra.corso.journal.dao.JournalDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JournalTest {
 	public static final int ID = 1;
 	public static final String NAME = "Claudio";
