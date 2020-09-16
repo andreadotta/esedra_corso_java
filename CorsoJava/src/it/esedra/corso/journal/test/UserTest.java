@@ -31,6 +31,8 @@ public class UserTest {
 	public static final String EMAIL = "ccini@foo.com";
 	public static final String PASSWORD = "bge";
 	public static final String REGISTRATION = "01/06/2018";
+	
+	public static final String PREFIX = "$$";
 
 	public UserTest() {
 
@@ -54,6 +56,17 @@ public class UserTest {
 			userDao.setConnection(connection);
 			
 			assertTrue(userDao.update() > 0);
+			
+			user.setName(PREFIX + NAME);
+			user.setSurname(PREFIX + SURNAME);
+			user.setEmail(PREFIX + EMAIL);
+			user.setPassword(PREFIX + PASSWORD);
+			user.setRegistration(PREFIX + REGISTRATION);
+			
+			UserDao userDao_1 = new UserDao(user);
+			userDao_1.setConnection(connection);
+			
+			assertTrue(userDao_1.update() > 0);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -92,9 +105,9 @@ public class UserTest {
 
 				User user = userIterator.next();
 
-				if (user.getId() == ID && user.getName().equals(NAME) && user.getSurname().equals(SURNAME)
-						&& user.getEmail().equals(EMAIL) && user.getPassword().equals(PASSWORD)
-						&& user.getRegistration().equals(REGISTRATION)) {
+				if (user.getId() == ID && user.getName().equals(PREFIX + NAME) && user.getSurname().equals(PREFIX + SURNAME)
+						&& user.getEmail().equals(PREFIX + EMAIL) && user.getPassword().equals(PREFIX + PASSWORD)
+						&& user.getRegistration().equals(PREFIX + REGISTRATION)) {
 					found = true;
 					break;
 				}
