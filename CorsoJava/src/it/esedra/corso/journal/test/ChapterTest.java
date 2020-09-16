@@ -29,7 +29,7 @@ import it.esedra.corso.journal.db.JournalDbConnect;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ChapterTest {
 
-	private static final int ID = 0;
+	private static final int ID = 1;
 	private static final String TITLE = "TITLE";
 
 	@Test
@@ -39,7 +39,7 @@ public class ChapterTest {
 			Connection connection = JournalDbConnect.connect();
 
 			Chapter chapter = new Chapter();
-		    	chapter.setId(1);
+		    	chapter.setId(ID);
 			chapter.setTitle("Capitolo di esempio");
 			
 
