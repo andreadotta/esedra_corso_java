@@ -23,6 +23,7 @@ import it.esedra.corso.journal.db.JournalDbConnect;
 public class ParagraphTest {
 	public static final int ID = 1;
 	public static final String TEXT = "il primo paragraph del diario";
+	public static final String PREFIX = "$$";
 
 	@Test
 	public void testAUpdate() {
@@ -34,6 +35,13 @@ public class ParagraphTest {
 			paragraph.setText(TEXT);
 
 			ParagraphDao paragraphDao = new ParagraphDao(paragraph);
+			paragraphDao.setConnection(connection);
+
+			assertTrue(paragraphDao.update() > 0);
+
+			paragraph.setText(PREFIX + TEXT);
+
+			ParagraphDao paragraphDao1 = new ParagraphDao(paragraph);
 			paragraphDao.setConnection(connection);
 
 			assertTrue(paragraphDao.update() > 0);
