@@ -29,30 +29,31 @@ import it.esedra.corso.journal.db.JournalDbConnect;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ChapterTest {
 
-	private static final int ID = 0;
-	private static final String TITLE ="TITLE";
-	@Test	
+	private static final int ID = 1;
+	private static final String TITLE = "TITLE";
+
+	@Test
 	public void testAUpdate() {
-		
+
 		try {
 			Connection connection = JournalDbConnect.connect();
-			
+
 			Chapter chapter = new Chapter();
-			chapter.setId(1);
-			chapter.setTitle("Capitolo di esempio");
+			chapter.setId(ID);
+			chapter.setTitle(TITLE);
 			chapter.setDate(new Date());
-			
+
 			ChapterDao chapterDao = new ChapterDao(chapter);
 			chapterDao.setConnection(connection);
-			
+
 			assertTrue(chapterDao.update() > 0);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	@Test
 	public void testGetAll() {
 
@@ -63,13 +64,10 @@ public class ChapterTest {
 
 			Connection connection = JournalDbConnect.connect();
 			ChapterDao chapterdao = new ChapterDao(new Chapter());
-			ChapterDao chapterdao1 = null;
-			chapterdao1.setConnection(connection);
+			chapterdao.setConnection(connection);
 
-			
-			chapterCollection = chapterdao1.getAll();
+			chapterCollection = chapterdao.getAll();
 
-			
 			Iterator<Chapter> chapterIterator = chapterCollection.createIterator();
 
 			boolean found = false;
@@ -77,7 +75,6 @@ public class ChapterTest {
 
 				Chapter chapter1 = chapterIterator.next();
 
-				
 				if (chapter1.getId() == ID && chapter1.getTitle().equals(TITLE)) {
 					found = true;
 					break;
@@ -91,7 +88,7 @@ public class ChapterTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void testGet() {
 
@@ -100,7 +97,7 @@ public class ChapterTest {
 			Connection connection = JournalDbConnect.connect();
 
 			Chapter chapterMock = new Chapter();
-			
+
 			chapterMock.setId(ID);
 			ChapterDao chapterDao = new ChapterDao(chapterMock);
 			chapterDao.setConnection(connection);
@@ -108,9 +105,9 @@ public class ChapterTest {
 			Chapter chapter = chapterDao.get();
 			boolean found = false;
 
-			if (chapter.getId() == ID && chapter.getTitle().equals(TITLE) ) {
-			found = true;
-			} 
+			if (chapter.getId() == ID && chapter.getTitle().equals(TITLE)) {
+				found = true;
+			}
 
 			connection.close();
 

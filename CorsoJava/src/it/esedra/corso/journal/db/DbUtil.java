@@ -8,7 +8,9 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
 
 public class DbUtil {
@@ -32,7 +34,10 @@ public class DbUtil {
 										   // file già esistenti.
 										   // Non può leggere dati dal file
 										   // Consente ad esem,pio di cancellare un file, rinominarlo, etc
-			oldDb.delete();
+
+			oldDb.delete();				
+
+
 			
 			// crea il nuovo database
 			// in SQLITE creando una connessione al db se questo non esiste
@@ -47,6 +52,7 @@ public class DbUtil {
 			tables.add("video");
 			tables.add("image");
 			tables.add("chapter");
+			tables.add("journal");
 
 			for (String table : tables) {
 				FileReader input = new FileReader(System.getProperty("user.dir") + "/sqlite/db/sql/" + table + ".sql");
