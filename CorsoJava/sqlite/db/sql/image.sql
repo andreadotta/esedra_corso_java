@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS "image";
 CREATE TABLE "image" (
 	"name"	TEXT NULL,
 	"id"	INTEGER NOT NULL UNIQUE,
