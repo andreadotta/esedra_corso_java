@@ -14,16 +14,19 @@ import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.dao.AuthorDao;
+import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuthorTest {
-	public static final int ID = 1;
+	public static int ID = 1;
 	public static final String NAME = " Mbrain Linda";
 	public static final String EMAIL = "info@mcbrain.com";
+	public static final String PREFIX = "$$";
 
 	@BeforeClass
 	public static void setup() {
@@ -37,8 +40,6 @@ public class AuthorTest {
 		}
 
 	}
-
-	
 
 	@Test
 	public void testGetAll() {
@@ -61,9 +62,10 @@ public class AuthorTest {
 			boolean found = false;
 			while (authorIterator.hasNext()) {
 
-				Author author1 = authorIterator.next();
+				Author author = authorIterator.next();
 
-				if (author1.getId() == ID && author1.getName().equals(NAME)) {
+				if (author.getId() == ID && author.getName().equals(PREFIX + NAME)
+						&& author.getEmail().equals(PREFIX + EMAIL)) {
 					found = true;
 					break;
 				}
@@ -76,20 +78,29 @@ public class AuthorTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void testAUpdate() {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
 			Author author = new Author();
-			author.setId(ID);
+
 			author.setName(NAME);
 			author.setEmail(EMAIL);
 
 			AuthorDao authorDao = new AuthorDao(author);
 			authorDao.setConnection(connection);
 
+			assertTrue(authorDao.update() > 0);
+			// setto l'ID con il valore della chiave generata dal database
+			ID = author.getId();
+
+			author.setName(PREFIX + NAME);
+			author.setEmail(PREFIX + EMAIL);
+
+			authorDao = new AuthorDao(author);
+			authorDao.setConnection(connection);
 			assertTrue(authorDao.update() > 0);
 
 		} catch (Exception e) {
@@ -98,4 +109,39 @@ public class AuthorTest {
 
 	}
 
+	@Test
+	public void testGet() {
+
+		try {
+
+			// Effettua la connessione al database
+
+			Connection connection = JournalDbConnect.connect();
+			Author authorMock = new Author();
+			authorMock.setId(ID);
+			AuthorDao authorDao = new AuthorDao(authorMock);
+			authorDao.setConnection(connection);
+
+			Author author = authorDao.get();
+
+			boolean found = false;
+
+			if (author.getId() == ID && author.getName().equals(PREFIX + NAME)
+					&& author.getEmail().equals(PREFIX + EMAIL)) {
+
+				found = true;
+
+			}
+
+			connection.close();
+
+			assertTrue(found);
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
 }

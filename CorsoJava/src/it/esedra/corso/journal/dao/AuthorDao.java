@@ -1,12 +1,14 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.collections.AuthorCollection;
 
 public class AuthorDao implements DaoInterface<Author> {
@@ -26,11 +28,35 @@ public class AuthorDao implements DaoInterface<Author> {
 			PrintHelper.out("author non può essere null.");
 			return affectedRows;
 		}
+		Author authorCheck = this.get();
 		try {
-			Statement stm = this.conn.createStatement();
-			affectedRows = stm.executeUpdate("INSERT INTO author (id, name,email) VALUES ( " + author.getId() + ", '"
-			 +author.getName() + "', '" + author.getEmail() + "')");
-			conn.close();
+			if (authorCheck != null) {
+				String sql = "UPDATE author SET name = ?, email = ? WHERE id = ? ;";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+				
+				stm.setString(1, author.getName());
+				stm.setString(2, author.getEmail());
+				stm.setInt(3, author.getId());
+				affectedRows = stm.executeUpdate();
+				stm.close();
+			} else {
+				String sql = "INSERT INTO author ( name, email) VALUES ( ?, ?);";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+				
+				stm.setString(1, author.getName());
+				stm.setString(2, author.getEmail());
+			
+
+				affectedRows = stm.executeUpdate();
+				ResultSet genKeys = stm.getGeneratedKeys();
+				if (genKeys.next()) {
+					author.setId(genKeys.getInt(1));
+				}
+				
+				stm.close();
+			}
+
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			PrintHelper.out("Errore author dao", e.getMessage());

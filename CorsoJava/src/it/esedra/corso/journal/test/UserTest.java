@@ -25,7 +25,7 @@ public class UserTest {
 	// Parametri database
 	public static final String DBPATH = System.getProperty("user.dir") + "/sqlite/db/journal.db";
 	// Dichiarazione delle costanti di classe per il test case
-	public static final int ID = 1;
+	public static int ID = 1;
 	public static final String NAME = "Claudio";
 	public static final String SURNAME = "Cini";
 	public static final String EMAIL = "ccini@foo.com";
@@ -45,7 +45,7 @@ public class UserTest {
 			Connection connection = JournalDbConnect.connect();
 
 			User user = new User();
-			user.setId(ID);
+			
 			user.setName(NAME);
 			user.setSurname(SURNAME);
 			user.setEmail(EMAIL);
@@ -56,6 +56,8 @@ public class UserTest {
 			userDao.setConnection(connection);
 			
 			assertTrue(userDao.update() > 0);
+			//setto l'ID con il valore della chiave generata dal database
+			ID = user.getId();
 			
 			user.setName(PREFIX + NAME);
 			user.setSurname(PREFIX + SURNAME);

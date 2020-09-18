@@ -90,16 +90,21 @@ public class UserDao implements DaoInterface<User> {
 				stm.close();
 
 			} else {
-				String sql = "INSERT INTO user (id, name, surname, email, password, registration) VALUES ( ?, ?, ?, ?, ?, ?);";
+				String sql = "INSERT INTO user ( name, surname, email, password, registration) VALUES ( ?, ?, ?, ?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
-				stm.setInt(1, user.getId());
-				stm.setString(2, user.getName());
-				stm.setString(3, user.getSurname());
-				stm.setString(4, user.getEmail());
-				stm.setString(5, user.getPassword());
-				stm.setString(6, user.getRegistration());
+				
+				stm.setString(1, user.getName());
+				stm.setString(2, user.getSurname());
+				stm.setString(3, user.getEmail());
+				stm.setString(4, user.getPassword());
+				stm.setString(5, user.getRegistration());
 
 				affectedRows = stm.executeUpdate();
+				ResultSet genKeys = stm.getGeneratedKeys();
+				if (genKeys.next()) {
+					user.setId(genKeys.getInt(1));
+				}
+				
 				stm.close();
 			}
 
