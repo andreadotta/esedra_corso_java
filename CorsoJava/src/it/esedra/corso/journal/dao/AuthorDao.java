@@ -8,7 +8,6 @@ import java.sql.Statement;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
-import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.collections.AuthorCollection;
 
 public class AuthorDao implements DaoInterface<Author> {

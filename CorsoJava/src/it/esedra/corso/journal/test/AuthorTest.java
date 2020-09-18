@@ -14,10 +14,8 @@ import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Author;
-import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.dao.AuthorDao;
-import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
