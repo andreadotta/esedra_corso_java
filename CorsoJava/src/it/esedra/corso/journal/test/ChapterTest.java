@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -15,14 +14,9 @@ import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.Chapter;
-import it.esedra.corso.journal.User;
-import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.collections.ChapterCollection;
-import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.dao.ChapterDao;
-import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
