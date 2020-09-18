@@ -45,6 +45,11 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			} else {
 				String sql = "INSERT INTO paragraph (id, text) VALUES (?,?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
+				
+				stm.setInt(1, paragraph.getId());
+				stm.setString(2, paragraph.getText());
+				
+
 
 				affectedRows = stm.executeUpdate();
 
