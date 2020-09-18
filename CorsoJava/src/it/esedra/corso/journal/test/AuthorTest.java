@@ -14,8 +14,10 @@ import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.dao.AuthorDao;
+import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
@@ -96,6 +98,32 @@ public class AuthorTest {
 			e.printStackTrace();
 		}
 
-	}
+	
+@Test
+public void testGet() {
 
-}
+	try {
+		// Effettua la connessione al database
+		Connection connection = JournalDbConnect.connect();
+
+		Author authorMock = new Author();
+		authorMock.setId(ID);
+		AuthorDao authorDao = new AuthorDao(authorMock);
+		authorDao.setConnection(connection);
+
+		Author author = authorDao.get();
+		boolean found = false;
+
+		if (author.getId() == ID && author.getName().equals(NAME) 
+				&& author.getEmail().equals(EMAIL)) {
+		found = true;
+		} 
+
+		connection.close();
+
+		assertTrue(found);
+
+	} catch (SQLException e) {
+		e.printStackTrace(); 
+	}
+	
