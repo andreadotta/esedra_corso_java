@@ -65,7 +65,20 @@ public class AuthorDao implements DaoInterface<Author> {
 
 	@Override
 	public boolean delete() {
-		return false;
+		  boolean success = true;
+			
+			try {
+				Statement stm = this.conn.createStatement();
+				int rs = stm.executeUpdate("DELETE FROM author WHERE id = " + this.author.getId());
+				
+				if(rs > 0) {
+					success = true;
+				}
+			} catch (Exception e) {
+				PrintHelper.out("Errore author dao", e.getMessage());
+			}
+			
+		return success;
 	}
 
 	@Override

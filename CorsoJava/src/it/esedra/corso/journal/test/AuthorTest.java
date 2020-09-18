@@ -1,5 +1,6 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -134,6 +135,37 @@ public class AuthorTest {
 			connection.close();
 
 			assertTrue(found);
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
+	@Test
+	public void testZDelete() {
+
+		try {
+
+			// Effettua la connessione al database
+
+			Connection connection = JournalDbConnect.connect();
+			Author authorMock = new Author();
+			authorMock.setId(ID);
+			AuthorDao authorDao = new AuthorDao(authorMock);
+			authorDao.setConnection(connection);
+			boolean deleted = authorDao.delete();
+			assertTrue(deleted);
+
+			Author author = authorDao.get();
+			assertNull(author);
+
+			
+
+			connection.close();
+
+			
 
 		} catch (SQLException e) {
 
