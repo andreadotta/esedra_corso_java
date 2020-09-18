@@ -22,8 +22,24 @@ public class UserDao implements DaoInterface<User> {
 	@Override
 	public boolean delete() {
 
-		return false;
+		boolean success = true;
 
+		try {
+
+			// crea lo statement
+			Statement stm = this.conn.createStatement();
+			// crea il result set al quale passa la query
+			int rs = stm.executeUpdate("DELETE FROM user WHERE id =" + this.user.getId());
+			
+			if (rs > 0) {
+				success = true;
+			}
+			
+		} catch (Exception e) {
+			PrintHelper.out("Errore user dao", e.getMessage());
+		}
+		// restituisce l'oggetto
+		return success;
 	}
 
 	@Override
@@ -92,7 +108,7 @@ public class UserDao implements DaoInterface<User> {
 			} else {
 				String sql = "INSERT INTO user ( name, surname, email, password, registration) VALUES ( ?, ?, ?, ?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
-				
+
 				stm.setString(1, user.getName());
 				stm.setString(2, user.getSurname());
 				stm.setString(3, user.getEmail());
@@ -104,7 +120,7 @@ public class UserDao implements DaoInterface<User> {
 				if (genKeys.next()) {
 					user.setId(genKeys.getInt(1));
 				}
-				
+
 				stm.close();
 			}
 
