@@ -1,6 +1,7 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -18,7 +19,7 @@ public class JournalDao implements DaoInterface<Journal> {
 		super();
 		this.journal = journal;
 	}
-	
+
 	@Override
 	public Collection<Journal> getAll() {
 		// istanzia una lista vuota di Journal
@@ -38,7 +39,7 @@ public class JournalDao implements DaoInterface<Journal> {
 				journal.setId(rs.getInt("id"));
 				journal.setName(rs.getString("name"));
 				// aggiunge l'oggetto alla lista
-			    journals.add(journal);
+				journals.add(journal);
 			}
 			// chiude le connessioni e il result set
 			rs.close();
@@ -49,7 +50,7 @@ public class JournalDao implements DaoInterface<Journal> {
 		return journals;
 
 	}
-	
+
 	@Override
 	public int update() {
 		int affectedRows = 0;
@@ -62,17 +63,35 @@ public class JournalDao implements DaoInterface<Journal> {
 		Journal journalCheck = this.get();
 
 		try {
-			Statement stm = this.conn.createStatement();
 
 			if (journalCheck != null) {
+				String sql = "UPDATE journal SET name= ? WHERE id = ? ;";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+
+				stm.setString(1, journal.getName());
+				stm.setInt(2, journal.getId());
+
+				affectedRows = stm.executeUpdate();
+
+				stm.close();
 
 			} else {
-				affectedRows = stm.executeUpdate(
-						"INSERT INTO journal (id, name) VALUES ( " + journal.getId()
-								+ ", '" + journal.getName() +"' )");
+				String sql = "INSERT INTO journal (id, name) VALUES (?,?) ;";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+
+				stm.setInt(1, journal.getId());
+				stm.setString(2, journal.getName());
+
+				affectedRows = stm.executeUpdate();
+				ResultSet genKeys = stm.getGeneratedKeys();
+				if (genKeys.next()) {
+					journal.setId(genKeys.getInt(1));
+				}
+
+				stm.close();
+
 			}
 
-			stm.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			PrintHelper.out("Errore journal dao", e.getMessage());
@@ -115,15 +134,25 @@ public class JournalDao implements DaoInterface<Journal> {
 		// restituisce l'oggetto
 		return journal;
 
-    }
-	
+	}
 
 	@Override
 	public boolean delete() {
 
-		return false;
-		
-	}
-}
+		boolean success = true;
 
-	
+		try {
+			Statement stm = this.conn.createStatement();
+			int rs = stm.executeUpdate("DELETE FROM journal WHERE id = " + this.journal.getId());
+
+			if (rs > 0) {
+				success = true;
+			}
+		} catch (Exception e) {
+			PrintHelper.out("Errore journal dao", e.getMessage());
+		}
+
+		return success;
+	}
+
+}

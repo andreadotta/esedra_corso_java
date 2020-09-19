@@ -1,5 +1,6 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -16,21 +17,21 @@ import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Config;
 import it.esedra.corso.journal.Journal;
+import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.collections.JournalCollection;
 import it.esedra.corso.journal.dao.JournalDao;
+import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JournalTest {
-	public static final int ID = 1;
+	public static int ID = 1;
 	public static final String NAME = "Claudio";
-    public static final String TEST_OK = "passed";
-    public static final String TEST_FAIL = "failed";
-	public JournalTest() {
-		
-	}
-	
+	public static final String TEST_OK = "passed";
+	public static final String TEST_FAIL = "failed";
+	public static final String PREFIX = "$$";
+
 	@Test
 	public void testAUpdate() {
 
@@ -43,7 +44,13 @@ public class JournalTest {
 
 			JournalDao journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
-			
+
+			assertTrue(journalDao.update() > 0);
+			ID = journal.getId();
+
+			journal.setName(PREFIX + NAME);
+			journalDao = new JournalDao(journal);
+			journalDao.setConnection(connection);
 			assertTrue(journalDao.update() > 0);
 
 		} catch (Exception e) {
@@ -83,7 +90,7 @@ public class JournalTest {
 
 				Journal journal = journalIterator.next();
 
-				if (journal.getId() == ID && journal.getName().equals(NAME)) {
+				if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME)) {
 					found = true;
 					break;
 				}
@@ -115,9 +122,9 @@ public class JournalTest {
 			Journal journal = journalDao.get();
 			boolean found = false;
 
-			if (journal.getId() == ID && journal.getName().equals(NAME)) {
-			found = true;
-			} 
+			if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME)) {
+				found = true;
+			}
 
 			connection.close();
 
@@ -136,34 +143,38 @@ public class JournalTest {
 			DbUtil.rebuildDb();
 
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 
 	}
 
+	@Test
+	public void testZDelete() {
 
-
-
-	
-	public static void main(String[] args) {
-		
-		Config conf;
 		try {
-			
-			conf = Journal.loadProperties();
-			
-			if (conf == null) {
-				PrintHelper.out("Errore");
-			} else {
-				PrintHelper.out("OK");
-			}
-			
-		} catch (IOException e) {
+
+			// Effettua la connessione al database
+
+			Connection connection = JournalDbConnect.connect();
+			Journal journalMock = new Journal();
+			journalMock.setId(ID);
+			JournalDao journalDao = new JournalDao(journalMock);
+			journalDao.setConnection(connection);
+			boolean deleted = journalDao.delete();
+			assertTrue(deleted);
+
+			Journal journal = journalDao.get();
+			assertNull(journal);
+
+			connection.close();
+
+		} catch (SQLException e) {
 
 			e.printStackTrace();
+
 		}
-		
-		
+
 	}
+
 }

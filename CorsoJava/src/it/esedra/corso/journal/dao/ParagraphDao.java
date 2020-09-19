@@ -106,8 +106,20 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	@Override
 	public boolean delete() {
 
-		return false;
+		boolean success = true;
 
+		try {
+			Statement stm = this.conn.createStatement();
+			int rs = stm.executeUpdate("DELETE FROM paragraph WHERE id = " + this.paragraph.getId());
+
+			if (rs > 0) {
+				success = true;
+			}
+		} catch (Exception e) {
+			PrintHelper.out("Errore paragraph dao", e.getMessage());
+		}
+
+		return success;
 	}
 
 	@Override

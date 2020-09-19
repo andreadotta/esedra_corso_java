@@ -1,5 +1,6 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -14,8 +15,10 @@ import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
+import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.collections.ChapterCollection;
+import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
@@ -23,8 +26,10 @@ import it.esedra.corso.journal.db.JournalDbConnect;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ChapterTest {
 
-	private static final int ID = 1;
+	private static  int ID = 1;
 	private static final String TITLE = "TITLE";
+	public static final String PREFIX = "$$";
+
 
 	@Test
 	public void testAUpdate() {
@@ -110,6 +115,34 @@ public class ChapterTest {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		}
+		@Test
+		public void testZDelete() {
+
+			try {
+
+				// Effettua la connessione al database
+
+				Connection connection = JournalDbConnect.connect();
+				Chapter chapterMock = new Chapter();
+				chapterMock.setId(ID);
+				ChapterDao chapterDao = new ChapterDao(chapterMock);
+				chapterDao.setConnection(connection);
+				boolean deleted = chapterDao.delete();
+				assertTrue(deleted);
+
+				Chapter chapter = chapterDao.get();
+				assertNull(chapter);
+
+				
+
+				connection.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+
+			}
+		
 
 	}
 
