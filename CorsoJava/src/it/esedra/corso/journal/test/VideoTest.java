@@ -52,11 +52,12 @@ public class VideoTest {
 			videoDao.setConnection(connection);
 
 			assertTrue(videoDao.update() > 0);
+			
 			ID = video.getId();
 
 			video.setSrc(PREFIX + SRC);
-			video.setSrc(PREFIX + NAME);
-			video.setSrc(PREFIX + TITLE);
+			video.setName(PREFIX + NAME);
+			video.setTitle(PREFIX + TITLE);
 
 			videoDao = new VideoDao(video);
 			videoDao.setConnection(connection);
@@ -131,13 +132,14 @@ public class VideoTest {
 
 			Video video = videoDao.get();
 
-			connection.close();
+			
 			boolean found = false;
 			if (video.getId() == ID && video.getSrc().equals(PREFIX + SRC) && video.getName().equals(PREFIX + NAME)
 					&& video.getTitle().equals(PREFIX + TITLE)) {
 				found = true;
 
 			}
+			connection.close();
 			assertTrue(found);
 		} catch (SQLException e) {
 			e.printStackTrace();
