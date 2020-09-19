@@ -1,5 +1,6 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -13,16 +14,19 @@ import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
+import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.collections.ParagraphCollection;
+import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ParagraphTest {
-	public static final int ID = 1;
+	public static int ID = 1;
 	public static final String TEXT = "il primo paragraph del diario";
+	public static final String PREFIX = "$$";
 
 	@Test
 	public void testAUpdate() {
@@ -36,6 +40,14 @@ public class ParagraphTest {
 			ParagraphDao paragraphDao = new ParagraphDao(paragraph);
 			paragraphDao.setConnection(connection);
 
+			assertTrue(paragraphDao.update() > 0);
+
+			ID = paragraph.getId();
+
+			paragraph.setText(PREFIX + TEXT);
+
+			paragraphDao = new ParagraphDao(paragraph);
+			paragraphDao.setConnection(connection);
 			assertTrue(paragraphDao.update() > 0);
 
 		} catch (Exception e) {
@@ -70,7 +82,7 @@ public class ParagraphTest {
 
 				Paragraph paragraph = paragraphIterator.next();
 
-				if (paragraph.getId() == ID && paragraph.getText().equals(TEXT)) {
+				if (paragraph.getId() == ID && paragraph.getText().equals(PREFIX + TEXT)) {
 					found = true;
 					break;
 
@@ -102,7 +114,7 @@ public class ParagraphTest {
 			Paragraph paragraph = paragraphDao.get();
 			boolean found = false;
 
-			if (paragraph.getId() == ID && paragraph.getText().equals(TEXT)) {
+			if (paragraph.getId() == ID && paragraph.getText().equals(PREFIX + TEXT)) {
 				found = true;
 			}
 
@@ -112,6 +124,34 @@ public class ParagraphTest {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void testZDelete() {
+
+		try {
+
+			// Effettua la connessione al database
+
+			Connection connection = JournalDbConnect.connect();
+			Paragraph paragraphMock = new Paragraph();
+			paragraphMock.setId(ID);
+			ParagraphDao paragraphDao = new ParagraphDao(paragraphMock);
+			paragraphDao.setConnection(connection);
+			boolean deleted = paragraphDao.delete();
+			assertTrue(deleted);
+
+			Paragraph paragraph = paragraphDao.get();
+			assertNull(paragraph);
+
+			connection.close();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
 		}
 
 	}

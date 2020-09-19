@@ -1,6 +1,7 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -18,7 +19,7 @@ public class VideoDao implements DaoInterface<Video> {
 		super();
 		this.video = video;
 	}
-	
+
 	@Override
 	public int update() {
 		int affectedRows = 0;
@@ -29,29 +30,65 @@ public class VideoDao implements DaoInterface<Video> {
 		Video videoCheck = this.get();
 
 		try {
-			Statement stm = this.conn.createStatement();
+
 			if (videoCheck != null) {
-				
-				
+				String sql = "UPDATE video SET src= ?, name= ?, title= ?  WHERE id = ? ;";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+
+				stm.setString(1, video.getSrc());
+				stm.setString(2, video.getName());
+				stm.setString(3, video.getTitle());
+
+				stm.setInt(4, video.getId());
+
+				affectedRows = stm.executeUpdate();
+
+				stm.close();
+
 			} else {
-				affectedRows = stm.executeUpdate("INSERT INTO video (id, src, name, title) VALUES ( " + video.getId() + ", '"
-						+ video.getSrc() + "', '" + video.getName() + "', '" + video.getTitle() + "')");
+				String sql = "INSERT INTO image ( src,name,title) VALUES (?,?,?) ;";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+
+				
+				stm.setString(1, video.getSrc());
+				stm.setString(2, video.getName());
+				stm.setString(3, video.getTitle());
+
+				affectedRows = stm.executeUpdate();
+				ResultSet genKeys = stm.getGeneratedKeys();
+				if (genKeys.next()) {
+					video.setId(genKeys.getInt(1));
+				}
+
+				stm.close();
+
 			}
-			
-			stm.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			PrintHelper.out("Errore video dao", e.getMessage());
 		}
-		
+
 		return affectedRows;
 
 	}
 
 	@Override
 	public boolean delete() {
-		
-		return false;
+
+		boolean success = true;
+
+		try {
+			Statement stm = this.conn.createStatement();
+			int rs = stm.executeUpdate("DELETE FROM video WHERE id = " + this.video.getId());
+
+			if (rs > 0) {
+				success = true;
+			}
+		} catch (Exception e) {
+			PrintHelper.out("Errore video dao", e.getMessage());
+		}
+
+		return success;
 
 	}
 

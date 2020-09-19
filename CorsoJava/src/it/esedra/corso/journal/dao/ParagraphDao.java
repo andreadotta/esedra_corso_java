@@ -1,6 +1,7 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -28,14 +29,36 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			PrintHelper.out("Paragraph non può essere null");
 			return affectedRows;
 		}
+		Paragraph paragraphCheck = this.get();
 		try {
+			if (paragraphCheck != null) {
+				String sql = "UPDATE paragraph SET text= ? WHERE id = ? ;";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
 
-			Statement stm = this.conn.createStatement();
+				stm.setString(1, paragraph.getText());
+				stm.setInt(2, paragraph.getId());
 
-			affectedRows = stm.executeUpdate("INSERT INTO paragraph (id, text) VALUES ( " + paragraph.getId() + ", '"
-					+ paragraph.getText() + "' )");
+				affectedRows = stm.executeUpdate();
 
-			conn.close();
+				stm.close();
+
+			} else {
+				String sql = "INSERT INTO paragraph (id, text) VALUES (?,?) ;";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+
+				stm.setInt(1, paragraph.getId());
+				stm.setString(2, paragraph.getText());
+
+				affectedRows = stm.executeUpdate();
+				ResultSet genKeys = stm.getGeneratedKeys();
+				if (genKeys.next()) {
+					paragraph.setId(genKeys.getInt(1));
+				}
+
+				stm.close();
+
+			}
+
 		} catch (Exception e) {
 			PrintHelper.out("Errore paragraph dao", e.getMessage());
 		}
@@ -83,10 +106,22 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	@Override
 	public boolean delete() {
 
-		return false;
+		boolean success = true;
 
+		try {
+			Statement stm = this.conn.createStatement();
+			int rs = stm.executeUpdate("DELETE FROM paragraph WHERE id = " + this.paragraph.getId());
+
+			if (rs > 0) {
+				success = true;
+			}
+		} catch (Exception e) {
+			PrintHelper.out("Errore paragraph dao", e.getMessage());
+		}
+
+		return success;
 	}
- 
+
 	@Override
 	public Paragraph get() {
 		Paragraph paragraph = null;

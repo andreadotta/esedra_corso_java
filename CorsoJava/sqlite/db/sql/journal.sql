@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS "journal";
 CREATE TABLE "journal" (
 	"id"	INTEGER NOT NULL UNIQUE,
 	"name"	TEXT NOT NULL,

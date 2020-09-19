@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS "chapter";
 CREATE TABLE "chapter" (
 	"id"	INTEGER NOT NULL UNIQUE,
 	"title"	TEXT NOT NULL UNIQUE,
