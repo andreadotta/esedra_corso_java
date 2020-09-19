@@ -62,7 +62,7 @@ public class ImageDao implements DaoInterface<Image> {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			PrintHelper.out("Errore journal dao", e.getMessage());
+			PrintHelper.out("Errore image dao", e.getMessage());
 		}
 
 		return affectedRows;
@@ -104,27 +104,11 @@ public class ImageDao implements DaoInterface<Image> {
 			}
 			rs.close();
 		} catch (Exception e) {
-			PrintHelper.out("Errore video dao", e.getMessage());
+			PrintHelper.out("Errore image dao", e.getMessage());
 		}
 
 		return images;
 
-	}
-
-	public Image getImage() {
-		return image;
-	}
-
-	public void setImage(Image image) {
-		this.image = image;
-	}
-
-	public Connection getConn() {
-		return conn;
-	}
-
-	public void setConn(Connection conn) {
-		this.conn = conn;
 	}
 
 	@Override
