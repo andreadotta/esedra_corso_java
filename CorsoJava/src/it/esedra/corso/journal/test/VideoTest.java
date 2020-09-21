@@ -43,7 +43,7 @@ public class VideoTest {
 			Connection connection = JournalDbConnect.connect();
 
 			Video video = new Video();
-			video.setId(ID);
+			
 			video.setSrc(SRC);
 			video.setName(NAME);
 			video.setTitle(TITLE);

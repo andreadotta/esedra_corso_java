@@ -6,6 +6,8 @@ package it.esedra.corso.journal;
  *
  */
 public class Video extends MultimediaResource {
+	
+	
 
 	private String title;
 	

@@ -106,7 +106,7 @@ public class UserDao implements DaoInterface<User> {
 				stm.close();
 
 			} else {
-				String sql = "INSERT INTO user ( name, surname, email, password, registration) VALUES ( ?, ?, ?, ?, ?);";
+				String sql = "INSERT INTO user (name, surname, email, password, registration) VALUES (?, ?, ?, ?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, user.getName());
