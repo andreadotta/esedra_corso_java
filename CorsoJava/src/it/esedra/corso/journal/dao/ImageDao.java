@@ -38,7 +38,7 @@ public class ImageDao implements DaoInterface<Image> {
 
 				stm.setString(1, image.getSrc());
 				stm.setString(2, image.getName());
-				
+
 				stm.setInt(3, image.getId());
 
 				affectedRows = stm.executeUpdate();
@@ -103,8 +103,7 @@ public class ImageDao implements DaoInterface<Image> {
 				Image image = new Image();
 				image.setId(rs.getInt("id"));
 				image.setSrc(rs.getString("src"));
-				image.setSrc(rs.getString("name"));
-
+				image.setName(rs.getString("name"));
 
 				images.add(image);
 			}
@@ -136,7 +135,7 @@ public class ImageDao implements DaoInterface<Image> {
 				image = new Image();
 				image.setId(rs.getInt("id"));
 				image.setSrc(rs.getString("src"));
-				image.setSrc(rs.getString("name"));
+				image.setName(rs.getString("name"));
 
 			}
 			rs.close();

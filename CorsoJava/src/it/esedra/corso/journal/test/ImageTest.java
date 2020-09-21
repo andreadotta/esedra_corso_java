@@ -28,7 +28,7 @@ public class ImageTest {
 
 	public static int ID = 1;
 	public static final String SRC = "https:www.youtube.com";
-	public static final String NAME= "Gulia" ;
+	public static final String NAME = "Gulia";
 	public static final String PREFIX = "$$";
 
 	@Test
@@ -39,7 +39,7 @@ public class ImageTest {
 			Image image = new Image();
 			image.setId(ID);
 			image.setSrc(SRC);
-			image.setSrc(NAME);
+			image.setName(NAME);
 
 			ImageDao imageDao = new ImageDao(image);
 			imageDao.setConnection(connection);
@@ -48,7 +48,7 @@ public class ImageTest {
 			ID = image.getId();
 
 			image.setSrc(PREFIX + SRC);
-			image.setSrc(PREFIX + NAME);
+			image.setName(PREFIX + NAME);
 			imageDao = new ImageDao(image);
 			imageDao.setConnection(connection);
 			assertTrue(imageDao.update() > 0);
@@ -62,7 +62,7 @@ public class ImageTest {
 	@Test
 	public void testGetAll() {
 
-		Collection<Image> images = new ImageCollection();
+		Collection<Image> imageCollection = new ImageCollection();
 
 		try {
 
@@ -70,16 +70,17 @@ public class ImageTest {
 			ImageDao imagedao = new ImageDao(new Image());
 			imagedao.setConnection(connection);
 
-			Collection<Image> imagesCollection = imagedao.getAll();
+			 imageCollection = imagedao.getAll();
 
-			Iterator<Image> imageIterator = imagesCollection.createIterator();
+			Iterator<Image> imageIterator = imageCollection.createIterator();
 
 			boolean found = false;
 			while (imageIterator.hasNext()) {
 
 				Image image = imageIterator.next();
 
-				if (image.getId() == ID && image.getSrc().equals(PREFIX + SRC) && image.getName().equals(PREFIX + NAME)) {
+				if (image.getId() == ID && image.getSrc().equals(PREFIX + SRC)
+						&& image.getName().equals(PREFIX + NAME)) {
 					found = true;
 					break;
 
@@ -122,13 +123,15 @@ public class ImageTest {
 
 			Image image = imageDao.get();
 
-			connection.close();
 			boolean found = false;
 			if (image.getId() == ID && image.getSrc().equals(PREFIX + SRC) && image.getName().equals(PREFIX + NAME)) {
 				found = true;
 
 			}
+			connection.close();
+
 			assertTrue(found);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
