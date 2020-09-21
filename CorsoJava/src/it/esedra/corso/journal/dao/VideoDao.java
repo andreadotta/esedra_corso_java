@@ -46,10 +46,9 @@ public class VideoDao implements DaoInterface<Video> {
 				stm.close();
 
 			} else {
-				String sql = "INSERT INTO image ( src,name,title) VALUES (?,?,?) ;";
+				String sql = "INSERT INTO image (src, name, title) VALUES (?,?,?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
-				
 				stm.setString(1, video.getSrc());
 				stm.setString(2, video.getName());
 				stm.setString(3, video.getTitle());
