@@ -28,6 +28,7 @@ public class ImageTest {
 
 	public static int ID = 1;
 	public static final String SRC = "https:www.youtube.com";
+	public static final String NAME= "Gulia" ;
 	public static final String PREFIX = "$$";
 
 	@Test
@@ -38,6 +39,7 @@ public class ImageTest {
 			Image image = new Image();
 			image.setId(ID);
 			image.setSrc(SRC);
+			image.setSrc(NAME);
 
 			ImageDao imageDao = new ImageDao(image);
 			imageDao.setConnection(connection);
@@ -46,6 +48,7 @@ public class ImageTest {
 			ID = image.getId();
 
 			image.setSrc(PREFIX + SRC);
+			image.setSrc(PREFIX + NAME);
 			imageDao = new ImageDao(image);
 			imageDao.setConnection(connection);
 			assertTrue(imageDao.update() > 0);
@@ -76,7 +79,7 @@ public class ImageTest {
 
 				Image image = imageIterator.next();
 
-				if (image.getId() == ID && image.getSrc().equals(PREFIX + SRC)) {
+				if (image.getId() == ID && image.getSrc().equals(PREFIX + SRC) && image.getName().equals(PREFIX + NAME)) {
 					found = true;
 					break;
 
@@ -121,7 +124,7 @@ public class ImageTest {
 
 			connection.close();
 			boolean found = false;
-			if (image.getId() == ID && image.getSrc().equals(PREFIX + SRC)) {
+			if (image.getId() == ID && image.getSrc().equals(PREFIX + SRC) && image.getName().equals(PREFIX + NAME)) {
 				found = true;
 
 			}

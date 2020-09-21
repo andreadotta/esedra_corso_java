@@ -33,22 +33,25 @@ public class ImageDao implements DaoInterface<Image> {
 		Image imageCheck = this.get();
 		try {
 			if (imageCheck != null) {
-				String sql = "UPDATE image SET src= ? WHERE id = ? ;";
+				String sql = "UPDATE image SET src= ?, name=?  WHERE id = ?  ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, image.getSrc());
-				stm.setInt(2, image.getId());
+				stm.setString(2, image.getName());
+				
+				stm.setInt(3, image.getId());
 
 				affectedRows = stm.executeUpdate();
 
 				stm.close();
 
 			} else {
-				String sql = "INSERT INTO image (id, src) VALUES (?,?) ;";
+				String sql = "INSERT INTO image (id, src,name) VALUES (?,?,?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setInt(1, image.getId());
 				stm.setString(2, image.getSrc());
+				stm.setString(3, image.getName());
 
 				affectedRows = stm.executeUpdate();
 				ResultSet genKeys = stm.getGeneratedKeys();
@@ -100,6 +103,9 @@ public class ImageDao implements DaoInterface<Image> {
 				Image image = new Image();
 				image.setId(rs.getInt("id"));
 				image.setSrc(rs.getString("src"));
+				image.setSrc(rs.getString("name"));
+
+
 				images.add(image);
 			}
 			rs.close();
@@ -130,6 +136,7 @@ public class ImageDao implements DaoInterface<Image> {
 				image = new Image();
 				image.setId(rs.getInt("id"));
 				image.setSrc(rs.getString("src"));
+				image.setSrc(rs.getString("name"));
 
 			}
 			rs.close();
