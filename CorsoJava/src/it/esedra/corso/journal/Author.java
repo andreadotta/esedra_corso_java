@@ -6,14 +6,9 @@ package it.esedra.corso.journal;
  *
  */
 public class Author {
-	private Integer id;
-	private String name;
-	private String email;
-
-	public Author() {
-		// TODO Auto-generated constructor stub
-	}
-
+	private final Integer id;
+	private final String name;
+	private final String email;
 
 
 	public Author(Integer id, String name, String email) {
@@ -28,25 +23,16 @@ public class Author {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	
 

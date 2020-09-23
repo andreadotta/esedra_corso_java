@@ -15,6 +15,7 @@ import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.db.DbUtil;
@@ -49,7 +50,7 @@ public class AuthorTest {
 			// Effettua la connessione al database
 
 			Connection connection = JournalDbConnect.connect();
-			AuthorDao authordao = new AuthorDao(new Author());
+			AuthorDao authordao = new AuthorDao();
 			authordao.setConnection(connection);
 
 			//
@@ -83,24 +84,22 @@ public class AuthorTest {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Author author = new Author();
-
-			author.setName(NAME);
-			author.setEmail(EMAIL);
+			Author author = new AuthorBuilder().setName(NAME).setEmail(EMAIL).build();
 
 			AuthorDao authorDao = new AuthorDao(author);
 			authorDao.setConnection(connection);
 
-			assertTrue(authorDao.update() > 0);
+			author = authorDao.update();
+			assertTrue(author != null);
 			// setto l'ID con il valore della chiave generata dal database
 			ID = author.getId();
-
-			author.setName(PREFIX + NAME);
-			author.setEmail(PREFIX + EMAIL);
+			
+			author = new AuthorBuilder().setId(ID).setName(PREFIX + NAME).setEmail(PREFIX + EMAIL).build();
 
 			authorDao = new AuthorDao(author);
 			authorDao.setConnection(connection);
-			assertTrue(authorDao.update() > 0);
+			author = authorDao.update();
+			assertTrue(author != null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -116,8 +115,8 @@ public class AuthorTest {
 			// Effettua la connessione al database
 
 			Connection connection = JournalDbConnect.connect();
-			Author authorMock = new Author();
-			authorMock.setId(ID);
+			Author authorMock = new AuthorBuilder().setId(ID).build();
+
 			AuthorDao authorDao = new AuthorDao(authorMock);
 			authorDao.setConnection(connection);
 
@@ -143,6 +142,7 @@ public class AuthorTest {
 		}
 
 	}
+
 	@Test
 	public void testZDelete() {
 
@@ -151,8 +151,8 @@ public class AuthorTest {
 			// Effettua la connessione al database
 
 			Connection connection = JournalDbConnect.connect();
-			Author authorMock = new Author();
-			authorMock.setId(ID);
+			Author authorMock = new AuthorBuilder().setId(ID).build();
+
 			AuthorDao authorDao = new AuthorDao(authorMock);
 			authorDao.setConnection(connection);
 			boolean deleted = authorDao.delete();
@@ -161,11 +161,7 @@ public class AuthorTest {
 			Author author = authorDao.get();
 			assertNull(author);
 
-			
-
 			connection.close();
-
-			
 
 		} catch (SQLException e) {
 
