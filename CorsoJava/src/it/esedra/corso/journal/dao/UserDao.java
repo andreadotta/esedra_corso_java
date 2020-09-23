@@ -7,12 +7,19 @@ import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.User;
+import it.esedra.corso.journal.UserBuilder;
 import it.esedra.corso.journal.collections.UserCollection;
 
 public class UserDao implements DaoInterface<User> {
+
 	private User user;
 	private Connection conn;
+
+	public UserDao() {
+
+	}
 
 	public UserDao(User user) {
 		super();
@@ -30,11 +37,11 @@ public class UserDao implements DaoInterface<User> {
 			Statement stm = this.conn.createStatement();
 			// crea il result set al quale passa la query
 			int rs = stm.executeUpdate("DELETE FROM user WHERE id =" + this.user.getId());
-			
+
 			if (rs > 0) {
 				success = true;
 			}
-			
+
 		} catch (Exception e) {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
@@ -56,14 +63,10 @@ public class UserDao implements DaoInterface<User> {
 			// ottiene il result set
 			while (rs.next()) {
 				// e quindi per ogni tupla crea un oggetto di tipo User
-				User user = new User();
-				// inserisce i dati nelle proprietà dell'oggetto
-				user.setId(rs.getInt("id"));
-				user.setName(rs.getString("name"));
-				user.setSurname(rs.getString("surname"));
-				user.setEmail(rs.getString("email"));
-				user.setPassword(rs.getString("password"));
-				user.setRegistration(rs.getString("registration"));
+				User user = new UserBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
+						.setSurname(rs.getString("surname")).setEmail(rs.getString("email"))
+						.setPassword(rs.getString("password")).setRegistration(rs.getString("registration")).build();
+
 				// aggiunge l'oggetto alla lista
 				users.add(user);
 			}
@@ -78,15 +81,15 @@ public class UserDao implements DaoInterface<User> {
 	}
 
 	@Override
-	public int update() {
-		int affectedRows = 0;
+	public User update() {
 
 		if (user == null) {
 			PrintHelper.out("user non può essere null.");
-			return affectedRows;
+			return null;
 		}
 
 		User userCheck = this.get();
+		User copy = null;
 
 		try {
 
@@ -102,7 +105,13 @@ public class UserDao implements DaoInterface<User> {
 
 				stm.setInt(6, user.getId());
 
-				affectedRows = stm.executeUpdate();
+				if (stm.executeUpdate() > 0) {
+
+					copy = new UserBuilder().setId(user.getId()).setName(user.getName()).setSurname(user.getSurname())
+							.setEmail(user.getEmail()).setPassword(user.getPassword())
+							.setRegistration(user.getRegistration()).build();
+				}
+
 				stm.close();
 
 			} else {
@@ -115,10 +124,15 @@ public class UserDao implements DaoInterface<User> {
 				stm.setString(4, user.getPassword());
 				stm.setString(5, user.getRegistration());
 
-				affectedRows = stm.executeUpdate();
-				ResultSet genKeys = stm.getGeneratedKeys();
-				if (genKeys.next()) {
-					user.setId(genKeys.getInt(1));
+				if (stm.executeUpdate() > 0) {
+
+					ResultSet genKeys = stm.getGeneratedKeys();
+					if (genKeys.next()) {
+
+						copy = new UserBuilder().setId(genKeys.getInt(1)).setName(user.getName())
+								.setSurname(user.getSurname()).setEmail(user.getEmail()).setPassword(user.getPassword())
+								.setRegistration(user.getRegistration()).build();
+					}
 				}
 
 				stm.close();
@@ -129,7 +143,7 @@ public class UserDao implements DaoInterface<User> {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
 
-		return affectedRows;
+		return copy;
 
 	}
 
@@ -152,14 +166,9 @@ public class UserDao implements DaoInterface<User> {
 
 			while (rs.next()) {
 				// istanzia l'elemento User
-				user = new User();
-
-				user.setId(rs.getInt("id"));
-				user.setName(rs.getString("name"));
-				user.setSurname(rs.getString("surname"));
-				user.setEmail(rs.getString("email"));
-				user.setPassword(rs.getString("password"));
-				user.setRegistration(rs.getString("registration"));
+				user = new UserBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
+						.setSurname(rs.getString("surname")).setEmail(rs.getString("email"))
+						.setPassword(rs.getString("password")).setRegistration(rs.getString("registration")).build();
 
 			}
 			// chiude le connessioni e il result set

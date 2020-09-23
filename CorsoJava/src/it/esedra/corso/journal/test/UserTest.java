@@ -15,6 +15,7 @@ import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.User;
+import it.esedra.corso.journal.UserBuilder;
 import it.esedra.corso.journal.collections.UserCollection;
 import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
@@ -45,30 +46,25 @@ public class UserTest {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			User user = new User();
-
-			user.setName(NAME);
-			user.setSurname(SURNAME);
-			user.setEmail(EMAIL);
-			user.setPassword(PASSWORD);
-			user.setRegistration(REGISTRATION);
+			User user = new UserBuilder().setName(NAME).setSurname(SURNAME).setEmail(EMAIL).setPassword(PASSWORD)
+					.setRegistration(REGISTRATION).build();
 
 			UserDao userDao = new UserDao(user);
 			userDao.setConnection(connection);
 
-			assertTrue(userDao.update() > 0);
+			user = userDao.update();
+			assertTrue(user != null);
 			// setto l'ID con il valore della chiave generata dal database
 			ID = user.getId();
 
-			user.setName(PREFIX + NAME);
-			user.setSurname(PREFIX + SURNAME);
-			user.setEmail(PREFIX + EMAIL);
-			user.setPassword(PREFIX + PASSWORD);
-			user.setRegistration(PREFIX + REGISTRATION);
+			user = new UserBuilder().setId(ID).setName(PREFIX + NAME).setSurname(PREFIX + SURNAME)
+					.setEmail(PREFIX + EMAIL).setPassword(PREFIX + PASSWORD).setRegistration(PREFIX + REGISTRATION)
+					.build();
 
 			userDao = new UserDao(user);
 			userDao.setConnection(connection);
-			assertTrue(userDao.update() > 0);
+			user = userDao.update();
+			assertTrue(user != null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -84,7 +80,7 @@ public class UserTest {
 		try {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
-			UserDao userDao = new UserDao(new User());
+			UserDao userDao = new UserDao();
 			userDao.setConnection(connection);
 
 			// Chiamata metodo getAll() sulla Collection creata
@@ -134,12 +130,13 @@ public class UserTest {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
 
-			User userMock = new User();
-			userMock.setId(ID);
+			User userMock = new UserBuilder().setId(ID).build();
+
 			UserDao userDao = new UserDao(userMock);
 			userDao.setConnection(connection);
 
 			User user = userDao.get();
+
 			boolean found = false;
 
 			if (user.getId() == ID && user.getName().equals(PREFIX + NAME) && user.getSurname().equals(PREFIX + SURNAME)
@@ -164,9 +161,8 @@ public class UserTest {
 		try {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
-
-			User userMock = new User();
-			userMock.setId(ID);
+			User userMock = new UserBuilder().setId(ID).build();;
+			
 			UserDao userDao = new UserDao(userMock);
 			userDao.setConnection(connection);
 
@@ -192,7 +188,7 @@ public class UserTest {
 			DbUtil.rebuildDb();
 
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 
