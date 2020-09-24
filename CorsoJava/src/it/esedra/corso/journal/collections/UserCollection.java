@@ -16,4 +16,16 @@ public class UserCollection extends AbstactCollections<User> implements Collecti
 		return new Iterator<User>(super.toArray());
 	}
 
+	@Override
+	public int getId() {
+		
+		return 0;
+	}
+
+	@Override
+	public Object getText() {
+		
+		return null;
+	}
+
 }
