@@ -7,9 +7,10 @@ import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
-
+import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.Paragraph;
-
+import it.esedra.corso.journal.ParagraphBuilder;
 import it.esedra.corso.journal.collections.ParagraphCollection;
 
 public class ParagraphDao implements DaoInterface<Paragraph> {
@@ -17,19 +18,24 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	private Paragraph paragraph;
 	private Connection conn;
 
+	public ParagraphDao() {
+
+	}
+
 	public ParagraphDao(Paragraph paragraph) {
 		super();
 		this.paragraph = paragraph;
 	}
 
 	@Override
-	public int update() {
-		int affectedRows = 0;
+	public Paragraph update() {
+
 		if (paragraph == null) {
 			PrintHelper.out("Paragraph non può essere null");
-			return affectedRows;
+			return null;
 		}
 		Paragraph paragraphCheck = this.get();
+		Paragraph copy = null;
 		try {
 			if (paragraphCheck != null) {
 				String sql = "UPDATE paragraph SET text= ? WHERE id = ? ;";
@@ -38,21 +44,25 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 				stm.setString(1, paragraph.getText());
 				stm.setInt(2, paragraph.getId());
 
-				affectedRows = stm.executeUpdate();
+				if (stm.executeUpdate() > 0) {
+					copy = new ParagraphBuilder().setId(paragraph.getId()).setText(paragraph.getText()).build();
+				}
 
 				stm.close();
 
 			} else {
-				String sql = "INSERT INTO paragraph (id, text) VALUES (?,?) ;";
+				String sql = "INSERT INTO paragraph ( text) VALUES (?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
-				stm.setInt(1, paragraph.getId());
-				stm.setString(2, paragraph.getText());
+				stm.setString(1, paragraph.getText());
 
-				affectedRows = stm.executeUpdate();
-				ResultSet genKeys = stm.getGeneratedKeys();
-				if (genKeys.next()) {
-					paragraph.setId(genKeys.getInt(1));
+				if (stm.executeUpdate() > 0) {
+					ResultSet genKeys = stm.getGeneratedKeys();
+					if (genKeys.next()) {
+
+						copy = new ParagraphBuilder().setId(genKeys.getInt(1)).setText(paragraph.getText()).build();
+					}
+
 				}
 
 				stm.close();
@@ -60,10 +70,11 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			PrintHelper.out("Errore paragraph dao", e.getMessage());
 		}
 
-		return affectedRows;
+		return copy;
 
 	}
 
@@ -79,11 +90,8 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM Paragraph");
 
 			while (rs.next()) {
-
-				Paragraph paragraph = new Paragraph();
-				paragraph.setId(rs.getInt("id"));
-
-				paragraph.setText(rs.getString("text"));
+				Paragraph paragraph = new ParagraphBuilder().setId(rs.getInt("id")).setText(rs.getString("text"))
+						.build();
 
 				paragraphs.add(paragraph);
 			}
@@ -93,7 +101,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			PrintHelper.out("Errore paragraph dao", e.getMessage());
 		}
 
-		return (Collection<Paragraph>) paragraphs;
+		return  paragraphs;
 
 	}
 
@@ -131,10 +139,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM paragraph WHERE id = " + this.paragraph.getId());
 
 			while (rs.next()) {
-
-				paragraph = new Paragraph();
-				paragraph.setId(rs.getInt("id"));
-				paragraph.setText(rs.getString("text"));
+				paragraph = new ParagraphBuilder().setId(rs.getInt("id")).setText(rs.getString("text")).build();
 
 			}
 			rs.close();

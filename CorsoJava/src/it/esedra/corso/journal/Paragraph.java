@@ -8,28 +8,21 @@ package it.esedra.corso.journal;
  */
 public class Paragraph {
 
-	private String text;
-	private int id;
+	private final String text;
+	private final Integer id;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
+	public Paragraph(Integer id, String text) {
+		super();
 		this.id = id;
+		this.text = text;
 	}
 
-	public Paragraph() {
-
-		
+	public Integer getId() {
+		return id;
 	}
 
 	public String getText() {
 		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
 	}
 
 }
