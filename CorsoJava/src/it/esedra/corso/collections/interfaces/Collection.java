@@ -22,6 +22,5 @@ public interface Collection<T> {
 	 * Restituisce la array
 	 */
 	T[] toArray();
-	int getId();
-	Object getText();
+
 }
