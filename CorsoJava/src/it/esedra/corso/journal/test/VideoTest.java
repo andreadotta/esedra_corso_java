@@ -1,12 +1,12 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -15,6 +15,7 @@ import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Video;
+import it.esedra.corso.journal.VideoBuilder;
 import it.esedra.corso.journal.collections.VideoCollection;
 import it.esedra.corso.journal.dao.VideoDao;
 import it.esedra.corso.journal.db.DbUtil;
@@ -23,10 +24,11 @@ import it.esedra.corso.journal.db.JournalDbConnect;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class VideoTest {
 
-	public static final int ID = 1;
+	public static int ID = 1;
 	public static final String SRC = "https://www.youtube.com/watch?v=1234567890";
 	public static final String NAME = "VIDEO";
 	public static final String TITLE = "CIAO";
+	public static final String PREFIX = "$$";
 
 	public VideoTest() {
 
@@ -38,16 +40,23 @@ public class VideoTest {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Video video = new Video();
-			video.setId(ID);
-			video.setSrc(SRC);
-			video.setName(NAME);
-			video.setTitle(TITLE);
+			Video video = new VideoBuilder().setSrc(SRC).setName(NAME).setTitle(TITLE).build();
 
 			VideoDao videoDao = new VideoDao(video);
 			videoDao.setConnection(connection);
+
+			video = videoDao.update();
+			assertTrue(video != null);
 			
-			assertTrue(videoDao.update() > 0);
+			ID = video.getId();
+
+			video = new VideoBuilder().setId(ID).setSrc(PREFIX + SRC).setName(PREFIX + NAME)
+					.setTitle(PREFIX + TITLE).build();
+
+			videoDao = new VideoDao(video);
+			videoDao.setConnection(connection);
+			video = videoDao.update();
+			assertTrue(video != null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,14 +65,14 @@ public class VideoTest {
 	}
 
 	@Test
-	public void testBGetAll() {
+	public void testGetAll() {
 
 		Collection<Video> videoCollection = new VideoCollection();
 
 		try {
 
 			Connection connection = JournalDbConnect.connect();
-			VideoDao videoDao = new VideoDao(new Video());
+			VideoDao videoDao = new VideoDao();
 			videoDao.setConnection(connection);
 
 			videoCollection = videoDao.getAll();
@@ -74,9 +83,9 @@ public class VideoTest {
 			while (videoIterator.hasNext()) {
 
 				Video video = videoIterator.next();
-				
-				if (video.getId() == ID && video.getSrc().equals(SRC) && video.getName().equals(NAME)
-						&& video.getTitle().equals(TITLE)) {
+
+				if (video.getId() == ID && video.getSrc().equals(PREFIX + SRC) && video.getName().equals(PREFIX + NAME)
+						&& video.getTitle().equals(PREFIX + TITLE)) {
 					found = true;
 					break;
 
@@ -85,7 +94,7 @@ public class VideoTest {
 			}
 			connection.close();
 			assertTrue(found);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -99,36 +108,64 @@ public class VideoTest {
 			DbUtil.rebuildDb();
 
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 
 	}
 
 	@Test
-	public void testCGet() {
+	public void testGet() {
 
 		try {
 
 			Connection connection = JournalDbConnect.connect();
-			Video videoMock = new Video();
-			videoMock.setId(ID);
+			Video videoMock = new VideoBuilder().setId(ID).build();
+			
+			
 			VideoDao videoDao = new VideoDao(videoMock);
 			videoDao.setConnection(connection);
 
 			Video video = videoDao.get();
 
-			connection.close();
+			
 			boolean found = false;
-			if (video.getId() == ID && video.getSrc().equals(SRC) && video.getName().equals(NAME)
-					&& video.getTitle().equals(TITLE)) {
+			if (video.getId() == ID && video.getSrc().equals(PREFIX + SRC) && video.getName().equals(PREFIX + NAME)
+					&& video.getTitle().equals(PREFIX + TITLE)) {
 				found = true;
 
 			}
+			connection.close();
 			assertTrue(found);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
+	@Test
+	public void testZDelete() {
+
+		try {
+
+			Connection connection = JournalDbConnect.connect();
+            Video videoMock = new VideoBuilder().setId(ID).build();
+			
+			VideoDao videoDao = new VideoDao(videoMock);
+			videoDao.setConnection(connection);
+
+			boolean deleted = videoDao.delete();
+			assertTrue(deleted);
+
+			Video video = videoDao.get();
+
+			assertNull(video);
+
+			connection.close();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
+		}
+
+	}
 }

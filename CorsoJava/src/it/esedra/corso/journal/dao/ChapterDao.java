@@ -1,13 +1,15 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
+
 import it.esedra.corso.journal.Chapter;
-import it.esedra.corso.journal.Video;
+
 import it.esedra.corso.journal.collections.ChapterCollection;
 
 public class ChapterDao implements DaoInterface<Chapter> {
@@ -25,29 +27,64 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	public int update() {
 		int affectedRows = 0;
 		if (chapter == null) {
-			PrintHelper.out("Chapter non può essere null");
+			PrintHelper.out("author non può essere null.");
 			return affectedRows;
 		}
+		Chapter chapterCheck = this.get();
 		try {
-			Statement stm = this.conn.createStatement();
-			affectedRows = stm.executeUpdate("INSERT INTO chapter (id, title, date) VALUES ( " + chapter.getId() + ", '"
-					+ chapter.getTitle() + "', '" + chapter.getDate() + "' )");
+			if ((chapterCheck != null)) {
+				String sql = "UPDATE chapter SET title = ?, date= ?  WHERE id = ? ;";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
 
-			conn.close();
+				stm.setString(1, chapter.getTitle());
+				stm.setDate(2,new java.sql.Date( chapter.getDate().getTime()));
+				stm.setInt(3, chapter.getId());
+
+				affectedRows = stm.executeUpdate();
+				stm.close();
+			} else {
+				String sql = "INSERT INTO chapter ( title, date ) VALUES (?, ?);";
+				PreparedStatement stm = this.conn.prepareStatement(sql);
+
+				stm.setString(1, chapter.getTitle());
+				stm.setDate(2,new java.sql.Date( chapter.getDate().getTime()));
+				affectedRows = stm.executeUpdate();
+				ResultSet genKeys = stm.getGeneratedKeys();
+				if (genKeys.next()) {
+					chapter.setId(genKeys.getInt(1));
+				}
+
+				stm.close();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			PrintHelper.out("Errore chapter dao", e.getMessage());
+			PrintHelper.out("Errore author dao", e.getMessage());
 		}
-		
 		return affectedRows;
+
 	}
 
 	@Override
 	public boolean delete() {
-		
-		return false;
 
+		 boolean success = true;
+			
+			try {
+				Statement stm = this.conn.createStatement();
+				int rs = stm.executeUpdate("DELETE FROM chapter WHERE id = " + this.chapter.getId());
+				
+				if(rs > 0) {
+					success = true;
+				}
+			} catch (Exception e) {
+				PrintHelper.out("Errore author dao", e.getMessage());
+			}
+			
+		return success;
 	}
+
+	
+
 
 	@Override
 	public Collection<Chapter> getAll() {

@@ -1,5 +1,6 @@
 package it.esedra.corso.journal.test;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -13,31 +14,41 @@ import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
+import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.Paragraph;
+import it.esedra.corso.journal.ParagraphBuilder;
 import it.esedra.corso.journal.collections.ParagraphCollection;
+import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ParagraphTest {
-	public static final int ID = 1;
+	public static int ID = 1;
 	public static final String TEXT = "il primo paragraph del diario";
-	
+	public static final String PREFIX = "$$";
 
 	@Test
 	public void testAUpdate() {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Paragraph paragraph = new Paragraph();
-			paragraph.setId(ID);
-			paragraph.setText(TEXT);
+			Paragraph paragraph = new ParagraphBuilder().setText(TEXT).build();
 
 			ParagraphDao paragraphDao = new ParagraphDao(paragraph);
 			paragraphDao.setConnection(connection);
+			paragraph = paragraphDao.update();
+			assertTrue(paragraph != null);
 
-			assertTrue(paragraphDao.update() > 0);
+			ID = paragraph.getId();
+
+			paragraph = new ParagraphBuilder().setId(ID).setText(PREFIX + TEXT).build();
+
+			paragraphDao = new ParagraphDao(paragraph);
+			paragraphDao.setConnection(connection);
+			paragraph = paragraphDao.update();
+			assertTrue(paragraph != null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,20 +59,20 @@ public class ParagraphTest {
 	@Test
 	public void testGetAll() {
 
-		Collection<Paragraph> paragraphs = new ParagraphCollection();
+		Collection<Paragraph> paragraph = new ParagraphCollection();
 
 		try {
 			// Effettua la connessione al database
 
 			Connection connection = JournalDbConnect.connect();
-			ParagraphDao paragraphdao = new ParagraphDao(new Paragraph());
+			ParagraphDao paragraphdao = new ParagraphDao();
 			paragraphdao.setConnection(connection);
 
 			// Chiamata metodo getAll() sulla Collection creata
-			Collection<Paragraph> paragraphsCollection = paragraphdao.getAll();
+			Collection<Paragraph> paragraphCollection = paragraphdao.getAll();
 
 			// Inizializzazione iterator per ciclare sulla Collection
-			Iterator<Paragraph> paragraphIterator = paragraphsCollection.createIterator();
+			Iterator<Paragraph> paragraphIterator = paragraphCollection.createIterator();
 
 			// cicla sugli elementi Paragraph della paragraphCollection e restituisce per
 			// ogni
@@ -69,9 +80,9 @@ public class ParagraphTest {
 			boolean found = false;
 			while (paragraphIterator.hasNext()) {
 
-				Paragraph paragraph = paragraphIterator.next();
+				Paragraph paragraph1 = paragraphIterator.next();
 
-				if (paragraph.getId() == ID && paragraph.getText().equals(TEXT)) {
+				if (paragraph1.getId() == ID && paragraph1.getText().equals(PREFIX + TEXT)) {
 					found = true;
 					break;
 
@@ -95,15 +106,15 @@ public class ParagraphTest {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
 
-			Paragraph paragraphMock = new Paragraph();
-			paragraphMock.setId(ID);
+			Paragraph paragraphMock = new ParagraphBuilder().setId(ID).build();
+
 			ParagraphDao paragraphDao = new ParagraphDao(paragraphMock);
 			paragraphDao.setConnection(connection);
 
 			Paragraph paragraph = paragraphDao.get();
 			boolean found = false;
 
-			if (paragraph.getId() == ID && paragraph.getText().equals(TEXT)) {
+			if (paragraph.getId() == ID && (paragraph).getText().equals(PREFIX + TEXT)) {
 				found = true;
 			}
 
@@ -113,6 +124,34 @@ public class ParagraphTest {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void testZDelete() {
+
+		try {
+
+			// Effettua la connessione al database
+
+			Connection connection = JournalDbConnect.connect();
+			Paragraph paragraphMock = new ParagraphBuilder().setId(ID).build();
+
+			ParagraphDao paragraphDao = new ParagraphDao(paragraphMock);
+			paragraphDao.setConnection(connection);
+			boolean deleted = paragraphDao.delete();
+			assertTrue(deleted);
+
+			Paragraph paragraph = paragraphDao.get();
+			assertNull(paragraph);
+
+			connection.close();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+
 		}
 
 	}

@@ -26,7 +26,7 @@ public interface DaoInterface<T> {
 	 * Restituisce il numero di righe interessate all'aggiornamento (affected)
 	 * In caso di insert valorizzera automaticamente la proprietà chiave (database generated key) 
 	 */
-	int update();
+	T update();
 	/**
 	 * Elimina un record
 	 * 

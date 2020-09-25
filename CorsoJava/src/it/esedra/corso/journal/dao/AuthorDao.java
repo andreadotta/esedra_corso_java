@@ -8,6 +8,7 @@ import java.sql.Statement;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.collections.AuthorCollection;
 
 public class AuthorDao implements DaoInterface<Author> {
@@ -15,69 +16,76 @@ public class AuthorDao implements DaoInterface<Author> {
 	private Author author;
 	private Connection conn;
 
+	public AuthorDao() {
+	}
+
 	public AuthorDao(Author author) {
 		super();
 		this.author = author;
 	}
 
 	@Override
-	public int update() {
-		int affectedRows = 0;
+	public Author update() {
+
 		if (author == null) {
 			PrintHelper.out("author non può essere null.");
-			return affectedRows;
+			return null;
 		}
 		Author authorCheck = this.get();
+		Author copy = null;
 		try {
 			if (authorCheck != null) {
 				String sql = "UPDATE author SET name = ?, email = ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
-				
+
 				stm.setString(1, author.getName());
 				stm.setString(2, author.getEmail());
 				stm.setInt(3, author.getId());
-				affectedRows = stm.executeUpdate();
+				if (stm.executeUpdate() > 0) {
+					copy = new AuthorBuilder().setId(author.getId()).setEmail(author.getEmail())
+							.setName(author.getName()).build();
+				}
 				stm.close();
 			} else {
 				String sql = "INSERT INTO author ( name, email) VALUES ( ?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
-				
+
 				stm.setString(1, author.getName());
 				stm.setString(2, author.getEmail());
-			
 
-				affectedRows = stm.executeUpdate();
-				ResultSet genKeys = stm.getGeneratedKeys();
-				if (genKeys.next()) {
-					author.setId(genKeys.getInt(1));
+				if (stm.executeUpdate() > 0) {
+					ResultSet genKeys = stm.getGeneratedKeys();
+					if (genKeys.next()) {
+						copy = new AuthorBuilder().setId(genKeys.getInt(1)).setEmail(author.getEmail())
+								.setName(author.getName()).build();
+					}
 				}
-				
+
 				stm.close();
 			}
 
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			PrintHelper.out("Errore author dao", e.getMessage());
 		}
-		return affectedRows;
+		return copy;
 	}
 
 	@Override
 	public boolean delete() {
-		  boolean success = true;
-			
-			try {
-				Statement stm = this.conn.createStatement();
-				int rs = stm.executeUpdate("DELETE FROM author WHERE id = " + this.author.getId());
-				
-				if(rs > 0) {
-					success = true;
-				}
-			} catch (Exception e) {
-				PrintHelper.out("Errore author dao", e.getMessage());
+		boolean success = true;
+
+		try {
+			Statement stm = this.conn.createStatement();
+			int rs = stm.executeUpdate("DELETE FROM author WHERE id = " + this.author.getId());
+
+			if (rs > 0) {
+				success = true;
 			}
-			
+		} catch (Exception e) {
+			PrintHelper.out("Errore author dao", e.getMessage());
+		}
+
 		return success;
 	}
 
@@ -96,11 +104,8 @@ public class AuthorDao implements DaoInterface<Author> {
 			// ottiene il result set
 			while (rs.next()) {
 				// e quindi per ogni tupla crea un oggetto di tipo User
-				Author author = new Author();
-				// inserisce i dati nelle proprietÃ  dell'oggetto
-				author.setId(rs.getInt("id"));
-				author.setName(rs.getString("name"));
-				author.setEmail(rs.getString("email"));
+				Author author = new AuthorBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
+						.setEmail(rs.getString("email")).build();
 
 				// aggiunge l'oggetto alla lista
 				authors.add(author);
@@ -122,19 +127,17 @@ public class AuthorDao implements DaoInterface<Author> {
 
 	@Override
 	public Author get() {
-        Author author = null;
-		
+		Author author = null;
+
 		try {
 			Statement stm = this.conn.createStatement();
 			ResultSet rs = stm.executeQuery("SELECT * FROM author WHERE id = " + this.author.getId());
-			
+
 			while (rs.next()) {
-				
-			    author = new Author();
-				author.setId(rs.getInt("id"));
-				author.setName(rs.getString("name"));
-				author.setEmail(rs.getString("email"));
-				
+
+				author = new AuthorBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
+						.setEmail(rs.getString("email")).build();
+
 			}
 			rs.close();
 		} catch (Exception e) {
