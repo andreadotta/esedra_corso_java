@@ -59,7 +59,7 @@ public class UserDao implements DaoInterface<User> {
 			// Crea il result set al quale passa la query
 			ResultSet rs = stm.executeQuery("SELECT * FROM user");
 
-			// Ottiene il result set. . . 
+			// Ottiene il result set. . .
 			while (rs.next()) {
 				// . . .e quindi per ogni tupla crea un oggetto di tipo User
 				User user = new UserBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
@@ -105,7 +105,7 @@ public class UserDao implements DaoInterface<User> {
 				stm.setInt(6, user.getId());
 
 				if (stm.executeUpdate() > 0) {
-					
+
 					copy = new UserBuilder().setId(user.getId()).setName(user.getName()).setSurname(user.getSurname())
 							.setEmail(user.getEmail()).setPassword(user.getPassword())
 							.setRegistration(user.getRegistration()).build();
