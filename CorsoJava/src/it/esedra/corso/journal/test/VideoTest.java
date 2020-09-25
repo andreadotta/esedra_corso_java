@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -15,10 +14,9 @@ import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.journal.Image;
 import it.esedra.corso.journal.Video;
+import it.esedra.corso.journal.VideoBuilder;
 import it.esedra.corso.journal.collections.VideoCollection;
-import it.esedra.corso.journal.dao.ImageDao;
 import it.esedra.corso.journal.dao.VideoDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
@@ -42,26 +40,23 @@ public class VideoTest {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Video video = new Video();
-			
-			video.setSrc(SRC);
-			video.setName(NAME);
-			video.setTitle(TITLE);
+			Video video = new VideoBuilder().setSrc(SRC).setName(NAME).setTitle(TITLE).build();
 
 			VideoDao videoDao = new VideoDao(video);
 			videoDao.setConnection(connection);
 
-			assertTrue(videoDao.update() > 0);
+			video = videoDao.update();
+			assertTrue(video != null);
 			
 			ID = video.getId();
 
-			video.setSrc(PREFIX + SRC);
-			video.setName(PREFIX + NAME);
-			video.setTitle(PREFIX + TITLE);
+			video = new VideoBuilder().setId(ID).setSrc(PREFIX + SRC).setName(PREFIX + NAME)
+					.setTitle(PREFIX + TITLE).build();
 
 			videoDao = new VideoDao(video);
 			videoDao.setConnection(connection);
-			assertTrue(videoDao.update() > 0);
+			video = videoDao.update();
+			assertTrue(video != null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,7 +72,7 @@ public class VideoTest {
 		try {
 
 			Connection connection = JournalDbConnect.connect();
-			VideoDao videoDao = new VideoDao(new Video());
+			VideoDao videoDao = new VideoDao();
 			videoDao.setConnection(connection);
 
 			videoCollection = videoDao.getAll();
@@ -125,8 +120,9 @@ public class VideoTest {
 		try {
 
 			Connection connection = JournalDbConnect.connect();
-			Video videoMock = new Video();
-			videoMock.setId(ID);
+			Video videoMock = new VideoBuilder().setId(ID).build();
+			
+			
 			VideoDao videoDao = new VideoDao(videoMock);
 			videoDao.setConnection(connection);
 
@@ -151,21 +147,20 @@ public class VideoTest {
 
 		try {
 
-			// Effettua la connessione al database
-
 			Connection connection = JournalDbConnect.connect();
-			Video videoMock = new Video();
-			videoMock.setId(ID);
+            Video videoMock = new VideoBuilder().setId(ID).build();;
+			
 			VideoDao videoDao = new VideoDao(videoMock);
 			videoDao.setConnection(connection);
+
 			boolean deleted = videoDao.delete();
 			assertTrue(deleted);
 
 			Video video = videoDao.get();
+
 			assertNull(video);
 
 			connection.close();
-
 		} catch (SQLException e) {
 
 			e.printStackTrace();

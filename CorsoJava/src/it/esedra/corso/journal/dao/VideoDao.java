@@ -8,12 +8,17 @@ import java.sql.Statement;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Video;
+import it.esedra.corso.journal.VideoBuilder;
 import it.esedra.corso.journal.collections.VideoCollection;
 
 public class VideoDao implements DaoInterface<Video> {
 
 	private Video video;
 	private Connection conn;
+	
+	public VideoDao() {
+		
+	}
 
 	public VideoDao(Video video) {
 		super();
@@ -21,13 +26,14 @@ public class VideoDao implements DaoInterface<Video> {
 	}
 
 	@Override
-	public int update() {
-		int affectedRows = 0;
+	public Video update() {
+
 		if (video == null) {
 			PrintHelper.out("video non può essere null.");
-			return affectedRows;
+			return null;
 		}
 		Video videoCheck = this.get();
+		Video copy = null;
 
 		try {
 
@@ -41,7 +47,11 @@ public class VideoDao implements DaoInterface<Video> {
 
 				stm.setInt(4, video.getId());
 
-				affectedRows = stm.executeUpdate();
+                if (stm.executeUpdate() > 0) {
+					
+					copy = new VideoBuilder().setId(video.getId()).setSrc(video.getSrc()).setName(video.getName())
+							.setTitle(video.getTitle()).build();
+				}
 
 				stm.close();
 
@@ -53,10 +63,14 @@ public class VideoDao implements DaoInterface<Video> {
 				stm.setString(2, video.getName());
 				stm.setString(3, video.getTitle());
 
-				affectedRows = stm.executeUpdate();
-				ResultSet genKeys = stm.getGeneratedKeys();
-				if (genKeys.next()) {
-					video.setId(genKeys.getInt(1));
+				if (stm.executeUpdate() > 0) {
+
+					ResultSet genKeys = stm.getGeneratedKeys();
+					if (genKeys.next()) {
+
+						copy = new VideoBuilder().setId(genKeys.getInt(1)).setSrc(video.getSrc())
+								.setName(video.getName()).setTitle(video.getTitle()).build();
+					}
 				}
 
 				stm.close();
@@ -67,7 +81,7 @@ public class VideoDao implements DaoInterface<Video> {
 			PrintHelper.out("Errore video dao", e.getMessage());
 		}
 
-		return affectedRows;
+		return copy;
 
 	}
 
@@ -99,14 +113,12 @@ public class VideoDao implements DaoInterface<Video> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM video");
 
 			while (rs.next()) {
+				
+				Video video = new VideoBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
+						.setName(rs.getString("name")).setTitle(rs.getString("title")).build();
 
-				Video video = new Video();
-				video.setId(rs.getInt("id"));
-				video.setSrc(rs.getString("src"));
-				video.setName(rs.getString("name"));
-				video.setTitle(rs.getString("title"));
+				
 				videos.add(video);
-
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -131,12 +143,9 @@ public class VideoDao implements DaoInterface<Video> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM video WHERE id = " + this.video.getId());
 
 			while (rs.next()) {
-
-				video = new Video();
-				video.setId(rs.getInt("id"));
-				video.setSrc(rs.getString("src"));
-				video.setName(rs.getString("name"));
-				video.setTitle(rs.getString("title"));
+				
+				video = new VideoBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
+						.setName(rs.getString("name")).setTitle(rs.getString("title")).build();
 
 			}
 			rs.close();
