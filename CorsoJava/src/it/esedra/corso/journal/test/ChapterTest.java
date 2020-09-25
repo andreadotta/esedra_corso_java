@@ -17,9 +17,13 @@ import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.Chapter;
+import it.esedra.corso.journal.ChapterBuilder;
+import it.esedra.corso.journal.Paragraph;
+import it.esedra.corso.journal.ParagraphBuilder;
 import it.esedra.corso.journal.collections.ChapterCollection;
 import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.dao.ChapterDao;
+import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
@@ -28,6 +32,7 @@ public class ChapterTest {
 
 	private static  int ID = 1;
 	private static final String TITLE = "TITLE";
+	private static final int DATE = 27/04/1980;
 	public static final String PREFIX = "$$";
 
 
@@ -37,11 +42,11 @@ public class ChapterTest {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Chapter chapter = new Chapter();
-			chapter.setId(ID);
-			chapter.setTitle(TITLE);
-			chapter.setDate(new Date());
+			Chapter chapter = new ChapterBuilder().setTitle(TITLE).setDate(DATE).build();
 
+			ChapterDao paragraphDao = new ParagraphDao(paragraph);
+			paragraphDao.setConnection(connection);
+		
 			ChapterDao chapterDao = new ChapterDao(chapter);
 			chapterDao.setConnection(connection);
 
@@ -53,7 +58,7 @@ public class ChapterTest {
 
 	}
 
-	@Test
+	@Tes
 	public void testGetAll() {
 
 		Collection<Chapter> chapterCollection = new ChapterCollection();

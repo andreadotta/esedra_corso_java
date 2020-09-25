@@ -25,7 +25,7 @@ public class App {
 
 			UserDao userdao = new UserDao(new User());
 			userdao.setConnection(connection);
-			List<User> users = userdao.getAll();
+			List<User> users = (List<User>) userdao.getAll();
 
 			for (User user : users) {
 				PrintHelper.out(user.getUserName());
