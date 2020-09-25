@@ -16,5 +16,7 @@ public class ParagraphCollection extends AbstactCollections<Paragraph> implement
 		return new Iterator<Paragraph>(super.toArray()); 
 
 }
+
+	
 }
 	

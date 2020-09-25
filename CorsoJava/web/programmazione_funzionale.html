@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="it">
+<head>
+	<meta charset="UTF-8">
+	<title>Esedra corso java Programmazione Funzionale</title>
+	<link href="https://fonts.googleapis.com/css2?family=Grandstander:ital@1&display=swap" rel="stylesheet"> 
+	 <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@600&display=swap" rel="stylesheet"> 
+	<style>
+		body {
+			background: #cccccc;
+			font-family: 'Grandstander', cursive;
+		}
+		h1, h2, h3 {
+			font-family: 'Kufam', cursive;
+		}
+		.container {
+			background: #FF0000; /*rgb(255,0,0)*/
+			padding-top: 50px;
+			padding-left: 50px;
+			padding-right: 50px;
+			padding-bottom: 50px;
+			text-align: center;
+					
+		}
+		#test {
+			font-size: 41px;
+		}
+		.imgExample {
+			width: 251px;
+		}
+		.paragraph {
+			margin-top: 100px;
+			margin-bottom: 100px;			
+		}
+		.firstParagraph {
+		    margin-top: 0px;
+		}				
+	</style>
+</head>
+<body>
+	<a href="https://www.w3schools.com/" style="font-size: 30px; text-align: center;">W3schools</a>
+	<h1>Corso Java +  HTML</h1>
+
+	
+	<script type="text/javascript">
+
+		
+		/** 
+		Definizione di fuinzione scritta secondo la notazione di Church 
+		
+		(λx.x + 5) 50 
+		
+		**/
+		/** FUNZIONE ANONIMA 
+		  
+		esempio di definizione di funzione anonima
+		function(x) { return  x +5 ; }
+		
+		*/
+		
+		//esempio di applicazione di una funzione anonima
+		//(function(x) { return x + 5; })(50)
+
+		
+		/**
+		Definiamo una funzione che prende come argomento un'altra funzione
+		(λ.op.λx(op x x))
+		
+		
+		NO: (λ(x, y). x + y)) m n
+		SI: (λx.λy.x + y) m n
+		CURRYING:  funzione che prendere un argomento e restituisce una funzione in una catena di 
+		invocazioni
+
+		(λop.λx(op x x) (+) 10
+		1. al parametro op viene passato l'argomento "+" (funzione)		
+		2. λx.((+) x x) 10: come risultato sarà ottenuto un'altra funzione
+		3. viene restituita la funzione al punto 2 passando al param x il valore 10
+		4. risultato espressione: (+) 10 10 (notazione per indicare la somma dei 2 numeri) che darà come risultato 20
+		*/		
+
+		/*
+		function plus(o1) {
+			return function(o2) {return o1 + o2;}
+		}
+		
+		(function (op) 
+		{
+				return function (x) 
+				{
+					//currying
+					return op(x)(x);	
+				}
+		}		
+		)(plus)(10) //20 risultato
+		*/
+		/**
+		VARIABILI LEGATE E VARIABILI LIBERE
+		
+		(λ.x * y) //definizione di una funzione con variabile libera
+		
+		*/
+		
+		/** SCOPE LESSICALE E DINAMICO */
+		(function foo() {
+			var x = 10;
+			var k = 20;
+			function bar() {
+				var z = x;
+				var k = 1000;
+				//scope dinamico = 10; scope statico = 10
+				console.log(z);
+				foobar();
+			}
+			function baz() {
+				var j = k;
+				//scope dinamico = 10; scope statico = 20
+				console.log(j);
+			}
+			
+			function foobar() {
+				var k = 10;
+				baz();
+			}
+			
+			bar();
+		})();
+		
+		
+		function multiplyBy(m) {
+			return function(n) { return  m * n; }
+		}
+		
+		multiply(10)(5); //50
+		multiply(100)(9); //900
+		
+		
+		
+	</script>
+</body>
+</html>
