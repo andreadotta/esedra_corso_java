@@ -24,6 +24,50 @@ public class VideoDao implements DaoInterface<Video> {
 		super();
 		this.video = video;
 	}
+	
+	@Override
+	public boolean delete() {
+
+		boolean success = true;
+
+		try {
+			Statement stm = this.conn.createStatement();
+			int rs = stm.executeUpdate("DELETE FROM video WHERE id = " + this.video.getId());
+
+			if (rs > 0) {
+				success = true;
+			}
+		} catch (Exception e) {
+			PrintHelper.out("Errore video dao", e.getMessage());
+		}
+
+		return success;
+
+	}
+	
+	@Override
+	public Collection<Video> getAll() {
+		Collection<Video> videos = new VideoCollection();
+		try {
+			Statement stm = this.conn.createStatement();
+			ResultSet rs = stm.executeQuery("SELECT * FROM video");
+
+			while (rs.next()) {
+				
+				Video video = new VideoBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
+						.setName(rs.getString("name")).setTitle(rs.getString("title")).build();
+
+				
+				videos.add(video);
+			}
+			rs.close();
+		} catch (Exception e) {
+			PrintHelper.out("Errore video dao", e.getMessage());
+		}
+
+		return videos;
+
+	}
 
 	@Override
 	public Video update() {
@@ -85,49 +129,9 @@ public class VideoDao implements DaoInterface<Video> {
 
 	}
 
-	@Override
-	public boolean delete() {
+	
 
-		boolean success = true;
-
-		try {
-			Statement stm = this.conn.createStatement();
-			int rs = stm.executeUpdate("DELETE FROM video WHERE id = " + this.video.getId());
-
-			if (rs > 0) {
-				success = true;
-			}
-		} catch (Exception e) {
-			PrintHelper.out("Errore video dao", e.getMessage());
-		}
-
-		return success;
-
-	}
-
-	@Override
-	public Collection<Video> getAll() {
-		Collection<Video> videos = new VideoCollection();
-		try {
-			Statement stm = this.conn.createStatement();
-			ResultSet rs = stm.executeQuery("SELECT * FROM video");
-
-			while (rs.next()) {
-				
-				Video video = new VideoBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
-						.setName(rs.getString("name")).setTitle(rs.getString("title")).build();
-
-				
-				videos.add(video);
-			}
-			rs.close();
-		} catch (Exception e) {
-			PrintHelper.out("Errore video dao", e.getMessage());
-		}
-
-		return videos;
-
-	}
+	
 
 	@Override
 	public void setConnection(Connection con) {

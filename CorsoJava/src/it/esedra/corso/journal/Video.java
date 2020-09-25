@@ -11,8 +11,9 @@ public class Video extends MultimediaResource {
 	private final String title;
 	
 	public Video(int id, String src, String name, String title) {
-		super();
+		super(id, src, name);
 		this.title = title;
+
 
 	}
 

@@ -148,7 +148,7 @@ public class VideoTest {
 		try {
 
 			Connection connection = JournalDbConnect.connect();
-            Video videoMock = new VideoBuilder().setId(ID).build();;
+            Video videoMock = new VideoBuilder().setId(ID).build();
 			
 			VideoDao videoDao = new VideoDao(videoMock);
 			videoDao.setConnection(connection);
