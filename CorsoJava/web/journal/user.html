@@ -1,29 +1,51 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title>User</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script charset="utf-8" src="js/app.js"></script>
-    <script charset="utf-8" src="js/user.js"></script>    
-    <link rel="stylesheet" href="css/app.css" />
+<meta charset="utf-8" />
+<title>User</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script charset="utf-8" src="js/app.js"></script>
+<script charset="utf-8" src="js/user.js"></script>
+<link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
-    <h1>User</h1>
-    
-    <form action="http://localhost/user/"  method="post">
-	    <label for="name">Nome</label>
-	    <input class="input-text" name="name" value="" />
-	    <label for="surname">Cognome</label>
-	    <input class="input-text" name="surname" value="" />
-	    <label for="email">Email</label>
-	    <input class="input-text" name="email" value="" />
-	    <label for="password">Password</label>
-	    <input class="input-text" name="password" value="" />
-	    <label for="registration">Data di registrazione</label>
-	    <input class="input-text" name="registration" value="" />
-	    
-	    <button type="submit">Salva</button>
-    </form>
+	<h1>User</h1>    
+
+	<form action="http://localhost/user/" method="post">
+
+		<div class="table">
+			<div class="col-label">
+				<label for="name">Nome</label>
+			</div>
+			<div class="col-field">
+				<input class="input-text" name="name" value="" />
+			</div>
+			<div class="col-label">
+				<label for="surname">Cognome</label>
+			</div>
+			<div class="col-field">
+				<input class="input-text" name="surname" value="" />
+			</div>
+			<div class="col-label">
+				<label for="email">Email</label>
+			</div>
+			<div class="col-field">
+				<input class="input-text" name="email" value="" />
+			</div>
+			<div class="col-label">
+				<label for="password">Password</label>
+			</div>
+			<div class="col-field">
+				<input class="input-text" name="password" value="" />
+			</div>
+			<div class="col-label">
+				<label for="registration">Registrazione</label>
+			</div>
+			<div class="col-field">
+				<input class="input-text" name="registration" value="" />
+			</div>			
+		</div>
+		<button type="submit">Salva</button>
+	</form>
 </body>
 </html>
