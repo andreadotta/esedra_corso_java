@@ -7,7 +7,6 @@ import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.UserBuilder;
 import it.esedra.corso.journal.collections.UserCollection;
@@ -33,9 +32,9 @@ public class UserDao implements DaoInterface<User> {
 
 		try {
 
-			// crea lo statement
+			// Crea lo statement
 			Statement stm = this.conn.createStatement();
-			// crea il result set al quale passa la query
+			// Crea il result set al quale passa la query
 			int rs = stm.executeUpdate("DELETE FROM user WHERE id =" + this.user.getId());
 
 			if (rs > 0) {
@@ -45,37 +44,37 @@ public class UserDao implements DaoInterface<User> {
 		} catch (Exception e) {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
-		// restituisce l'oggetto
+		// Restituisce l'oggetto
 		return success;
 	}
 
 	@Override
 	public Collection<User> getAll() {
-		// istanzia una lista vuota di User
+		// Istanzia una lista vuota di User
 		Collection<User> users = new UserCollection();
 		try {
 
-			// crea lo statement
+			// Crea lo statement
 			Statement stm = this.conn.createStatement();
-			// crea il result set al quale passa la query
+			// Crea il result set al quale passa la query
 			ResultSet rs = stm.executeQuery("SELECT * FROM user");
 
-			// ottiene il result set
+			// Ottiene il result set. . . 
 			while (rs.next()) {
-				// e quindi per ogni tupla crea un oggetto di tipo User
+				// . . .e quindi per ogni tupla crea un oggetto di tipo User
 				User user = new UserBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
 						.setSurname(rs.getString("surname")).setEmail(rs.getString("email"))
 						.setPassword(rs.getString("password")).setRegistration(rs.getString("registration")).build();
 
-				// aggiunge l'oggetto alla lista
+				// Aggiunge l'oggetto alla lista
 				users.add(user);
 			}
-			// chiude le connessioni e il result set
+			// Chiude le connessioni e il result set
 			rs.close();
 		} catch (Exception e) {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
-		// restituisce la lista
+		// Restituisce la lista
 		return users;
 
 	}
@@ -106,7 +105,7 @@ public class UserDao implements DaoInterface<User> {
 				stm.setInt(6, user.getId());
 
 				if (stm.executeUpdate() > 0) {
-
+					
 					copy = new UserBuilder().setId(user.getId()).setName(user.getName()).setSurname(user.getSurname())
 							.setEmail(user.getEmail()).setPassword(user.getPassword())
 							.setRegistration(user.getRegistration()).build();
@@ -154,29 +153,29 @@ public class UserDao implements DaoInterface<User> {
 
 	@Override
 	public User get() {
-		// inizializza un nuovo oggetto User
+		// Inizializza un nuovo oggetto User
 		User user = null;
 
 		try {
 
-			// crea lo statement
+			// Crea lo statement
 			Statement stm = this.conn.createStatement();
-			// crea il result set al quale passa la query
+			// Crea il result set al quale passa la query
 			ResultSet rs = stm.executeQuery("SELECT * FROM user WHERE id =" + this.user.getId());
 
 			while (rs.next()) {
-				// istanzia l'elemento User
+				// Istanzia l'elemento User
 				user = new UserBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
 						.setSurname(rs.getString("surname")).setEmail(rs.getString("email"))
 						.setPassword(rs.getString("password")).setRegistration(rs.getString("registration")).build();
 
 			}
-			// chiude le connessioni e il result set
+			// Chiude le connessioni e il result set
 			rs.close();
 		} catch (Exception e) {
 			PrintHelper.out("Errore user dao", e.getMessage());
 		}
-		// restituisce l'oggetto
+		// Restituisce l'oggetto
 		return user;
 	}
 }

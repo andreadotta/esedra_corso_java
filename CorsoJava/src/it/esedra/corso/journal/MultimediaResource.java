@@ -6,33 +6,29 @@ package it.esedra.corso.journal;
  * @author bauhausk
  *
  */
-public class MultimediaResource {
-	private String name; // noma dell'immagine
-	private String src; // source path assoluto
-	private int id; // source path assoluto
+abstract class MultimediaResource {
+	private final String name; // noma dell'immagine
+	private final String src; // source path assoluto
+	private final int id; // source path assoluto
+	
+	public MultimediaResource(int id, String src, String name) {
+		this.id = id;
+		this.name = name;
+		this.src = src;
+	}
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getSrc() {
 		return src;
 	}
 
-	public void setSrc(String src) {
-		this.src = src;
-	}
 
 }
