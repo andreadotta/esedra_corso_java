@@ -16,5 +16,17 @@ public class ParagraphCollection extends AbstactCollections<Paragraph> implement
 		return new Iterator<Paragraph>(super.toArray()); 
 
 }
+
+	@Override
+	public int getId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object getText() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 	
