@@ -3,6 +3,7 @@ package it.esedra.corso.journal.http;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.util.function.Consumer;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -26,10 +27,38 @@ public class LocalServer {
 		@Override
 		public void handle(HttpExchange t) throws IOException {
 
-			if (t.getRequestMethod().equals("POST")) {
-				
+			switch (t.getRequestMethod()) {
+			case "GET": {
+				this.handleGetRequest(t);
+				response(t);
 			}
-			
+			case "POST": {
+				this.handlePostRequest(t);
+				response(t);
+			}
+			case "PUT": {
+				this.handlePutRequest(t);
+				response(t);
+			}
+			case "DELETE": {
+				this.handleDeleteRequest(t);
+				response(t);
+			}
+			default:
+				responseFail(t);
+			}
+
+		}
+
+		private void responseFail(HttpExchange t) throws IOException {
+			String response = "Internal Error";
+			t.sendResponseHeaders(500, response.length());
+			OutputStream os = t.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+
+		private void response(HttpExchange t) throws IOException {
 			String response = "This is the response";
 			t.sendResponseHeaders(200, response.length());
 			OutputStream os = t.getResponseBody();
@@ -37,8 +66,20 @@ public class LocalServer {
 			os.close();
 		}
 
-		private String handleGetRequest(HttpExchange httpExchange) {
-			return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+		private void handleGetRequest(HttpExchange httpExchange) {
+			String queryString = httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+		}
+
+		private void handlePostRequest(HttpExchange httpExchange) {
+			// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+		}
+
+		private void handlePutRequest(HttpExchange httpExchange) {
+			// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+		}
+
+		private void handleDeleteRequest(HttpExchange httpExchange) {
+			// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
 		}
 	}
 
