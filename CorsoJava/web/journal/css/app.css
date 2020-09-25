@@ -1,6 +1,16 @@
 .input-text {
 	border: 1px solid #CCC;
 }
+.table  {
+
+}
+.col-label, col-field {
+	float: left;
+}
+.col-label {
+	width: 100px;
+}
+
 #footer {
 	position: fixed;
 	bottom: 0;
