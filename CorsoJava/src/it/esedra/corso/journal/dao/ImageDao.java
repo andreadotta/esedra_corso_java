@@ -31,7 +31,7 @@ public class ImageDao implements DaoInterface<Image> {
 
 		try {
 			Statement stm = this.conn.createStatement();
-			int rs = stm.executeUpdate("DELETE FROM image HERE id = " + this.image.getId());
+			int rs = stm.executeUpdate("DELETE FROM image WHERE id = " + this.image.getId());
 
 			if (rs > 0) {
 				success = true;
@@ -81,30 +81,30 @@ public class ImageDao implements DaoInterface<Image> {
 		try {
 
 			if (imageCheck != null) {
-				String sql = "UPDATE video SET src= ?, name= ?,   WHERE id = ? ;";
+				String sql = "UPDATE image SET src= ?, name= ?   WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, image.getSrc());
 				stm.setString(2, image.getName());
-				stm.setString(3, image.getTitle());
+				stm.setInt(3, image.getId());
 
-				stm.setInt(4, image.getId());
+				
 
                 if (stm.executeUpdate() > 0) {
 					
 					copy = new ImageBuilder().setId(image.getId()).setSrc(image.getSrc()).setName(image.getName())
-							.setTitle(image.getTitle()).build();
+							.build();
 				}
 
 				stm.close();
 
 			} else {
-				String sql = "INSERT INTO image (src, name, title) VALUES (?,?,?);";
+				String sql = "INSERT INTO image (src, name) VALUES (?,?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, image.getSrc());
 				stm.setString(2, image.getName());
-				stm.setString(3, image.getTitle());
+				
 
 				if (stm.executeUpdate() > 0) {
 
@@ -112,7 +112,7 @@ public class ImageDao implements DaoInterface<Image> {
 					if (genKeys.next()) {
 
 						copy = new ImageBuilder().setId(genKeys.getInt(1)).setSrc(image.getSrc())
-								.setName(image.getName()).setTitle(image.getTitle()).build();
+								.setName(image.getName()).build();
 					}
 				}
 
@@ -143,12 +143,12 @@ public class ImageDao implements DaoInterface<Image> {
 
 		try {
 			Statement stm = this.conn.createStatement();
-			ResultSet rs = stm.executeQuery("SELECT * FROM video WHERE id = " + this.image.getId());
+			ResultSet rs = stm.executeQuery("SELECT * FROM image WHERE id = " + this.image.getId());
 
 			while (rs.next()) {
 				
 				image = new ImageBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
-						.setName(rs.getString("name")).setTitle(rs.getString("title")).build();
+						.setName(rs.getString("name")).build();
 
 			}
 			rs.close();

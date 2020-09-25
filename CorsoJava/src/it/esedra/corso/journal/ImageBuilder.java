@@ -1,29 +1,26 @@
 package it.esedra.corso.journal;
 
 public class ImageBuilder {
-	
+
 	private int id;
 	private String src;
 	private String name;
-	private String title;
-	
 	
 
 	public ImageBuilder() {
 
 	}
 
-	public ImageBuilder(int id, String src, String name, String title) {
+	public ImageBuilder(int id, String src, String name) {
 		super();
 		this.id = id;
 		this.src = src;
 		this.name = name;
-		this.title = title;
 
 	}
 
 	public Image build() {
-		return new Image(id, src, name, title);
+		return new Image(id, src, name);
 	}
 
 	public int getId() {
@@ -53,16 +50,4 @@ public class ImageBuilder {
 		return this;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public ImageBuilder setTitle(String title) {
-		this.title = title;
-		return this;
-	}
-
-
 }
-
-
