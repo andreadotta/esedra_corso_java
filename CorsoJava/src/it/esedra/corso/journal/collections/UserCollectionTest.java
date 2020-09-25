@@ -2,6 +2,7 @@ package it.esedra.corso.journal.collections;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.User;
+import it.esedra.corso.journal.UserBuilder;
 
 public class UserCollectionTest {
 
@@ -13,7 +14,7 @@ public class UserCollectionTest {
 
 		Collection<User> userCollection = new UserCollection();
 
-		User username1 = new User();
+		User username1 = new UserBuilder().setName("Mario").setSurname("Rossi").setEmail("");
 		User username2 = new User();
 		User username3 = new User();
 		User username4 = new User();
