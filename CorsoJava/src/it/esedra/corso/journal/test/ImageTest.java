@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -16,10 +15,12 @@ import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Image;
-import it.esedra.corso.journal.Journal;
+import it.esedra.corso.journal.ImageBuilder;
+
 import it.esedra.corso.journal.collections.ImageCollection;
+
 import it.esedra.corso.journal.dao.ImageDao;
-import it.esedra.corso.journal.dao.JournalDao;
+
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
 
@@ -29,29 +30,30 @@ public class ImageTest {
 	public static int ID = 1;
 	public static final String SRC = "https:www.youtube.com";
 	public static final String NAME = "Gulia";
+
 	public static final String PREFIX = "$$";
 
 	@Test
 	public void testAUpdate() {
+
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Image image = new Image();
-			image.setId(ID);
-			image.setSrc(SRC);
-			image.setName(NAME);
+			Image image = new ImageBuilder().setSrc(SRC).setName(NAME).build();
 
 			ImageDao imageDao = new ImageDao(image);
 			imageDao.setConnection(connection);
 
-			assertTrue(imageDao.update() > 0);
+			image = imageDao.update();
+
 			ID = image.getId();
 
-			image.setSrc(PREFIX + SRC);
-			image.setName(PREFIX + NAME);
+			image = new ImageBuilder().setId(ID).setSrc(PREFIX + SRC).setName(PREFIX + NAME).build();
+
 			imageDao = new ImageDao(image);
 			imageDao.setConnection(connection);
-			assertTrue(imageDao.update() > 0);
+			image = imageDao.update();
+			assertTrue(image != null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,10 +69,10 @@ public class ImageTest {
 		try {
 
 			Connection connection = JournalDbConnect.connect();
-			ImageDao imagedao = new ImageDao(new Image());
-			imagedao.setConnection(connection);
+			ImageDao imageDao = new ImageDao(null);
+			imageDao.setConnection(connection);
 
-			 imageCollection = imagedao.getAll();
+			imageCollection = imageDao.getAll();
 
 			Iterator<Image> imageIterator = imageCollection.createIterator();
 
@@ -87,7 +89,6 @@ public class ImageTest {
 				}
 
 			}
-
 			connection.close();
 			assertTrue(found);
 
@@ -104,7 +105,7 @@ public class ImageTest {
 			DbUtil.rebuildDb();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
@@ -116,8 +117,8 @@ public class ImageTest {
 		try {
 
 			Connection connection = JournalDbConnect.connect();
-			Image imageMock = new Image();
-			imageMock.setId(ID);
+			Image imageMock = new ImageBuilder().setId(ID).build();
+
 			ImageDao imageDao = new ImageDao(imageMock);
 			imageDao.setConnection(connection);
 
@@ -129,9 +130,7 @@ public class ImageTest {
 
 			}
 			connection.close();
-
 			assertTrue(found);
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -142,21 +141,20 @@ public class ImageTest {
 
 		try {
 
-			// Effettua la connessione al database
-
 			Connection connection = JournalDbConnect.connect();
-			Image imageMock = new Image();
-			imageMock.setId(ID);
+			Image imageMock = new ImageBuilder().setId(ID).build();
+
 			ImageDao imageDao = new ImageDao(imageMock);
 			imageDao.setConnection(connection);
+
 			boolean deleted = imageDao.delete();
 			assertTrue(deleted);
 
 			Image image = imageDao.get();
+
 			assertNull(image);
 
 			connection.close();
-
 		} catch (SQLException e) {
 
 			e.printStackTrace();
