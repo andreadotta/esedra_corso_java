@@ -6,10 +6,10 @@ public class ChapterBuilder {
 
 	private Integer id;
 	private String title;
-	private Date  date;
+	private String date;
 
 	
-	public ChapterBuilder(Integer id, String title, Date date ) {
+	public ChapterBuilder(Integer id, String title, String date ) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -43,11 +43,11 @@ public class ChapterBuilder {
 		this.title =  title;
 		return this;
 	}
-	public ChapterBuilder setDate(  Date date) {
+	public ChapterBuilder setDate(  String date) {
 		this.date =  date;
 		return this;
 	}	
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 

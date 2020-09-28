@@ -11,9 +11,9 @@ import java.util.Date;
 public class Chapter {
 	private final int id;
 	private final String title;
-	private final Date date;
+	private final String date;
 	
-	public Chapter(Integer id, String title, Date date) {
+	public Chapter(Integer id, String title, String date) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -31,8 +31,8 @@ public class Chapter {
 	}
 
 	
-	public Date getDate() {
-		return date;
+	public String getDate() {
+		return "date";
 	}
 
 

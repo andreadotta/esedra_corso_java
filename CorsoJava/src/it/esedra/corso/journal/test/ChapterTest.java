@@ -12,12 +12,11 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.journal.Author;
-import it.esedra.corso.journal.AuthorBuilder;
+
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
 import it.esedra.corso.journal.collections.ChapterCollection;
-import it.esedra.corso.journal.dao.AuthorDao;
+
 import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
@@ -27,7 +26,7 @@ public class ChapterTest {
 
 	private static int ID = 1;
 	private static final String TITLE = "TITLE";
-	private static final Date DATE = null;
+	private static final String DATE = "25/07/1900";
 	public static final String PREFIX = "$$";
 
 	@Test
@@ -36,7 +35,7 @@ public class ChapterTest {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Chapter chapter = new ChapterBuilder().setTitle(TITLE).setDate(DATE).build();
+			Chapter chapter = new ChapterBuilder().setTitle(PREFIX + TITLE).setDate(PREFIX + DATE).build();
 
 			ChapterDao chapterDao = new ChapterDao(chapter);
 			chapterDao.setConnection(connection);
@@ -47,6 +46,8 @@ public class ChapterTest {
 		}
 
 	}
+
+	
 	@Test
 	public void testGetAll() {
 
@@ -68,7 +69,8 @@ public class ChapterTest {
 
 				Chapter chapter1 = chapterIterator.next();
 
-				if (chapter1.getId() == ID && chapter1.getTitle().equals(TITLE)) {
+				if (chapter1.getId() == ID && chapter1.getTitle().equals(PREFIX + TITLE)
+						&& chapter1.getDate().equals(PREFIX + DATE)) {
 					found = true;
 					break;
 				}
@@ -82,6 +84,7 @@ public class ChapterTest {
 		}
 	}
 
+	
 	@Test
 	public void testGet() {
 
@@ -98,14 +101,14 @@ public class ChapterTest {
 
 			if (chapter.getId() == ID && chapter.getTitle().equals(PREFIX + TITLE)
 					&& chapter.getDate().equals(PREFIX + DATE)) {
-				{
-					found = true;
-				}
 
-				connection.close();
-
-				assertTrue(found);
+				found = true;
 			}
+
+			connection.close();
+
+			assertTrue(found);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
