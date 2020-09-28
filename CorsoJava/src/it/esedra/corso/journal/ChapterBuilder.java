@@ -8,10 +8,7 @@ public class ChapterBuilder {
 	private String title;
 	private Date  date;
 
-	public ChapterBuilder () {
-
-	}
-
+	
 	public ChapterBuilder(Integer id, String title, Date date ) {
 		super();
 		this.id = id;
@@ -19,10 +16,14 @@ public class ChapterBuilder {
         this.date = date ;
 	}
 
-	public Chapter build() {
-		return new Chapter();
-
+		public ChapterBuilder() {
+		
 	}
+
+		public Chapter build() {
+			return new Chapter(id, title, date);
+		}
+
 
 	public Integer getId() {
 		return id;
@@ -49,7 +50,6 @@ public class ChapterBuilder {
 		return date;
 	}
 
-	
 	}
 
 

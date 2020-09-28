@@ -4,11 +4,9 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-
+import java.sql.Statement ;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
-
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
 import it.esedra.corso.journal.collections.ChapterCollection;
@@ -40,10 +38,10 @@ public class ChapterDao implements DaoInterface<Chapter> {
 				stm.setString(1, chapter.getTitle());
 				stm.setDate(2,new java.sql.Date( chapter.getDate().getTime()));
 				stm.setInt(3, chapter.getId());
-
-				 if (stm.executeUpdate() > 0) {
-					copy = new ChapterBuilder().setId(chapter.getId()).setTitle(chapter.getTitle()).setDate(chapter.getDate()).build();
-				 }
+				if (stm.executeUpdate() > 0) {
+					copy = new ChapterBuilder().setId(chapter.getId()).setDate(chapter.getDate())
+							.setTitle(chapter.getTitle()).build();
+				}
 					stm.close();
 			} else {
 				String sql = "INSERT INTO chapter ( title, date ) VALUES (?, ?);";
@@ -136,8 +134,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 				chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title")).setDate(rs.getDate("date"))
 						.build();
 
-			}
-				
+			}		
 			
 			rs.close();
 		} catch (Exception e) {
