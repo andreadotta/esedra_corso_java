@@ -47,7 +47,6 @@ public class ChapterTest {
 		}
 
 	}
-
 	@Test
 	public void testGetAll() {
 

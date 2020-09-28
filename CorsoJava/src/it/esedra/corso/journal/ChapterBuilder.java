@@ -38,6 +38,7 @@ public class ChapterBuilder {
 		return title;
 	}
 
+	
 	public ChapterBuilder setTitle( String title) {
 		this.title =  title;
 		return this;

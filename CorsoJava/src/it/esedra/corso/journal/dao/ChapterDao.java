@@ -59,7 +59,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 
 				}
 
-		
+	
 				stm.close();
 			}
 		} catch (Exception e) { 

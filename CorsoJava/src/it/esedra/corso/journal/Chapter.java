@@ -26,13 +26,11 @@ public class Chapter {
 	}
 
 	
-
 	public String getTitle() {
 		return title;
 	}
 
 	
-
 	public Date getDate() {
 		return date;
 	}

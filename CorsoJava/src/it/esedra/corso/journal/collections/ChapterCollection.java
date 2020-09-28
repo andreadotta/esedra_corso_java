@@ -17,4 +17,3 @@ public class ChapterCollection  extends AbstactCollections<Chapter> implements C
 
 }
 
-
