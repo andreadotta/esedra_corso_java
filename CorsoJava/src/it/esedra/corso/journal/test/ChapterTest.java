@@ -5,18 +5,15 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.Date;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
 import it.esedra.corso.journal.collections.ChapterCollection;
-
 import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
@@ -31,7 +28,6 @@ public class ChapterTest {
 
 	@Test
 	public void testAUpdate() {
-
 		try {
 			Connection connection = JournalDbConnect.connect();
 
@@ -41,6 +37,15 @@ public class ChapterTest {
 			chapterDao.setConnection(connection);
 			chapter = chapterDao.update();
 			assertTrue(chapter != null);
+            ID = chapter.getId();
+			
+			chapter = new ChapterBuilder().setId(ID).setTitle(PREFIX + TITLE).setDate(PREFIX + DATE).build();
+
+			chapterDao = new ChapterDao(chapter);
+			chapterDao.setConnection(connection);
+		    chapter = chapterDao.update();
+			assertTrue(chapter != null);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

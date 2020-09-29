@@ -1,7 +1,6 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement ;
@@ -25,7 +24,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	@Override
 	public Chapter update() {
 		if (chapter == null) {
-			PrintHelper.out("author non può essere null.");
+			PrintHelper.out("chapter non può essere null.");
 			return null;
 		}
 		Chapter chapterCheck = this.get();
@@ -36,7 +35,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, chapter.getTitle());
-				stm.setDate(2,new java.sql.Date( chapter.getDate().getTime()));
+				stm.setString(2, chapter.getDate());
 				stm.setInt(3, chapter.getId());
 				if (stm.executeUpdate() > 0) {
 					copy = new ChapterBuilder().setId(chapter.getId()).setDate(chapter.getDate())
@@ -53,7 +52,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 					if (genKeys.next()) {
 
 					stm.setString(1, chapter.getTitle());
-					stm.setDate(2, (Date) chapter.getDate());
+					stm.setString(2,  chapter.getDate());
 					copy = new ChapterBuilder().setId(genKeys.getInt(1)).setTitle(chapter.getTitle()).setDate(chapter.getDate()).build();
 					}
 
@@ -102,7 +101,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 
 			while (rs.next()) {
 
-				Chapter chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title")).setDate(rs.getDate("date"))
+				Chapter chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title")).setDate(rs.getString("date"))
 						.build();
 
 				chapters.add(chapter);
@@ -131,7 +130,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM chapter WHERE id = " + this.chapter.getId());
 
 			while (rs.next()) {
-				chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title")).setDate(rs.getDate("date"))
+				chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title")).setDate(rs.getString("date"))
 						.build();
 
 			}		

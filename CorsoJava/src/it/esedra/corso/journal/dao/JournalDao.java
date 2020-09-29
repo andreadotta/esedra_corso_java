@@ -52,18 +52,16 @@ public class JournalDao implements DaoInterface<Journal> {
 	}
 
 	@Override
-	public int update() {
-		int affectedRows = 0;
+	public Journal update() {
 
 		if (journal == null) {
 			PrintHelper.out("journal non può essere null.");
-			return affectedRows;
+			return null;
 		}
 
 		Journal journalCheck = this.get();
-
+        Journal copy = null;
 		try {
-
 			if (journalCheck != null) {
 				String sql = "UPDATE journal SET name= ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
@@ -71,10 +69,10 @@ public class JournalDao implements DaoInterface<Journal> {
 				stm.setString(1, journal.getName());
 				stm.setInt(2, journal.getId());
 
-				affectedRows = stm.executeUpdate();
+				if (stm.executeUpdate()> 0) {
 
 				stm.close();
-
+				}
 			} else {
 				String sql = "INSERT INTO journal (id, name) VALUES (?,?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
@@ -82,12 +80,12 @@ public class JournalDao implements DaoInterface<Journal> {
 				stm.setInt(1, journal.getId());
 				stm.setString(2, journal.getName());
 
-				affectedRows = stm.executeUpdate();
+				if (stm.executeUpdate() > 0) {;
 				ResultSet genKeys = stm.getGeneratedKeys();
 				if (genKeys.next()) {
 					journal.setId(genKeys.getInt(1));
 				}
-
+				}
 				stm.close();
 
 			}
@@ -97,7 +95,7 @@ public class JournalDao implements DaoInterface<Journal> {
 			PrintHelper.out("Errore journal dao", e.getMessage());
 		}
 
-		return affectedRows;
+		return copy;
 
 	}
 

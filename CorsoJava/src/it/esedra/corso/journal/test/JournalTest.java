@@ -34,7 +34,6 @@ public class JournalTest {
 
 	@Test
 	public void testAUpdate() {
-
 		try {
 			Connection connection = JournalDbConnect.connect();
 
@@ -45,13 +44,14 @@ public class JournalTest {
 			JournalDao journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
 
-			assertTrue(journalDao.update() > 0);
+			journal = journalDao.update();
+			assertTrue(journal != null);
 			ID = journal.getId();
 
 			journal.setName(PREFIX + NAME);
 			journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
-			assertTrue(journalDao.update() > 0);
+			assertTrue(journal != null);
 
 		} catch (Exception e) {
 			e.printStackTrace();

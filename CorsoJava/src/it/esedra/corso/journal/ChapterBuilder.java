@@ -1,6 +1,5 @@
 package it.esedra.corso.journal;
 
-import java.util.Date;
 
 public class ChapterBuilder {
 
