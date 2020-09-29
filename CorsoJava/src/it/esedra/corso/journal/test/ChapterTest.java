@@ -149,10 +149,8 @@ public class ChapterTest {
 
 	@BeforeClass
 	public static void setup() {
-
 		try {
 			DbUtil.rebuildDb();
-
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
