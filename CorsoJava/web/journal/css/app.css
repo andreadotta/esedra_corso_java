@@ -2,10 +2,10 @@
 	border: 1px solid #CCC;
 }
 .table  {
-
+	padding: 20px 0px 30px 0px;
 }
 .col-label, col-field {
-	float: left;
+	float: left;	
 }
 .col-label {
 	width: 110px;
