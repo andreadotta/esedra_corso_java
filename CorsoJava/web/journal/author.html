@@ -14,19 +14,25 @@
 	<form action="http://localhost:8000/author/" method="post" id="author-form">
 
 		<div class="table">
-			<div class="col-label">
-				<label for="name">Name</label>
+			<div class="row">
+				<div class="col-label">
+					<label for="name">Name</label>
+				</div>
+				<div class="col-field">
+					<input class="input-text" name="name" value="" />
+				</div>
 			</div>
-			<div class="col-field">
-				<input class="input-text" name="name" value="" />
+			<div class="row">
+				<div class="col-label">
+					<label for="email">Email</label>
+				</div>
+				<div class="col-field">
+					<input class="input-text" name="email" value="" />
+				</div>
 			</div>
-			<div class="col-label">
-				<label for="email">Email</label>
+			<div class="row">
+				<button id="submit-author" type="submit">Salva</button>
 			</div>
-			<div class="col-field">
-				<input class="input-text" name="email" value="" />
-			</div>
-			<button id="submit-author" type="submit">Salva</button>
 		</div>
 	</form>
 </body>
