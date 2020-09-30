@@ -162,7 +162,7 @@ public class UserTest {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
 			User userMock = new UserBuilder().setId(ID).build();
-			
+
 			UserDao userDao = new UserDao(userMock);
 			userDao.setConnection(connection);
 

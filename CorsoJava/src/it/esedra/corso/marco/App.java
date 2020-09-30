@@ -10,6 +10,7 @@ import it.esedra.corso.db.DbConnect;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.User;
+import it.esedra.corso.journal.UserBuilder;
 import it.esedra.corso.journal.dao.UserDao;
 
 public class App {
@@ -26,7 +27,7 @@ public class App {
 			// effettua la connessione al database
 			Connection connection = DbConnect.connect(DBPATH);
 
-			UserDao userdao = new UserDao(new User());
+			UserDao userdao = new UserDao(new User(0, null, null, null, null, null));
 			userdao.setConnection(connection);
 			Collection<User> users = userdao.getAll();
 			Iterator<User> userIterator = users.createIterator();

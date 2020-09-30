@@ -3,52 +3,45 @@ package it.esedra.corso.journal;
 import java.util.Date;
 
 /**
- * Questa classe è un capitolo del diario
+ * Questa classe è un capitol del diario
  * 
 
  * 
  */
 public class Chapter {
-
-	private int id;
+	private final int id;
+	private final String title;
+	private final String date;
 	
-	private String title;
+	public Chapter(Integer id, String title, String date) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.date = date;
 
+	}
+	
 	public int getId() {
 		return id;
 	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-
-	private Date date;
-
-
 
 	
 	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	
+	public String getDate() {
+		return "date";
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-
-
-	public Chapter() {
-		// TODO Auto-generated constructor stub
-	}
 
 }
+
+	
+
+
+
+	
+
+

@@ -1,5 +1,7 @@
 package it.esedra.corso.journal;
 
+import java.util.Date;
+
 public class AuthorBuilder {
 
 	private Integer id;
@@ -51,6 +53,11 @@ public class AuthorBuilder {
 	public AuthorBuilder setEmail(String email) {
 		this.email = email;
 		return this;
+	}
+
+	public ChapterBuilder setDate(Date date) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

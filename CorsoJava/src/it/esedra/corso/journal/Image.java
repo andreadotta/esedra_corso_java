@@ -9,6 +9,16 @@ package it.esedra.corso.journal;
 public class Image extends MultimediaResource  {
 
 
+
+	
+	public Image(int id, String src, String name) {
+		super(id, src, name);
+		
+
+
+	}
+
+	
 	
 
 }
