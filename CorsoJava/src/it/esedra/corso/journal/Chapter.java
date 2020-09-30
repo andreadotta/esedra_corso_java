@@ -32,7 +32,7 @@ public class Chapter {
 
 	
 	public String getDate() {
-		return "date";
+		return date;
 	}
 
 
