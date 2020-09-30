@@ -16,16 +16,4 @@ public class VideoCollection extends AbstactCollections<Video> implements Collec
 		return new Iterator<Video>(super.toArray());
 	}
 
-	@Override
-	public int getId() {
-		
-		return 0;
-	}
-
-	@Override
-	public Object getText() {
-		
-		return null;
-	}
-
 }
