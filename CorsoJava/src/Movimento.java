@@ -1,7 +1,6 @@
 
 public interface Movimento {
 
-	  void stampadatiMovimento();
-	  
-	  
+	void stampadatiMovimento();
+
 }

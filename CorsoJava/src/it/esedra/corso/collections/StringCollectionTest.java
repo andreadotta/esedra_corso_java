@@ -7,11 +7,11 @@ public class StringCollectionTest {
 	public StringCollectionTest() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		Collection<String> StringCollention = new StringCollection();
-		
+
 		StringCollention.add((String) "Ciao");
 		StringCollention.add((String) "Oggi");
 		StringCollention.add((String) "Domani");
@@ -23,10 +23,9 @@ public class StringCollectionTest {
 		StringCollention.add((String) "Gianni");
 		StringCollention.add((String) "Collection");
 		StringCollention.add((String) "Computer");
-		
+
 		StringCollention.test();
-		
-		
+
 	}
 
 }

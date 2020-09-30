@@ -65,7 +65,6 @@ public class ChapterDao implements DaoInterface<Chapter> {
 		// resituisce la lista
 
 		return (Collection<Chapter>) chapters;
-	
 
 	}
 

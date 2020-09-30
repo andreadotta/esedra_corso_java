@@ -14,7 +14,8 @@ public class UserCollectionTest {
 
 		Collection<User> userCollection = new UserCollection();
 
-		User username1 = new UserBuilder().setName("Mario").setSurname("Rossi").setEmail("mario.rossi@boo.it").setPassword("tttrrr").setRegistration("01/01/2016").build();
+		User username1 = new UserBuilder().setName("Mario").setSurname("Rossi").setEmail("mario.rossi@boo.it")
+				.setPassword("tttrrr").setRegistration("01/01/2016").build();
 		User username2 = new UserBuilder().setName("Ruggero").setSurname("Bianchi").setEmail("ruggero.bianchi@boo.it")
 				.setPassword("fffeee").setRegistration("21/11/2018").build();
 

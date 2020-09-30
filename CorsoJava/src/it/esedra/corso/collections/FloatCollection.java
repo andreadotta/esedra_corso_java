@@ -2,7 +2,6 @@ package it.esedra.corso.collections;
 
 import it.esedra.corso.collections.interfaces.Collection;
 
-
 public class FloatCollection extends AbstactCollections<Float> implements Collection<Float> {
 
 	public FloatCollection() {

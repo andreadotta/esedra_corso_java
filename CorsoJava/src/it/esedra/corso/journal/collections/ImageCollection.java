@@ -4,7 +4,7 @@ import it.esedra.corso.collections.AbstactCollections;
 import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Image;
-  
+
 public class ImageCollection extends AbstactCollections<Image> implements Collection<Image> {
 
 	public ImageCollection() {

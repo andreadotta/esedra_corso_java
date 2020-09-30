@@ -6,8 +6,6 @@ public class VideoBuilder {
 	private String src;
 	private String name;
 	private String title;
-	
-	
 
 	public VideoBuilder() {
 
@@ -61,6 +59,5 @@ public class VideoBuilder {
 		this.title = title;
 		return this;
 	}
-
 
 }

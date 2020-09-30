@@ -1,6 +1,5 @@
 package it.esedra.corso.oussein.Dao;
 
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -16,26 +15,25 @@ public class ImageDao implements DaoInterface<Image> {
 
 	private Image image;
 	private Connection conn;
-	
+
 	public ImageDao(Image image) {
 		super();
 		this.image = image;
 	}
-    
-    @Override
+
+	@Override
 	public void update() {
-		
+
 	}
 
 	@Override
 	public void delete() {
-		
 
 	}
 
 	@Override
 	public List<Image> getAll() {
-		
+
 		List<Image> images = new ArrayList<>();
 		try {
 
@@ -52,7 +50,7 @@ public class ImageDao implements DaoInterface<Image> {
 				image.setName(rs.getString("name"));
 				image.setLuogo(rs.getString("luogo"));
 				image.setColor(rs.getString("color"));
-				
+
 				// aggiunge l'oggetto alla lista
 				images.add(image);
 			}
@@ -63,9 +61,8 @@ public class ImageDao implements DaoInterface<Image> {
 		}
 		// resituisce la lista
 
-		
 		return images;
-		
+
 	}
 
 	@Override

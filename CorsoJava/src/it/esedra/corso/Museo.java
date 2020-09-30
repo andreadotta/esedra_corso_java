@@ -37,12 +37,11 @@ public class Museo {
 
 	/**
 	 * OVERRIDE EQUALS
-	*/
+	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof Museo) {
 			Museo museoObj = (Museo) obj;
-			if (museoObj.getQuadri() == this.getQuadri() 
-					&& museoObj.getStatue() == this.getStatue()) {
+			if (museoObj.getQuadri() == this.getQuadri() && museoObj.getStatue() == this.getStatue()) {
 				return true;
 			}
 
@@ -51,5 +50,5 @@ public class Museo {
 		}
 
 		return false;
-	} 
+	}
 }

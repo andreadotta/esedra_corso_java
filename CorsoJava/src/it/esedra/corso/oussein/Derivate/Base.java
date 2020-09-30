@@ -1,21 +1,20 @@
 package it.esedra.corso.oussein.Derivate;
 
-
-/** metodi getter e setter*/
+/** metodi getter e setter */
 
 public abstract class Base {
-	
 
 	private String nome;
 	private int salary;
-public Base(String nome, int salary) {
-	super();
-	this.nome=nome;
-	this.salary=salary;
-	
-}
-	
-public String getNome() {
+
+	public Base(String nome, int salary) {
+		super();
+		this.nome = nome;
+		this.salary = salary;
+
+	}
+
+	public String getNome() {
 		return nome;
 	}
 
@@ -34,6 +33,6 @@ public String getNome() {
 	public void print() {
 		System.out.println(nome + " " + salary);
 	}
+
 	public abstract String getInsegnante();
 }
-

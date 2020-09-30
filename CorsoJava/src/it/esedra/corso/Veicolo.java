@@ -5,7 +5,7 @@ public class Veicolo {
 	private Volante volante;
 	private Ruota[] ruote;
 	private String colore;
-	
+
 	public String getColore() {
 		return colore;
 	}

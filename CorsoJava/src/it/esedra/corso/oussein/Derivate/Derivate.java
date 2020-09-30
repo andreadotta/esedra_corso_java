@@ -2,7 +2,7 @@ package it.esedra.corso.oussein.Derivate;
 
 /** (la classe Derivate è la classe derivata dalla superclasse Base) */
 
-public  class Derivate extends Base {
+public class Derivate extends Base {
 	public Derivate(String nome, int salary) {
 		super(nome, salary);
 

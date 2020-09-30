@@ -2,7 +2,6 @@ package it.esedra.corso.collections;
 
 import it.esedra.corso.collections.interfaces.Collection;
 
-
 public class StringCollection extends AbstactCollections<String> implements Collection<String> {
 
 	public StringCollection() {

@@ -5,7 +5,6 @@ public class ImageBuilder {
 	private int id;
 	private String src;
 	private String name;
-	
 
 	public ImageBuilder() {
 

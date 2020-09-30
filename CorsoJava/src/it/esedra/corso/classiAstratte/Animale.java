@@ -1,8 +1,9 @@
 package it.esedra.corso.classiAstratte;
 
 /**
- * Questa è una classe base.
- * Questa classe è un esempio di composizione cioè di legame forte tra classi
+ * Questa è una classe base. Questa classe è un esempio di composizione cioè di
+ * legame forte tra classi
+ * 
  * @author gpaol
  *
  */
@@ -13,17 +14,18 @@ public abstract class Animale {
 	private Testa testa;
 	private Tronco tronco;
 	private Zampa[] zampe;
-	
+
 	/**
 	 * Costruttore esplicito con argomenti
+	 * 
 	 * @param testa
 	 * @param tronco
 	 * @param zampe
 	 */
 	public Animale(Testa testa, Tronco tronco, Zampa[] zampe) {
-		
+
 	}
-	
+
 	public Testa getTesta() {
 		return testa;
 	}
@@ -70,9 +72,8 @@ public abstract class Animale {
 	 * Essendo final il metodo non può essere sovrascritto
 	 */
 	public final void siMuove() {
-		
+
 	}
-	
 
 	/**
 	 * Questo metodo stampa il verso dell'animale.

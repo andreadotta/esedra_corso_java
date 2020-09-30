@@ -8,9 +8,9 @@ public class Indirizzo implements StampaIndirizzo {
 	private String civico;
 	private String CAP;
 	private String citta;
-	
+
 	public Indirizzo(String via, String civico, String CAP, String citta) {
-		
+
 	}
 
 	public String getVia() {
@@ -47,7 +47,7 @@ public class Indirizzo implements StampaIndirizzo {
 
 	@Override
 	public void stampaDatiIndirizzo() {
-		
+
 	}
 
 }

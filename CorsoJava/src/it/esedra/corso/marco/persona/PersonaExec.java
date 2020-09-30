@@ -15,7 +15,7 @@ public class PersonaExec {
 		} else {
 			PrintHelper.out("'u1' è un bot!");
 		}
-		
+
 		Anagrafica p1 = new Anagrafica();
 		p1.setPersona(u1);
 		p1.setIndirizzo(indirizzoU1);

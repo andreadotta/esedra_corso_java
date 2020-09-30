@@ -17,7 +17,7 @@ public class OrdineCrescente {
 			elementi[i] = sottoinsOrd;
 
 		}
-		
+
 		return elementi;
 
 	}

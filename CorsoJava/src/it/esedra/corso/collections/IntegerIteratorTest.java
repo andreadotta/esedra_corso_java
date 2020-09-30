@@ -12,17 +12,15 @@ public class IntegerIteratorTest {
 
 		IntegerCollection.add((Integer) 16);
 		IntegerCollection.add((Integer) 25);
-		
 
-		
 		Iterator<Integer> iterator = IntegerCollection.createIterator();
 
 		while (iterator.hasNext()) {
-			PrintHelper.out(iterator.next() + "");	
+			PrintHelper.out(iterator.next() + "");
 			PrintHelper.out(iterator.currentItem() + "");
-			
-			PrintHelper.out(iterator.isDone() + "");	
-	}
 
-}
+			PrintHelper.out(iterator.isDone() + "");
+		}
+
+	}
 }

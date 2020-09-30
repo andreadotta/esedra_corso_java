@@ -20,12 +20,12 @@ public class Time {
 	private int minutes; // minuti
 	private int seconds; // secondi
 	private int milliseconds; // millisecondi
-	
+
 	// Inizializzatore statico
 	static {
-		
+
 		msg = "Current time is: ";
-		
+
 	}
 
 	/**
@@ -118,7 +118,6 @@ public class Time {
 			seconds = 0;
 		}
 	}
-	
 
 	public int getMilliseconds() {
 		return milliseconds;

@@ -7,11 +7,11 @@ public class FloatCollentionTest {
 	public FloatCollentionTest() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		Collection<Float> floatCollention = new FloatCollection();
-		
+
 		floatCollention.add((float) 2.1);
 		floatCollention.add((float) 2.2);
 		floatCollention.add((float) 2.3);
@@ -23,10 +23,9 @@ public class FloatCollentionTest {
 		floatCollention.add((float) 2.9);
 		floatCollention.add((float) 3);
 		floatCollention.add((float) 3.1);
-		
+
 		floatCollention.test();
-		
-		
+
 	}
 
 }

@@ -11,15 +11,12 @@ import it.esedra.corso.helpers.PrintHelper;
 public class Gatto extends Animale {
 
 	private final String verso = "miao";
-	
 
 	public Gatto(Testa testa, Tronco tronco, Zampa[] zampe) {
-		super(testa, tronco, zampe); //richiamo il costruttore della superclasse
-		
-	}
-	
+		super(testa, tronco, zampe); // richiamo il costruttore della superclasse
 
-	
+	}
+
 	@Override
 	public void faiVerso() {
 		PrintHelper.out(getVerso(), "gatto");
@@ -29,6 +26,5 @@ public class Gatto extends Animale {
 	public String getVerso() {
 		return verso;
 	}
-
 
 }

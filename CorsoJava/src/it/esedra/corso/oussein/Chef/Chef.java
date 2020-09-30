@@ -3,25 +3,22 @@ package it.esedra.corso.oussein.Chef;
 import it.esedra.corso.helpers.PrintHelper;
 
 public class Chef {
-	
+
 	private String nome;
 	private String cognome;
 	private String[] ricettePasta;
 	private String nazione;
 	private Coltelli coltelli;
-	
-	
+
 	public final String getNazione() {
 		return nazione;
 	}
 
 	protected void setNazione(String nazione) {
-		
+
 		this.nazione = nazione;
 	}
 
-
-	
 	public Coltelli getColtelli() {
 		return coltelli;
 	}

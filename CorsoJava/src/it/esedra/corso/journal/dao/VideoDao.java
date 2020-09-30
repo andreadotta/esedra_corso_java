@@ -15,16 +15,16 @@ public class VideoDao implements DaoInterface<Video> {
 
 	private Video video;
 	private Connection conn;
-	
+
 	public VideoDao() {
-		
+
 	}
 
 	public VideoDao(Video video) {
 		super();
 		this.video = video;
 	}
-	
+
 	@Override
 	public boolean delete() {
 
@@ -44,7 +44,7 @@ public class VideoDao implements DaoInterface<Video> {
 		return success;
 
 	}
-	
+
 	@Override
 	public Collection<Video> getAll() {
 		Collection<Video> videos = new VideoCollection();
@@ -53,11 +53,10 @@ public class VideoDao implements DaoInterface<Video> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM video");
 
 			while (rs.next()) {
-				
+
 				Video video = new VideoBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
 						.setName(rs.getString("name")).setTitle(rs.getString("title")).build();
 
-				
 				videos.add(video);
 			}
 			rs.close();
@@ -91,8 +90,8 @@ public class VideoDao implements DaoInterface<Video> {
 
 				stm.setInt(4, video.getId());
 
-                if (stm.executeUpdate() > 0) {
-					
+				if (stm.executeUpdate() > 0) {
+
 					copy = new VideoBuilder().setId(video.getId()).setSrc(video.getSrc()).setName(video.getName())
 							.setTitle(video.getTitle()).build();
 				}
@@ -129,10 +128,6 @@ public class VideoDao implements DaoInterface<Video> {
 
 	}
 
-	
-
-	
-
 	@Override
 	public void setConnection(Connection con) {
 		this.conn = con;
@@ -147,7 +142,7 @@ public class VideoDao implements DaoInterface<Video> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM video WHERE id = " + this.video.getId());
 
 			while (rs.next()) {
-				
+
 				video = new VideoBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
 						.setName(rs.getString("name")).setTitle(rs.getString("title")).build();
 

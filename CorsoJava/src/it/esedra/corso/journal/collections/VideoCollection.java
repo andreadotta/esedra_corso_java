@@ -4,7 +4,7 @@ import it.esedra.corso.collections.AbstactCollections;
 import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Video;
-  
+
 public class VideoCollection extends AbstactCollections<Video> implements Collection<Video> {
 
 	public VideoCollection() {

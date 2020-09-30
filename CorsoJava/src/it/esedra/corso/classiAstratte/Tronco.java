@@ -13,7 +13,7 @@ public class Tronco {
 	 * Costruttore di default esplicito
 	 */
 	public Tronco() {
-		
+
 	}
 
 }

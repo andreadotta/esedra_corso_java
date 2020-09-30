@@ -1,28 +1,25 @@
 package it.esedra.corso.journal;
 
-
 public class ChapterBuilder {
 
 	private Integer id;
 	private String title;
 	private String date;
 
-	
-	public ChapterBuilder(Integer id, String title, String date ) {
+	public ChapterBuilder(Integer id, String title, String date) {
 		super();
 		this.id = id;
 		this.title = title;
-        this.date = date ;
+		this.date = date;
 	}
 
-		public ChapterBuilder() {
-		
+	public ChapterBuilder() {
+
 	}
 
-		public Chapter build() {
-			return new Chapter(id, title, date);
-		}
-
+	public Chapter build() {
+		return new Chapter(id, title, date);
+	}
 
 	public Integer getId() {
 		return id;
@@ -37,20 +34,18 @@ public class ChapterBuilder {
 		return title;
 	}
 
-	
-	public ChapterBuilder setTitle( String title) {
-		this.title =  title;
+	public ChapterBuilder setTitle(String title) {
+		this.title = title;
 		return this;
 	}
-	public ChapterBuilder setDate(  String date) {
-		this.date =  date;
+
+	public ChapterBuilder setDate(String date) {
+		this.date = date;
 		return this;
-	}	
+	}
+
 	public String getDate() {
 		return date;
 	}
 
-	}
-
-
-
+}

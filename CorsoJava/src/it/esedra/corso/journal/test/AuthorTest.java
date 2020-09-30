@@ -93,7 +93,7 @@ public class AuthorTest {
 			assertTrue(author != null);
 			// setto l'ID con il valore della chiave generata dal database
 			ID = author.getId();
-			
+
 			author = new AuthorBuilder().setId(ID).setName(PREFIX + NAME).setEmail(PREFIX + EMAIL).build();
 
 			authorDao = new AuthorDao(author);

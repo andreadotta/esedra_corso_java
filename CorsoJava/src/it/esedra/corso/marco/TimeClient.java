@@ -5,7 +5,7 @@ import it.esedra.corso.libs.Time;
 import java.util.Date;
 
 public class TimeClient {
-	
+
 	public static void main(String[] args) {
 
 		Calendar cal = Calendar.getInstance();
@@ -20,7 +20,7 @@ public class TimeClient {
 		marcoTime.setMilliseconds(cal.get(Calendar.MILLISECOND));
 
 		System.out.println(marcoTime.getTime());
-		
+
 		System.out.println(Time.getCurrentTime());
 
 	}

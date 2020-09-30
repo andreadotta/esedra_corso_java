@@ -30,7 +30,7 @@ public class MyEsedra implements EsedraIterator {
 
 			@Override
 			public boolean hasNext() {
-				
+
 				return false;
 			}
 		};
@@ -39,7 +39,6 @@ public class MyEsedra implements EsedraIterator {
 
 	@Override
 	public void isDone() {
-		
 
 	}
 

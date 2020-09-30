@@ -60,7 +60,7 @@ public class JournalDao implements DaoInterface<Journal> {
 		}
 
 		Journal journalCheck = this.get();
-        Journal copy = null;
+		Journal copy = null;
 		try {
 			if (journalCheck != null) {
 				String sql = "UPDATE journal SET name= ? WHERE id = ? ;";
@@ -69,9 +69,9 @@ public class JournalDao implements DaoInterface<Journal> {
 				stm.setString(1, journal.getName());
 				stm.setInt(2, journal.getId());
 
-				if (stm.executeUpdate()> 0) {
+				if (stm.executeUpdate() > 0) {
 
-				stm.close();
+					stm.close();
 				}
 			} else {
 				String sql = "INSERT INTO journal (id, name) VALUES (?,?) ;";
@@ -80,11 +80,12 @@ public class JournalDao implements DaoInterface<Journal> {
 				stm.setInt(1, journal.getId());
 				stm.setString(2, journal.getName());
 
-				if (stm.executeUpdate() > 0) {;
-				ResultSet genKeys = stm.getGeneratedKeys();
-				if (genKeys.next()) {
-					journal.setId(genKeys.getInt(1));
-				}
+				if (stm.executeUpdate() > 0) {
+					;
+					ResultSet genKeys = stm.getGeneratedKeys();
+					if (genKeys.next()) {
+						journal.setId(genKeys.getInt(1));
+					}
 				}
 				stm.close();
 

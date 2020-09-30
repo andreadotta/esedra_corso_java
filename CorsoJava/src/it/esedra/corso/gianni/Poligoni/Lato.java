@@ -14,7 +14,7 @@ public class Lato {
 	public void setLunghezza(float lunghezza) {
 		if (lunghezza >= 0) {
 			this.lunghezza = lunghezza;
-		}	
+		}
 	}
 
 }
