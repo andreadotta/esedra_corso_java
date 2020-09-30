@@ -113,7 +113,6 @@ public class AuthorTest {
 		try {
 
 			// Effettua la connessione al database
-
 			Connection connection = JournalDbConnect.connect();
 			Author authorMock = new AuthorBuilder().setId(ID).build();
 
