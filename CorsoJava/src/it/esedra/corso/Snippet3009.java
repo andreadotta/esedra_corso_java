@@ -1,5 +1,7 @@
 package it.esedra.corso;
 
+import java.util.function.Function;
+
 import it.esedra.corso.helpers.PrintHelper;
 
 interface MyInterface
@@ -67,6 +69,20 @@ public class Snippet3009 {
 		new MyClass5().bar();
 		
 		new MyClass6().bar();
+		
+		
+
+        Function<String, Integer> func = x -> x.length();
+
+        Function<Integer, Integer> func2 = x -> x * 2;
+
+        Integer result = func.andThen(func2).apply("esedra");   
+
+        System.out.println(result);
+
+        
+        
+        
 	}
 
 }
