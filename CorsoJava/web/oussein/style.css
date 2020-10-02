@@ -1,77 +1,83 @@
-tr:nth-child(2n){
+tr:nth-child(2n) {
 	background: grey;
 }
 
-
-.header{
+.header {
 	background: grey;
 	padding: 20px;
-	marging-top:50px;
+	marging-top: 50px;
 	color: white;
-	text-align:center;
-}
-.header img{
-	width:100%
-	height:auto;
-}
-.header-nav{
-	position: relative;
-	margin:20px 0;
-	text-align:center;
-	background: lightcoral;
-}
-.header-nav a{
-	margin:0 10px;
-	color:inherit;
-	text-decoration:none;
-	
-}
-.header-nav a:hover{
-	text-decoration:underline;
+	text-align: center;
 }
 
-  span{
-	background:lightgreen;
+.header img {
+	width: 100% height:auto;
+}
+
+.header-nav {
+	float: right;
+	margin: 20px 0;
+	text-align: center;
+	background: lightcoral;
+	margin: 20px 0;
+}
+
+.header-nav a {
+	margin: 0 10px;
+	color: inherit;
+	text-decoration: none;
+}
+
+.header-nav a:hover {
+	text-decoration: underline;
+}
+
+span {
+	background: lightgreen;
 }
 
 h2 {
-    color: red;
+	color: red;
 }
- .header-title{
-	position:absolute;
-	left:10px;
+
+.header-title {
+	position: absolute;
+	left: 10px;
 	top: 10px;
-	margin-top:0;
+	margin-top: 0;
 	front-style: italic;
-	text-transform:capitalize;
-	background:#5834cf;
-    width:70%;
+	text-transform: capitalize;
+	background: #5834cf;
+	width: 70%;
 }
 
-body{
-    background-image: url('img_suisse-picture.jpg')
+body {
+	background-image: url('img_suisse-picture.jpg')
+}
 
-}body {
-    background: #cccccc;
-    font-family: 'Grandstander', cursive;
+body {
+	background: #cccccc;
+	font-family: 'Grandstander', cursive;
 }
-table,
-td{
-    border:1px solid #333333;
+
+table, td {
+	border: 1px solid #333333;
 }
-thead,
-tfoot{
-    background-color: #333333;
-    color:#fff;
+
+thead, tfoot {
+	background-color: #333333;
+	color: #fff;
 }
+
 .hero {
-    width: 50vh;
-    height: 30vh;
+	width: 50vh;
+	height: 30vh;
 }
-.buttom{
-	color:#fff;
+
+.buttom {
+	color: #fff;
 	background: #5834cf;
 	text-decoration: none;
-	front-size:20px;
-	padding:5px 10px;
+	front-size: 20px;
+	padding: 5px 10px;
 }
