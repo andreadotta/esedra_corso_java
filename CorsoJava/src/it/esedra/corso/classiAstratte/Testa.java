@@ -13,7 +13,7 @@ public class Testa {
 	 * Csotruttore di esplicito default
 	 */
 	public Testa() {
-		
+
 	}
 
 }

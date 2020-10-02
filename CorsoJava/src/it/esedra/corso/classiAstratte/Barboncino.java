@@ -5,11 +5,9 @@ package it.esedra.corso.classiAstratte;
  */
 public final class Barboncino extends Cane {
 
-	
-	
 	public Barboncino(Testa testa, Tronco tronco, Zampa[] zampe) {
-		super(testa, tronco, zampe); //richiamo il costruttore della superclasse
-		
+		super(testa, tronco, zampe); // richiamo il costruttore della superclasse
+
 	}
 
 }

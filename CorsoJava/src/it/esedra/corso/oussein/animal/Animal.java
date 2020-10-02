@@ -1,7 +1,8 @@
 package it.esedra.corso.oussein.animal;
 
 public interface Animal {
-	 void eat();
-	 void speak();
+	void eat();
+
+	void speak();
 
 }

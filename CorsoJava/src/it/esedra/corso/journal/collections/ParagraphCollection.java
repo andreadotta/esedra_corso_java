@@ -13,10 +13,8 @@ public class ParagraphCollection extends AbstactCollections<Paragraph> implement
 
 	@Override
 	public Iterator<Paragraph> createIterator() {
-		return new Iterator<Paragraph>(super.toArray()); 
+		return new Iterator<Paragraph>(super.toArray());
+
+	}
 
 }
-
-	
-}
-	

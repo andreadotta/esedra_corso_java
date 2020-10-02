@@ -2,7 +2,6 @@ package it.esedra.corso.collections;
 
 import it.esedra.corso.collections.interfaces.Collection;
 
-
 public class IntegerCollection extends AbstactCollections<Integer> implements Collection<Integer> {
 
 	public IntegerCollection() {

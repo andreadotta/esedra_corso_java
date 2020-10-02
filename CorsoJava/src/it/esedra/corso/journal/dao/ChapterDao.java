@@ -3,7 +3,7 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement ;
+import java.sql.Statement;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Chapter;
@@ -41,27 +41,26 @@ public class ChapterDao implements DaoInterface<Chapter> {
 					copy = new ChapterBuilder().setId(chapter.getId()).setDate(chapter.getDate())
 							.setTitle(chapter.getTitle()).build();
 				}
-					stm.close();
+				stm.close();
 			} else {
 				String sql = "INSERT INTO chapter ( title, date ) VALUES (?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
- 
 
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
 
-					stm.setString(1, chapter.getTitle());
-					stm.setString(2,  chapter.getDate());
-					copy = new ChapterBuilder().setId(genKeys.getInt(1)).setTitle(chapter.getTitle()).setDate(chapter.getDate()).build();
+						stm.setString(1, chapter.getTitle());
+						stm.setString(2, chapter.getDate());
+						copy = new ChapterBuilder().setId(genKeys.getInt(1)).setTitle(chapter.getTitle())
+								.setDate(chapter.getDate()).build();
 					}
 
 				}
 
-	
 				stm.close();
 			}
-		} catch (Exception e) { 
+		} catch (Exception e) {
 			e.printStackTrace();
 			PrintHelper.out("Errore author dao", e.getMessage());
 		}
@@ -72,24 +71,21 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	@Override
 	public boolean delete() {
 
-		 boolean success = true;
-			
-			try {
-				Statement stm = this.conn.createStatement();
-				int rs = stm.executeUpdate("DELETE FROM chapter WHERE id = " + this.chapter.getId());
-				
-				if(rs > 0) {
-					success = true;
-				}
-			} catch (Exception e) {
-				PrintHelper.out("Errore author dao", e.getMessage());
+		boolean success = true;
+
+		try {
+			Statement stm = this.conn.createStatement();
+			int rs = stm.executeUpdate("DELETE FROM chapter WHERE id = " + this.chapter.getId());
+
+			if (rs > 0) {
+				success = true;
 			}
-			
+		} catch (Exception e) {
+			PrintHelper.out("Errore author dao", e.getMessage());
+		}
+
 		return success;
 	}
-
-	
-
 
 	@Override
 	public Collection<Chapter> getAll() {
@@ -100,12 +96,12 @@ public class ChapterDao implements DaoInterface<Chapter> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM chapter");
 
 			while (rs.next()) {
-Chapter chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title")).setDate(rs.getString("date"))
-						.build();
+				Chapter chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title"))
+						.setDate(rs.getString("date")).build();
 
 				chapters.add(chapter);
 			}
-			
+
 			rs.close();
 		} catch (Exception e) {
 			PrintHelper.out("Errore video dao", e.getMessage());
@@ -129,11 +125,11 @@ Chapter chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getStr
 			ResultSet rs = stm.executeQuery("SELECT * FROM chapter WHERE id = " + this.chapter.getId());
 
 			while (rs.next()) {
-				chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title")).setDate(rs.getString("date"))
-						.build();
+				chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title"))
+						.setDate(rs.getString("date")).build();
 
-			}		
-			
+			}
+
 			rs.close();
 		} catch (Exception e) {
 			PrintHelper.out("Errore video dao", e.getMessage());

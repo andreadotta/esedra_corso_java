@@ -6,19 +6,11 @@ package it.esedra.corso.journal;
  * @author Nayem
  *
  */
-public class Image extends MultimediaResource  {
+public class Image extends MultimediaResource {
 
-
-
-	
 	public Image(int id, String src, String name) {
 		super(id, src, name);
-		
-
 
 	}
-
-	
-	
 
 }

@@ -10,7 +10,6 @@ public class Author {
 	private final String name;
 	private final String email;
 
-
 	public Author(Integer id, String name, String email) {
 		super();
 		this.id = id;
@@ -23,17 +22,12 @@ public class Author {
 		return id;
 	}
 
-
 	public String getName() {
 		return name;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
-
-
-	
 
 }

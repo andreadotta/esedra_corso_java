@@ -43,7 +43,7 @@ public class ImageDao implements DaoInterface<Image> {
 		return success;
 
 	}
-	
+
 	@Override
 	public Collection<Image> getAll() {
 		Collection<Image> images = new ImageCollection();
@@ -52,11 +52,10 @@ public class ImageDao implements DaoInterface<Image> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM image");
 
 			while (rs.next()) {
-				
+
 				Image image = new ImageBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
 						.setName(rs.getString("name")).build();
 
-				
 				images.add(image);
 			}
 			rs.close();
@@ -88,10 +87,8 @@ public class ImageDao implements DaoInterface<Image> {
 				stm.setString(2, image.getName());
 				stm.setInt(3, image.getId());
 
-				
+				if (stm.executeUpdate() > 0) {
 
-                if (stm.executeUpdate() > 0) {
-					
 					copy = new ImageBuilder().setId(image.getId()).setSrc(image.getSrc()).setName(image.getName())
 							.build();
 				}
@@ -104,7 +101,6 @@ public class ImageDao implements DaoInterface<Image> {
 
 				stm.setString(1, image.getSrc());
 				stm.setString(2, image.getName());
-				
 
 				if (stm.executeUpdate() > 0) {
 
@@ -128,10 +124,6 @@ public class ImageDao implements DaoInterface<Image> {
 
 	}
 
-	
-
-	
-
 	@Override
 	public void setConnection(Connection con) {
 		this.conn = con;
@@ -146,7 +138,7 @@ public class ImageDao implements DaoInterface<Image> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM image WHERE id = " + this.image.getId());
 
 			while (rs.next()) {
-				
+
 				image = new ImageBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
 						.setName(rs.getString("name")).build();
 

@@ -12,5 +12,4 @@ public class C<T> { // T è un type paramenter
 		this.c = c;
 	}
 
-	
 }

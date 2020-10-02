@@ -1,17 +1,19 @@
 package it.esedra.corso.marco.desktopPc;
 
 /**
- * Questa classe permette di settare i valori delle componenti del pc, e ritorna a schermo la configurazione scelta
+ * Questa classe permette di settare i valori delle componenti del pc, e ritorna
+ * a schermo la configurazione scelta
+ * 
  * @author marco
  *
  */
 public class DesktopPcClient {
 
 	public static void main(String[] args) {
-		
+
 		DesktopPcAssembly configuration = new DesktopPcAssembly();
 		DesktopPcAssemblyAlerts reminder = new DesktopPcAssemblyAlerts();
-		
+
 		reminder.setMotherboardFormat("ATX");
 		reminder.setMotherboardVendorName("MSI");
 		reminder.setMotherboardCpuSocketType("AM4");
@@ -22,15 +24,19 @@ public class DesktopPcClient {
 		configuration.setGraphicsCardChipType("GeForce GTX 980 Ti");
 		configuration.setHddType("SSD");
 		configuration.setHddCapacity("500 GB");
-		
-		System.out.println("=============================================================================================================================================================");
+
+		System.out.println(
+				"=============================================================================================================================================================");
 		System.out.println(reminder.getCoreAssembly());
-		System.out.println("=============================================================================================================================================================");
+		System.out.println(
+				"=============================================================================================================================================================");
 		System.out.println(configuration.getGpuAssemblyExtended());
-		System.out.println("=============================================================================================================================================================");
+		System.out.println(
+				"=============================================================================================================================================================");
 		System.out.println(configuration.getHardDrivesAssembly());
-		System.out.println("=============================================================================================================================================================");
-		
+		System.out.println(
+				"=============================================================================================================================================================");
+
 	}
 
 }

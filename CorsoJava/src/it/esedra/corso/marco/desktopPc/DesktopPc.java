@@ -1,7 +1,9 @@
 package it.esedra.corso.marco.desktopPc;
 
 /**
- * Questa classe contiene i metodi che definiscono le componenti base del pc da assemblare
+ * Questa classe contiene i metodi che definiscono le componenti base del pc da
+ * assemblare
+ * 
  * @author marco
  *
  */
@@ -25,7 +27,7 @@ public class DesktopPc {
 	public void setMotherboardFormat(String motherboardFormat) {
 		this.motherboardFormat = motherboardFormat;
 	}
-    
+
 	public String getMotherboardVendorName() {
 		return "Motherboard Vendor Name: " + motherboardVendorName;
 	}
@@ -33,7 +35,7 @@ public class DesktopPc {
 	public void setMotherboardVendorName(String motherboardVendorName) {
 		this.motherboardVendorName = motherboardVendorName;
 	}
-	
+
 	public String getMotherboardCpuSocketType() {
 		return "Motherboard CPU Socket Type: " + motherboardCpuSocketType;
 	}
@@ -41,7 +43,7 @@ public class DesktopPc {
 	public void setMotherboardCpuSocketType(String motherboardCpuSocketType) {
 		this.motherboardCpuSocketType = motherboardCpuSocketType;
 	}
-	
+
 	public String getCpuVendorName() {
 		return "CPU Vendor Name: " + cpuVendorName;
 	}
@@ -57,7 +59,7 @@ public class DesktopPc {
 	public void setCpuClock(String cpuClock) {
 		this.cpuClock = cpuClock;
 	}
-	
+
 	public String getRamVendorName() {
 		return "RAM Memory Vendor Name: " + ramVendorName;
 	}
@@ -72,8 +74,8 @@ public class DesktopPc {
 
 	public void setRamCapacity(String ramCapacity) {
 		this.ramCapacity = ramCapacity;
-	}	
-	
+	}
+
 	public String getGraphicCardVendorName() {
 		return "GPU Vendor Name: " + graphicCardVendorName;
 	}

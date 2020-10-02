@@ -10,7 +10,7 @@ public class Donna extends Persona implements StampaPersona, StampaIndirizzo {
 		super(nome, cognome, dataDiNascita, eta);
 
 	}
-	
+
 	@Override
 	public String getGenere() {
 		return genere;
@@ -18,12 +18,12 @@ public class Donna extends Persona implements StampaPersona, StampaIndirizzo {
 
 	@Override
 	public void stampaDatiIndirizzo() {
-		
+
 	}
 
 	@Override
 	public void stampaDatiPersona() {
-		
+
 	}
 
 }

@@ -1,12 +1,11 @@
 package it.esedra.corso.collections;
 
-public class Iterator<T>  implements it.esedra.corso.collections.interfaces.Iterator<T> {
+public class Iterator<T> implements it.esedra.corso.collections.interfaces.Iterator<T> {
 
 	public Iterator() {
-		
+
 	}
 
-	
 	private T[] array;
 	private int current = -1;
 	private boolean isDone = false;

@@ -11,7 +11,7 @@ abstract public class Poligono implements Calcoli, Disegna {
 	private Angolo[] angolo;
 	private Float area = Float.valueOf(0);
 	private Float perimetro = Float.valueOf(0);
-	
+
 	public Float getArea() {
 		return area;
 	}
@@ -27,7 +27,6 @@ abstract public class Poligono implements Calcoli, Disegna {
 	public void setPerimetro(Float perimetro) {
 		this.perimetro = perimetro;
 	}
-
 
 	public float getBase() {
 		return base;

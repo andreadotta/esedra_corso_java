@@ -5,12 +5,9 @@ package it.esedra.corso.gianni.Poligoni;
  * 
  */
 abstract public class Quadrilatero extends Poligono {
-    
+
 	public Quadrilatero(Lato[] lati, Angolo[] angoli) {
-		//regola per controlla che i lari e gli angoli siano 4
+		// regola per controlla che i lari e gli angoli siano 4
 	}
-
-
-	
 
 }

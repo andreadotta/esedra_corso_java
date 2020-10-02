@@ -9,43 +9,55 @@
 <link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
-	<h1>User</h1>    
+	<h1>User</h1>
 
 	<form id="user-form" action="http://localhost/user/" method="post">
 
 		<div class="table">
-			<div class="col-label">
-				<label for="name">Nome</label>
+			<div class="row">
+				<div class="col-label">
+					<label for="name">Nome</label>
+				</div>
+				<div class="col-field">
+					<input class="input-text" name="name" value="" />
+				</div>
 			</div>
-			<div class="col-field">
-				<input class="input-text" name="name" value="" />
+			<div class="row">
+				<div class="col-label">
+					<label for="surname">Cognome</label>
+				</div>
+				<div class="col-field">
+					<input class="input-text" name="surname" value="" />
+				</div>
 			</div>
-			<div class="col-label">
-				<label for="surname">Cognome</label>
+			<div class="row">
+				<div class="col-label">
+					<label for="email">Email</label>
+				</div>
+				<div class="col-field">
+					<input class="input-text" name="email" value="" />
+				</div>
 			</div>
-			<div class="col-field">
-				<input class="input-text" name="surname" value="" />
+			<div class="row">
+				<div class="col-label">
+					<label for="password">Password</label>
+				</div>
+				<div class="col-field">
+					<input class="input-text" name="password" value="" />
+				</div>
 			</div>
-			<div class="col-label">
-				<label for="email">Email</label>
+			<div class="row">
+				<div class="col-label">
+					<label for="registration">Registrazione</label>
+				</div>
+				<div class="col-field">
+					<input class="input-text" name="registration" value="" />
+				</div>
 			</div>
-			<div class="col-field">
-				<input class="input-text" name="email" value="" />
+			<div class="row">
+				<button id="submit-user" type="submit">Salva</button>
 			</div>
-			<div class="col-label">
-				<label for="password">Password</label>
-			</div>
-			<div class="col-field">
-				<input class="input-text" name="password" value="" />
-			</div>
-			<div class="col-label">
-				<label for="registration">Registrazione</label>
-			</div>
-			<div class="col-field">
-				<input class="input-text" name="registration" value="" />
-			</div>			
 		</div>
-		<button id="submit-user" type="submit">Salva</button>
 	</form>
 </body>
 </html>

@@ -15,28 +15,25 @@ public class ChefTest {
 		 * composizione primo devo istanzia le classi che la compongono
 		 */
 
-		//Titoli titoli = new Titoli();
-	   // Artist artist = new Artist();
-		//Lenght lenght = new Lenght();
-		
+		// Titoli titoli = new Titoli();
+		// Artist artist = new Artist();
+		// Lenght lenght = new Lenght();
+
 		/**
 		 * Istanzio un nuovo oggetto della classe canzone
 		 */
 
-	//Canzone canzone = new Canzone(titoli, artist, lenght);
-		
-		
+		// Canzone canzone = new Canzone(titoli, artist, lenght);
+
 		Chef normalchef = new Chef();
 		normalchef.faChicken();
-		
+
 		ItalianChef italianchef = new ItalianChef();
 		Coltelli coltelliChefItaliano = new Coltelli();
 		italianchef.setColtelli(coltelliChefItaliano);
 		italianchef.setNazione("Islanda");
 		PrintHelper.out(italianchef.getNazione());
-		
-		
-		
+
 		italianchef.faPasta();
 		CineseChef cineschef = new CineseChef();
 		cineschef.faFriedsRice();

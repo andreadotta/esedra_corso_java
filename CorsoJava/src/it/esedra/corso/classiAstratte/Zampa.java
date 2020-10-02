@@ -6,8 +6,7 @@ public class Zampa {
 	 * Costruttore....
 	 */
 	public Zampa() {
-		
-		
+
 	}
 
 }
