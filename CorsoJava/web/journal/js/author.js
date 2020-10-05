@@ -5,39 +5,43 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 	
 });
+	
+function createAuthor() {
+	let formAuthor = document.getElementById("author-form").elements;
+	const author = {};
+	author.name = formAuthor["name"].value;
+	author.email = formAuthor["email"].value;	
+	/*Valida il form
+	* Controlla che siano presenti quelli obbligatori e il loro tipo sia quello atteso */
+	author.isValid = function() {
+		if (author.name == '' || author.email == '') {
+			return false;		
+		}
+		return true;
+	};
+	author.save = function() {
+		formAuthor["name"].value = "ciao ciao";
+	};
+	
+	return author;
+}
 /**
  * Effettua il submit del form
  */
 function submitAuthor(event) {
 	//impedisco il submit del form
 	event.preventDefault();
-	//creo un oggetto che rappresenta il form e ottendo i campi del form
-	//sotto forma di array
-	let formAuthor = document.getElementById("author-form").elements;
-	//ottengo i campi usando il valore dell'attributo NAME del tag INPUT come indice dell'array
-	let name = formAuthor["name"];
-	let email = formAuthor["email"];
 	//richiamo il metodo validate il quale valida i campi (controlla che siano presenti quelli obbligatori e il loro tipo sia quello atteso)
-	if (!validate(formAuthor)) {
+	let author = createAuthor();
+	if (!author.isValid()) {
+		alert("I campi nome e email devono essere presenti");
 		return;
 	}
+	
+	author.save();
+	
 	//proseguo
-    console.log(name.value);
-    console.log(email.value);
+    console.log(author.name);
+    console.log(author.email);
 
-}
-/**
-* Valida il form
-* Controlla che siano presenti quelli obbligatori e il loro tipo sia quello atteso 
-*/
-function validate(formAuthor) {
-	let name = formAuthor["name"];
-	let email = formAuthor["email"];
-	//verifica che i campi abbamo un valore
-	if (name.value == '' || email.value == '') {
-		alert("I campi nome e email devono essere presenti");
-		return false;		
-	}
-	return true;
-		
 }
