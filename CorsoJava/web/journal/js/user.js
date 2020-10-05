@@ -6,29 +6,42 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+function createUser() {
+	let formUser = document.getElementById("user-form").elements;
+	const user = {};
+	user.name = formUser["name"].value;
+	user.surname = formUser["surname"].value;
+	user.email = formUser["email"].value;
+	user.password = formUser["password"].value;
+	user.registration = formUser["registration"].value;
+	user.isValid = function() {
+		if (user.name == ' ' || user.surname == ' ' || user.email == ' ' || user.password == ' ' || user.registration == ' ') {
+			return false;
+		}
+		return true;
+	};
+
+	return user;
+}
+
+/**
+* Effettual il submit del form
+ */
 function submitUser(event) {
 	// Impedisco il submit del form
 	event.preventDefault();
-	// Creo un oggetto che rappresenta il form e ottengo i campi del form
-	// sottoforma di array
-	let formUser = document.getElementById("user-form").elements;
-	// Ottengo i campi usando il valore dell'attributo NAME del tag INPUT come indice dell'array'
-	let name = formUser["name"];
-	let surname = formUser["surname"];
-	let email = formUser["email"];
-	let password = formUser["password"];
-	let registration = formUser["registration"];
 	// Richiamo il metodo validate il quale valida i campi (controlla che siano presenti quelli obbligatori e il loro tipo sia quello atteso)
-	if (!validate(formUser)) {
+	let user = createUser();
+	if (!user.isValid) {
+		alert("I campi nome, cognome, email, password e data di registrazione devono essere presenti")
 		return;
 	}
-
 	// Proseguo
-	console.log(name.value);
-	console.log(surname.value);
-	console.log(email.value);
-	console.log(password.value);
-	console.log(registration.value);
+	console.log(user.name);
+	console.log(user.surname);
+	console.log(user.email);
+	console.log(user.password);
+	console.log(user.registration);
 
 }
 /**
