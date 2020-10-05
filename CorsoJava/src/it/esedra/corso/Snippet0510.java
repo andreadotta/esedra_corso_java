@@ -55,7 +55,7 @@ public class Snippet0510 {
 			int cons = data;
 			cons *= 100;
 		};
-
+//
 		// VAR usato per tutti i parametri formali
 		// (String, String) -> String
 		BiFunction<String, String, String> function2 = (var data1, var data2) -> data1.concat(data2);
