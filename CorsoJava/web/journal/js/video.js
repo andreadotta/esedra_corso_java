@@ -6,13 +6,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+function createVideo() {
+	let formVideo = document.getElementById("video-form").elements;
+	const video = {};
+	video.src = formVideo["src"].value;
+	video.name = formVideo["name"].value;
+	video.title = formVideo["title"].value;
+	video.isValid = function() {
+		if (video.src == ' ' || video.name == ' ' || video.title == ' ') {
+			return false;
+		}
+		return true;
+	};
+
+	return video;
+}
+
 function submitVideo(event) {
 	event.preventDefault();
-	let formVideo = document.getElementById("video-form").elements;
-	let src = formVideo["src"];
-	let name = formVideo["name"];
-	let title = formUser["title"];
-	if (!validate(formVideo)) {
+	let video = createVideo();
+	if (!video.isValid) {
+		alert("I campi src, nome e titolo devono essere presenti")
 		return;
 	}
 
@@ -28,7 +42,7 @@ function validate(formVideo) {
 	let name = formVideo["name"];
 	let title = formVideo["title"];
 	if (src.value == ' ' || name.value == ' ' || title.value == ' ') {
-		alert("I campi src, name e title devono essere presenti");
+		alert("I campi src, nome e titolo devono essere presenti");
 		return false;
 	}
 	return true;
