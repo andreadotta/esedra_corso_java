@@ -5,6 +5,16 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 	
 });
+function createAuthor() {
+	let formParagraph = document.getElementById("paragraph-form").elements;
+	const paragraph = {};
+	paragraph.text = formParagraph["text"].value;
+	
+	paragraph.isValid = function() {
+		if (paragraph.text == '' ) {
+			return false;		
+		}
+		return true;
 
 function submitAuthor(event) {
 	
