@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
 <meta charset="utf-8" />
 <title>Chapter</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,23 +10,28 @@
 </head>
 <body>
 	<h1>Chapter</h1>
- 
-	<form action="http://localhost:8000/chapter/" method="post">
+
+	<form id="chapter-form" action="http://localhost:8000/chapter/"
+		method="post">
 
 		<div class="table">
-			<div class="col-label">
-				<label for="title">Title</label>
+			<div class="row">
+				<div class="col-label">
+					<label for="title">Titolo</label>
+				</div>
+				<div class="col-field">
+					<input class="input-text" title="title" value="" />
+				</div>
 			</div>
-			<div class="col-field">
-				<input class="input-text" title="title" value="" />
+			<div class="row">
+				<div class="col-label">
+					<label for="date">Data</label>
+				</div>
+				<div class="col-field">
+					<input class="input-text" date="date" value="" />
+				</div>
 			</div>
-			<div class="col-label">
-				<label for="date">Date</label>
-			</div>
-			<div class="col-field">
-				<input class="input-text" date="date" value="" />
-			</div>
-			<button type="submit">Salva</button>
+			<button id="submit-chapter" type="submit">Salva</button>
 		</div>
 	</form>
 </body>
