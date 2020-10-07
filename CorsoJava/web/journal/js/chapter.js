@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
 function createChapter() {
 	let formChapter = document.getElementById("chapter-form").elements;
 	const chapter = {};
-	chapter.name = formChapter["name"].value;
 	chapter.title = formChapter["title"].value;
+	chapter.date = formChapter["date"].value;
 	chapter.isValid = function() {
-		if (chapter.name == '' || chapter.title == '') {
+		if (chapter.title == '' || chapter.date == '') {
 			return false;
 		}
 		return true;
@@ -25,21 +25,21 @@ function submitChapter(event) {
 	event.preventDefault();
 	let chapter = createChapter();
 	if (!chapter.isValid()) {
-		alert("I campi nome e titolo devono essere presenti")
+		alert("I campi titolo e data devono essere presenti")
 		return;
 	}
 
-	console.log(chapter.name);
 	console.log(chapter.title);
+	console.log(chapter.date);
 
 }
 
 
 function validate(formChapter) {
-	let name = formChapter["name"];
 	let title = formChapter["title"];
-	if (name.value == '' || title.value == '') {
-		alert("I campi nome e titolo devono essere presenti");
+	let date = formChapter["date"];
+	if (title.value == '' || date.value == '') {
+		alert("I campi titolo e data devono essere presenti");
 		return false;
 	}
 	return true;
