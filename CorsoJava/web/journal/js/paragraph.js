@@ -17,13 +17,14 @@ function createParagraph() {
 		return true;
 		}
 		return paragraph;
+		}
 
 function submitParagraph(event) {
 	event.preventDefault();
 	
 	let formParagraph = createParagraph();
 	
-	if(!paragraph.isValid());
+	if(!paragraph.isValid()){
 	alert("il campo text deve essere present");
 	return;
 	}
