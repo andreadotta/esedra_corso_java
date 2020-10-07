@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Journal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script charset="utf-8" src="js/app.js"></script>
+<script charset="utf-8" src="js/journal.js"></script>
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+	<h1>Journal</h1>
+
+	<form action="http://localhost:8000/journal/" method="post"
+		id="journal-form">
+
+		<div class="table">
+			<div class="row">
+				<div class="col-label">
+					<label for="name">Name</label>
+				</div>
+				<div class="col-field">
+					<input class="input-text" name="name" value="" />
+				</div>
+			</div>
+			<div class="row">
+				<button id="submit-author" type="submit">Salva</button>
+			</div>
+		</div>
+	</form>
+</body>
+</html>
