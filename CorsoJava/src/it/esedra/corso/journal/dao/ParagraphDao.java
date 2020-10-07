@@ -47,6 +47,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 				if (stm.executeUpdate() > 0) {
 					copy = new ParagraphBuilder().setId(paragraph.getId()).setText(paragraph.getText()).build();
 				}
+				
 
 				stm.close();
 
