@@ -57,7 +57,7 @@ function validate(formUser) {
 	let password = formUser["password"];
 	let registration = formUser["registration"];
 	// Verifica che i campi abbiano un valore
-	if (name.value == ' ' || surname.value == ' ' || email.value == ' ' || password.value == ' ' || registration.value == ' ') {
+	if (name.value == '' || surname.value == '' || email.value == '' || password.value == '' || registration.value == '') {
 		alert("I campi nome, cognome, email, password e registrazione devono essere presenti");
 		return false;
 	}
