@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 	
 });
-function createAuthor() {
+function createParagraph() {
 	let formParagraph = document.getElementById("paragraph-form").elements;
 	const paragraph = {};
 	paragraph.text = formParagraph["text"].value;
@@ -16,7 +16,7 @@ function createAuthor() {
 		}
 		return true;
 
-function submitAuthor(event) {
+function submitParagraph(event) {
 	
 	event.preventDefault();
 	
