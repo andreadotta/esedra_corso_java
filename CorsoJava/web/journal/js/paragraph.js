@@ -9,7 +9,7 @@ function createParagraph() {
 	let formParagraph = document.getElementById("paragraph-form").elements;
 	const paragraph = {};
 	paragraph.text = formParagraph["text"].value;
-
+ 
 	paragraph.isValid = function() {
 		if (paragraph.text == '') {
 			return false;
