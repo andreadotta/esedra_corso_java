@@ -1,5 +1,4 @@
 package it.esedra.corso.journal.test;
-
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import java.io.IOException;
