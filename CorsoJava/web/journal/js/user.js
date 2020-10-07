@@ -15,7 +15,7 @@ function createUser() {
 	user.password = formUser["password"].value;
 	user.registration = formUser["registration"].value;
 	user.isValid = function() {
-		if (user.name == ' ' || user.surname == ' ' || user.email == ' ' || user.password == ' ' || user.registration == ' ') {
+		if (user.name == '' || user.surname == '' || user.email == '' || user.password == '' || user.registration == '') {
 			return false;
 		}
 		return true;
@@ -25,17 +25,19 @@ function createUser() {
 }
 
 /**
-* Effettual il submit del form
+* Effettua il submit del form
  */
 function submitUser(event) {
 	// Impedisco il submit del form
 	event.preventDefault();
-	// Richiamo il metodo validate il quale valida i campi (controlla che siano presenti quelli obbligatori e il loro tipo sia quello atteso)
+	// Richiamo il metodo validate il quale valida i campi
+	// (controlla che siano presenti quelli obbligatori e il loro tipo sia quello atteso)
 	let user = createUser();
-	if (!user.isValid) {
+	if (!user.isValid()) {
 		alert("I campi nome, cognome, email, password e data di registrazione devono essere presenti")
 		return;
 	}
+	
 	// Proseguo
 	console.log(user.name);
 	console.log(user.surname);
