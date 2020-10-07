@@ -50,6 +50,7 @@ public class ChapterTest {
 			e.printStackTrace();
 		}
 
+		
 	}
 
 	@Test
@@ -102,10 +103,11 @@ public class ChapterTest {
 			Chapter chapter = chapterDao.get();
 			boolean found = false;
 
-			if (chapter.getId() == ID && chapter.getTitle().equals(PREFIX + TITLE)
-					&& chapter.getDate().equals(PREFIX + DATE)) {
-
+			if (chapter.getId() == ID && (chapter.getTitle().equals(PREFIX + TITLE)
+					&& chapter.getDate().equals(PREFIX + DATE ))) {
+				
 				found = true;
+				
 			}
 
 			connection.close();
