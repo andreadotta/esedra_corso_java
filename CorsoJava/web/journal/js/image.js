@@ -13,7 +13,7 @@ function createImage() {
 	image.name = formImage["name"].value;
 	
 	image.isValid = function() {
-		if (image.src == ' ' || image.name == ' ') {
+		if (image.src == '' || image.name == '') {
 			return false;
 		}
 		return true;
@@ -25,13 +25,13 @@ function createImage() {
 function submitImage(event) {
 	event.preventDefault();
 	let image = createImage();
-	if (!image.isValid) {
+	if (!image.isValid()) {
 		alert("I campi src, nome e devono essere presenti")
 		return;
 	}
 
-	console.log(src.value);
-	console.log(name.value);
+	console.log(image.src);
+	console.log(image.name);
 	
 
 }
