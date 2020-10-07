@@ -1,34 +1,38 @@
 document.addEventListener("DOMContentLoaded", function() {
-	
+
 	document.querySelector('#submit-paragraph').addEventListener('click', function(event) {
-		submitParagraph(event);	
+		submitParagraph(event);
 	});
-	
+
 });
 function createParagraph() {
 	let formParagraph = document.getElementById("paragraph-form").elements;
 	const paragraph = {};
 	paragraph.text = formParagraph["text"].value;
-	
+
 	paragraph.isValid = function() {
-		if (paragraph.text == '' ) {
-			return false;		
+		if (paragraph.text == '') {
+			return false;
 		}
 		return true;
-		}
-		return paragraph;
-		};
+	}
+	return paragraph;
+};
 
 function submitParagraph(event) {
 	event.preventDefault();
-	
-	let formParagraph = createParagraph();
-	
-	if(!paragraph.isValid()){
-	alert("il campo text deve essere present");
-	return;
+
+	let paragraph = createParagraph();
+
+	if (!paragraph.isValid()) {
+		alert("il campo text deve essere present");
+		return;
 	}
+
 	
-	
-	
+	//proseguo
+    console.log(paragraph.text);
+
+
+
 }
