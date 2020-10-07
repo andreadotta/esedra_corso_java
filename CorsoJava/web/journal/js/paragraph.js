@@ -17,7 +17,7 @@ function createParagraph() {
 		return true;
 		}
 		return paragraph;
-		}
+		};
 
 function submitParagraph(event) {
 	event.preventDefault();
