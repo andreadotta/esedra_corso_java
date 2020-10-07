@@ -47,18 +47,19 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 				if (stm.executeUpdate() > 0) {
 					copy = new ParagraphBuilder().setId(paragraph.getId()).setText(paragraph.getText()).build();
 				}
+				
 
 				stm.close();
 
 			} else {
 				String sql = "INSERT INTO paragraph ( text) VALUES (?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
+				stm.setString(1, paragraph.getText());
 
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
 
-						stm.setString(1, paragraph.getText());
 						copy = new ParagraphBuilder().setId(genKeys.getInt(1)).setText(paragraph.getText()).build();
 					}
 
