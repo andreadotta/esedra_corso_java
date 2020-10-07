@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 
 });
-
+ 
 function createImage() {
 	let formImage = document.getElementById("image-form").elements;
 	const image = {};
