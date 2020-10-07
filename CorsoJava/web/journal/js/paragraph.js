@@ -15,33 +15,19 @@ function createParagraph() {
 			return false;		
 		}
 		return true;
+		}
+		return paragraph;
 
 function submitParagraph(event) {
-	
 	event.preventDefault();
 	
+	let formParagraph = createParagraph();
 	
-	let formParagraph = document.getElementById("paragraph-form").elements;
-	
-	let text = formParagraph["text"];
-	
-	
-	if (!validate(formParagraph)) {
-		return;
+	if(!paragraph.isValid());
+	alert("il campo text deve essere present");
+	return;
 	}
 	
-    console.log(text.value);
-    
-
-
-function validate(formParagraph) {
-	let text = formParagraph["paragraph"];
 	
-
-	if (text.value == '' ) {
-		alert("il campo nome deva essere presente");
-		return false;		
-	}
-	return true;
-		
+	
 }
