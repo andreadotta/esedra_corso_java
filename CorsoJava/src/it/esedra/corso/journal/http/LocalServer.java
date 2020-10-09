@@ -60,6 +60,9 @@ public class LocalServer {
 
 		private void response(HttpExchange t) throws IOException {
 			String response = "This is the response";
+			t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+			t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
+			t.getResponseHeaders().add("Content-type", "plain/text");
 			t.sendResponseHeaders(200, response.length());
 			OutputStream os = t.getResponseBody();
 			os.write(response.getBytes());
