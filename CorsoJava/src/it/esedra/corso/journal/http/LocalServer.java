@@ -67,7 +67,7 @@ public class LocalServer {
 		}
 
 		private void handleGetRequest(HttpExchange httpExchange) {
-			String queryString = httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+					//String queryString = httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
 		}
 
 		private void handlePostRequest(HttpExchange httpExchange) {
