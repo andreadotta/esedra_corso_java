@@ -95,6 +95,8 @@ public class Snippet1610 {
 		//https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
 		
 		
+		
+		
 	}
 	
 	public static void main(String[] args) {
