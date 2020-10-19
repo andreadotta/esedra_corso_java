@@ -3,7 +3,8 @@ package it.esedra.corso.journal;
 /**
  * 
  * @author Lynda, Samuel
- *
+ * API
+ * http://localhost/journal/author/11
  */
 public class Author {
 	private final Integer id;

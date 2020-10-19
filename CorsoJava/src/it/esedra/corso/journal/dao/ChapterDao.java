@@ -1,11 +1,11 @@
 package it.esedra.corso.journal.dao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
 import it.esedra.corso.journal.collections.ChapterCollection;
@@ -42,9 +42,15 @@ public class ChapterDao implements DaoInterface<Chapter> {
 							.setTitle(chapter.getTitle()).build();
 				}
 				stm.close();
+			
+				
+			
 			} else {
 				String sql = "INSERT INTO chapter ( title, date ) VALUES (?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
+
+				stm.setString(1, chapter.getTitle());
+				stm.setString(2, chapter.getDate());
 
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
@@ -54,11 +60,11 @@ public class ChapterDao implements DaoInterface<Chapter> {
 						stm.setString(2, chapter.getDate());
 						copy = new ChapterBuilder().setId(genKeys.getInt(1)).setTitle(chapter.getTitle())
 								.setDate(chapter.getDate()).build();
-					}
-
+				
 				}
 
 				stm.close();
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

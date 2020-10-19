@@ -9,7 +9,7 @@ import java.util.Date;
  * 
  */
 public class Chapter {
-	private final int id;
+	private final Integer id;
 	private final String title;
 	private final String date;
 
@@ -21,7 +21,7 @@ public class Chapter {
 
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
