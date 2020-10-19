@@ -46,10 +46,10 @@ public class AuthorTest {
 
 		Collection<Author> authorCollection = new AuthorCollection();
 
+		Connection connection = null;
 		try {
 			// Effettua la connessione al database
-
-			Connection connection = JournalDbConnect.connect();
+			connection = JournalDbConnect.connect();
 			AuthorDao authordao = new AuthorDao();
 			authordao.setConnection(connection);
 
@@ -71,11 +71,19 @@ public class AuthorTest {
 				}
 
 			}
-			connection.close();
+
 			assertTrue(found);
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
