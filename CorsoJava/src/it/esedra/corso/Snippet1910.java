@@ -5,8 +5,6 @@ import it.esedra.corso.helpers.PrintHelper;
 public class Snippet1910 {
 
 	public Snippet1910() {
-		// TODO Auto-generated constructor stub
-		
 		
 		//GUIDA ECCEZIONI:
 		//https://www.html.it/pag/15105/gestire-le-eccezioni/
