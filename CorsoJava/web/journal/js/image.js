@@ -32,8 +32,6 @@ function submitImage(event) {
 
 	console.log(image.src);
 	console.log(image.name);
-	
-
 }
 
 
