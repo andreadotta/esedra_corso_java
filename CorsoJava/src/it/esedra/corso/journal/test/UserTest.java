@@ -20,6 +20,7 @@ import it.esedra.corso.journal.collections.UserCollection;
 import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserTest {
@@ -65,8 +66,10 @@ public class UserTest {
 			userDao.setConnection(connection);
 			user = userDao.update();
 			assertTrue(user != null);
+			
+			connection.close();
 
-		} catch (Exception e) {
+		} catch (DaoException | SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -77,9 +80,10 @@ public class UserTest {
 
 		Collection<User> userCollection = new UserCollection();
 
+		Connection connection = null;
 		try {
 			// Effettua la connessione al database
-			Connection connection = JournalDbConnect.connect();
+			connection = JournalDbConnect.connect();
 			UserDao userDao = new UserDao();
 			userDao.setConnection(connection);
 
@@ -113,12 +117,18 @@ public class UserTest {
 
 			}
 
-			connection.close();
-
 			assertTrue(found);
 
-		} catch (SQLException e) {
+		} catch (DaoException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -149,7 +159,7 @@ public class UserTest {
 
 			assertTrue(found);
 
-		} catch (SQLException e) {
+		} catch (DaoException | SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -175,7 +185,7 @@ public class UserTest {
 
 			connection.close();
 
-		} catch (SQLException e) {
+		} catch (DaoException | SQLException e) {
 			e.printStackTrace();
 		}
 
