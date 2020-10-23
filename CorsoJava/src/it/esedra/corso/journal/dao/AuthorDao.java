@@ -14,7 +14,7 @@ import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class AuthorDao implements DaoInterface<Author> {
-
+ 
 	private Author author;
 	private Connection conn;
 
