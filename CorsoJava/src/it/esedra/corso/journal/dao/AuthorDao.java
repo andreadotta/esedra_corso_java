@@ -3,6 +3,7 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
@@ -65,7 +66,7 @@ public class AuthorDao implements DaoInterface<Author> {
 				stm.close();
 			}
 
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new DaoException(e);
 		}
 		return copy;
@@ -82,7 +83,7 @@ public class AuthorDao implements DaoInterface<Author> {
 			if (rs > 0) {
 				success = true;
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new DaoException(e);
 		}
 
@@ -112,7 +113,7 @@ public class AuthorDao implements DaoInterface<Author> {
 			}
 			// chiude le connessioni e il result set
 			rs.close();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new DaoException(e);
 		}
 		// restituisce la lista
@@ -140,7 +141,7 @@ public class AuthorDao implements DaoInterface<Author> {
 
 			}
 			rs.close();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw new DaoException(e);
 		}
 		return author;
