@@ -20,6 +20,7 @@ import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuthorTest {
@@ -74,7 +75,7 @@ public class AuthorTest {
 
 			assertTrue(found);
 
-		} catch (Exception e) {
+		} catch (DaoException e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -109,7 +110,9 @@ public class AuthorTest {
 			author = authorDao.update();
 			assertTrue(author != null);
 
-		} catch (Exception e) {
+			connection.close();
+			
+		} catch (DaoException | SQLException e) {
 			e.printStackTrace();
 		}
 
@@ -142,7 +145,7 @@ public class AuthorTest {
 
 			assertTrue(found);
 
-		} catch (SQLException e) {
+		} catch (DaoException | SQLException  e) {
 
 			e.printStackTrace();
 
@@ -170,7 +173,7 @@ public class AuthorTest {
 
 			connection.close();
 
-		} catch (SQLException e) {
+		} catch (DaoException  | SQLException  e) {
 
 			e.printStackTrace();
 

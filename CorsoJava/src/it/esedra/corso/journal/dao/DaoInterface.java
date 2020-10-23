@@ -3,6 +3,7 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 
 import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 /**
  * Questa è una semplice implementazione del DAO Pattern in Java
@@ -28,27 +29,27 @@ public interface DaoInterface<T> {
 	 * numero di righe interessate all'aggiornamento (affected) In caso di insert
 	 * valorizzera automaticamente la proprietà chiave (database generated key)
 	 */
-	T update();
+	T update() throws DaoException;
 
 	/**
 	 * Elimina un record
 	 * 
 	 * 
 	 */
-	boolean delete();
+	boolean delete() throws DaoException;
 
 	/**
 	 * Restituisce tutti i record della tabella
 	 * 
 	 * @return T
 	 */
-	Collection<T> getAll();
+	Collection<T> getAll() throws DaoException;
 
 	/**
 	 * Restituisce tutti i record della tabella
 	 * 
 	 * @return T
 	 */
-	T get();
+	T get() throws DaoException;
 
 }

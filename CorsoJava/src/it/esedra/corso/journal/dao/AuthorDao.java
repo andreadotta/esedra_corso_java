@@ -10,6 +10,7 @@ import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.collections.AuthorCollection;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 public class AuthorDao implements DaoInterface<Author> {
 
@@ -25,7 +26,7 @@ public class AuthorDao implements DaoInterface<Author> {
 	}
 
 	@Override
-	public Author update() {
+	public Author update() throws DaoException {
 
 		if (author == null) {
 			PrintHelper.out("author non può essere null.");
@@ -65,14 +66,13 @@ public class AuthorDao implements DaoInterface<Author> {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			PrintHelper.out("Errore author dao", e.getMessage());
+			throw new DaoException(e);
 		}
 		return copy;
 	}
 
 	@Override
-	public boolean delete() {
+	public boolean delete() throws DaoException  {
 		boolean success = true;
 
 		try {
@@ -83,14 +83,14 @@ public class AuthorDao implements DaoInterface<Author> {
 				success = true;
 			}
 		} catch (Exception e) {
-			PrintHelper.out("Errore author dao", e.getMessage());
+			throw new DaoException(e);
 		}
 
 		return success;
 	}
 
 	@Override
-	public Collection<Author> getAll() {
+	public Collection<Author> getAll() throws DaoException   {
 
 		// istanzia una lista vuota di User
 		Collection<Author> authors = new AuthorCollection();
@@ -113,7 +113,7 @@ public class AuthorDao implements DaoInterface<Author> {
 			// chiude le connessioni e il result set
 			rs.close();
 		} catch (Exception e) {
-			PrintHelper.out("Errore user dao", e.getMessage());
+			throw new DaoException(e);
 		}
 		// restituisce la lista
 		return authors;
@@ -122,11 +122,11 @@ public class AuthorDao implements DaoInterface<Author> {
 	@Override
 	public void setConnection(Connection con) {
 		this.conn = con;
-
+	
 	}
 
 	@Override
-	public Author get() {
+	public Author get()  throws DaoException {
 		Author author = null;
 
 		try {
@@ -141,7 +141,7 @@ public class AuthorDao implements DaoInterface<Author> {
 			}
 			rs.close();
 		} catch (Exception e) {
-			PrintHelper.out("Errore author dao", e.getMessage());
+			throw new DaoException(e);
 		}
 		return author;
 	}
