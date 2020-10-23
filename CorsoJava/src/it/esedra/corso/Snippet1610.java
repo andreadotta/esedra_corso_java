@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.DoubleSupplier;
 import java.util.function.IntBinaryOperator;
+import java.util.function.IntFunction;
 import java.util.function.IntSupplier;
 
 import it.esedra.corso.helpers.PrintHelper;
@@ -87,14 +88,20 @@ public class Snippet1610 {
 		Set<String> sss = new HashSet<>();
 		Set<Double> zzz = new HashSet<>();
 		
-		IntSupplier is = () -> 10;
-		DoubleSupplier ds = () -> 10;
+		IntSupplier is = () -> 10;  //poly espression
+		DoubleSupplier ds = () -> 10;  //poly espression
 		
 		
 		//IL PACKAGE JAVA.UTIL.FUNCTION
 		//https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
 		
+		EsempioSideEffects ese = new EsempioSideEffects();
+		ese.setAddendoA(2);
+		ese.setAddendoB(3);
+		ese.somma();
+		int somma = ese.getSomma();
 		
+		IntFunction<String> f1 = x -> Integer.toString(x);
 		
 		
 	}
