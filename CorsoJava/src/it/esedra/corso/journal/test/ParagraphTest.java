@@ -22,6 +22,7 @@ import it.esedra.corso.journal.collections.ParagraphCollection;
 import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ParagraphTest {
@@ -57,7 +58,7 @@ public class ParagraphTest {
 	}
 
 	@Test
-	public void testGetAll() {
+	public void testGetAll() throws DaoException {
 
 		Collection<Paragraph> paragraph = new ParagraphCollection();
 
@@ -100,7 +101,7 @@ public class ParagraphTest {
 	}
 
 	@Test
-	public void testGet() {
+	public void testGet() throws DaoException {
 
 		try {
 			// Effettua la connessione al database
@@ -129,7 +130,7 @@ public class ParagraphTest {
 	}
 
 	@Test
-	public void testZDelete() {
+	public void testZDelete() throws DaoException {
 
 		try {
 
