@@ -29,6 +29,7 @@ public class AuthorDao implements DaoInterface<Author> {
 	@Override
 	public Author update() throws DaoException {
 
+		
 		if (author == null) {
 			PrintHelper.out("author non può essere null.");
 			return null;
@@ -36,6 +37,8 @@ public class AuthorDao implements DaoInterface<Author> {
 		Author authorCheck = this.get();
 		Author copy = null;
 		try {
+
+			
 			if (authorCheck != null) {
 				String sql = "UPDATE author SET name = ?, email = ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
@@ -67,7 +70,7 @@ public class AuthorDao implements DaoInterface<Author> {
 			}
 
 		} catch (SQLException e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante update Author", e);
 		}
 		return copy;
 	}
@@ -84,7 +87,7 @@ public class AuthorDao implements DaoInterface<Author> {
 				success = true;
 			}
 		} catch (SQLException e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante delete Author", e);
 		}
 
 		return success;
@@ -114,7 +117,7 @@ public class AuthorDao implements DaoInterface<Author> {
 			// chiude le connessioni e il result set
 			rs.close();
 		} catch (SQLException e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante getAll Author", e);
 		}
 		// restituisce la lista
 		return authors;
@@ -142,7 +145,7 @@ public class AuthorDao implements DaoInterface<Author> {
 			}
 			rs.close();
 		} catch (SQLException e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante get Author", e);
 		}
 		return author;
 	}
