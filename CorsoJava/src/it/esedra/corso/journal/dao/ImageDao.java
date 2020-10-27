@@ -9,10 +9,7 @@ import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Image;
 import it.esedra.corso.journal.ImageBuilder;
-import it.esedra.corso.journal.Video;
-import it.esedra.corso.journal.VideoBuilder;
 import it.esedra.corso.journal.collections.ImageCollection;
-import it.esedra.corso.journal.collections.VideoCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class ImageDao implements DaoInterface<Image> {

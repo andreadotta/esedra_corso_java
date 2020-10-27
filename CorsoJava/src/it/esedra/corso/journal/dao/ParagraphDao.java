@@ -7,8 +7,6 @@ import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Author;
-import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.ParagraphBuilder;
 import it.esedra.corso.journal.collections.ParagraphCollection;
