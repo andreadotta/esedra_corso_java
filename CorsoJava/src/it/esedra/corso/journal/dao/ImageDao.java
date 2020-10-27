@@ -13,6 +13,7 @@ import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.VideoBuilder;
 import it.esedra.corso.journal.collections.ImageCollection;
 import it.esedra.corso.journal.collections.VideoCollection;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 public class ImageDao implements DaoInterface<Image> {
 
@@ -25,7 +26,7 @@ public class ImageDao implements DaoInterface<Image> {
 	}
 
 	@Override
-	public boolean delete() {
+	public boolean delete()  throws DaoException  {
 
 		boolean success = true;
 
@@ -37,7 +38,7 @@ public class ImageDao implements DaoInterface<Image> {
 				success = true;
 			}
 		} catch (Exception e) {
-			PrintHelper.out("Errore image dao", e.getMessage());
+			throw new DaoException("Errore durante update Image ",e);
 		}
 
 		return success;
@@ -45,7 +46,7 @@ public class ImageDao implements DaoInterface<Image> {
 	}
 
 	@Override
-	public Collection<Image> getAll() {
+	public Collection<Image> getAll()  throws DaoException {
 		Collection<Image> images = new ImageCollection();
 		try {
 			Statement stm = this.conn.createStatement();
@@ -60,7 +61,7 @@ public class ImageDao implements DaoInterface<Image> {
 			}
 			rs.close();
 		} catch (Exception e) {
-			PrintHelper.out("Errore image dao", e.getMessage());
+			throw new DaoException("Errore durante update Image ",e);
 		}
 
 		return images;
@@ -68,7 +69,7 @@ public class ImageDao implements DaoInterface<Image> {
 	}
 
 	@Override
-	public Image update() {
+	public Image update()  throws DaoException {
 
 		if (image == null) {
 			PrintHelper.out("image non può essere null.");
@@ -117,7 +118,7 @@ public class ImageDao implements DaoInterface<Image> {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			PrintHelper.out("Errore image dao", e.getMessage());
+			throw new DaoException("Errore durante update Image ",e);
 		}
 
 		return copy;
@@ -130,7 +131,7 @@ public class ImageDao implements DaoInterface<Image> {
 	}
 
 	@Override
-	public Image get() {
+	public Image get()  throws DaoException {
 		Image image = null;
 
 		try {
@@ -145,7 +146,7 @@ public class ImageDao implements DaoInterface<Image> {
 			}
 			rs.close();
 		} catch (Exception e) {
-			PrintHelper.out("Errore image dao", e.getMessage());
+			throw new DaoException("Errore durante update Image ",e);
 		}
 		return image;
 	}

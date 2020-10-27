@@ -10,6 +10,7 @@ import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.VideoBuilder;
 import it.esedra.corso.journal.collections.VideoCollection;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 public class VideoDao implements DaoInterface<Video> {
 
@@ -26,7 +27,7 @@ public class VideoDao implements DaoInterface<Video> {
 	}
 
 	@Override
-	public boolean delete() {
+	public boolean delete() throws DaoException {
 
 		boolean success = true;
 
@@ -38,7 +39,7 @@ public class VideoDao implements DaoInterface<Video> {
 				success = true;
 			}
 		} catch (Exception e) {
-			PrintHelper.out("Errore video dao", e.getMessage());
+			throw new DaoException("Errore durante update Video ",e);
 		}
 
 		return success;
@@ -46,7 +47,7 @@ public class VideoDao implements DaoInterface<Video> {
 	}
 
 	@Override
-	public Collection<Video> getAll() {
+	public Collection<Video> getAll() throws DaoException {
 		Collection<Video> videos = new VideoCollection();
 		try {
 			Statement stm = this.conn.createStatement();
@@ -61,7 +62,7 @@ public class VideoDao implements DaoInterface<Video> {
 			}
 			rs.close();
 		} catch (Exception e) {
-			PrintHelper.out("Errore video dao", e.getMessage());
+			throw new DaoException("Errore durante update Video ",e);
 		}
 
 		return videos;
@@ -69,7 +70,7 @@ public class VideoDao implements DaoInterface<Video> {
 	}
 
 	@Override
-	public Video update() {
+	public Video update() throws DaoException {
 
 		if (video == null) {
 			PrintHelper.out("video non può essere null.");
@@ -121,7 +122,7 @@ public class VideoDao implements DaoInterface<Video> {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			PrintHelper.out("Errore video dao", e.getMessage());
+			throw new DaoException("Errore durante update Video ",e);
 		}
 
 		return copy;
@@ -134,7 +135,7 @@ public class VideoDao implements DaoInterface<Video> {
 	}
 
 	@Override
-	public Video get() {
+	public Video get() throws DaoException  {
 		Video video = null;
 
 		try {
@@ -149,7 +150,7 @@ public class VideoDao implements DaoInterface<Video> {
 			}
 			rs.close();
 		} catch (Exception e) {
-			PrintHelper.out("Errore video dao", e.getMessage());
+			throw new DaoException("Errore durante update Video ",e);
 		}
 		return video;
 	}
