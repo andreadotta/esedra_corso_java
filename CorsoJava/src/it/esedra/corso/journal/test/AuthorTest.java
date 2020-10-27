@@ -2,6 +2,7 @@ package it.esedra.corso.journal.test;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -113,7 +114,7 @@ public class AuthorTest {
 			connection.close();
 			
 		} catch (DaoException | SQLException e) {
-			e.printStackTrace();
+			fail(e.getMessage());
 		}
 
 	}
@@ -147,7 +148,7 @@ public class AuthorTest {
 
 		} catch (DaoException | SQLException  e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 
 		}
 
@@ -175,7 +176,7 @@ public class AuthorTest {
 
 		} catch (DaoException  | SQLException  e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 
 		}
 

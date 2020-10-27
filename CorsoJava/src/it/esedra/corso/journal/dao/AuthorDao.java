@@ -38,7 +38,6 @@ public class AuthorDao implements DaoInterface<Author> {
 		Author copy = null;
 		try {
 
-			
 			if (authorCheck != null) {
 				String sql = "UPDATE author SET name = ?, email = ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
@@ -74,8 +73,7 @@ public class AuthorDao implements DaoInterface<Author> {
 		}
 		return copy;
 	}
-	
-	
+
 	@Override
 	public boolean delete() throws DaoException  {
 		boolean success = true;
