@@ -2,6 +2,7 @@ package it.esedra.corso.journal.test;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -51,21 +52,24 @@ public class ParagraphTest {
 			paragraph = paragraphDao.update();
 			assertTrue(paragraph != null);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+			connection.close();
+
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
 	}
 
 	@Test
-	public void testGetAll() throws DaoException {
+	public void testGetAll() {
 
 		Collection<Paragraph> paragraph = new ParagraphCollection();
 
+		Connection connection = null;
 		try {
 			// Effettua la connessione al database
 
-			Connection connection = JournalDbConnect.connect();
+			connection = JournalDbConnect.connect();
 			ParagraphDao paragraphdao = new ParagraphDao();
 			paragraphdao.setConnection(connection);
 
@@ -90,18 +94,26 @@ public class ParagraphTest {
 				}
 
 			}
-			connection.close();
 
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException e) {
+			fail(e.getMessage());
+		} finally {
+			try {
+
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				fail(e.getMessage());
+			}
 		}
 
 	}
 
 	@Test
-	public void testGet() throws DaoException {
+	public void testGet() {
 
 		try {
 			// Effettua la connessione al database
@@ -115,7 +127,7 @@ public class ParagraphTest {
 			Paragraph paragraph = paragraphDao.get();
 			boolean found = false;
 
-			if (paragraph.getId() == ID &&  paragraph.getText().equals(PREFIX + TEXT)) {
+			if (paragraph.getId() == ID && paragraph.getText().equals(PREFIX + TEXT)) {
 				found = true;
 			}
 
@@ -123,14 +135,14 @@ public class ParagraphTest {
 
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
 	}
 
 	@Test
-	public void testZDelete() throws DaoException {
+	public void testZDelete() {
 
 		try {
 
@@ -149,9 +161,9 @@ public class ParagraphTest {
 
 			connection.close();
 
-		} catch (SQLException e) {
+		} catch (DaoException | SQLException e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 
 		}
 
@@ -164,8 +176,8 @@ public class ParagraphTest {
 			DbUtil.rebuildDb();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+			fail(e.getMessage());
 		}
 
 	}

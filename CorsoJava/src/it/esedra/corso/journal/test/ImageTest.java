@@ -2,6 +2,7 @@ package it.esedra.corso.journal.test;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -23,6 +24,7 @@ import it.esedra.corso.journal.dao.ImageDao;
 
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ImageTest {
@@ -54,21 +56,24 @@ public class ImageTest {
 			imageDao.setConnection(connection);
 			image = imageDao.update();
 			assertTrue(image != null);
+			
+			connection.close();
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
 	}
 
 	@Test
-	public void testGetAll() {
+	public void testGetAll()  {
 
 		Collection<Image> imageCollection = new ImageCollection();
 
+		Connection connection = null;
 		try {
 
-			Connection connection = JournalDbConnect.connect();
+			connection  = JournalDbConnect.connect();
 			ImageDao imageDao = new ImageDao(null);
 			imageDao.setConnection(connection);
 
@@ -89,13 +94,22 @@ public class ImageTest {
 				}
 
 			}
-			connection.close();
+			
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} catch (DaoException e) {
+			fail(e.getMessage());
+		}finally {
+			try {
+		
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				fail(e.getMessage());
+			}
 
+	}
 	}
 
 	@BeforeClass
@@ -106,7 +120,7 @@ public class ImageTest {
 
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 		}
 
 	}
@@ -131,8 +145,8 @@ public class ImageTest {
 			}
 			connection.close();
 			assertTrue(found);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch ( DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 	}
 
@@ -155,9 +169,9 @@ public class ImageTest {
 			assertNull(image);
 
 			connection.close();
-		} catch (SQLException e) {
+		} catch (DaoException | SQLException e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 
 		}
 
