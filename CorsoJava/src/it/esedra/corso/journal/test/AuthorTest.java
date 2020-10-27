@@ -77,14 +77,14 @@ public class AuthorTest {
 			assertTrue(found);
 
 		} catch (DaoException e) {
-			e.printStackTrace();
+			fail(e.getMessage());
 		} finally {
 			try {
 				if (connection != null) {
 					connection.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				fail(e.getMessage());
 			}
 		}
 	}
