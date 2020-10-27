@@ -44,7 +44,7 @@ public class UserDao implements DaoInterface<User> {
 			}
 
 		} catch (SQLException e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante Delete User", e);
 		}
 		// Restituisce l'oggetto
 		return success;
@@ -74,7 +74,7 @@ public class UserDao implements DaoInterface<User> {
 			// Chiude le connessioni e il result set
 			rs.close();
 		} catch (SQLException e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante GetAll User", e);
 		}
 		// Restituisce la lista
 		return users;
@@ -140,7 +140,7 @@ public class UserDao implements DaoInterface<User> {
 			}
 
 		} catch (SQLException e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante Update User", e);
 		}
 
 		return copy;
@@ -174,7 +174,7 @@ public class UserDao implements DaoInterface<User> {
 			// Chiude le connessioni e il result set
 			rs.close();
 		} catch (SQLException e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante Get User", e);
 		}
 		// Restituisce l'oggetto
 		return user;

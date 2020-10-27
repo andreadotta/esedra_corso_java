@@ -2,6 +2,7 @@ package it.esedra.corso.journal.test;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -70,7 +71,7 @@ public class UserTest {
 			connection.close();
 
 		} catch (DaoException | SQLException e) {
-			e.printStackTrace();
+			fail(e.getMessage());
 		}
 
 	}
@@ -120,14 +121,14 @@ public class UserTest {
 			assertTrue(found);
 
 		} catch (DaoException e) {
-			e.printStackTrace();
+			fail(e.getMessage());
 		} finally {
 			try {
 				if (connection != null) {
 					connection.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				fail(e.getMessage());
 			}
 		}
 
@@ -139,7 +140,6 @@ public class UserTest {
 		try {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
-
 			User userMock = new UserBuilder().setId(ID).build();
 
 			UserDao userDao = new UserDao(userMock);
@@ -160,7 +160,7 @@ public class UserTest {
 			assertTrue(found);
 
 		} catch (DaoException | SQLException e) {
-			e.printStackTrace();
+			fail(e.getMessage());
 		}
 
 	}
@@ -186,7 +186,7 @@ public class UserTest {
 			connection.close();
 
 		} catch (DaoException | SQLException e) {
-			e.printStackTrace();
+			fail(e.getMessage());
 		}
 
 	}
@@ -199,7 +199,7 @@ public class UserTest {
 
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 		}
 
 	}
