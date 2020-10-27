@@ -70,7 +70,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			}
 
 		} catch (Exception e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante update Paragraph ",e);
 
 		}
 
@@ -98,7 +98,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 			rs.close();
 		} catch (Exception e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante update Paragraph ",e);
 
 		}
 
@@ -125,7 +125,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 				success = true;
 			}
 		} catch (Exception e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante update Paragraph ",e);
 
 		}
 
@@ -146,7 +146,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			}
 			rs.close();
 		} catch (Exception e) {
-			throw new DaoException(e);
+			throw new DaoException("Errore durante update Paragraph ",e);
 
 		}
 		return paragraph;
