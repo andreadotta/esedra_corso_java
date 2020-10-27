@@ -63,7 +63,7 @@ public class ParagraphTest {
 	@Test
 	public void testGetAll() {
 
-		Collection<Paragraph> paragraph = new ParagraphCollection();
+		Collection<Paragraph> paragraphCollection = new ParagraphCollection();
 
 		Connection connection = null;
 		try {
@@ -72,9 +72,8 @@ public class ParagraphTest {
 			connection = JournalDbConnect.connect();
 			ParagraphDao paragraphdao = new ParagraphDao();
 			paragraphdao.setConnection(connection);
-
-			// Chiamata metodo getAll() sulla Collection creata
-			Collection<Paragraph> paragraphCollection = paragraphdao.getAll();
+			
+			paragraphCollection = paragraphdao.getAll();
 
 			// Inizializzazione iterator per ciclare sulla Collection
 			Iterator<Paragraph> paragraphIterator = paragraphCollection.createIterator();
