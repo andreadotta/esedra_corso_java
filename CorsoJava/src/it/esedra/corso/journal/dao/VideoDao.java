@@ -30,6 +30,7 @@ public class VideoDao implements DaoInterface<Video> {
 	public boolean delete() throws DaoException {
 
 		boolean success = true;
+		
 
 		try {
 			Statement stm = this.conn.createStatement();

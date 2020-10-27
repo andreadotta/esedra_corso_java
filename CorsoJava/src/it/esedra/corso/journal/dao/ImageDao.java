@@ -23,6 +23,7 @@ public class ImageDao implements DaoInterface<Image> {
 	public ImageDao(Image image) {
 		super();
 		this.image = image;
+		
 	}
 
 	@Override
