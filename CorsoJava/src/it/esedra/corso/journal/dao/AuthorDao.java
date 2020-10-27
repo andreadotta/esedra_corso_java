@@ -74,7 +74,8 @@ public class AuthorDao implements DaoInterface<Author> {
 		}
 		return copy;
 	}
-
+	
+	
 	@Override
 	public boolean delete() throws DaoException  {
 		boolean success = true;
