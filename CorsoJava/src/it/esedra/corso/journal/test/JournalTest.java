@@ -2,6 +2,7 @@ package it.esedra.corso.journal.test;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,15 +15,12 @@ import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Config;
 import it.esedra.corso.journal.Journal;
-import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.collections.JournalCollection;
 import it.esedra.corso.journal.dao.JournalDao;
-import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JournalTest {
@@ -52,9 +50,11 @@ public class JournalTest {
 			journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
 			assertTrue(journal != null);
+			
+			connection.close();
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException | DaoException e) {
+			fail(e.getMessage());
 		}
 
 	}
@@ -63,10 +63,11 @@ public class JournalTest {
 	public void testGetAll() {
 
 		Collection<Journal> journalCollection = new JournalCollection();
-
+		
+		Connection connection = null;
 		try {
 			// Effettua la connessione al database
-			Connection connection = JournalDbConnect.connect();
+			connection = JournalDbConnect.connect();
 			JournalDao journalDao = new JournalDao(new Journal());
 			journalDao.setConnection(connection);
 
@@ -97,12 +98,18 @@ public class JournalTest {
 
 			}
 
-			connection.close();
-
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException e) {
+			fail(e.getMessage());
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				fail(e.getMessage());
+			}
 		}
 
 	}
@@ -130,8 +137,8 @@ public class JournalTest {
 
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
 	}
@@ -144,7 +151,7 @@ public class JournalTest {
 
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 		}
 
 	}
@@ -169,9 +176,9 @@ public class JournalTest {
 
 			connection.close();
 
-		} catch (SQLException e) {
+		} catch (DaoException | SQLException e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 
 		}
 

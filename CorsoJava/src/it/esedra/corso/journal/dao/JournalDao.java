@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.SQLException;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.collections.JournalCollection;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 public class JournalDao implements DaoInterface<Journal> {
 
@@ -21,7 +23,7 @@ public class JournalDao implements DaoInterface<Journal> {
 	}
 
 	@Override
-	public Collection<Journal> getAll() {
+	public Collection<Journal> getAll() throws DaoException {
 		// istanzia una lista vuota di Journal
 		Collection<Journal> journals = new JournalCollection();
 		try {
@@ -43,8 +45,8 @@ public class JournalDao implements DaoInterface<Journal> {
 			}
 			// chiude le connessioni e il result set
 			rs.close();
-		} catch (Exception e) {
-			PrintHelper.out("Errore journal dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante Delete Journal", e);
 		}
 		// restituisce la lista
 		return journals;
@@ -52,7 +54,7 @@ public class JournalDao implements DaoInterface<Journal> {
 	}
 
 	@Override
-	public Journal update() {
+	public Journal update() throws DaoException {
 
 		if (journal == null) {
 			PrintHelper.out("journal non può essere null.");
@@ -87,13 +89,13 @@ public class JournalDao implements DaoInterface<Journal> {
 						journal.setId(genKeys.getInt(1));
 					}
 				}
+				
 				stm.close();
 
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			PrintHelper.out("Errore journal dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante Delete Journal", e);
 		}
 
 		return copy;
@@ -106,7 +108,7 @@ public class JournalDao implements DaoInterface<Journal> {
 	}
 
 	@Override
-	public Journal get() {
+	public Journal get() throws DaoException {
 		// inizializza un nuovo oggetto Journal
 		Journal journal = null;
 
@@ -127,8 +129,8 @@ public class JournalDao implements DaoInterface<Journal> {
 			}
 			// chiude le connessioni e il result set
 			rs.close();
-		} catch (Exception e) {
-			PrintHelper.out("Errore journal dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante Delete Journal", e);
 		}
 		// restituisce l'oggetto
 		return journal;
@@ -136,7 +138,7 @@ public class JournalDao implements DaoInterface<Journal> {
 	}
 
 	@Override
-	public boolean delete() {
+	public boolean delete() throws DaoException {
 
 		boolean success = true;
 
@@ -147,8 +149,8 @@ public class JournalDao implements DaoInterface<Journal> {
 			if (rs > 0) {
 				success = true;
 			}
-		} catch (Exception e) {
-			PrintHelper.out("Errore journal dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante Delete Journal", e);
 		}
 
 		return success;
