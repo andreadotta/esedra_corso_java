@@ -105,7 +105,6 @@ public class AuthorTest {
 			ID = author.getId();
 
 			author = new AuthorBuilder().setId(ID).setName(PREFIX + NAME).setEmail(PREFIX + EMAIL).build();
-
 			authorDao = new AuthorDao(author);
 			authorDao.setConnection(connection);
 			author = authorDao.update();

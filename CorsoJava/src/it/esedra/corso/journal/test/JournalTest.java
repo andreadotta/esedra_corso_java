@@ -16,6 +16,7 @@ import org.junit.runners.MethodSorters;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Journal;
+import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.collections.JournalCollection;
 import it.esedra.corso.journal.dao.JournalDao;
 import it.esedra.corso.journal.db.DbUtil;
@@ -35,9 +36,7 @@ public class JournalTest {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Journal journal = new Journal();
-			journal.setId(ID);
-			journal.setName(NAME);
+			Journal journal = new JournalBuilder().setName(NAME).build();
 
 			JournalDao journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
@@ -46,9 +45,10 @@ public class JournalTest {
 			assertTrue(journal != null);
 			ID = journal.getId();
 
-			journal.setName(PREFIX + NAME);
+			journal = new JournalBuilder().setId(ID).setName(PREFIX + NAME).build();
 			journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
+			journalDao.update();
 			assertTrue(journal != null);
 			
 			connection.close();
@@ -68,7 +68,7 @@ public class JournalTest {
 		try {
 			// Effettua la connessione al database
 			connection = JournalDbConnect.connect();
-			JournalDao journalDao = new JournalDao(new Journal());
+			JournalDao journalDao = new JournalDao();
 			journalDao.setConnection(connection);
 
 			// Chiamata metodo getAll() sulla Collection creata
@@ -121,8 +121,7 @@ public class JournalTest {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
 
-			Journal journalMock = new Journal();
-			journalMock.setId(ID);
+			Journal journalMock = new JournalBuilder().setId(ID).build();
 			JournalDao journalDao = new JournalDao(journalMock);
 			journalDao.setConnection(connection);
 
@@ -164,8 +163,7 @@ public class JournalTest {
 			// Effettua la connessione al database
 
 			Connection connection = JournalDbConnect.connect();
-			Journal journalMock = new Journal();
-			journalMock.setId(ID);
+			Journal journalMock = new JournalBuilder().setId(ID).build();
 			JournalDao journalDao = new JournalDao(journalMock);
 			journalDao.setConnection(connection);
 			boolean deleted = journalDao.delete();

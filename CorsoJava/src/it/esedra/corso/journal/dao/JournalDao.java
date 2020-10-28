@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
+import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.collections.JournalCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
@@ -17,6 +18,10 @@ public class JournalDao implements DaoInterface<Journal> {
 	private Journal journal;
 	private Connection conn;
 
+	public JournalDao() {
+		
+	}
+	
 	public JournalDao(Journal journal) {
 		super();
 		this.journal = journal;
@@ -36,10 +41,7 @@ public class JournalDao implements DaoInterface<Journal> {
 			// ottiene il result set
 			while (rs.next()) {
 				// e quindi per ogni tupla crea un oggetto di tipo Journal
-				Journal journal = new Journal();
-				// inserisce i dati nelle proprietà dell'oggetto
-				journal.setId(rs.getInt("id"));
-				journal.setName(rs.getString("name"));
+				Journal journal = new JournalBuilder().setId(rs.getInt("id")).setName(rs.getString("Name")).build();
 				// aggiunge l'oggetto alla lista
 				journals.add(journal);
 			}
@@ -65,7 +67,7 @@ public class JournalDao implements DaoInterface<Journal> {
 		Journal copy = null;
 		try {
 			if (journalCheck != null) {
-				String sql = "UPDATE journal SET name= ? WHERE id = ? ;";
+				String sql = "UPDATE journal SET name = ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, journal.getName());
@@ -76,20 +78,18 @@ public class JournalDao implements DaoInterface<Journal> {
 					stm.close();
 				}
 			} else {
-				String sql = "INSERT INTO journal (id, name) VALUES (?,?) ;";
+				String sql = "INSERT INTO journal (name) VALUES (?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
-				stm.setInt(1, journal.getId());
-				stm.setString(2, journal.getName());
+				stm.setString(1, journal.getName());
 
 				if (stm.executeUpdate() > 0) {
-					;
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
-						journal.setId(genKeys.getInt(1));
+						copy = new JournalBuilder().setId(genKeys.getInt(1)).setName(journal.getName()).build();
 					}
 				}
-				
+
 				stm.close();
 
 			}
@@ -121,10 +121,7 @@ public class JournalDao implements DaoInterface<Journal> {
 
 			while (rs.next()) {
 				// istanzia l'elemento Journal
-				journal = new Journal();
-
-				journal.setId(rs.getInt("id"));
-				journal.setName(rs.getString("name"));
+				journal = new JournalBuilder().setId(rs.getInt("id")).setName(rs.getString("Name")).build();
 
 			}
 			// chiude le connessioni e il result set
