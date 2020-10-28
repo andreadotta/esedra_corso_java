@@ -1,14 +1,15 @@
 package it.esedra.corso.journal.dao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
 import it.esedra.corso.journal.collections.ChapterCollection;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 public class ChapterDao implements DaoInterface<Chapter> {
 
@@ -22,7 +23,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	}
 
 	@Override
-	public Chapter update() {
+	public Chapter update() throws DaoException {
 		if (chapter == null) {
 			PrintHelper.out("chapter non può essere null.");
 			return null;
@@ -41,10 +42,15 @@ public class ChapterDao implements DaoInterface<Chapter> {
 					copy = new ChapterBuilder().setId(chapter.getId()).setDate(chapter.getDate())
 							.setTitle(chapter.getTitle()).build();
 				}
+				
 				stm.close();
+						
 			} else {
 				String sql = "INSERT INTO chapter ( title, date ) VALUES (?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
+
+				stm.setString(1, chapter.getTitle());
+				stm.setString(2, chapter.getDate());
 
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
@@ -54,22 +60,24 @@ public class ChapterDao implements DaoInterface<Chapter> {
 						stm.setString(2, chapter.getDate());
 						copy = new ChapterBuilder().setId(genKeys.getInt(1)).setTitle(chapter.getTitle())
 								.setDate(chapter.getDate()).build();
-					}
-
+				
 				}
 
 				stm.close();
+				
+				}
+				
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			PrintHelper.out("Errore author dao", e.getMessage());
+		
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante Update Chapter", e);
 		}
 		return copy;
 
 	}
 
 	@Override
-	public boolean delete() {
+	public boolean delete() throws DaoException {
 
 		boolean success = true;
 
@@ -80,15 +88,15 @@ public class ChapterDao implements DaoInterface<Chapter> {
 			if (rs > 0) {
 				success = true;
 			}
-		} catch (Exception e) {
-			PrintHelper.out("Errore author dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante Delete Chapter", e);
 		}
 
 		return success;
 	}
 
 	@Override
-	public Collection<Chapter> getAll() {
+	public Collection<Chapter> getAll() throws DaoException {
 
 		Collection<Chapter> chapters = new ChapterCollection();
 		try {
@@ -103,8 +111,9 @@ public class ChapterDao implements DaoInterface<Chapter> {
 			}
 
 			rs.close();
-		} catch (Exception e) {
-			PrintHelper.out("Errore video dao", e.getMessage());
+			
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante GetAll Chapter", e);
 		}
 
 		return chapters;
@@ -117,7 +126,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	}
 
 	@Override
-	public Chapter get() {
+	public Chapter get() throws DaoException {
 		Chapter chapter = null;
 
 		try {
@@ -131,8 +140,8 @@ public class ChapterDao implements DaoInterface<Chapter> {
 			}
 
 			rs.close();
-		} catch (Exception e) {
-			PrintHelper.out("Errore video dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante Get Chapter", e);
 		}
 		return chapter;
 	}

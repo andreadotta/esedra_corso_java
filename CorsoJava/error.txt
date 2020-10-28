@@ -1,0 +1,4 @@
+it.esedra.corso.MyArithmeticException
+	at it.esedra.corso.Snippet2310.divide(Snippet2310.java:17)
+	at it.esedra.corso.Snippet2310.instanceDivide(Snippet2310.java:23)
+	at it.esedra.corso.Snippet2310.main(Snippet2310.java:36)

@@ -5,29 +5,33 @@
     <title>Images</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script charset="utf-8" src="js/app.js"></script>
-    <script charset="utf-8" src="js/images.js"></script>    
+    <script charset="utf-8" src="js/image.js"></script>    
     <link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
     <h1>Images</h1>
     
-    <form action="http://localhost/images/"  method="post">
+    <form action="http://localhost/images/"  method="post" id="image-form">
 	   <div class="table">
+	   <div class="row">
 			<div class="col-label">
 				<label for="src">Src</label>
 			</div>
 			<div class="col-field">
 				<input class="input-text" name="src" value="" />
 			</div>
+		</div>
+		<div class="row">
 			<div class="col-label">
 				<label for="name">Name</label>
 			</div>
 			<div class="col-field">
 				<input class="input-text" name="name" value="" />
 			</div>
-			
-		
-			<button type="submit">Salva</button>
+		</div>	
+		<div class="row">
+			<button type="submit" id="submit-image">Salva</button>
+		</div>	
 		</div>
 	    
 	    

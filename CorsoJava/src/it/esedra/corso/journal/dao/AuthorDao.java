@@ -3,6 +3,7 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
@@ -10,9 +11,10 @@ import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.collections.AuthorCollection;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 public class AuthorDao implements DaoInterface<Author> {
-
+ 
 	private Author author;
 	private Connection conn;
 
@@ -25,8 +27,9 @@ public class AuthorDao implements DaoInterface<Author> {
 	}
 
 	@Override
-	public Author update() {
+	public Author update() throws DaoException {
 
+		
 		if (author == null) {
 			PrintHelper.out("author non può essere null.");
 			return null;
@@ -34,6 +37,7 @@ public class AuthorDao implements DaoInterface<Author> {
 		Author authorCheck = this.get();
 		Author copy = null;
 		try {
+
 			if (authorCheck != null) {
 				String sql = "UPDATE author SET name = ?, email = ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
@@ -64,15 +68,14 @@ public class AuthorDao implements DaoInterface<Author> {
 				stm.close();
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			PrintHelper.out("Errore author dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante update Author", e);
 		}
 		return copy;
 	}
 
 	@Override
-	public boolean delete() {
+	public boolean delete() throws DaoException  {
 		boolean success = true;
 
 		try {
@@ -82,15 +85,15 @@ public class AuthorDao implements DaoInterface<Author> {
 			if (rs > 0) {
 				success = true;
 			}
-		} catch (Exception e) {
-			PrintHelper.out("Errore author dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante delete Author", e);
 		}
 
 		return success;
 	}
 
 	@Override
-	public Collection<Author> getAll() {
+	public Collection<Author> getAll() throws DaoException   {
 
 		// istanzia una lista vuota di User
 		Collection<Author> authors = new AuthorCollection();
@@ -112,8 +115,8 @@ public class AuthorDao implements DaoInterface<Author> {
 			}
 			// chiude le connessioni e il result set
 			rs.close();
-		} catch (Exception e) {
-			PrintHelper.out("Errore user dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante getAll Author", e);
 		}
 		// restituisce la lista
 		return authors;
@@ -122,11 +125,11 @@ public class AuthorDao implements DaoInterface<Author> {
 	@Override
 	public void setConnection(Connection con) {
 		this.conn = con;
-
+	
 	}
 
 	@Override
-	public Author get() {
+	public Author get()  throws DaoException {
 		Author author = null;
 
 		try {
@@ -140,8 +143,8 @@ public class AuthorDao implements DaoInterface<Author> {
 
 			}
 			rs.close();
-		} catch (Exception e) {
-			PrintHelper.out("Errore author dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante get Author", e);
 		}
 		return author;
 	}

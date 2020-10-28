@@ -2,6 +2,7 @@ package it.esedra.corso.journal.test;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,6 +21,7 @@ import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuthorTest {
@@ -46,10 +48,10 @@ public class AuthorTest {
 
 		Collection<Author> authorCollection = new AuthorCollection();
 
+		Connection connection = null;
 		try {
 			// Effettua la connessione al database
-
-			Connection connection = JournalDbConnect.connect();
+			connection = JournalDbConnect.connect();
 			AuthorDao authordao = new AuthorDao();
 			authordao.setConnection(connection);
 
@@ -71,11 +73,19 @@ public class AuthorTest {
 				}
 
 			}
-			connection.close();
+
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException e) {
+			fail(e.getMessage());
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				fail(e.getMessage());
+			}
 		}
 	}
 
@@ -101,8 +111,10 @@ public class AuthorTest {
 			author = authorDao.update();
 			assertTrue(author != null);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+			connection.close();
+			
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
 	}
@@ -134,9 +146,9 @@ public class AuthorTest {
 
 			assertTrue(found);
 
-		} catch (SQLException e) {
+		} catch (DaoException | SQLException  e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 
 		}
 
@@ -162,9 +174,9 @@ public class AuthorTest {
 
 			connection.close();
 
-		} catch (SQLException e) {
+		} catch (DaoException  | SQLException  e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 
 		}
 

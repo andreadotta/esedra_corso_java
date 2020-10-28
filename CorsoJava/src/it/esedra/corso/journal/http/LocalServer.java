@@ -1,9 +1,12 @@
 package it.esedra.corso.journal.http;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
-import java.util.function.Consumer;
+import java.net.URL;
+import java.util.Scanner;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -59,7 +62,10 @@ public class LocalServer {
 		}
 
 		private void response(HttpExchange t) throws IOException {
-			String response = "This is the response";
+			String response = jsonGetRequest("https://postman-echo.com/get?foo1=bar1&foo2=bar2/ajax/");
+			t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+			t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
+			t.getResponseHeaders().add("Content-type", "plain/text");
 			t.sendResponseHeaders(200, response.length());
 			OutputStream os = t.getResponseBody();
 			os.write(response.getBytes());
@@ -67,7 +73,7 @@ public class LocalServer {
 		}
 
 		private void handleGetRequest(HttpExchange httpExchange) {
-			String queryString = httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+					//String queryString = httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
 		}
 
 		private void handlePostRequest(HttpExchange httpExchange) {
@@ -82,5 +88,30 @@ public class LocalServer {
 			// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
 		}
 	}
+	
+	private static String streamToString(InputStream inputStream) {
+	    String text = new Scanner(inputStream, "UTF-8").useDelimiter("\\Z").next();
+	    return text;
+	}
+	
+	
+	public static String jsonGetRequest(String urlQueryString) {
+	    String json = null;
+	    try {
+	      URL url = new URL(urlQueryString);
+	      HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	      connection.setDoOutput(true);
+	      connection.setInstanceFollowRedirects(false);
+	      connection.setRequestMethod("GET");
+	      connection.setRequestProperty("Content-Type", "application/json");
+	      connection.setRequestProperty("charset", "utf-8");
+	      connection.connect();
+	      InputStream inStream = connection.getInputStream();
+	      json = streamToString(inStream); // input stream to string
+	    } catch (IOException ex) {
+	      ex.printStackTrace();
+	    }
+	    return json;
+	  }
 
 }

@@ -3,6 +3,7 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
@@ -10,6 +11,7 @@ import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.UserBuilder;
 import it.esedra.corso.journal.collections.UserCollection;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 public class UserDao implements DaoInterface<User> {
 
@@ -26,7 +28,7 @@ public class UserDao implements DaoInterface<User> {
 	}
 
 	@Override
-	public boolean delete() {
+	public boolean delete() throws DaoException {
 
 		boolean success = true;
 
@@ -41,15 +43,15 @@ public class UserDao implements DaoInterface<User> {
 				success = true;
 			}
 
-		} catch (Exception e) {
-			PrintHelper.out("Errore user dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante Delete User", e);
 		}
 		// Restituisce l'oggetto
 		return success;
 	}
 
 	@Override
-	public Collection<User> getAll() {
+	public Collection<User> getAll() throws DaoException {
 		// Istanzia una lista vuota di User
 		Collection<User> users = new UserCollection();
 		try {
@@ -71,8 +73,8 @@ public class UserDao implements DaoInterface<User> {
 			}
 			// Chiude le connessioni e il result set
 			rs.close();
-		} catch (Exception e) {
-			PrintHelper.out("Errore user dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante GetAll User", e);
 		}
 		// Restituisce la lista
 		return users;
@@ -80,7 +82,7 @@ public class UserDao implements DaoInterface<User> {
 	}
 
 	@Override
-	public User update() {
+	public User update() throws DaoException {
 
 		if (user == null) {
 			PrintHelper.out("user non può essere null.");
@@ -137,9 +139,8 @@ public class UserDao implements DaoInterface<User> {
 				stm.close();
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			PrintHelper.out("Errore user dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante Update User", e);
 		}
 
 		return copy;
@@ -151,8 +152,8 @@ public class UserDao implements DaoInterface<User> {
 		this.conn = con;
 	}
 
-	@Override
-	public User get() {
+	@Override 
+	public User get() throws DaoException {
 		// Inizializza un nuovo oggetto User
 		User user = null;
 
@@ -172,8 +173,8 @@ public class UserDao implements DaoInterface<User> {
 			}
 			// Chiude le connessioni e il result set
 			rs.close();
-		} catch (Exception e) {
-			PrintHelper.out("Errore user dao", e.getMessage());
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante Get User", e);
 		}
 		// Restituisce l'oggetto
 		return user;

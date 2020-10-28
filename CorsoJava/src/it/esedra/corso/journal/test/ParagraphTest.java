@@ -2,6 +2,7 @@ package it.esedra.corso.journal.test;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,14 +15,15 @@ import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
-import it.esedra.corso.journal.Author;
+
 import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.ParagraphBuilder;
 import it.esedra.corso.journal.collections.ParagraphCollection;
-import it.esedra.corso.journal.dao.AuthorDao;
+
 import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ParagraphTest {
@@ -50,8 +52,10 @@ public class ParagraphTest {
 			paragraph = paragraphDao.update();
 			assertTrue(paragraph != null);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+			connection.close();
+
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
 	}
@@ -59,17 +63,17 @@ public class ParagraphTest {
 	@Test
 	public void testGetAll() {
 
-		Collection<Paragraph> paragraph = new ParagraphCollection();
+		Collection<Paragraph> paragraphCollection = new ParagraphCollection();
 
+		Connection connection = null;
 		try {
 			// Effettua la connessione al database
 
-			Connection connection = JournalDbConnect.connect();
+			connection = JournalDbConnect.connect();
 			ParagraphDao paragraphdao = new ParagraphDao();
 			paragraphdao.setConnection(connection);
-
-			// Chiamata metodo getAll() sulla Collection creata
-			Collection<Paragraph> paragraphCollection = paragraphdao.getAll();
+			
+			paragraphCollection = paragraphdao.getAll();
 
 			// Inizializzazione iterator per ciclare sulla Collection
 			Iterator<Paragraph> paragraphIterator = paragraphCollection.createIterator();
@@ -89,12 +93,20 @@ public class ParagraphTest {
 				}
 
 			}
-			connection.close();
 
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException e) {
+			fail(e.getMessage());
+		} finally {
+			try {
+
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				fail(e.getMessage());
+			}
 		}
 
 	}
@@ -114,7 +126,7 @@ public class ParagraphTest {
 			Paragraph paragraph = paragraphDao.get();
 			boolean found = false;
 
-			if (paragraph.getId() == ID && (paragraph).getText().equals(PREFIX + TEXT)) {
+			if (paragraph.getId() == ID && paragraph.getText().equals(PREFIX + TEXT)) {
 				found = true;
 			}
 
@@ -122,8 +134,8 @@ public class ParagraphTest {
 
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
 	}
@@ -148,9 +160,9 @@ public class ParagraphTest {
 
 			connection.close();
 
-		} catch (SQLException e) {
+		} catch (DaoException | SQLException e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 
 		}
 
@@ -163,8 +175,8 @@ public class ParagraphTest {
 			DbUtil.rebuildDb();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+			fail(e.getMessage());
 		}
 
 	}

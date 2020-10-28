@@ -2,6 +2,7 @@ package it.esedra.corso.journal.test;
 
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,6 +21,7 @@ import it.esedra.corso.journal.collections.UserCollection;
 import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserTest {
@@ -65,9 +67,11 @@ public class UserTest {
 			userDao.setConnection(connection);
 			user = userDao.update();
 			assertTrue(user != null);
+			
+			connection.close();
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
 	}
@@ -77,9 +81,10 @@ public class UserTest {
 
 		Collection<User> userCollection = new UserCollection();
 
+		Connection connection = null;
 		try {
 			// Effettua la connessione al database
-			Connection connection = JournalDbConnect.connect();
+			connection = JournalDbConnect.connect();
 			UserDao userDao = new UserDao();
 			userDao.setConnection(connection);
 
@@ -113,12 +118,18 @@ public class UserTest {
 
 			}
 
-			connection.close();
-
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException e) {
+			fail(e.getMessage());
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				fail(e.getMessage());
+			}
 		}
 
 	}
@@ -129,7 +140,6 @@ public class UserTest {
 		try {
 			// Effettua la connessione al database
 			Connection connection = JournalDbConnect.connect();
-
 			User userMock = new UserBuilder().setId(ID).build();
 
 			UserDao userDao = new UserDao(userMock);
@@ -149,8 +159,8 @@ public class UserTest {
 
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
 	}
@@ -175,8 +185,8 @@ public class UserTest {
 
 			connection.close();
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
 	}
@@ -189,7 +199,7 @@ public class UserTest {
 
 		} catch (IOException e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 		}
 
 	}

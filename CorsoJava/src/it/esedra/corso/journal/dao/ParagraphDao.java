@@ -7,11 +7,10 @@ import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Author;
-import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.ParagraphBuilder;
 import it.esedra.corso.journal.collections.ParagraphCollection;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 public class ParagraphDao implements DaoInterface<Paragraph> {
 
@@ -28,7 +27,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	}
 
 	@Override
-	public Paragraph update() {
+	public Paragraph update() throws DaoException {
 
 		if (paragraph == null) {
 			PrintHelper.out("Paragraph non può essere null");
@@ -53,12 +52,12 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			} else {
 				String sql = "INSERT INTO paragraph ( text) VALUES (?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
+				stm.setString(1, paragraph.getText());
 
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
 
-						stm.setString(1, paragraph.getText());
 						copy = new ParagraphBuilder().setId(genKeys.getInt(1)).setText(paragraph.getText()).build();
 					}
 
@@ -69,8 +68,8 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			PrintHelper.out("Errore paragraph dao", e.getMessage());
+			throw new DaoException("Errore durante update Paragraph ",e);
+
 		}
 
 		return copy;
@@ -78,7 +77,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	}
 
 	@Override
-	public Collection<Paragraph> getAll() {
+	public Collection<Paragraph> getAll() throws DaoException {
 		Collection<Paragraph> paragraphs = new ParagraphCollection();
 
 		// List<Paragraph> paragraphs = new ArrayList<>();
@@ -97,7 +96,8 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 			rs.close();
 		} catch (Exception e) {
-			PrintHelper.out("Errore paragraph dao", e.getMessage());
+			throw new DaoException("Errore durante update Paragraph ",e);
+
 		}
 
 		return paragraphs;
@@ -111,7 +111,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	}
 
 	@Override
-	public boolean delete() {
+	public boolean delete() throws DaoException {
 
 		boolean success = true;
 
@@ -123,14 +123,15 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 				success = true;
 			}
 		} catch (Exception e) {
-			PrintHelper.out("Errore paragraph dao", e.getMessage());
+			throw new DaoException("Errore durante update Paragraph ",e);
+
 		}
 
 		return success;
 	}
 
 	@Override
-	public Paragraph get() {
+	public Paragraph get() throws DaoException {
 		Paragraph paragraph = null;
 
 		try {
@@ -143,7 +144,8 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			}
 			rs.close();
 		} catch (Exception e) {
-			PrintHelper.out("Errore paragraph dao", e.getMessage());
+			throw new DaoException("Errore durante update Paragraph ",e);
+
 		}
 		return paragraph;
 	}

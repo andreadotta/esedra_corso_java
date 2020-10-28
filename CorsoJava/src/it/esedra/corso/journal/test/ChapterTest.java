@@ -1,7 +1,7 @@
 package it.esedra.corso.journal.test;
-
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -17,6 +17,7 @@ import it.esedra.corso.journal.collections.ChapterCollection;
 import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ChapterTest {
@@ -35,6 +36,7 @@ public class ChapterTest {
 
 			ChapterDao chapterDao = new ChapterDao(chapter);
 			chapterDao.setConnection(connection);
+			
 			chapter = chapterDao.update();
 			assertTrue(chapter != null);
 			ID = chapter.getId();
@@ -45,11 +47,14 @@ public class ChapterTest {
 			chapterDao.setConnection(connection);
 			chapter = chapterDao.update();
 			assertTrue(chapter != null);
+			
+			connection.close();
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 
+		
 	}
 
 	@Test
@@ -57,10 +62,11 @@ public class ChapterTest {
 
 		Collection<Chapter> chapterCollection = new ChapterCollection();
 
+		Connection connection = null;
 		try {
 			// Effettua la connessione al database
 
-			Connection connection = JournalDbConnect.connect();
+			connection = JournalDbConnect.connect();
 			ChapterDao chapterdao = new ChapterDao(null);
 			chapterdao.setConnection(connection);
 
@@ -80,11 +86,19 @@ public class ChapterTest {
 				}
 
 			}
-			connection.close();
+			
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException e) {
+			fail(e.getMessage());
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				fail(e.getMessage());
+			}
 		}
 	}
 
@@ -102,18 +116,19 @@ public class ChapterTest {
 			Chapter chapter = chapterDao.get();
 			boolean found = false;
 
-			if (chapter.getId() == ID && chapter.getTitle().equals(PREFIX + TITLE)
-					&& chapter.getDate().equals(PREFIX + DATE)) {
-
+			if (chapter.getId() == ID && (chapter.getTitle().equals(PREFIX + TITLE)
+					&& chapter.getDate().equals(PREFIX + DATE ))) {
+				
 				found = true;
+				
 			}
 
 			connection.close();
 
 			assertTrue(found);
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (DaoException | SQLException e) {
+			fail(e.getMessage());
 		}
 	}
 
@@ -137,9 +152,9 @@ public class ChapterTest {
 
 			connection.close();
 
-		} catch (SQLException e) {
+		} catch (DaoException | SQLException e) {
 
-			e.printStackTrace();
+			fail(e.getMessage());
 
 		}
 
@@ -150,8 +165,7 @@ public class ChapterTest {
 		try {
 			DbUtil.rebuildDb();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			fail(e.getMessage());
 		}
 
 	}
