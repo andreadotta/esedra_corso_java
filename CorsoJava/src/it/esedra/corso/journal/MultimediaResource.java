@@ -10,7 +10,7 @@ abstract class MultimediaResource {
 	private final String name; // noma dell'immagine
 	private final String src; // source path assoluto
 	private final int id; // source path assoluto
-	
+
 	public MultimediaResource(int id, String src, String name) {
 		this.id = id;
 		this.name = name;
@@ -25,10 +25,8 @@ abstract class MultimediaResource {
 		return name;
 	}
 
-
 	public String getSrc() {
 		return src;
 	}
-
 
 }

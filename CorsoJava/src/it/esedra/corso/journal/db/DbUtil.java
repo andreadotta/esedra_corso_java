@@ -27,23 +27,21 @@ public class DbUtil {
 	public static void rebuildDb() throws IOException {
 
 		try {
-			// Carichiamo il  percorso assoluto del file del database
+			// Carichiamo il percorso assoluto del file del database
 			String dbpath = System.getProperty("user.dir") + Journal.loadProperties().getDbpath();
 			// cancella il database vecchio
-			File oldDb = new File(dbpath); // File fornisce varie operazioni per manipolare 
-										   // file già esistenti.
-										   // Non può leggere dati dal file
-										   // Consente ad esempio di cancellare un file, rinominarlo, etc
+			File oldDb = new File(dbpath); // File fornisce varie operazioni per manipolare
+											// file già esistenti.
+											// Non può leggere dati dal file
+											// Consente ad esempio di cancellare un file, rinominarlo, etc
 
-			oldDb.delete();				
+			oldDb.delete();
 
-
-			
 			// Crea il nuovo database
 			// in SQLITE creando una connessione al db se questo non esiste
-			// SQLITE lo crea 
+			// SQLITE lo crea
 			Connection conn = JournalDbConnect.connect();
-			
+
 			// Carica tutte le tabelle
 			List<String> tables = new ArrayList<String>();
 			tables.add("author");
@@ -67,7 +65,7 @@ public class DbUtil {
 			conn.close();
 
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -82,14 +80,14 @@ public class DbUtil {
 			String s;
 			while (true) {
 				s = b.readLine();
-				if (s == null)  {
-					break;					
+				if (s == null) {
+					break;
 				}
 				fileReaded += s;
 			}
 
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 

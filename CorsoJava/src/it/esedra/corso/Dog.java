@@ -4,7 +4,7 @@ public abstract class Dog {
 
 	protected String name;
 	protected int age;
-	
+
 	public String getName() {
 		return name;
 	}

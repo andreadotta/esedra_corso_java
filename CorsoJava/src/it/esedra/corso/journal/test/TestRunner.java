@@ -11,33 +11,32 @@ import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
 
 public class TestRunner {
-	
+
 	public static void main(String[] args) {
-		
+
 		String dbpath;
 		try {
 			dbpath = System.getProperty("user.dir") + Journal.loadProperties().getDbpath();
 			// cancella il database vecchio
-			File oldDb = new File(dbpath); //File fornisce varie operazioni per manipolare 
-										   // file già esistenti.
-										   // Non può leggere dati dal file
-										   // Consente ad esem,pio di cancellare un file, rinominarlo, etc
-			oldDb.delete();		
+			File oldDb = new File(dbpath); // File fornisce varie operazioni per manipolare
+											// file già esistenti.
+											// Non può leggere dati dal file
+											// Consente ad esem,pio di cancellare un file, rinominarlo, etc
+			oldDb.delete();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-			
 		Result result = JUnitCore.runClasses(AllTests.class);
-		
+
 		for (Failure failure : result.getFailures()) {
-			
+
 			PrintHelper.out(failure.toString());
-			
+
 		}
-		
-		PrintHelper.out(TestRunner.class +  " " + result.wasSuccessful());
+
+		PrintHelper.out(TestRunner.class + " " + result.wasSuccessful());
 	}
 
 }

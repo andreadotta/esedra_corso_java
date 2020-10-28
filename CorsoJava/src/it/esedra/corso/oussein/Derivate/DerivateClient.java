@@ -1,17 +1,17 @@
 package it.esedra.corso.oussein.Derivate;
 
 /**
- * Questa classe permette di settare i valori delle componenti di Base, e ritorna a schermo la configurazione scelta
+ * Questa classe permette di settare i valori delle componenti di Base, e
+ * ritorna a schermo la configurazione scelta
+ * 
  * @author pc
  *
  */
 public class DerivateClient {
 
 	public static void main(String args[]) {
-		
-		
-		
-		Derivate derivate = new Derivate("oussein",5300 );
+
+		Derivate derivate = new Derivate("oussein", 5300);
 		derivate.setNome("Oussein");
 		System.out.println(derivate.getNome());
 

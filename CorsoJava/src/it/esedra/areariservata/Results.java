@@ -7,9 +7,9 @@ public class Results {
 	private double avg = 0;
 
 	private int max = 0;
-	
+
 	private int min = 0;
-	
+
 	private int size = 0;
 
 	public double getSize() {

@@ -3,8 +3,10 @@ package it.esedra.corso.gianni;
 import java.util.Calendar;
 import java.util.Date;
 import it.esedra.corso.libs.Time;
+
 /**
  * Questa classe utilizza Time e restituisce l'orario corrente.
+ * 
  * @author gpaol
  *
  */
@@ -22,7 +24,7 @@ public class TimeClient {
 		gianniTime.setMilliseconds(cal.get(Calendar.MILLISECOND));
 		System.out.println(gianniTime.getTime());
 		System.out.println(Time.getCurrentTime());
-		
+
 	}
 
 }

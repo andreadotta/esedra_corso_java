@@ -7,14 +7,14 @@ public class Snippet0109 {
 	public Snippet0109() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public static void main(String[] args) {
-		//SYSTEM PROPERTIES
-		//https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html
-		
-		//User working directory
+		// SYSTEM PROPERTIES
+		// https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html
+
+		// User working directory
 		PrintHelper.out(System.getProperty("user.dir"));
-		// windows:  \ c:\Program files\qualcosa unix: / /usr/local/qualcosa
+		// windows: \ c:\Program files\qualcosa unix: / /usr/local/qualcosa
 		PrintHelper.out(System.getProperty("file.separator"));
 		//
 		PrintHelper.out(System.getProperty("java.class.path"));

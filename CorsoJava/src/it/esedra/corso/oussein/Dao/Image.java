@@ -4,15 +4,14 @@ import it.esedra.corso.journal.MultimediaResource;
 
 /**
  * Questa classe rappresenta una immagine presente nel capitolo
+ * 
  * @author bauhausk
  *
  */
-public class Image  {
+public class Image {
 	private String name;
 	private String luogo;
 	private String color;
-
-	
 
 	public String getName() {
 		return name;
@@ -37,7 +36,6 @@ public class Image  {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	
 
 	public Image() {
 		// TODO Auto-generated constructor stub

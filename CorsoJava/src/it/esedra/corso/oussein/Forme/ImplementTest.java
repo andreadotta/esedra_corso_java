@@ -1,7 +1,5 @@
 package it.esedra.corso.oussein.Forme;
 
-
-
 public class ImplementTest {
 
 	public static void main(String[] args) {

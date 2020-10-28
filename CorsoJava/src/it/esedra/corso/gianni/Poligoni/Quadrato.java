@@ -11,20 +11,17 @@ public final class Quadrato extends Quadrilatero {
 
 	}
 
-
 	public void calcolaArea() {
-		super.setArea( super.getBase() * super.getBase() );
+		super.setArea(super.getBase() * super.getBase());
 	}
 
 	public void calcolaPerimetro() {
-			
-	}
 
+	}
 
 	@Override
 	public void disegna(Shape s) {
-		
-	}
 
+	}
 
 }

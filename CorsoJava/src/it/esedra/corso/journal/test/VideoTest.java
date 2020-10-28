@@ -47,11 +47,11 @@ public class VideoTest {
 
 			video = videoDao.update();
 			assertTrue(video != null);
-			
+
 			ID = video.getId();
 
-			video = new VideoBuilder().setId(ID).setSrc(PREFIX + SRC).setName(PREFIX + NAME)
-					.setTitle(PREFIX + TITLE).build();
+			video = new VideoBuilder().setId(ID).setSrc(PREFIX + SRC).setName(PREFIX + NAME).setTitle(PREFIX + TITLE)
+					.build();
 
 			videoDao = new VideoDao(video);
 			videoDao.setConnection(connection);
@@ -121,14 +121,12 @@ public class VideoTest {
 
 			Connection connection = JournalDbConnect.connect();
 			Video videoMock = new VideoBuilder().setId(ID).build();
-			
-			
+
 			VideoDao videoDao = new VideoDao(videoMock);
 			videoDao.setConnection(connection);
 
 			Video video = videoDao.get();
 
-			
 			boolean found = false;
 			if (video.getId() == ID && video.getSrc().equals(PREFIX + SRC) && video.getName().equals(PREFIX + NAME)
 					&& video.getTitle().equals(PREFIX + TITLE)) {
@@ -148,8 +146,8 @@ public class VideoTest {
 		try {
 
 			Connection connection = JournalDbConnect.connect();
-            Video videoMock = new VideoBuilder().setId(ID).build();
-			
+			Video videoMock = new VideoBuilder().setId(ID).build();
+
 			VideoDao videoDao = new VideoDao(videoMock);
 			videoDao.setConnection(connection);
 

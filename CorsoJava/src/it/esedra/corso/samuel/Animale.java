@@ -3,8 +3,8 @@ package it.esedra.corso.samuel;
 public abstract class Animale implements Movimento {
 
 	private String nome;
-    private Testa testa;
-    
+	private Testa testa;
+
 	public Testa getTesta() {
 		return testa;
 	}
@@ -20,5 +20,5 @@ public abstract class Animale implements Movimento {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 }

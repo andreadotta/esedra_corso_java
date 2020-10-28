@@ -15,7 +15,7 @@ import it.esedra.corso.journal.dao.UserDao;
 public class App {
 
 	public static final String DBPATH = System.getProperty("chapter.dir") + "/sqlite/db/oussein.sql";
-	
+
 	public App() {
 		// TODO Auto-generated constructor stub
 	}
@@ -42,7 +42,7 @@ public class App {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

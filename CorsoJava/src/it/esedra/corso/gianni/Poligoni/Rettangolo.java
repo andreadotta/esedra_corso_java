@@ -5,26 +5,22 @@ package it.esedra.corso.gianni.Poligoni;
  *  
  */
 public class Rettangolo extends Quadrilatero {
-	
+
 	public Rettangolo(Lato[] lati, Angolo[] angoli) {
 		super(lati, angoli);
 
 	}
 
-	
-
 	public void calcolaArea() {
-		super.setArea( super.getBase() * super.getAltezza() );
+		super.setArea(super.getBase() * super.getAltezza());
 	}
 
 	public void calcolaPerimetro() {
-		super.setPerimetro (  (super.getBase() + super.getAltezza()) * 2 );
+		super.setPerimetro((super.getBase() + super.getAltezza()) * 2);
 	}
 
-	
-	
 	@Override
 	public void disegna(Shape s) {
-		
+
 	}
 }

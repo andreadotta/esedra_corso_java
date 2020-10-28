@@ -8,14 +8,12 @@ public class Cow implements Animal {
 	public void eat() {
 		PrintHelper.out("cow eats some grass");
 
-		
 	}
 
 	@Override
 	public void speak() {
 		PrintHelper.out(" cow fa moof moof");
 
-		
 	}
 
 }

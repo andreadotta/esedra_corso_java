@@ -54,13 +54,12 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 				String sql = "INSERT INTO paragraph ( text) VALUES (?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
-
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
 
-					stm.setString(1, paragraph.getText());
-					copy = new ParagraphBuilder().setId(genKeys.getInt(1)).setText(paragraph.getText()).build();
+						stm.setString(1, paragraph.getText());
+						copy = new ParagraphBuilder().setId(genKeys.getInt(1)).setText(paragraph.getText()).build();
 					}
 
 				}
@@ -101,7 +100,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			PrintHelper.out("Errore paragraph dao", e.getMessage());
 		}
 
-		return  paragraphs;
+		return paragraphs;
 
 	}
 

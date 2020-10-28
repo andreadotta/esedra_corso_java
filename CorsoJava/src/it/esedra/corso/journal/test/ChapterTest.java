@@ -37,13 +37,13 @@ public class ChapterTest {
 			chapterDao.setConnection(connection);
 			chapter = chapterDao.update();
 			assertTrue(chapter != null);
-            ID = chapter.getId();
-			
+			ID = chapter.getId();
+
 			chapter = new ChapterBuilder().setId(ID).setTitle(PREFIX + TITLE).setDate(PREFIX + DATE).build();
 
 			chapterDao = new ChapterDao(chapter);
 			chapterDao.setConnection(connection);
-		    chapter = chapterDao.update();
+			chapter = chapterDao.update();
 			assertTrue(chapter != null);
 
 		} catch (Exception e) {
@@ -52,7 +52,6 @@ public class ChapterTest {
 
 	}
 
-	
 	@Test
 	public void testGetAll() {
 
@@ -89,7 +88,6 @@ public class ChapterTest {
 		}
 	}
 
-	
 	@Test
 	public void testGet() {
 

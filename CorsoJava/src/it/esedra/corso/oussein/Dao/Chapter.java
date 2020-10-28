@@ -45,8 +45,6 @@ public class Chapter {
 		this.professione = professione;
 	}
 
-	
-
 	public Chapter() {
 		// TODO Auto-generated constructor stub
 	}

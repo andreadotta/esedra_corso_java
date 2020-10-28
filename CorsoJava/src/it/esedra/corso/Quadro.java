@@ -10,6 +10,6 @@ package it.esedra.corso;
 public class Quadro {
 
 	public Quadro() {
-		
+
 	}
 }

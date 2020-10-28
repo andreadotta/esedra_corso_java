@@ -18,22 +18,14 @@ public class StringIteratorTest {
 		StringCollection.add((String) "Oggi");
 		StringCollection.add((String) "Domani");
 
-		
 		Iterator<String> iterator = StringCollection.createIterator();
 
 		while (iterator.hasNext()) {
-			PrintHelper.out(iterator.next() + "");	
-			PrintHelper.out(iterator.currentItem() + "");				
-			PrintHelper.out(iterator.isDone() + "");				
+			PrintHelper.out(iterator.next() + "");
+			PrintHelper.out(iterator.currentItem() + "");
+			PrintHelper.out(iterator.isDone() + "");
 		}
-
-
-
-		
-		
 
 	}
 
 }
-
-

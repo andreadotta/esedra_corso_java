@@ -13,7 +13,7 @@ public class EssereHumanTest {
 		for (EssereHuman h : tab) {
 			h.print();
 		}
-		
+
 	}
 
 }

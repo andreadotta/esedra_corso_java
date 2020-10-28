@@ -14,12 +14,11 @@ class DbConnectTest {
 	@Test
 	void test() {
 		try {
-			Connection con = DbConnect.connect("/path");	
+			Connection con = DbConnect.connect("/path");
 			assumeTrue(true);
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
-
 
 	}
 
