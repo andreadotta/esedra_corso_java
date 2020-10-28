@@ -2,16 +2,13 @@ package it.esedra.corso.marco;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
-
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.db.DbConnect;
 import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.User;
-import it.esedra.corso.journal.UserBuilder;
 import it.esedra.corso.journal.dao.UserDao;
+import it.esedra.corso.journal.execeptions.DaoException;
 
 public class App {
 
@@ -21,7 +18,7 @@ public class App {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DaoException {
 		try {
 			// esempio di iterazione
 			// effettua la connessione al database
