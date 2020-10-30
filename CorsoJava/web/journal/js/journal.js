@@ -17,6 +17,9 @@ function createJournal() {
 		}
 		return true;
 	};
+	journal.save = function() {
+		formJournal["name"].value = "ciao ciao";
+	};
 
 	return journal;
 }
@@ -37,20 +40,5 @@ function submitJournal(event) {
 	
 	// Proseguo
 	console.log(journal.name);	
-
-}
-/**
-* Valida il form
-* Controlla che siano presenti quelli obbligatori e il loro tipo sia quello atteso
- */
-function validate(formJournal) {
-	let name = formJournal["name"];
-	
-	// Verifica che i campi abbiano un valore
-	if (name.value == '') {
-		alert("Il campo nome deve essere presente");
-		return false;
-	}
-	return true;
 
 }

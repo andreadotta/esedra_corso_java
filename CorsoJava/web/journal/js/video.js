@@ -18,6 +18,9 @@ function createVideo() {
 		}
 		return true;
 	};
+	video.save = function() {
+		formVideo["name"].value = "ciao ciao";
+	};
 
 	return video;
 }
@@ -33,18 +36,5 @@ function submitVideo(event) {
 	console.log(video.src);
 	console.log(video.name);
 	console.log(video.title);
-
-}
-
-
-function validate(formVideo) {
-	let src = formVideo["src"];
-	let name = formVideo["name"];
-	let title = formVideo["title"];
-	if (src.value == '' || name.value == '' || title.value == '') {
-		alert("I campi src, nome e titolo devono essere presenti");
-		return false;
-	}
-	return true;
 
 }

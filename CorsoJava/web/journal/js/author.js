@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-	
-	document.querySelector('#submit-author').addEventListener('click', function(event) {
-		submitAuthor(event);	
+	document.querySelector('#submit-author').addEventListener('click', function(event){
+		submitAuthor(event);
 	});
 	
 });

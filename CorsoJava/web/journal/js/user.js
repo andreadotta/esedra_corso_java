@@ -20,6 +20,9 @@ function createUser() {
 		}
 		return true;
 	};
+	user.save = function() {
+		formUser["name"].value = "ciao ciao";
+	};
 
 	return user;
 }
@@ -44,23 +47,5 @@ function submitUser(event) {
 	console.log(user.email);
 	console.log(user.password);
 	console.log(user.registration);
-
-}
-/**
-* Valida il form
-* Controlla che siano presenti quelli obbligatori e il loro tipo sia quello atteso
- */
-function validate(formUser) {
-	let name = formUser["name"];
-	let surname = formUser["surname"];
-	let email = formUser["email"];
-	let password = formUser["password"];
-	let registration = formUser["registration"];
-	// Verifica che i campi abbiano un valore
-	if (name.value == '' || surname.value == '' || email.value == '' || password.value == '' || registration.value == '') {
-		alert("I campi nome, cognome, email, password e registrazione devono essere presenti");
-		return false;
-	}
-	return true;
 
 }
