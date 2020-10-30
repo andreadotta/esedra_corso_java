@@ -7,8 +7,6 @@
 <script charset="utf-8" src="js/app.js"></script>
 <script charset="utf-8" src="js/author.js"></script>
 <link rel="stylesheet" href="css/app.css" />
- <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.11.2.css">
-
 </head>
 <body>
 	<h1>Author</h1>
@@ -39,46 +37,22 @@
 		</div>
 	</form>
 	
-
-	<div id="qunit"></div>
-	<div id="qunit-fixture"></div>
-	<script charset="utf-8"
-		src="https://code.jquery.com/qunit/qunit-2.11.2.js"></script>
-		<script>
-		
-		QUnit.module('author');
-		
-
-		QUnit.module('author', function() {
-		    QUnit.test('author', function(assert) {
-		    	const testName = "@àòàò##@ł";
-		    	//ho inserito nel campo NAME del form un valore "andrea" 
-		    	formAuthor = document.getElementById("author-form").elements;
-		    	formAuthor["name"].value = testName;
-				
-		    	const authorForm = createAuthor();
-				
-		       assert.equal(authorForm.name, testName);
-		    });
-		});
-	</script>
+	
+	<p id="test-server"></p>
+	<button id="button-test-server">Testa connessione server</button>
 </body>
 </html>
 
 
 <!-- 
-
 http://www.journal.it/author/15
 http://www.journal.it/user/1
 http://www.journal.it/image/25
 http://www.journal.it/author/?name=Roberto
-
 POST->CREATE->INSERT
 PUT->UPDATE->UPDATE
 GET->READ->SELECT
 DELETE->DELETE->DELETE
-
 POST
 http://www.journal.it/author/?name=Roberto&email=roberto.baldi@io.it
-
 -->
