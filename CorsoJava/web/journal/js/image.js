@@ -18,6 +18,9 @@ function createImage() {
 		}
 		return true;
 	};
+	image.save = function() {
+		formImage["name"].value = "ciao ciao";
+    };
 
 	return image;
 }
@@ -32,17 +35,4 @@ function submitImage(event) {
 
 	console.log(image.src);
 	console.log(image.name);
-}
-
-
-function validate(formImage) {
-	let src = formImage["src"];
-	let name = formImage["name"];
-	
-	if (src.value == ' ' || name.value == ' ') {
-		alert("I campi src, nome e devono essere presenti");
-		return false;
-	}
-	return true;
-
 }

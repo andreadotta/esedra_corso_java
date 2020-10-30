@@ -17,6 +17,9 @@ function createChapter() {
 		}
 		return true;
 	};
+	chapter.save = function() {
+		formChapter["name"].value = "ciao ciao";
+	};
 
 	return chapter;
 }
@@ -31,18 +34,6 @@ function submitChapter(event) {
 
 	console.log(chapter.title);
 	console.log(chapter.date);
-
-}
-
-
-function validate(formChapter) {
-	let title = formChapter["title"];
-	let date = formChapter["date"];
-	if (title.value == '' || date.value == '') {
-		alert("I campi titolo e data devono essere presenti");
-		return false;
-	}
-	return true;
 
 }
 

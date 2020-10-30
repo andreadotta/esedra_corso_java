@@ -16,6 +16,10 @@ function createParagraph() {
 		}
 		return true;
 	}
+	paragraph.save = function() {
+		formParagraph["name"].value = "ciao ciao";
+	};
+	
 	return paragraph;
 };
 
