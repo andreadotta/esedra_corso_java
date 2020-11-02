@@ -7,16 +7,7 @@
 	L'Oggetto XMLHttpRequest
 	
  */
-
-document.addEventListener("DOMContentLoaded", function() {
-
-
-
-
-
-
-});
-
+//import { index } from  "./index.js";
 
 
 function testServer() {

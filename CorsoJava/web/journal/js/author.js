@@ -1,34 +1,27 @@
 document.addEventListener("DOMContentLoaded", function() {
-	document.querySelector('#submit-author').addEventListener('click', function(event){
+	document.querySelector('#submit-author').addEventListener('click', function(event) {
 		submitAuthor(event);
 	});
-	
-	
-	
-	document.querySelector('#button-test-server').addEventListener('click', function(event){
-		testServer();
-	});
-	
-	
+
 });
-	
+
 function createAuthor() {
 	let formAuthor = document.getElementById("author-form").elements;
 	const author = {};
 	author.name = formAuthor["name"].value;
-	author.email = formAuthor["email"].value;	
+	author.email = formAuthor["email"].value;
 	/*Valida il form
 	* Controlla che siano presenti quelli obbligatori e il loro tipo sia quello atteso */
 	author.isValid = function() {
 		if (author.name == '' || author.email == '') {
-			return false;		
+			return false;
 		}
 		return true;
 	};
 	author.save = function() {
 		formAuthor["name"].value = "ciao ciao";
 	};
-	
+
 	return author;
 }
 /**
@@ -43,11 +36,11 @@ function submitAuthor(event) {
 		alert("I campi nome e email devono essere presenti");
 		return;
 	}
-	
+
 	author.save();
-	
+
 	//proseguo
-    console.log(author.name);
-    console.log(author.email);
+	console.log(author.name);
+	console.log(author.email);
 
 }
