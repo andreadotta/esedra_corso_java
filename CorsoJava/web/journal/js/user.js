@@ -14,6 +14,8 @@ function createUser() {
 	user.email = formUser["email"].value;
 	user.password = formUser["password"].value;
 	user.registration = formUser["registration"].value;
+	/* Valida il form
+	* Controlla che siano presenti quelli obbligatori e il loro tipo sia quello atteso */
 	user.isValid = function() {
 		if (user.name == '' || user.surname == '' || user.email == '' || user.password == '' || user.registration == '') {
 			return false;
@@ -21,7 +23,27 @@ function createUser() {
 		return true;
 	};
 	user.save = function() {
-		formUser["name"].value = "ciao ciao";
+		
+		let formData = new FormData();
+		
+		formData.append("name", user.name);
+		formData.append("surname", user.surname);
+		formData.append("email", user.email);
+		formData.append("password", user.password);
+		formData.append("registration", user.registration);
+		
+		var req = new XMLHttpRequest();
+		req.onload = function() {
+			console.log(this.responseText);
+		};
+		req.open("POST", "http://localhost:8000/" + "user");
+		/*req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		req.setRequestHeader('Access-Control-Allow-Headers', '*');
+		req.setRequestHeader('Access-Control-Allow-Origin', '*');*/
+		//req.withCredentials = true;
+
+		req.send(formData);
+		
 	};
 
 	return user;
@@ -41,11 +63,7 @@ function submitUser(event) {
 		return;
 	}
 	
-	// Proseguo
-	console.log(user.name);
-	console.log(user.surname);
-	console.log(user.email);
-	console.log(user.password);
-	console.log(user.registration);
+	// Effettuo save
+	user.save();
 
 }
