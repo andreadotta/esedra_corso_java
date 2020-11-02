@@ -16,7 +16,7 @@ function testServer() {
 		console.log("Ho ottenuto il risultato " + Date.now());
 		document.getElementById("test-server").innerHTML = this.responseText;
 	};
-	req.open("GET", "http://localhost:8000/author/");
+	req.open("GET", "http://localhost:8000/journal/");
 	req.send();
 	console.log("Ho fatto la chiamata " + Date.now());
 

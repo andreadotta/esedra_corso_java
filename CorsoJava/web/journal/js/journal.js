@@ -10,7 +10,7 @@ function createJournal() {
 	let formJournal = document.getElementById("journal-form").elements;
 	const journal = {};
 	journal.name = formJournal["name"].value;
-	
+
 	journal.isValid = function() {
 		if (journal.name == '') {
 			return false;
@@ -18,7 +18,23 @@ function createJournal() {
 		return true;
 	};
 	journal.save = function() {
-		formJournal["name"].value = "ciao ciao";
+		
+		let journaldData = new FormData();
+		
+		journaldData.append("name", journal.name);
+
+		var req = new XMLHttpRequest();
+		req.onload = function() {
+			console.log(this.responseText);
+		};
+		req.open("POST", "http://localhost:8000/" + "journal");
+		/*req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		req.setRequestHeader('Access-Control-Allow-Headers', '*');
+		req.setRequestHeader('Access-Control-Allow-Origin', '*');*/
+		//req.withCredentials = true;
+
+		req.send(journaldData);
+
 	};
 
 	return journal;
@@ -37,8 +53,12 @@ function submitJournal(event) {
 		alert("Il campo nome deve essere presente")
 		return;
 	}
-	
-	// Proseguo
-	console.log(journal.name);	
+
+	// effettuo save
+	journal.save();
 
 }
+
+
+
+
