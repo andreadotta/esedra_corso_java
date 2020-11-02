@@ -73,7 +73,8 @@ public class LocalServer {
 		}
 
 		private void handleGetRequest(HttpExchange httpExchange) {
-					//String queryString = httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+			// String queryString =
+			// httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
 		}
 
 		private void handlePostRequest(HttpExchange httpExchange) {
@@ -88,30 +89,29 @@ public class LocalServer {
 			// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
 		}
 	}
-	
+
 	private static String streamToString(InputStream inputStream) {
-	    String text = new Scanner(inputStream, "UTF-8").useDelimiter("\\Z").next();
-	    return text;
+		String text = new Scanner(inputStream, "UTF-8").useDelimiter("\\Z").next();
+		return text;
 	}
-	
-	
+
 	public static String jsonGetRequest(String urlQueryString) {
-	    String json = null;
-	    try {
-	      URL url = new URL(urlQueryString);
-	      HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-	      connection.setDoOutput(true);
-	      connection.setInstanceFollowRedirects(false);
-	      connection.setRequestMethod("GET");
-	      connection.setRequestProperty("Content-Type", "application/json");
-	      connection.setRequestProperty("charset", "utf-8");
-	      connection.connect();
-	      InputStream inStream = connection.getInputStream();
-	      json = streamToString(inStream); // input stream to string
-	    } catch (IOException ex) {
-	      ex.printStackTrace();
-	    }
-	    return json;
-	  }
+		String json = null;
+		try {
+			URL url = new URL(urlQueryString);
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setDoOutput(true);
+			connection.setInstanceFollowRedirects(false);
+			connection.setRequestMethod("GET");
+			connection.setRequestProperty("Content-Type", "application/json");
+			connection.setRequestProperty("charset", "utf-8");
+			connection.connect();
+			InputStream inStream = connection.getInputStream();
+			json = streamToString(inStream); // input stream to string
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+		return json;
+	}
 
 }

@@ -3,6 +3,13 @@ document.addEventListener("DOMContentLoaded", function() {
 		submitAuthor(event);
 	});
 	
+	
+	
+	document.querySelector('#button-test-server').addEventListener('click', function(event){
+		testServer();
+	});
+	
+	
 });
 	
 function createAuthor() {
