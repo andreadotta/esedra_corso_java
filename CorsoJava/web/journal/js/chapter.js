@@ -18,7 +18,23 @@ function createChapter() {
 		return true;
 	};
 	chapter.save = function() {
-		formChapter["name"].value = "ciao ciao";
+		let formData = new FormData();
+		
+		formData.append("title", chapter.title);
+        formData.append("date", chapter.date);
+
+		var req = new XMLHttpRequest();
+		req.onload = function() {
+			console.log(this.responseText);
+		};
+		req.open("POST", "http://localhost:8000/" + "chapter");
+		/*req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		req.setRequestHeader('Access-Control-Allow-Headers', '*');
+		req.setRequestHeader('Access-Control-Allow-Origin', '*');*/
+		//req.withCredentials = true;
+
+		req.send(formData);
+		
 	};
 
 	return chapter;
