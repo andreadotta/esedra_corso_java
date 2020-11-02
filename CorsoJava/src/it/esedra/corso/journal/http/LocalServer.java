@@ -1,7 +1,9 @@
 package it.esedra.corso.journal.http;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
@@ -11,6 +13,8 @@ import java.util.Scanner;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+
+import it.esedra.corso.helpers.PrintHelper;
 
 public class LocalServer {
 
@@ -22,6 +26,7 @@ public class LocalServer {
 	public LocalServer() throws IOException {
 		HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
 		server.createContext("/author", new MyHandler());
+		server.createContext("/journal", new MyHandler());		
 		server.setExecutor(null); // creates a default executor
 		server.start();
 	}
@@ -77,8 +82,12 @@ public class LocalServer {
 			// httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
 		}
 
-		private void handlePostRequest(HttpExchange httpExchange) {
-			// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+		private void handlePostRequest(HttpExchange httpExchange) throws IOException {
+			// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];Print
+			InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "utf-8");
+			BufferedReader br = new BufferedReader(isr);
+			String query = br.readLine();
+			PrintHelper.out(query);
 		}
 
 		private void handlePutRequest(HttpExchange httpExchange) {
