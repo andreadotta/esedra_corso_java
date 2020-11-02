@@ -19,9 +19,26 @@ function createVideo() {
 		return true;
 	};
 	video.save = function() {
-		formVideo["name"].value = "ciao ciao";
-	};
+		
+		let formData = new FormData();
+		
+		formData.append("src", video.src);
+		formData.append("name", video.name);
+		formData.append("title", video.title);
 
+		var req = new XMLHttpRequest();
+		req.onload = function() {
+			console.log(this.responseText);
+		};
+		req.open("POST", "http://localhost:8000/" + "video");
+		/*req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+		req.setRequestHeader('Access-Control-Allow-Headers', '*');
+		req.setRequestHeader('Access-Control-Allow-Origin', '*');*/
+		//req.withCredentials = true;
+
+		req.send(formData);
+
+	};
 	return video;
 }
 
@@ -36,5 +53,6 @@ function submitVideo(event) {
 	console.log(video.src);
 	console.log(video.name);
 	console.log(video.title);
+	video.save();
 
 }
