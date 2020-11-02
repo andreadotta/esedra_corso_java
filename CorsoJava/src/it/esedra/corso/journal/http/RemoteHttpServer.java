@@ -1,25 +1,24 @@
 package it.esedra.corso.journal.http;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.InetSocketAddress;
 import java.net.URL;
 import java.util.Scanner;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonReader;
-
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
-import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.http.handlers.AuthorHandler;
+import it.esedra.corso.journal.http.handlers.ChapterHandler;
+import it.esedra.corso.journal.http.handlers.ImageHandler;
+import it.esedra.corso.journal.http.handlers.JournalHandler;
+import it.esedra.corso.journal.http.handlers.ParagraphHandler;
+import it.esedra.corso.journal.http.handlers.UserHandler;
+import it.esedra.corso.journal.http.handlers.VideoHandler;
 
 
 public class RemoteHttpServer {
@@ -31,13 +30,13 @@ public class RemoteHttpServer {
 
 	public RemoteHttpServer() throws IOException {
 		HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
-		server.createContext("/author", new MyHandler());
-		server.createContext("/journal", new MyHandler());	
-		server.createContext("/image", new MyHandler());	
-		server.createContext("/user", new MyHandler());			
-		server.createContext("/video", new MyHandler());					
-		server.createContext("/paragraph", new MyHandler());
-		server.createContext("/chapter", new MyHandler());
+		server.createContext("/author", new AuthorHandler());
+		server.createContext("/journal", new JournalHandler());	
+		server.createContext("/image", new ImageHandler());	
+		server.createContext("/user", new UserHandler());			
+		server.createContext("/video", new VideoHandler());					
+		server.createContext("/paragraph", new ParagraphHandler());
+		server.createContext("/chapter", new ChapterHandler());
 		
 		server.setExecutor(null); // creates a default executor
 		server.start();
@@ -97,21 +96,7 @@ public class RemoteHttpServer {
 		private void handlePostRequest(HttpExchange httpExchange) throws IOException {
 			// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];Print
 			
-			try {
-				InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "utf-8");
-				BufferedReader br = new BufferedReader(isr);
-				String query = br.readLine();
-
-				JsonReader reader = Json.createReader(new StringReader(query));
-				JsonObject journalObject = reader.readObject();
-		        reader.close();
-		        
-		        PrintHelper.out(journalObject.getString("name"));
-		        
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}			
+			
 			   			
 			
 		}
