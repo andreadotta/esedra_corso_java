@@ -26,7 +26,13 @@ public class LocalServer {
 	public LocalServer() throws IOException {
 		HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
 		server.createContext("/author", new MyHandler());
-		server.createContext("/journal", new MyHandler());		
+		server.createContext("/journal", new MyHandler());	
+		server.createContext("/image", new MyHandler());	
+		server.createContext("/user", new MyHandler());			
+		server.createContext("/video", new MyHandler());					
+		server.createContext("/paragraph", new MyHandler());
+		server.createContext("/chapter", new MyHandler());
+		
 		server.setExecutor(null); // creates a default executor
 		server.start();
 	}
