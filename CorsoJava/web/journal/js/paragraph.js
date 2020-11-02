@@ -17,8 +17,19 @@ function createParagraph() {
 		return true;
 	}
 	paragraph.save = function() {
-		formParagraph["name"].value = "ciao ciao";
+		
+		let paragraphData = new FormData();
+		
+		paragraphData.append("text", paragraph.text);
+		
+		var req = new XMLHttpRequest();
+		req.onload = function() {
+			console.log(this.responseText);
+
 	};
+	req.open("POST", "http://localhost:8000/" + "paragraph");
+	req.send(paragraphData);
+	}
 	
 	return paragraph;
 };
@@ -35,7 +46,7 @@ function submitParagraph(event) {
 
 	
 	//proseguo
-    console.log(paragraph.text);
+    paragraph.save;
 
 
 
