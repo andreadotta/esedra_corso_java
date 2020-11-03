@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.sql.Connection;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -14,6 +15,14 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.Chapter;
+import it.esedra.corso.journal.ChapterBuilder;
+import it.esedra.corso.journal.Journal;
+import it.esedra.corso.journal.JournalBuilder;
+import it.esedra.corso.journal.dao.ChapterDao;
+import it.esedra.corso.journal.dao.JournalDao;
+import it.esedra.corso.journal.db.JournalDbConnect;
+
 
 public class ChapterHandler implements HttpHandler {
 	@Override
@@ -76,10 +85,15 @@ public class ChapterHandler implements HttpHandler {
 			String query = br.readLine();
 
 			JsonReader reader = Json.createReader(new StringReader(query));
-			JsonObject journalObject = reader.readObject();
+			JsonObject chapterObject = reader.readObject();
 			reader.close();
 
-			PrintHelper.out(journalObject.getString("name"));
+			Connection connection = JournalDbConnect.connect();
+			Chapter chapter = new ChapterBuilder().setDate(chapterObject.getString("date")).setTitle(chapterObject.getString("title")).build();
+			ChapterDao chapterDao = new ChapterDao(chapter);
+			chapterDao.setConnection(connection);
+
+			chapter = chapterDao.update();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

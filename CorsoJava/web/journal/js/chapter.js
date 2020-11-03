@@ -18,10 +18,7 @@ function createChapter() {
 		return true;
 	};
 	chapter.save = function() {
-		let formData = new FormData();
-		
-		formData.append("title", chapter.title);
-        formData.append("date", chapter.date);
+
 
 		var req = new XMLHttpRequest();
 		req.onload = function() {
@@ -33,8 +30,8 @@ function createChapter() {
 		req.setRequestHeader('Access-Control-Allow-Origin', '*');*/
 		//req.withCredentials = true;
 
-		req.send(formData);
-		
+		req.send(JSON.stringify(journal));
+
 	};
 
 	return chapter;
@@ -47,9 +44,8 @@ function submitChapter(event) {
 		alert("I campi titolo e data devono essere presenti")
 		return;
 	}
+	chapter.save();
 
-	console.log(chapter.title);
-	console.log(chapter.date);
 
 }
 
