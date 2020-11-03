@@ -1,15 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-	document.querySelector('#submit-paragraph').addEventListener('click', function(event) {
-		submitParagraph(event);
-	});
+	document.querySelector('#submit-paragraph').addEventListener('click',
+			function(event) {
+				submitParagraph(event);
+			});
 
 });
 function createParagraph() {
 	let formParagraph = document.getElementById("paragraph-form").elements;
 	const paragraph = {};
 	paragraph.text = formParagraph["text"].value;
- 
+
 	paragraph.isValid = function() {
 		if (paragraph.text == '') {
 			return false;
@@ -17,20 +18,16 @@ function createParagraph() {
 		return true;
 	}
 	paragraph.save = function() {
-		
-		let paragraphData = new FormData();
-		
-		paragraphData.append("text", paragraph.text);
-		
+
 		var req = new XMLHttpRequest();
 		req.onload = function() {
 			console.log(this.responseText);
 
-	};
-	req.open("POST", "http://localhost:8000/" + "paragraph");
-	req.send(paragraphData);
+		};
+		req.open("POST", "http://localhost:8000/" + "paragraph");
+		req.send(JSON.stringify(paragraph));
 	}
-	
+
 	return paragraph;
 };
 
@@ -44,10 +41,7 @@ function submitParagraph(event) {
 		return;
 	}
 
-	
-	//proseguo
-    paragraph.save;
-
-
+	// proseguo
+	paragraph.save;
 
 }
