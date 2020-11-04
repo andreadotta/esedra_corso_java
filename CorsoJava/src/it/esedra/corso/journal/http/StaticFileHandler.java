@@ -28,12 +28,11 @@ public class StaticFileHandler implements HttpHandler {
     // Could be more clever about the content type based on the filename here.
     if (name.endsWith("css")) {
         h.add("Content-Type", "text/css");
-    }
-    if (name.endsWith("js")) {
+    } else if (name.endsWith("js")) {
         h.add("Content-Type", "text/javascript");
+    } else {
+    	h.add("Content-Type", "text/html");
     }
-    h.add("Content-Type", "text/html");
-
     OutputStream out = ex.getResponseBody();
 
     if (path.exists()) {
