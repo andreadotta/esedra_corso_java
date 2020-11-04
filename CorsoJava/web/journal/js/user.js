@@ -23,19 +23,23 @@ function createUser() {
 		return true;
 	};
 	user.save = function() {
-		
+
 		var req = new XMLHttpRequest();
 		req.onload = function() {
-			console.log(this.responseText);
+			res = JSON.parse(this.responseText);
+			if (res.status === "ok") {
+				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
+			} else {
+				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
+			}
 		};
 		req.open("POST", "http://localhost:8000/" + "user");
-
 		req.send(JSON.stringify(user));
-		
-	};
+
+	}
 
 	return user;
-}
+};
 
 /**
 * Effettua il submit del form
@@ -50,7 +54,7 @@ function submitUser(event) {
 		alert("I campi nome, cognome, email, password e data di registrazione devono essere presenti")
 		return;
 	}
-	
+
 	// Effettuo save
 	user.save();
 

@@ -1,3 +1,4 @@
+
 package it.esedra.corso.journal.http.handlers;
 
 import java.io.BufferedReader;
@@ -30,22 +31,18 @@ public class UserHandler implements HttpHandler {
 		switch (t.getRequestMethod()) {
 		case "GET": {
 			this.handleGetRequest(t);
-			response(t);
 		}
 		case "POST": {
 			this.handlePostRequest(t);
-			response(t);
 		}
 		case "PUT": {
 			this.handlePutRequest(t);
-			response(t);
 		}
 		case "DELETE": {
 			this.handleDeleteRequest(t);
-			response(t);
 		}
 		default:
-			responseFail(t);
+			HandlerHelper.responseFail(t, "Invalid HTTP Method.");
 		}
 
 	}
@@ -97,10 +94,12 @@ public class UserHandler implements HttpHandler {
 			userDao.setConnection(connection);
 			
 			user = userDao.update();
+			
+			HandlerHelper.response(httpExchange, HandlerHelper.ok().toString());
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			HandlerHelper.responseFail(httpExchange, HandlerHelper.ko(e.getMessage()).toString());
 		}
 
 	}
