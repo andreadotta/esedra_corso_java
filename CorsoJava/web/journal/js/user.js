@@ -24,25 +24,13 @@ function createUser() {
 	};
 	user.save = function() {
 		
-		let formData = new FormData();
-		
-		formData.append("name", user.name);
-		formData.append("surname", user.surname);
-		formData.append("email", user.email);
-		formData.append("password", user.password);
-		formData.append("registration", user.registration);
-		
 		var req = new XMLHttpRequest();
 		req.onload = function() {
 			console.log(this.responseText);
 		};
 		req.open("POST", "http://localhost:8000/" + "user");
-		/*req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-		req.setRequestHeader('Access-Control-Allow-Headers', '*');
-		req.setRequestHeader('Access-Control-Allow-Origin', '*');*/
-		//req.withCredentials = true;
 
-		req.send(formData);
+		req.send(JSON.stringify(user));
 		
 	};
 

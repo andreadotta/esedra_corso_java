@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.sql.Connection;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -14,6 +15,13 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.Journal;
+import it.esedra.corso.journal.JournalBuilder;
+import it.esedra.corso.journal.User;
+import it.esedra.corso.journal.UserBuilder;
+import it.esedra.corso.journal.dao.JournalDao;
+import it.esedra.corso.journal.dao.UserDao;
+import it.esedra.corso.journal.db.JournalDbConnect;
 
 public class UserHandler implements HttpHandler {
 	@Override
@@ -76,10 +84,19 @@ public class UserHandler implements HttpHandler {
 			String query = br.readLine();
 
 			JsonReader reader = Json.createReader(new StringReader(query));
-			JsonObject journalObject = reader.readObject();
+			JsonObject userObject = reader.readObject();
 			reader.close();
 
-			PrintHelper.out(journalObject.getString("name"));
+			Connection connection = JournalDbConnect.connect();
+			User user = new UserBuilder().setName(userObject.getString("name"))
+					.setSurname(userObject.getString("surname")).setEmail(userObject.getString("email"))
+					.setPassword(userObject.getString("password")).setRegistration(userObject.getString("registration"))
+					.build();
+			
+			UserDao userDao = new UserDao(user);
+			userDao.setConnection(connection);
+			
+			user = userDao.update();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
