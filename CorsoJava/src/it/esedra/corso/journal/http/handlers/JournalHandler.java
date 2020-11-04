@@ -3,7 +3,6 @@ package it.esedra.corso.journal.http.handlers;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.StringReader;
 import java.sql.Connection;
 
@@ -26,43 +25,20 @@ public class JournalHandler implements HttpHandler {
 		switch (t.getRequestMethod()) {
 		case "GET": {
 			this.handleGetRequest(t);
-			response(t);
 		}
 		case "POST": {
 			this.handlePostRequest(t);
-			response(t);
 		}
 		case "PUT": {
 			this.handlePutRequest(t);
-			response(t);
 		}
 		case "DELETE": {
 			this.handleDeleteRequest(t);
-			response(t);
 		}
 		default:
-			responseFail(t);
+			HandlerHelper.responseFail(t, "Invalid HTTP method");
 		}
 
-	}
-
-	private void responseFail(HttpExchange t) throws IOException {
-		String response = "Internal Error";
-		t.sendResponseHeaders(500, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
-	}
-
-	private void response(HttpExchange t) throws IOException {
-		String response = "";
-		t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-		t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
-		t.getResponseHeaders().add("Content-type", "plain/text");
-		t.sendResponseHeaders(200, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
 	}
 
 	private void handleGetRequest(HttpExchange httpExchange) {
@@ -88,9 +64,11 @@ public class JournalHandler implements HttpHandler {
 
 			journal = journalDao.update();
 
+			HandlerHelper.response(httpExchange, HandlerHelper.ok().toString());
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			HandlerHelper.responseFail(httpExchange, HandlerHelper.ko(e.getMessage()).toString());
 		}
 
 	}

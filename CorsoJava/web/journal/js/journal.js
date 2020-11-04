@@ -22,7 +22,12 @@ function createJournal() {
 
 		var req = new XMLHttpRequest();
 		req.onload = function() {
-			console.log(this.responseText);
+			res = JSON.parse(this.responseText);
+			if (res.status === "ok") {
+				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
+			} else {
+				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
+			}
 		};
 		req.open("POST", "http://localhost:8000/" + "journal");
 
