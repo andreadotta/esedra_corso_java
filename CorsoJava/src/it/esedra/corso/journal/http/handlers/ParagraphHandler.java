@@ -30,43 +30,24 @@ public class ParagraphHandler implements HttpHandler {
 		switch (t.getRequestMethod()) {
 		case "GET": {
 			this.handleGetRequest(t);
-			response(t);
+
 		}
 		case "POST": {
 			this.handlePostRequest(t);
-			response(t);
+
 		}
 		case "PUT": {
 			this.handlePutRequest(t);
-			response(t);
+
 		}
 		case "DELETE": {
 			this.handleDeleteRequest(t);
-			response(t);
+
 		}
 		default:
-			responseFail(t);
+			HandlerHelper.responseFail(t, "Invalid HTTP method");
 		}
 
-	}
-
-	private void responseFail(HttpExchange t) throws IOException {
-		String response = "Internal Error";
-		t.sendResponseHeaders(500, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
-	}
-
-	private void response(HttpExchange t) throws IOException {
-		String response = "";
-		t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-		t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
-		t.getResponseHeaders().add("Content-type", "plain/text");
-		t.sendResponseHeaders(200, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
 	}
 
 	private void handleGetRequest(HttpExchange httpExchange) {
@@ -86,7 +67,7 @@ public class ParagraphHandler implements HttpHandler {
 			JsonReader reader = Json.createReader(new StringReader(query));
 			JsonObject paragraphObject = reader.readObject();
 			reader.close();
-        
+
 			Connection connection = JournalDbConnect.connect();
 			Paragraph paragraph = new ParagraphBuilder().setText(paragraphObject.getString("text")).build();
 			ParagraphDao paragraphDao = new ParagraphDao(paragraph);
@@ -94,10 +75,12 @@ public class ParagraphHandler implements HttpHandler {
 
 			paragraph = paragraphDao.update();
 			
+			HandlerHelper.response(httpExchange, HandlerHelper.ok().toString());
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+			HandlerHelper.responseFail(httpExchange, HandlerHelper.ko(e.getMessage()).toString());	
 		}
 
 	}

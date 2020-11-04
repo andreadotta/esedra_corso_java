@@ -30,7 +30,7 @@ function createChapter() {
 		req.setRequestHeader('Access-Control-Allow-Origin', '*');*/
 		//req.withCredentials = true;
 
-		req.send(JSON.stringify(journal));
+		req.send(JSON.stringify(chapter));
 
 	};
 
