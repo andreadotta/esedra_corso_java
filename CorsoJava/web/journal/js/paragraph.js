@@ -42,6 +42,6 @@ function submitParagraph(event) {
 	}
 
 	// proseguo
-	paragraph.save;
+	paragraph.save();
 
 }
