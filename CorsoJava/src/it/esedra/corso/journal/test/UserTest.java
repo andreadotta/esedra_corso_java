@@ -26,8 +26,6 @@ import it.esedra.corso.journal.execeptions.DaoException;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserTest {
 
-	// Parametri database
-	public static final String DBPATH = System.getProperty("user.dir") + "/sqlite/db/journal.db";
 	// Dichiarazione delle costanti di classe per il test case
 	public static int ID = 1;
 	public static final String NAME = "Claudio";
