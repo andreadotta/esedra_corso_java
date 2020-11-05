@@ -3,7 +3,6 @@ package it.esedra.corso.journal.http.handlers;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.StringReader;
 import java.sql.Connection;
 
@@ -14,15 +13,10 @@ import javax.json.JsonReader;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
-import it.esedra.corso.journal.Journal;
-import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.dao.ChapterDao;
-import it.esedra.corso.journal.dao.JournalDao;
 import it.esedra.corso.journal.db.JournalDbConnect;
-
 
 public class ChapterHandler implements HttpHandler {
 	@Override
@@ -31,43 +25,24 @@ public class ChapterHandler implements HttpHandler {
 		switch (t.getRequestMethod()) {
 		case "GET": {
 			this.handleGetRequest(t);
-			response(t);
+
 		}
 		case "POST": {
 			this.handlePostRequest(t);
-			response(t);
+
 		}
 		case "PUT": {
 			this.handlePutRequest(t);
-			response(t);
+
 		}
 		case "DELETE": {
 			this.handleDeleteRequest(t);
-			response(t);
+
 		}
 		default:
-			responseFail(t);
+			HandlerHelper.responseFail(t, "Invalid HTTP method");
 		}
 
-	}
-
-	private void responseFail(HttpExchange t) throws IOException {
-		String response = "Internal Error";
-		t.sendResponseHeaders(500, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
-	}
-
-	private void response(HttpExchange t) throws IOException {
-		String response = "";
-		t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-		t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
-		t.getResponseHeaders().add("Content-type", "plain/text");
-		t.sendResponseHeaders(200, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
 	}
 
 	private void handleGetRequest(HttpExchange httpExchange) {
@@ -89,15 +64,18 @@ public class ChapterHandler implements HttpHandler {
 			reader.close();
 
 			Connection connection = JournalDbConnect.connect();
-			Chapter chapter = new ChapterBuilder().setDate(chapterObject.getString("date")).setTitle(chapterObject.getString("title")).build();
+			Chapter chapter = new ChapterBuilder().setDate(chapterObject.getString("date"))
+					.setTitle(chapterObject.getString("title")).build();
 			ChapterDao chapterDao = new ChapterDao(chapter);
 			chapterDao.setConnection(connection);
 
 			chapter = chapterDao.update();
 
+			HandlerHelper.response(httpExchange, HandlerHelper.ok().toString());
+
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			HandlerHelper.responseFail(httpExchange, HandlerHelper.ko(e.getMessage()).toString());
 		}
 
 	}

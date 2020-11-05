@@ -11,6 +11,7 @@ function createChapter() {
 	const chapter = {};
 	chapter.title = formChapter["title"].value;
 	chapter.date = formChapter["date"].value;
+	
 	chapter.isValid = function() {
 		if (chapter.title == '' || chapter.date == '') {
 			return false;
@@ -22,16 +23,16 @@ function createChapter() {
 
 		var req = new XMLHttpRequest();
 		req.onload = function() {
-			console.log(this.responseText);
+		res = JSON.parse(this.responseText);
+			if (res.status === "ok") {
+				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
+			} else {
+				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
+			}
 		};
 		req.open("POST", "http://localhost:8000/" + "chapter");
-		/*req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-		req.setRequestHeader('Access-Control-Allow-Headers', '*');
-		req.setRequestHeader('Access-Control-Allow-Origin', '*');*/
-		//req.withCredentials = true;
-
-		req.send(JSON.stringify(chapter));
-
+		
+	 	req.send(JSON.stringify(chapter));
 	};
 
 	return chapter;
