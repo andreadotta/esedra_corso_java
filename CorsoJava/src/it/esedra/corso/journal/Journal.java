@@ -5,6 +5,9 @@ import java.io.IOException;
 
 import java.util.Properties;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+
 /**
  * Classe base dell'applicazione
  * 
@@ -47,5 +50,11 @@ public class Journal {
 		return config;
 
 	}
+	
+	public JsonObject toJson() {
+		return Json.createObjectBuilder().add("id", this.id).add("name", this.name).build();
+	}
+	
+	
 
 }

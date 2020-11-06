@@ -9,8 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
 function createJournal() {
 	let formJournal = document.getElementById("journal-form").elements;
 	const journal = {};
+	journal.id = formJournal["id"].value;
 	journal.name = formJournal["name"].value;
-
+	
 	journal.isValid = function() {
 		if (journal.name == '') {
 			return false;
@@ -25,6 +26,7 @@ function createJournal() {
 			res = JSON.parse(this.responseText);
 			if (res.status === "ok") {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
+				formJournal["id"].value = res.data.id;
 			} else {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
 			}

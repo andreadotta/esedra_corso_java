@@ -8,7 +8,7 @@ import javax.json.JsonObject;
 
 import com.sun.net.httpserver.HttpExchange;
 
-public class HandlerHelper {
+public class ResponseHelper {
 	/**
 	 * Gestisce la Response in errore
 	 * 
@@ -40,12 +40,6 @@ public class HandlerHelper {
 		os.close();
 	}
 
-	protected static JsonObject ok() {
-		return Json.createObjectBuilder().add("status", "ok").add("message", "").add("data", "").build();
-	}
-
-	protected static JsonObject ko(String message) {
-		return Json.createObjectBuilder().add("status", "ko").add("message", message).add("data", "").build();
-	}
+	
 
 }
