@@ -22,74 +22,50 @@ import it.esedra.corso.journal.ParagraphBuilder;
 import it.esedra.corso.journal.dao.JournalDao;
 import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.HandleRequestException;
+import it.esedra.corso.journal.service.JournalService;
+import it.esedra.corso.journal.service.ParagraphService;
 
-public class ParagraphHandler implements HttpHandler {
-	@Override
-	public void handle(HttpExchange t) throws IOException {
-
-		switch (t.getRequestMethod()) {
-		case "GET": {
-			this.handleGetRequest(t);
-
-		}
-		case "POST": {
-			this.handlePostRequest(t);
-
-		}
-		case "PUT": {
-			this.handlePutRequest(t);
-
-		}
-		case "DELETE": {
-			this.handleDeleteRequest(t);
-
-		}
-		default:
-			HandlerHelper.responseFail(t, "Invalid HTTP method");
-		}
+public class ParagraphHandler extends Handler {
+	
+	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 
 	}
 
-	private void handleGetRequest(HttpExchange httpExchange) {
-		// String queryString =
-		// httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
-	}
+	public JsonObject handlePostRequest(HttpExchange httpExchange) throws HandleRequestException {
 
-	private void handlePostRequest(HttpExchange httpExchange) throws IOException {
-		// return
-		// httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];Print
-
+		Paragraph paragraph = null;
+		
 		try {
 			InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "utf-8");
 			BufferedReader br = new BufferedReader(isr);
 			String query = br.readLine();
 
 			JsonReader reader = Json.createReader(new StringReader(query));
-			JsonObject paragraphObject = reader.readObject();
+			JsonObject journalObject = reader.readObject();
 			reader.close();
-
-			Connection connection = JournalDbConnect.connect();
-			Paragraph paragraph = new ParagraphBuilder().setText(paragraphObject.getString("text")).build();
-			ParagraphDao paragraphDao = new ParagraphDao(paragraph);
-			paragraphDao.setConnection(connection);
-
-			paragraph = paragraphDao.update();
 			
-			HandlerHelper.response(httpExchange, HandlerHelper.ok().toString());
+			paragraph = ParagraphService.update(journalObject);
 
 		} catch (Exception e) {
-			
-			e.printStackTrace();
-			HandlerHelper.responseFail(httpExchange, HandlerHelper.ko(e.getMessage()).toString());	
+			throw new HandleRequestException(e.getMessage(), e);
 		}
+		
+		if(paragraph == null) {
+			throw new HandleRequestException("Insert Error.");
+		} else {
+			return JsonHelper.ok(paragraph.toJson());
+		}
+		
 
 	}
 
-	private void handlePutRequest(HttpExchange httpExchange) {
-		// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+	public JsonObject handlePutRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
 
-	private void handleDeleteRequest(HttpExchange httpExchange) {
-		// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+	public JsonObject handleDeleteRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
 }

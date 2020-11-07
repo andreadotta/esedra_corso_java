@@ -7,24 +7,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script charset="utf-8" src="/js/app.js"></script>
 <script charset="utf-8" src="/js/paragraph.js"></script>
-<link rel="stylesheet" href="css/app.css" />
+<link rel="stylesheet" href="/css/app.css" />
 </head>
 <body>
 	<h1>paragraph</h1>
 
-	<form action="http://localhost/paragraph/" method="post" id="paragraph-form">
+	<form id="paragraph-form" action="http://localhost:8000/paragraph/" method="post"> 
 
 		<div class="table">
+		<div class="row">
+		<div class="col-label">
+         <label for="id"> ID</label>
+		</div>
+		
+		<input class="input-text" name="id" value=""/>
+		</div>
+		</div>
+		<div class="row">
 			<div class="col-label"></div>
 
-			<label for="text"> il mio primo paragraph</label>
+			<label for="text">  paragraph</label>
 		</div>
-		<div>
+		<div >
 			<textarea required id="text" name="text"></textarea>
 		</div>
 
-       <div class= "row">
-		<button type="submit" id="submit-paragraph">Salva</button>
+       <div >
+		<button  id="submit-paragraph"  type="submit">Salva</button>
 	     </div>
 	     
 	     <div id="xhr-message"></div>

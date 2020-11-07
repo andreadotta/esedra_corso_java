@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function createParagraph() {
 	let formParagraph = document.getElementById("paragraph-form").elements;
 	const paragraph = {};
+	paragraph.id = formParagraph["id"].value;
 	paragraph.text = formParagraph["text"].value;
 
 	paragraph.isValid = function() {
@@ -24,6 +25,7 @@ function createParagraph() {
 			res = JSON.parse(this.responseText);
 			if (res.status === "ok") {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
+				formParagraph["id"].value = res.data.id;
 			} else {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
 			}
@@ -31,7 +33,7 @@ function createParagraph() {
 		};
 		req.open("POST", "http://localhost:8000/" + "paragraph");
 		req.send(JSON.stringify(paragraph));
-	}
+	};
 
 	return paragraph;
 };

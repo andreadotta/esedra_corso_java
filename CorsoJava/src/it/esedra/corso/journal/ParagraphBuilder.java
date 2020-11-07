@@ -1,14 +1,14 @@
 package it.esedra.corso.journal;
 
 public class ParagraphBuilder {
-	private Integer id;
+	private int id;
 	private String text;
 
 	public ParagraphBuilder() {
 
 	}
 
-	public ParagraphBuilder(Integer id, String text) {
+	public ParagraphBuilder(int id, String text) {
 		super();
 		this.id = id;
 		this.text = text;
@@ -24,7 +24,7 @@ public class ParagraphBuilder {
 		return id;
 	}
 
-	public ParagraphBuilder setId(Integer id) {
+	public ParagraphBuilder setId(int id) {
 		this.id = id;
 		return this;
 	}

@@ -40,6 +40,7 @@ public class ParagraphTest {
 
 			ParagraphDao paragraphDao = new ParagraphDao(paragraph);
 			paragraphDao.setConnection(connection);
+			
 			paragraph = paragraphDao.update();
 			assertTrue(paragraph != null);
 
