@@ -2,11 +2,11 @@ package it.esedra.corso.journal;
 
 public class ChapterBuilder {
 
-	private Integer id;
+	private int id;
 	private String title;
 	private String date;
 
-	public ChapterBuilder(Integer id, String title, String date) {
+	public ChapterBuilder(int id, String title, String date) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -21,11 +21,11 @@ public class ChapterBuilder {
 		return new Chapter(id, title, date);
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public ChapterBuilder setId(Integer id) {
+	public ChapterBuilder setId(int id) {
 		this.id = id;
 		return this;
 	}

@@ -24,6 +24,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 
 	@Override
 	public Chapter update() throws DaoException {
+		
 		if (chapter == null) {
 			PrintHelper.out("chapter non può essere null.");
 			return null;
@@ -38,13 +39,11 @@ public class ChapterDao implements DaoInterface<Chapter> {
 				stm.setString(1, chapter.getTitle());
 				stm.setString(2, chapter.getDate());
 				stm.setInt(3, chapter.getId());
-				if (stm.executeUpdate() > 0) {
-					copy = new ChapterBuilder().setId(chapter.getId()).setDate(chapter.getDate())
-							.setTitle(chapter.getTitle()).build();
-				}
 				
+				if (stm.executeUpdate() > 0) {
+					
 				stm.close();
-						
+				} 		
 			} else {
 				String sql = "INSERT INTO chapter ( title, date ) VALUES (?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);

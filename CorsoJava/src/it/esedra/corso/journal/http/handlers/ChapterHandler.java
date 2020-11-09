@@ -15,45 +15,22 @@ import com.sun.net.httpserver.HttpHandler;
 
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
+import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.HandleRequestException;
+import it.esedra.corso.journal.service.JournalService;
 
-public class ChapterHandler implements HttpHandler {
-	@Override
-	public void handle(HttpExchange t) throws IOException {
+public class ChapterHandler extends Handler {
 
-		switch (t.getRequestMethod()) {
-		case "GET": {
-			this.handleGetRequest(t);
-
-		}
-		case "POST": {
-			this.handlePostRequest(t);
-
-		}
-		case "PUT": {
-			this.handlePutRequest(t);
-
-		}
-		case "DELETE": {
-			this.handleDeleteRequest(t);
-
-		}
-		default:
-			HandlerHelper.responseFail(t, "Invalid HTTP method");
-		}
-
+	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
 
-	private void handleGetRequest(HttpExchange httpExchange) {
-		// String queryString =
-		// httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
-	}
+	public JsonObject handlePostRequest(HttpExchange httpExchange) throws HandleRequestException {
 
-	private void handlePostRequest(HttpExchange httpExchange) throws IOException {
-		// return
-		// httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];Print
-
+		Chapter chapter = null;
+		
 		try {
 			InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "utf-8");
 			BufferedReader br = new BufferedReader(isr);
@@ -62,29 +39,27 @@ public class ChapterHandler implements HttpHandler {
 			JsonReader reader = Json.createReader(new StringReader(query));
 			JsonObject chapterObject = reader.readObject();
 			reader.close();
-
-			Connection connection = JournalDbConnect.connect();
-			Chapter chapter = new ChapterBuilder().setDate(chapterObject.getString("date"))
-					.setTitle(chapterObject.getString("title")).build();
-			ChapterDao chapterDao = new ChapterDao(chapter);
-			chapterDao.setConnection(connection);
-
-			chapter = chapterDao.update();
-
-			HandlerHelper.response(httpExchange, HandlerHelper.ok().toString());
+			
+			chapter = ChaptereService.update(chapterObject);
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			HandlerHelper.responseFail(httpExchange, HandlerHelper.ko(e.getMessage()).toString());
+			throw new HandleRequestException(e.getMessage(), e);
 		}
+		
+		if(chapter == null) {
+			throw new HandleRequestException("Insert Error.");
+		} else {
+			return JsonHelper.ok(chapter.toJson());
+		}
+		
 
 	}
 
-	private void handlePutRequest(HttpExchange httpExchange) {
-		// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+	public JsonObject handlePutRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
 
-	private void handleDeleteRequest(HttpExchange httpExchange) {
-		// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+	public JsonObject handleDeleteRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
 }

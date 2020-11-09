@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function createChapter() {
 	let formChapter = document.getElementById("chapter-form").elements;
 	const chapter = {};
+	chapter.id = formChapter["id"].value;
 	chapter.title = formChapter["title"].value;
 	chapter.date = formChapter["date"].value;
 	
@@ -26,6 +27,7 @@ function createChapter() {
 		res = JSON.parse(this.responseText);
 			if (res.status === "ok") {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
+						formChapter["id"].value = res.data.id;
 			} else {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
 			}
@@ -39,6 +41,7 @@ function createChapter() {
 }
 
 function submitChapter(event) {
+ // Impedisco il submit del form
 	event.preventDefault();
 	let chapter = createChapter();
 	if (!chapter.isValid()) {
