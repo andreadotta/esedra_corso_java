@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function createUser() {
 	let formUser = document.getElementById("user-form").elements;
 	const user = {};
+	user.id = parseInt(formUser["id"].value);
 	user.name = formUser["name"].value;
 	user.surname = formUser["surname"].value;
 	user.email = formUser["email"].value;
