@@ -23,58 +23,19 @@ import it.esedra.corso.journal.UserBuilder;
 import it.esedra.corso.journal.dao.JournalDao;
 import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.HandleRequestException;
+import it.esedra.corso.journal.service.UserService;
 
-public class UserHandler implements HttpHandler {
-	@Override
-	public void handle(HttpExchange t) throws IOException {
-
-		switch (t.getRequestMethod()) {
-		case "GET": {
-			this.handleGetRequest(t);
-		}
-		case "POST": {
-			this.handlePostRequest(t);
-		}
-		case "PUT": {
-			this.handlePutRequest(t);
-		}
-		case "DELETE": {
-			this.handleDeleteRequest(t);
-		}
-		default:
-			HandlerHelper.responseFail(t, "Invalid HTTP Method.");
-		}
-
+public class UserHandler extends Handler {
+	
+	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
 
-	private void responseFail(HttpExchange t) throws IOException {
-		String response = "Internal Error";
-		t.sendResponseHeaders(500, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
-	}
+	public JsonObject handlePostRequest(HttpExchange httpExchange) throws HandleRequestException {
 
-	private void response(HttpExchange t) throws IOException {
-		String response = "";
-		t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-		t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
-		t.getResponseHeaders().add("Content-type", "plain/text");
-		t.sendResponseHeaders(200, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
-	}
-
-	private void handleGetRequest(HttpExchange httpExchange) {
-		// String queryString =
-		// httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
-	}
-
-	private void handlePostRequest(HttpExchange httpExchange) throws IOException {
-		// return
-		// httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];Print
-
+		User user = null;
+		
 		try {
 			InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "utf-8");
 			BufferedReader br = new BufferedReader(isr);
@@ -84,31 +45,26 @@ public class UserHandler implements HttpHandler {
 			JsonObject userObject = reader.readObject();
 			reader.close();
 
-			Connection connection = JournalDbConnect.connect();
-			User user = new UserBuilder().setName(userObject.getString("name"))
-					.setSurname(userObject.getString("surname")).setEmail(userObject.getString("email"))
-					.setPassword(userObject.getString("password")).setRegistration(userObject.getString("registration"))
-					.build();
-			
-			UserDao userDao = new UserDao(user);
-			userDao.setConnection(connection);
-			
-			user = userDao.update();
-			
-			HandlerHelper.response(httpExchange, HandlerHelper.ok().toString());
+			user = UserService.update(userObject);
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			HandlerHelper.responseFail(httpExchange, HandlerHelper.ko(e.getMessage()).toString());
+			throw new HandleRequestException(e.getMessage(), e);
+		}
+		
+		if(user == null) {
+			throw new HandleRequestException("Insert Error.");
+		} else {
+			return JsonHelper.ok(user.toJson());
 		}
 
 	}
 
-	private void handlePutRequest(HttpExchange httpExchange) {
-		// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+	public JsonObject handlePutRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
 
-	private void handleDeleteRequest(HttpExchange httpExchange) {
-		// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+	public JsonObject handleDeleteRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
+	
 }

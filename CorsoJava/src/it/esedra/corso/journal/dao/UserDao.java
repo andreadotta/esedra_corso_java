@@ -61,7 +61,7 @@ public class UserDao implements DaoInterface<User> {
 			// Crea il result set al quale passa la query
 			ResultSet rs = stm.executeQuery("SELECT * FROM user");
 
-			// Ottiene il result set. . .
+			// Ottiene il result set
 			while (rs.next()) {
 				// . . .e quindi per ogni tupla crea un oggetto di tipo User
 				User user = new UserBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
@@ -74,7 +74,7 @@ public class UserDao implements DaoInterface<User> {
 			// Chiude le connessioni e il result set
 			rs.close();
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante GetAll User", e);
+			throw new DaoException("Errore durante getAll User", e);
 		}
 		// Restituisce la lista
 		return users;

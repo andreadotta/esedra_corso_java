@@ -48,7 +48,7 @@ public class JournalDao implements DaoInterface<Journal> {
 			// chiude le connessioni e il result set
 			rs.close();
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante Delete Journal", e);
+			throw new DaoException("Errore durante getAll Journal", e);
 		}
 		// restituisce la lista
 		return journals;
@@ -95,7 +95,7 @@ public class JournalDao implements DaoInterface<Journal> {
 			}
 
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante Delete Journal", e);
+			throw new DaoException("Errore durante Update Journal", e);
 		}
 
 		return copy;
@@ -127,7 +127,7 @@ public class JournalDao implements DaoInterface<Journal> {
 			// chiude le connessioni e il result set
 			rs.close();
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante Delete Journal", e);
+			throw new DaoException("Errore durante Get Journal", e);
 		}
 		// restituisce l'oggetto
 		return journal;

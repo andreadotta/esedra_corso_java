@@ -1,5 +1,8 @@
 package it.esedra.corso.journal;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+
 /**
  * Questa classe rappresenta l'utente che fa login e avrà i campi: id, name,
  * surname, email, password, registration
@@ -49,6 +52,11 @@ public class User {
 
 	public String getRegistration() {
 		return registration;
+	}
+
+	public JsonObject toJson() {
+		return Json.createObjectBuilder().add("id", this.id).add("name", this.name).add("surname", this.surname)
+				.add("email", this.email).add("password", this.password).add("registration", this.registration).build();
 	}
 
 }
