@@ -7,7 +7,7 @@ package it.esedra.corso.journal;
  *
  */
 abstract class MultimediaResource {
-	private final String name; // noma dell'immagine
+	private final String name; // nome dell'immagine
 	private final String src; // source path assoluto
 	private final int id; // source path assoluto
 

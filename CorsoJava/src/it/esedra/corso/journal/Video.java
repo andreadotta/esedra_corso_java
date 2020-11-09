@@ -1,5 +1,8 @@
 package it.esedra.corso.journal;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+
 /**
  * Questa classe è un video presente nel capitolo
  * 
@@ -17,6 +20,15 @@ public class Video extends MultimediaResource {
 
 	public String getTitle() {
 		return title;
+	}
+	
+	public JsonObject toJson() {
+		
+		return Json.createObjectBuilder()
+				.add("id", super.getId())
+				.add("src", super.getSrc())
+				.add("name", super.getName())
+				.add("title", this.title).build();
 	}
 
 }

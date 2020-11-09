@@ -19,24 +19,18 @@ function createVideo() {
 		return true;
 	};
 	video.save = function() {
-		
-		let formData = new FormData();
-		
-		formData.append("src", video.src);
-		formData.append("name", video.name);
-		formData.append("title", video.title);
 
 		var req = new XMLHttpRequest();
 		req.onload = function() {
-			console.log(this.responseText);
+			res = JSON.parse(this.responseText);
+			if (res.status === "ok") {
+				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
+			} else {
+				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
+			}
 		};
 		req.open("POST", "http://localhost:8000/" + "video");
-		/*req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-		req.setRequestHeader('Access-Control-Allow-Headers', '*');
-		req.setRequestHeader('Access-Control-Allow-Origin', '*');*/
-		//req.withCredentials = true;
-
-		req.send(formData);
+		req.send(JSON.stringify(video));
 
 	};
 	return video;

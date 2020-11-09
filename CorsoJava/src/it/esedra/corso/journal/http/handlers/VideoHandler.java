@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.sql.Connection;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -14,85 +15,51 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.Video;
+import it.esedra.corso.journal.VideoBuilder;
+import it.esedra.corso.journal.dao.VideoDao;
+import it.esedra.corso.journal.db.JournalDbConnect;
+import it.esedra.corso.journal.execeptions.HandleRequestException;
+import it.esedra.corso.journal.service.VideoService;
 
-public class VideoHandler implements HttpHandler {
-	@Override
-	public void handle(HttpExchange t) throws IOException {
-
-		switch (t.getRequestMethod()) {
-		case "GET": {
-			this.handleGetRequest(t);
-			response(t);
-		}
-		case "POST": {
-			this.handlePostRequest(t);
-			response(t);
-		}
-		case "PUT": {
-			this.handlePutRequest(t);
-			response(t);
-		}
-		case "DELETE": {
-			this.handleDeleteRequest(t);
-			response(t);
-		}
-		default:
-			responseFail(t);
-		}
-
+public class VideoHandler extends Handler {
+	
+	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
 
-	private void responseFail(HttpExchange t) throws IOException {
-		String response = "Internal Error";
-		t.sendResponseHeaders(500, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
-	}
+	public JsonObject handlePostRequest(HttpExchange httpExchange) throws HandleRequestException {
 
-	private void response(HttpExchange t) throws IOException {
-		String response = "";
-		t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-		t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
-		t.getResponseHeaders().add("Content-type", "plain/text");
-		t.sendResponseHeaders(200, response.length());
-		OutputStream os = t.getResponseBody();
-		os.write(response.getBytes());
-		os.close();
-	}
-
-	private void handleGetRequest(HttpExchange httpExchange) {
-		// String queryString =
-		// httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
-	}
-
-	private void handlePostRequest(HttpExchange httpExchange) throws IOException {
-		// return
-		// httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];Print
-
+		Video video = null;
+		
 		try {
 			InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), "utf-8");
 			BufferedReader br = new BufferedReader(isr);
 			String query = br.readLine();
 
 			JsonReader reader = Json.createReader(new StringReader(query));
-			JsonObject journalObject = reader.readObject();
+			JsonObject videoObject = reader.readObject();
 			reader.close();
 
-			PrintHelper.out(journalObject.getString("name"));
+			video = VideoService.update(videoObject);
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new HandleRequestException(e.getMessage(), e);
+		}
+		
+		if(video == null) {
+			throw new HandleRequestException("Insert Error.");
+		} else {
+			return JsonHelper.ok(video.toJson());
 		}
 
 	}
 
-	private void handlePutRequest(HttpExchange httpExchange) {
-		// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+	public JsonObject handlePutRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
 
-	private void handleDeleteRequest(HttpExchange httpExchange) {
-		// return httpExchange.getRequestURI().toString().split("\\?")[1].split("=")[1];
+	public JsonObject handleDeleteRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
 	}
 }
