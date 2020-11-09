@@ -19,6 +19,7 @@ function createParagraph() {
 		return true;
 	}
 	paragraph.save = function() {
+		
 
 		var req = new XMLHttpRequest();
 		req.onload = function() {
