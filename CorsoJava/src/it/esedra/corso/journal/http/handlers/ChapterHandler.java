@@ -19,6 +19,7 @@ import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.db.JournalDbConnect;
 import it.esedra.corso.journal.execeptions.HandleRequestException;
+import it.esedra.corso.journal.service.ChapterService;
 import it.esedra.corso.journal.service.JournalService;
 
 public class ChapterHandler extends Handler {
@@ -40,7 +41,7 @@ public class ChapterHandler extends Handler {
 			JsonObject chapterObject = reader.readObject();
 			reader.close();
 			
-			chapter = ChaptereService.update(chapterObject);
+			chapter = ChapterService.update(chapterObject);
 
 		} catch (Exception e) {
 			throw new HandleRequestException(e.getMessage(), e);

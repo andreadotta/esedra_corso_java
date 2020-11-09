@@ -19,7 +19,7 @@ public class ChapterService {
 		Chapter chapter = new ChapterBuilder().setId(json.getInt("id", -1)).setTitle(json.getString("title")).setDate(json.getString("date")).build();
 		ChapterDao chapterDao = new ChapterDao(chapter);
 		chapterDao.setConnection(connection);
-
+		
 		return chapterDao.update();
 	}
 
