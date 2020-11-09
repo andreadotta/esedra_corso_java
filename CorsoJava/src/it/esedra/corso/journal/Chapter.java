@@ -1,6 +1,12 @@
 package it.esedra.corso.journal;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Date;
+import java.util.Properties;
+
+import javax.json.Json;
+import javax.json.JsonObject;
 
 /**
  * Questa classe è un capitol del diario
@@ -9,11 +15,11 @@ import java.util.Date;
  * 
  */
 public class Chapter {
-	private final Integer id;
-	private final String title;
-	private final String date;
+	private int id;
+	private  String title;
+	private  String date;
 
-	public Chapter(Integer id, String title, String date) {
+	public Chapter(int id, String title, String date) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -21,7 +27,7 @@ public class Chapter {
 
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -31,6 +37,21 @@ public class Chapter {
 
 	public String getDate() {
 		return date;
+	}
+	public static Config loadProperties() throws IOException {
+
+		Properties prop = new Properties();
+		prop.load(new FileInputStream("config.properties"));
+
+		Config config = new Config();
+		config.setDbpath(prop.getProperty("dbpath"));
+
+		return config;
+
+	}
+	
+	public JsonObject toJson() {
+		return Json.createObjectBuilder().add("id", this.id).add("title", this.title).add("date",this.date).build();
 	}
 
 }
