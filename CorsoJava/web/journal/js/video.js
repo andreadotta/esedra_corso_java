@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function createVideo() {
 	let formVideo = document.getElementById("video-form").elements;
 	const video = {};
+	video.id = parseInt(formVideo["id"].value);
 	video.src = formVideo["src"].value;
 	video.name = formVideo["name"].value;
 	video.title = formVideo["title"].value;
@@ -25,6 +26,7 @@ function createVideo() {
 			res = JSON.parse(this.responseText);
 			if (res.status === "ok") {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
+				formVideo["id"].value = res.data.id;
 			} else {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
 			}
