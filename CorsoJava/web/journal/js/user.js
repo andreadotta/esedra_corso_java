@@ -30,6 +30,7 @@ function createUser() {
 			res = JSON.parse(this.responseText);
 			if (res.status === "ok") {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
+				formUser["id"].value = res.data.id;
 			} else {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
 			}
