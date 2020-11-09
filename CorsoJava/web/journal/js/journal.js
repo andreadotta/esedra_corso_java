@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function createJournal() {
 	let formJournal = document.getElementById("journal-form").elements;
 	const journal = {};
-	journal.id = formJournal["id"].value;
+	journal.id = parseInt(formJournal["id"].value);
 	journal.name = formJournal["name"].value;
 	
 	journal.isValid = function() {
