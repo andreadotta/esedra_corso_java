@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function createParagraph() {
 	let formParagraph = document.getElementById("paragraph-form").elements;
 	const paragraph = {};
-	paragraph.id = formParagraph["id"].value;
+	paragraph.id = parseInt( formParagraph["id"].value);
 	paragraph.text = formParagraph["text"].value;
 
 	paragraph.isValid = function() {
