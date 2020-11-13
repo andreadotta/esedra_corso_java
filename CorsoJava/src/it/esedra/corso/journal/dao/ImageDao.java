@@ -18,14 +18,18 @@ public class ImageDao implements DaoInterface<Image> {
 	private Image image;
 	private Connection conn;
 
+	public ImageDao() {
+
+	}
+	
 	public ImageDao(Image image) {
 		super();
 		this.image = image;
-		
+
 	}
 
 	@Override
-	public boolean delete()  throws DaoException  {
+	public boolean delete() throws DaoException {
 
 		boolean success = true;
 
@@ -37,7 +41,7 @@ public class ImageDao implements DaoInterface<Image> {
 				success = true;
 			}
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante delete Image ",e);
+			throw new DaoException("Errore durante delete Image ", e);
 		}
 
 		return success;
@@ -45,7 +49,7 @@ public class ImageDao implements DaoInterface<Image> {
 	}
 
 	@Override
-	public Collection<Image> getAll()  throws DaoException {
+	public Collection<Image> getAll() throws DaoException {
 		Collection<Image> images = new ImageCollection();
 		try {
 			Statement stm = this.conn.createStatement();
@@ -113,7 +117,7 @@ public class ImageDao implements DaoInterface<Image> {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new DaoException("Errore durante update Image ",e);
+			throw new DaoException("Errore durante update Image ", e);
 		}
 
 		return copy;
@@ -126,7 +130,7 @@ public class ImageDao implements DaoInterface<Image> {
 	}
 
 	@Override
-	public Image get()  throws DaoException {
+	public Image get() throws DaoException {
 		Image image = null;
 
 		try {
@@ -141,7 +145,7 @@ public class ImageDao implements DaoInterface<Image> {
 			}
 			rs.close();
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante get Image ",e);
+			throw new DaoException("Errore durante get Image ", e);
 		}
 		return image;
 	}
