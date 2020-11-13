@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function createAuthor() {
 	let formAuthor = document.getElementById("author-form").elements;
 	const author = {};
+	author.id = parseInt(formAuthor["id"].value);
 	author.name = formAuthor["name"].value;
 	author.email = formAuthor["email"].value;
 	/*Valida il form
@@ -19,22 +20,24 @@ function createAuthor() {
 		return true;
 	};
 	author.save = function() {
-		let formData = new FormData();
 		
-		formData.append("name", author.name);
-        formData.append("email", author.email);
-
 		var req = new XMLHttpRequest();
 		req.onload = function() {
-			console.log(this.responseText);
+			res = JSON.parse(this.responseText);
+			if (res.status === "ok") {
+				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
+				formAuthor["id"].value = res.data.id;
+			} else {
+				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
+			}
+		
 		};
+		
+		
 		req.open("POST", "http://localhost:8000/" + "author");
-		/*req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-		req.setRequestHeader('Access-Control-Allow-Headers', '*');
-		req.setRequestHeader('Access-Control-Allow-Origin', '*');*/
-		//req.withCredentials = true;
-
-		req.send(formData);
+		
+		req.send(JSON.stringify(author));
+		
 		
 	};
 
@@ -55,8 +58,7 @@ function submitAuthor(event) {
 
 	author.save();
 
-	//proseguo
-	console.log(author.name);
-	console.log(author.email);
+	
+	
 
 }
