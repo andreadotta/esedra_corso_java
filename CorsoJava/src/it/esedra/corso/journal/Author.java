@@ -1,10 +1,11 @@
 package it.esedra.corso.journal;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+
 /**
  * 
- * @author Lynda, Samuel
- * API
- * http://localhost/journal/author/11
+ * @author Lynda, Samuel API http://localhost/journal/author/11
  */
 public class Author {
 	private final Integer id;
@@ -29,6 +30,10 @@ public class Author {
 
 	public String getEmail() {
 		return email;
+	}
+
+	public JsonObject toJson() {
+		return Json.createObjectBuilder().add("id", this.id).add("name", this.name).add("email", this.email).build();
 	}
 
 }

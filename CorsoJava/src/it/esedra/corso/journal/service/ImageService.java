@@ -21,7 +21,7 @@ public class ImageService {
 
 	public static Image update(JsonObject json) throws DaoException {
 		Connection connection = JournalDbConnect.connect();
-		Image image = new ImageBuilder().setId(json.getInt("id", -1)).setName(json.getString("src"))
+		Image image = new ImageBuilder().setId(json.getInt("id", -1)).setSrc(json.getString("src"))
 				.setName(json.getString("name")).build();
 		
 		ImageDao imageDao = new ImageDao(image);

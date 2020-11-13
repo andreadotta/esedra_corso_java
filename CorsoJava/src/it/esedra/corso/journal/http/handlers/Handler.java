@@ -39,7 +39,7 @@ public abstract class Handler implements HttpHandler {
 			}
 
 		} catch (HandleRequestException e) {
-			ResponseHelper.responseFail(t, e.getMessage());
+			ResponseHelper.responseFail(t, JsonHelper.ko(e.getMessage()).toString());
 		}
 
 	}

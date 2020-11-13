@@ -48,8 +48,6 @@ function submitImage(event) {
 		alert("I campi src e nome devono essere presenti")
 		return;
 	}
-	console.log(image.src);
-	console.log(video.name);
 	image.save();
 	
 }

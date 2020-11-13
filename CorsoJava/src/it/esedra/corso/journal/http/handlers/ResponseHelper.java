@@ -17,6 +17,8 @@ public class ResponseHelper {
 	 * @throws IOException
 	 */
 	protected static void responseFail(HttpExchange t, String response) throws IOException {
+		t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+		t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
 		t.sendResponseHeaders(500, response.length());
 		OutputStream os = t.getResponseBody();
 		os.write(response.getBytes());
