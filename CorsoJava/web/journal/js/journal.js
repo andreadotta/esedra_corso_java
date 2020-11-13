@@ -11,7 +11,7 @@ function createJournal() {
 	const journal = {};
 	journal.id = parseInt(formJournal["id"].value);
 	journal.name = formJournal["name"].value;
-	
+
 	journal.isValid = function() {
 		if (journal.name == '') {
 			return false;
@@ -19,7 +19,7 @@ function createJournal() {
 		return true;
 	};
 	journal.save = function() {
-		
+
 
 		var req = new XMLHttpRequest();
 		req.onload = function() {
@@ -28,7 +28,7 @@ function createJournal() {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
 				formJournal["id"].value = res.data.id;
 			} else {
-				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
+				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";
 			}
 		};
 		req.open("POST", "http://localhost:8000/" + "journal");
@@ -59,6 +59,20 @@ function submitJournal(event) {
 	journal.save();
 
 }
+
+var getall = function getAll() {
+	var req = new XMLHttpRequest();
+	req.onload = function() {
+		res = JSON.parse(this.responseText);
+		if (res.status === "ok") {
+			console.log(res.data);
+		} else {
+			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Journals";
+		}
+	};
+	req.open("GET", "http://localhost:8000/" + "journal");
+	req.send();
+}();
 
 
 
