@@ -48,6 +48,8 @@ function submitChapter(event) {
 		alert("I campi titolo e data devono essere presenti")
 		return;
 	}
+	console.log(chapter.title);
+	console.log(chapter.date);
 	chapter.save();
 
 
