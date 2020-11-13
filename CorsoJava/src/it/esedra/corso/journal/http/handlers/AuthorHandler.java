@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.net.URI;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -13,11 +14,39 @@ import javax.json.JsonReader;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
+import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.execeptions.HandleRequestException;
 import it.esedra.corso.journal.service.AuthorService;
+import it.esedra.corso.journal.service.JournalService;
 
 public class AuthorHandler extends Handler {
+	
+	/**
+	 * Deve restituire tutti i dati presenti in tabella qualora non sia valorizzato
+	 * uno dei campi in input.
+	 * 
+	 * /journal Ottengo tutti i journal presenti /journal/{id} Ottengo un Journal
+	 * per specifico ID /journal/{name} Ottengo un Journal per specifico Name
+	 */
+	
+	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
+		try {
+			URI url = httpExchange.getRequestURI();
+			switch (url.getPath()) {
+			case "/author": {
+				Collection<Author> authors = AuthorService.getAll();
+				return null;//JsonHelper.ok(author.toJson());
+			}
+			default:
+				throw new HandleRequestException("Metodo non supportato");
+			}
+		} catch (Exception e) {
+			throw new HandleRequestException(e.getMessage(), e);
+		}
+
+	}
 	
 	public JsonObject handlePostRequest(HttpExchange httpExchange) throws HandleRequestException {
 		Author author = null;
@@ -28,10 +57,10 @@ public class AuthorHandler extends Handler {
 			String query = br.readLine();
 
 			JsonReader reader = Json.createReader(new StringReader(query));
-			JsonObject journalObject = reader.readObject();
+			JsonObject authorObject = reader.readObject();
 			reader.close();
 			
-			author = AuthorService.update(journalObject);
+			author = AuthorService.update(authorObject);
 
 		} catch (Exception e) {
 			throw new HandleRequestException(e.getMessage(), e);
@@ -43,6 +72,13 @@ public class AuthorHandler extends Handler {
 		}
 
 	}
+	public JsonObject handlePutRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
+	}
+
+	public JsonObject handleDeleteRequest(HttpExchange httpExchange) throws HandleRequestException {
+		throw new HandleRequestException("Not Implemented Yet.");
+	}
+}
 
 	
-}

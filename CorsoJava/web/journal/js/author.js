@@ -58,7 +58,18 @@ function submitAuthor(event) {
 
 	author.save();
 
-	
-	
+	}
 
-}
+var getall = function getAll() {
+	var req = new XMLHttpRequest();
+	req.onload = function() {
+		res = JSON.parse(this.responseText);
+		if (res.status === "ok") {
+			console.log(res.data);
+		} else {
+			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Authors";
+		}
+	};
+	req.open("GET", "http://localhost:8000/" + "author");
+	req.send();
+}();

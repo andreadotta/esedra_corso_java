@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.net.URI;
 import java.sql.Connection;
 
 import javax.json.Json;
@@ -14,6 +15,7 @@ import javax.json.JsonReader;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
+import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.JournalBuilder;
@@ -28,9 +30,30 @@ import it.esedra.corso.journal.service.ParagraphService;
 
 public class ParagraphHandler extends Handler {
 	
+	/**
+	 * Deve restituire tutti i dati presenti in tabella qualora non sia valorizzato
+	 * uno dei campi in input.
+	 * 
+	 * /journal Ottengo tutti i journal presenti /journal/{id} Ottengo un Journal
+	 * per specifico ID /journal/{name} Ottengo un Journal per specifico Name
+	 */
+	
+	
 	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
-		throw new HandleRequestException("Not Implemented Yet.");
-
+		
+		try {
+			URI url = httpExchange.getRequestURI();
+			switch (url.getPath()) {
+			case "/paragraph": {
+				Collection<Paragraph> paragraphs = ParagraphService.getAll();
+				return null;//JsonHelper.ok(paragraph.toJson());
+			}
+			default:
+				throw new HandleRequestException("Metodo non supportato");
+			}
+		} catch (Exception e) {
+			throw new HandleRequestException(e.getMessage(), e);
+		}
 	}
 
 	public JsonObject handlePostRequest(HttpExchange httpExchange) throws HandleRequestException {
@@ -43,10 +66,10 @@ public class ParagraphHandler extends Handler {
 			String query = br.readLine();
 
 			JsonReader reader = Json.createReader(new StringReader(query));
-			JsonObject journalObject = reader.readObject();
+			JsonObject paragraphObject = reader.readObject();
 			reader.close();
 			
-			paragraph = ParagraphService.update(journalObject);
+			paragraph = ParagraphService.update(paragraphObject);
 
 		} catch (Exception e) {
 			throw new HandleRequestException(e.getMessage(), e);
