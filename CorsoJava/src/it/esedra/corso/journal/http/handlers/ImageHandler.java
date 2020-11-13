@@ -16,6 +16,7 @@ import com.sun.net.httpserver.HttpHandler;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Image;
 import it.esedra.corso.journal.execeptions.HandleRequestException;
+import it.esedra.corso.journal.service.ImageService;
 import it.esedra.corso.journal.service.UserService;
 
 public class ImageHandler extends Handler {

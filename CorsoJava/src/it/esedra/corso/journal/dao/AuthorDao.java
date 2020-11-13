@@ -46,11 +46,11 @@ public class AuthorDao implements DaoInterface<Author> {
 				stm.setString(2, author.getEmail());
 				stm.setInt(3, author.getId());
 				if (stm.executeUpdate() > 0) {
-					copy = new AuthorBuilder().setId(author.getId()).setEmail(author.getEmail())
-							.setName(author.getName()).build();
+					
 				}
 				stm.close();
-			} else {
+			}
+			else {
 				String sql = "INSERT INTO author ( name, email) VALUES ( ?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
