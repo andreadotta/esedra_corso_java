@@ -10,6 +10,11 @@ import com.sun.net.httpserver.HttpHandler;
 import it.esedra.corso.journal.execeptions.HandleRequestException;
 
 public abstract class Handler implements HttpHandler {
+	/**
+	 * Handler invocato per gestire gli scambi HTTP
+	 * @param t
+	 * @throws IOException 
+	 */
 
 	@Override
 	public void handle(HttpExchange t) throws IOException {

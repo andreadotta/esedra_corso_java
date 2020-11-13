@@ -11,6 +11,13 @@ import it.esedra.corso.journal.db.JournalDbConnect;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class JournalService {
+	/**
+	 * Gestisce la connessione dao-db dell'oggetto Json
+	 * 
+	 * @param json
+	 * @return journalDao.update()
+	 * @throws DaoException
+	 */
 	
 	public static Journal update(JsonObject json) throws DaoException {
 		Connection connection = JournalDbConnect.connect();

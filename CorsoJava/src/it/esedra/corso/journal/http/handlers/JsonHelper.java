@@ -4,6 +4,14 @@ import javax.json.Json;
 import javax.json.JsonObject;
 
 public class JsonHelper<T> {
+	/**
+	 * Gestisce la creazione di oggetti Json
+	 * 
+	 * @param data
+	 * @param message
+	 * @return data
+	 * @return message
+	 */
 	
 	protected static JsonObject ok(JsonObject data) {
 		return Json.createObjectBuilder().add("status", "ok").add("message", "").add("data", data).build();
