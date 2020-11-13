@@ -16,7 +16,12 @@ import it.esedra.corso.journal.execeptions.DaoException;
 public class ChapterService {
 	public static Chapter update(JsonObject json) throws DaoException {
 		Connection connection = JournalDbConnect.connect();
-		Chapter chapter = new ChapterBuilder().setId(json.getInt("id", -1)).setTitle(json.getString("title")).setDate(json.getString("date")).build();
+		Chapter chapter = new ChapterBuilder()
+				.setId(json.getInt("id", -1))
+				.setTitle(json.getString("title"))
+				.setDate(json.getString("date"))
+				.build();
+		
 		ChapterDao chapterDao = new ChapterDao(chapter);
 		chapterDao.setConnection(connection);
 		

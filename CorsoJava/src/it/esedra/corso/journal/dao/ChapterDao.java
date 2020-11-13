@@ -103,8 +103,11 @@ public class ChapterDao implements DaoInterface<Chapter> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM chapter");
 
 			while (rs.next()) {
-				Chapter chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title"))
-						.setDate(rs.getString("date")).build();
+				Chapter chapter = new ChapterBuilder()
+						.setId(rs.getInt("id"))
+						.setTitle(rs.getString("title"))
+						.setDate(rs.getString("date"))
+						.build();
 
 				chapters.add(chapter);
 			}
@@ -133,8 +136,11 @@ public class ChapterDao implements DaoInterface<Chapter> {
 			ResultSet rs = stm.executeQuery("SELECT * FROM chapter WHERE id = " + this.chapter.getId());
 
 			while (rs.next()) {
-				chapter = new ChapterBuilder().setId(rs.getInt("id")).setTitle(rs.getString("title"))
-						.setDate(rs.getString("date")).build();
+				chapter = new ChapterBuilder()
+						.setId(rs.getInt("id"))
+						.setTitle(rs.getString("title"))
+						.setDate(rs.getString("date"))
+						.build();
 
 			}
 

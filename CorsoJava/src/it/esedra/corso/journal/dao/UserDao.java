@@ -152,7 +152,7 @@ public class UserDao implements DaoInterface<User> {
 		this.conn = con;
 	}
 
-	@Override 
+	@Override
 	public User get() throws DaoException {
 		// Inizializza un nuovo oggetto User
 		User user = null;
@@ -166,9 +166,14 @@ public class UserDao implements DaoInterface<User> {
 
 			while (rs.next()) {
 				// Istanzia l'elemento User
-				user = new UserBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
-						.setSurname(rs.getString("surname")).setEmail(rs.getString("email"))
-						.setPassword(rs.getString("password")).setRegistration(rs.getString("registration")).build();
+				user = new UserBuilder()
+						.setId(rs.getInt("id"))
+						.setName(rs.getString("name"))
+						.setSurname(rs.getString("surname"))
+						.setEmail(rs.getString("email"))
+						.setPassword(rs.getString("password"))
+						.setRegistration(rs.getString("registration"))
+						.build();
 
 			}
 			// Chiude le connessioni e il result set
