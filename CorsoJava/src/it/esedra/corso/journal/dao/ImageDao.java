@@ -3,6 +3,7 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
@@ -35,8 +36,8 @@ public class ImageDao implements DaoInterface<Image> {
 			if (rs > 0) {
 				success = true;
 			}
-		} catch (Exception e) {
-			throw new DaoException("Errore durante update Image ",e);
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante delete Image ",e);
 		}
 
 		return success;
@@ -58,8 +59,8 @@ public class ImageDao implements DaoInterface<Image> {
 				images.add(image);
 			}
 			rs.close();
-		} catch (Exception e) {
-			throw new DaoException("Errore durante update Image ",e);
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante getAll Image", e);
 		}
 
 		return images;
@@ -67,7 +68,7 @@ public class ImageDao implements DaoInterface<Image> {
 	}
 
 	@Override
-	public Image update()  throws DaoException {
+	public Image update() throws DaoException {
 
 		if (image == null) {
 			PrintHelper.out("image non può essere null.");
@@ -88,12 +89,8 @@ public class ImageDao implements DaoInterface<Image> {
 
 				if (stm.executeUpdate() > 0) {
 
-					copy = new ImageBuilder().setId(image.getId()).setSrc(image.getSrc()).setName(image.getName())
-							.build();
+					stm.close();
 				}
-
-				stm.close();
-
 			} else {
 				String sql = "INSERT INTO image (src, name) VALUES (?,?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
@@ -114,7 +111,7 @@ public class ImageDao implements DaoInterface<Image> {
 				stm.close();
 
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DaoException("Errore durante update Image ",e);
 		}
@@ -143,8 +140,8 @@ public class ImageDao implements DaoInterface<Image> {
 
 			}
 			rs.close();
-		} catch (Exception e) {
-			throw new DaoException("Errore durante update Image ",e);
+		} catch (SQLException e) {
+			throw new DaoException("Errore durante get Image ",e);
 		}
 		return image;
 	}

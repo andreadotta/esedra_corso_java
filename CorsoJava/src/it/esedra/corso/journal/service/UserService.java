@@ -4,7 +4,6 @@ import java.sql.Connection;
 
 import javax.json.JsonObject;
 
-import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.UserBuilder;
 import it.esedra.corso.journal.dao.UserDao;

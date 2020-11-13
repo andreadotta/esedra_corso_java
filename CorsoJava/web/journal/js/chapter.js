@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function createChapter() {
 	let formChapter = document.getElementById("chapter-form").elements;
 	const chapter = {};
-	chapter.id = formChapter["id"].value;
+	chapter.id = parseInt(formChapter["id"].value);
 	chapter.title = formChapter["title"].value;
 	chapter.date = formChapter["date"].value;
 	
@@ -27,7 +27,7 @@ function createChapter() {
 		res = JSON.parse(this.responseText);
 			if (res.status === "ok") {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
-						formChapter["id"].value = res.data.id;
+			    formChapter["id"].value = res.data.id;
 			} else {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
 			}
@@ -48,6 +48,8 @@ function submitChapter(event) {
 		alert("I campi titolo e data devono essere presenti")
 		return;
 	}
+	console.log(chapter.title);
+	console.log(chapter.date);
 	chapter.save();
 
 
