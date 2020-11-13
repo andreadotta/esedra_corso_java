@@ -15,7 +15,7 @@ public class JournalService {
 	 * Gestisce la connessione dao-db dell'oggetto Json
 	 * 
 	 * @param json
-	 * @return journalDao.update()
+	 * @return Journal
 	 * @throws DaoException
 	 */
 	
