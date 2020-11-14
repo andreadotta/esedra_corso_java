@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.net.URI;
 import java.sql.Connection;
 
 import javax.json.Json;
@@ -13,6 +14,7 @@ import javax.json.JsonReader;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
+import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
 import it.esedra.corso.journal.Journal;
@@ -23,9 +25,28 @@ import it.esedra.corso.journal.service.ChapterService;
 import it.esedra.corso.journal.service.JournalService;
 
 public class ChapterHandler extends Handler {
-
+	/**
+	 * Deve restituire tutti i dati presenti in tabella qualora non sia valorizzato
+	 * uno dei campi in input.
+	 * 
+	 * /journal Ottengo tutti i journal presenti /journal/{id} Ottengo un Journal
+	 * per specifico ID /journal/{name} Ottengo un Journal per specifico Name
+	 */
+	
 	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
-		throw new HandleRequestException("Not Implemented Yet.");
+		try {
+			URI url = httpExchange.getRequestURI();
+			switch (url.getPath()) {
+			case "/chapter": {
+				Collection<Chapter> chapters = ChapterService.getAll();
+				return null;//JsonHelper.ok(chapter.toJson());
+			}
+			default:
+				throw new HandleRequestException("Metodo non supportato");
+			}
+		} catch (Exception e) {
+			throw new HandleRequestException(e.getMessage(), e);
+		}
 	}
 
 	public JsonObject handlePostRequest(HttpExchange httpExchange) throws HandleRequestException {

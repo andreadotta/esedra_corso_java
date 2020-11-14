@@ -1,11 +1,16 @@
+
 package it.esedra.corso.journal.service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.json.JsonObject;
 
+import it.esedra.corso.collections.interfaces.Collection;
+import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.UserBuilder;
+import it.esedra.corso.journal.collections.UserCollection;
 import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.JournalDbConnect;
 import it.esedra.corso.journal.execeptions.DaoException;
@@ -15,7 +20,7 @@ public class UserService {
 	 * Gestisce la connessione dao-db dell'oggetto Json
 	 * 
 	 * @param json
-	 * @return userDao.update()
+	 * @return User
 	 * @throws DaoException
 	 */
 	
@@ -32,6 +37,37 @@ public class UserService {
 		
 		return userDao.update();
 		
+	}
+	
+	/**
+	 * Restituisce tutti gli oggetti user
+	 * @return Collection<User>
+	 * @throws DaoException
+	 */
+	public static Collection<User> getAll() throws DaoException {
+		Collection<User> userCollection = new UserCollection();
+
+		Connection connection = null;
+		try {
+			// Effettua la connessione al database
+			connection = JournalDbConnect.connect();
+			UserDao userDao = new UserDao();
+			userDao.setConnection(connection);
+
+			// Chiamata metodo getAll() sulla Collection creata
+			userCollection = userDao.getAll();
+
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (SQLException e) {
+				PrintHelper.out("Errore nella chiususa della connessione");
+			}
+		}
+		
+		return userCollection;
 	}
 
 }

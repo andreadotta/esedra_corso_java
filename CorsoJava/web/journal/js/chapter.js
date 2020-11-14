@@ -12,7 +12,7 @@ function createChapter() {
 	chapter.id = parseInt(formChapter["id"].value);
 	chapter.title = formChapter["title"].value;
 	chapter.date = formChapter["date"].value;
-	
+
 	chapter.isValid = function() {
 		if (chapter.title == '' || chapter.date == '') {
 			return false;
@@ -20,38 +20,51 @@ function createChapter() {
 		return true;
 	};
 	chapter.save = function() {
-	
+
 
 		var req = new XMLHttpRequest();
 		req.onload = function() {
-		res = JSON.parse(this.responseText);
+			res = JSON.parse(this.responseText);
 			if (res.status === "ok") {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
-			    formChapter["id"].value = res.data.id;
+				formChapter["id"].value = res.data.id;
 			} else {
-				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
+				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";
 			}
 		};
 		req.open("POST", "http://localhost:8000/" + "chapter");
-		
-	 	req.send(JSON.stringify(chapter));
+
+		req.send(JSON.stringify(chapter));
 	};
 
 	return chapter;
 }
 
 function submitChapter(event) {
- // Impedisco il submit del form
+	// Impedisco il submit del form
 	event.preventDefault();
 	let chapter = createChapter();
 	if (!chapter.isValid()) {
 		alert("I campi titolo e data devono essere presenti")
 		return;
 	}
-	console.log(chapter.title);
-	console.log(chapter.date);
+
+	// Effettuo il save
 	chapter.save();
 
-
 }
+
+var getall = function getAll() {
+	var req = new XMLHttpRequest();
+	req.onload = function() {
+		res = JSON.parse(this.responseText);
+		if (res.status === "ok") {
+			console.log(res.data);
+		} else {
+			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Chapters";
+		}
+	};
+	req.open("GET", "http://localhost:8000/" + "chapter");
+	req.send();
+}();
 

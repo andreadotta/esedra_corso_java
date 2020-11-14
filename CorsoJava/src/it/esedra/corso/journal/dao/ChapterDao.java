@@ -17,6 +17,10 @@ public class ChapterDao implements DaoInterface<Chapter> {
 
 	private Connection conn;
 
+public ChapterDao() {
+		
+	}
+	
 	public ChapterDao(Chapter chapter) {
 		super();
 		this.chapter = chapter;
