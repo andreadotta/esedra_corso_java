@@ -3,11 +3,13 @@ package it.esedra.corso.journal;
 import javax.json.Json;
 import javax.json.JsonObject;
 
+import it.esedra.corso.collections.interfaces.DataObjectInterface;
+
 /**
  * 
  * @author Lynda, Samuel API http://localhost/journal/author/11
  */
-public class Author {
+public class Author implements DataObjectInterface  {
 	private final Integer id;
 	private final String name;
 	private final String email;

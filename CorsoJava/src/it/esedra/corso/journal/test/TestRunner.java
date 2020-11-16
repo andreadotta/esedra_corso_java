@@ -8,7 +8,7 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Journal;
+import it.esedra.corso.journal.db.JournalDbConnect;
 
 public class TestRunner {
 
@@ -16,7 +16,7 @@ public class TestRunner {
 
 		String dbpath;
 		try {
-			dbpath = System.getProperty("user.dir") + Journal.loadProperties().getDbpath();
+			dbpath = System.getProperty("user.dir") + JournalDbConnect.loadProperties().getDbpath();
 			// cancella il database vecchio
 			File oldDb = new File(dbpath); // File fornisce varie operazioni per manipolare
 											// file già esistenti.

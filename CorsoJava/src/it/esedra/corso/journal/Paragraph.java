@@ -7,13 +7,15 @@ import java.util.Properties;
 import javax.json.Json;
 import javax.json.JsonObject;
 
+import it.esedra.corso.collections.interfaces.DataObjectInterface;
+
 /**
  * Questa classe è un paragrafo del diario
  * 
  * @author Oussein
  * 
  */
-public class Paragraph {
+public class Paragraph implements DataObjectInterface  {
 
 	private  String text;
 	private  int id;

@@ -28,7 +28,7 @@ public class DbUtil {
 
 		try {
 			// Carichiamo il percorso assoluto del file del database
-			String dbpath = System.getProperty("user.dir") + Journal.loadProperties().getDbpath();
+			String dbpath = System.getProperty("user.dir") + JournalDbConnect.loadProperties().getDbpath();
 			// cancella il database vecchio
 			File oldDb = new File(dbpath); // File fornisce varie operazioni per manipolare
 											// file già esistenti.

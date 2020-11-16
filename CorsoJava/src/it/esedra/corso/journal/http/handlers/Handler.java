@@ -23,19 +23,24 @@ public abstract class Handler implements HttpHandler {
 
 			switch (t.getRequestMethod()) {
 			case "GET": {
-				this.handleGetRequest(t);
+				ResponseHelper.response(t, this.handleGetRequest(t).toString());
+				break;
 			}
 			case "POST": {
 				ResponseHelper.response(t, this.handlePostRequest(t).toString());
+				break;
 			}
 			case "PUT": {
 				this.handlePutRequest(t);
+				break;				
 			}
 			case "DELETE": {
 				this.handleDeleteRequest(t);
+				break;	
 			}
 			default:
 				ResponseHelper.responseFail(t, "Invalid HTTP method");
+				break;
 			}
 
 		} catch (HandleRequestException e) {

@@ -1,5 +1,6 @@
 package it.esedra.corso.collections.interfaces;
 
+import javax.json.JsonArray;
 public interface Collection<T> {
 
 	/**
@@ -25,5 +26,10 @@ public interface Collection<T> {
 	 * Restituisce la array
 	 */
 	T[] toArray();
+	
+	/**
+	 * Restituisce il json dell'intera array
+	 */
+	JsonArray toJson();
 
 }

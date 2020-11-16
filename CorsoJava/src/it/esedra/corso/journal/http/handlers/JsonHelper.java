@@ -1,6 +1,7 @@
 package it.esedra.corso.journal.http.handlers;
 
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 
 public class JsonHelper<T> {
@@ -15,6 +16,10 @@ public class JsonHelper<T> {
 	
 	protected static JsonObject ok(JsonObject data) {
 		return Json.createObjectBuilder().add("status", "ok").add("message", "").add("data", data).build();
+	}
+	
+	protected static JsonObject ok(JsonArray data) {
+		return Json.createObjectBuilder().add("status", "ok").add("message", "").add("data", data.toString()).build();
 	}
 
 	protected static JsonObject ko(String message) {

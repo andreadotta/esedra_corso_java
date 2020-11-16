@@ -3,6 +3,8 @@ package it.esedra.corso.journal;
 import javax.json.Json;
 import javax.json.JsonObject;
 
+import it.esedra.corso.collections.interfaces.DataObjectInterface;
+
 /**
  * Questa classe rappresenta l'utente che fa login e avrà i campi: id, name,
  * surname, email, password, registration
@@ -10,7 +12,7 @@ import javax.json.JsonObject;
  * @author Marco
  *
  */
-public class User {
+public class User implements DataObjectInterface  {
 
 	private int id;
 	private final String name;

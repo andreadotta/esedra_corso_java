@@ -3,12 +3,14 @@ package it.esedra.corso.journal;
 import javax.json.Json;
 import javax.json.JsonObject;
 
+import it.esedra.corso.collections.interfaces.DataObjectInterface;
+
 /**
  * Questa classe è un video presente nel capitolo
  * 
  *
  */
-public class Video extends MultimediaResource {
+public class Video extends MultimediaResource implements DataObjectInterface  {
 
 	private final String title;
 

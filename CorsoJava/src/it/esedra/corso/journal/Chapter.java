@@ -8,13 +8,15 @@ import java.util.Properties;
 import javax.json.Json;
 import javax.json.JsonObject;
 
+import it.esedra.corso.collections.interfaces.DataObjectInterface;
+
 /**
  * Questa classe è un capitol del diario
  * 
  * 
  * 
  */
-public class Chapter {
+public class Chapter implements DataObjectInterface  {
 	private int id;
 	private  String title;
 	private  String date;

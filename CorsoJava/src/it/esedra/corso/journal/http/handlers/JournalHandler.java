@@ -8,6 +8,7 @@ import java.net.URI;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.JsonValue;
 
 import com.sun.net.httpserver.HttpExchange;
 
@@ -22,8 +23,12 @@ public class JournalHandler extends Handler {
 	 * Deve restituire tutti i dati presenti in tabella qualora non sia valorizzato
 	 * uno dei campi in input.
 	 * 
-	 * /journal Ottengo tutti i journal presenti /journal/{id} Ottengo un Journal
-	 * per specifico ID /journal/{name} Ottengo un Journal per specifico Name
+	 * "
+	 * /journal Ottengo tutti i journal presenti 
+	 * /journal/{id} Ottengo un Journal per specifico ID 
+	 * /journal/{name} Ottengo un Journal per specifico Name
+	 * "
+	 * 
 	 */
 	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
 		try {
@@ -31,7 +36,7 @@ public class JournalHandler extends Handler {
 			switch (url.getPath()) {
 			case "/journal": {
 				Collection<Journal> journals = JournalService.getAll();
-				return null;//JsonHelper.ok(journal.toJson());
+				return JsonHelper.ok(journals.toJson());//JsonHelper.ok(journal.toJson());
 			}
 			default:
 				throw new HandleRequestException("Metodo non supportato");

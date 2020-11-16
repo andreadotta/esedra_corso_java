@@ -1,20 +1,16 @@
 package it.esedra.corso.journal;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import java.util.Properties;
-
 import javax.json.Json;
 import javax.json.JsonObject;
 
+import it.esedra.corso.collections.interfaces.DataObjectInterface;
 /**
  * Classe base dell'applicazione
  * 
  * @author bauhausk
  *
  */
-public class Journal {
+public class Journal implements DataObjectInterface {
 
 	private int id;
 	private String name;
@@ -33,23 +29,6 @@ public class Journal {
 		this.name = name;
 	}
 
-	/**
-	 * Carico le configurazioni dell'app presenti sul file di properties
-	 * 
-	 * @return Config
-	 * @throws IOException
-	 */
-	public static Config loadProperties() throws IOException {
-
-		Properties prop = new Properties();
-		prop.load(new FileInputStream("config.properties"));
-
-		Config config = new Config();
-		config.setDbpath(prop.getProperty("dbpath"));
-
-		return config;
-
-	}
 	
 	public JsonObject toJson() {
 		return Json.createObjectBuilder().add("id", this.id).add("name", this.name).build();

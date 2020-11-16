@@ -4,15 +4,27 @@
 .table  {
 	padding: 20px 0px 30px 0px;
 }
+.col {
+	float: left;
+	padding-right: 10px;
+}
+.col-btn {
+	float: right;	
+}  
 .col-label, col-field {
 	float: left;
 }
 .col-label {
 	width: 110px;
 }
+.update-row {
+	padding-right: 15px;
+}
 .row {
 	padding-top: 5px;
 	padding-bottom: 5px;
+	width: 40%;
+	clear: both;
 }
 #footer {
 	position: fixed;
