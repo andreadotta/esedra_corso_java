@@ -5,7 +5,7 @@ import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Paragraph;
 
-public class ParagraphCollection extends AbstactCollections<Paragraph> implements Collection<Paragraph> {
+public class ParagraphCollection extends JournalAbstactCollections<Paragraph> implements Collection<Paragraph> {
 
 	public ParagraphCollection() {
 		super(new Paragraph[AbstactCollections.DEFAULT_SIZE]);

@@ -9,7 +9,7 @@ import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Journal;
 
-public class JournalCollection extends AbstactCollections<Journal> implements Collection<Journal> {
+public class JournalCollection extends JournalAbstactCollections<Journal> implements Collection<Journal> {
 
 	public JournalCollection() {
 		super(new Journal[AbstactCollections.DEFAULT_SIZE]);

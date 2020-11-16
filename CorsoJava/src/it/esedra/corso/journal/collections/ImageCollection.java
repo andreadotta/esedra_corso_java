@@ -5,7 +5,7 @@ import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Image;
 
-public class ImageCollection extends AbstactCollections<Image> implements Collection<Image> {
+public class ImageCollection extends JournalAbstactCollections<Image> implements Collection<Image> {
 
 	public ImageCollection() {
 		super(new Image[AbstactCollections.DEFAULT_SIZE]);

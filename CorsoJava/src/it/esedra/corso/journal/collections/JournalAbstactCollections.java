@@ -1,4 +1,4 @@
-package it.esedra.corso.collections;
+package it.esedra.corso.journal.collections;
 
 import java.util.Arrays;
 
@@ -10,15 +10,15 @@ import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.DataObjectInterface;
 import it.esedra.corso.collections.interfaces.Iterator;
 
-public abstract class AbstactCollections<T> implements Collection<T> {
+public abstract class JournalAbstactCollections<T extends DataObjectInterface> implements Collection<T> {
 
 	public final static int DEFAULT_SIZE = 10;
 
-	public AbstactCollections() {
+	public JournalAbstactCollections() {
 
 	}
 
-	public AbstactCollections(T[] array) {
+	public JournalAbstactCollections(T[] array) {
 		this.array = array;
 	}
 
@@ -58,7 +58,18 @@ public abstract class AbstactCollections<T> implements Collection<T> {
 
 	}
 	
-	
+	@Override
+	public JsonArray toJson() {
+		JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+		Iterator<T> iterator = this.createIterator();
+		
+		while (iterator.hasNext()) {
+			arrayBuilder.add(iterator.next().toJson());
+		}
+		
+		return arrayBuilder.build();
+
+	}
 	
 	
 

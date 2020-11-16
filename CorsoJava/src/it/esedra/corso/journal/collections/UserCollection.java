@@ -5,7 +5,7 @@ import it.esedra.corso.collections.Iterator;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.User;
 
-public class UserCollection extends AbstactCollections<User> implements Collection<User> {
+public class UserCollection extends JournalAbstactCollections<User> implements Collection<User> {
 
 	public UserCollection() {
 		super(new User[AbstactCollections.DEFAULT_SIZE]);
