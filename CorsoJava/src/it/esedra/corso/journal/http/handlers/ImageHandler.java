@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.net.URI;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -13,15 +14,29 @@ import javax.json.JsonReader;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
+import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Image;
+
 import it.esedra.corso.journal.execeptions.HandleRequestException;
 import it.esedra.corso.journal.service.ImageService;
-import it.esedra.corso.journal.service.UserService;
+
 
 public class ImageHandler extends Handler {
 	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
-		throw new HandleRequestException("Not Implemented Yet.");
+		try {
+			URI url = httpExchange.getRequestURI();
+			switch (url.getPath()) {
+			case "/journal": {
+				Collection<Image> images = ImageService.getAll();
+				return null;
+			}
+			default:
+				throw new HandleRequestException("Metodo non supportato");
+			}
+		} catch (Exception e) {
+			throw new HandleRequestException(e.getMessage(), e);
+		}
 	}
 
 	public JsonObject handlePostRequest(HttpExchange httpExchange) throws HandleRequestException {

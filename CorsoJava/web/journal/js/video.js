@@ -52,3 +52,17 @@ function submitVideo(event) {
 	video.save();
 
 }
+
+var getall = function getAll() {
+	var req = new XMLHttpRequest();
+	req.onload = function() {
+		res = JSON.parse(this.responseText);
+		if (res.status === "ok") {
+			console.log(res.data);
+		} else {
+			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Journals";
+		}
+	};
+	req.open("GET", "http://localhost:8000/" + "video");
+	req.send();
+}();
