@@ -46,7 +46,7 @@ public class ParagraphHandler extends Handler {
 			switch (url.getPath()) {
 			case "/paragraph": {
 				Collection<Paragraph> paragraphs = ParagraphService.getAll();
-				return null;//JsonHelper.ok(paragraph.toJson());
+				return JsonHelper.ok(paragraphs.toJson());//JsonHelper.ok(paragraph.toJson());
 			}
 			default:
 				throw new HandleRequestException("Metodo non supportato");

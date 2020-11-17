@@ -37,7 +37,7 @@ public class AuthorHandler extends Handler {
 			switch (url.getPath()) {
 			case "/author": {
 				Collection<Author> authors = AuthorService.getAll();
-				return null;//JsonHelper.ok(author.toJson());
+				return JsonHelper.ok(authors.toJson());//JsonHelper.ok(author.toJson());
 			}
 			default:
 				throw new HandleRequestException("Metodo non supportato");
