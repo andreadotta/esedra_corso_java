@@ -118,7 +118,7 @@ function createRow(item) {
  */
 
 function createRowElements(item, row) {
-	row.appendChild(createRowDataCell(item, "id", item.id)); // aggiungo la
+	row.appendChild(createRowDataCell( "id", item.id)); // aggiungo la
 																// colonna alla
 																// riga
 	row.appendChild(createRowDataCell("text", item.text)); // aggiungo la
