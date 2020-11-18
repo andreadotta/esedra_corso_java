@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8"/>
 <title>paragraph</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,8 +10,10 @@
 <link rel="stylesheet" href="/css/app.css" />
 </head>
 <body>
+<div class="container">
+<div class="header">
 	<h1>paragraph</h1>
-
+</div>
 	<form id="paragraph-form" action="http://localhost:8000/paragraph/" method="post"> 
 	
 
@@ -20,7 +22,7 @@
 		<div class="col-label">
          <label for="id">ID</label>
 		</div>
-		<div >
+		<div class="col-field">
 		<input class="input-text" name="id" value=""/>
 		</div>
 		</div>
@@ -33,13 +35,14 @@
 			<textarea required id="text" name="text"></textarea>
 		</div>
 
-       <div >
+       <div class="row" >
 		<button  id="submit-paragraph"  type="submit">Salva</button>
 	     </div>
-	     
+	     </div>
 	     <div id="xhr-message"></div>
 	
 	</form>
 	<div id="results"></div>
+	</div>
 </body>
 </html>

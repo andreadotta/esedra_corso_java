@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
+import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.ParagraphBuilder;
 import it.esedra.corso.journal.collections.ParagraphCollection;
@@ -47,6 +48,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 					stm.close();
 				}
+				copy = new ParagraphBuilder().setId(paragraph.getId()).setText(paragraph.getText()).build();;
 
 			} else {
 				String sql = "INSERT INTO paragraph ( text) VALUES (?) ;";
