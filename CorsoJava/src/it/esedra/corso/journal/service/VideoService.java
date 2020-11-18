@@ -7,7 +7,6 @@ import javax.json.JsonObject;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.VideoBuilder;
 import it.esedra.corso.journal.collections.VideoCollection;

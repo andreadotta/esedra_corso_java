@@ -1,15 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Source+Code+Pro:wght@300;400;700&display=swap');
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+.container {
+	max-width: 1200px;
+	margin: auto;
+}
 .input-text {
 	border: 1px solid #CCC;
 }
 .table  {
 	padding: 20px 0px 30px 0px;
+	display: table;
 }
 .col {
-	float: left;
 	padding-right: 10px;
+	display: table-cell;
 }
 .col-btn {
-	float: right;	
+	display: table-cell;	
 }  
 .col-label, col-field {
 	float: left;
@@ -23,8 +32,9 @@
 .row {
 	padding-top: 5px;
 	padding-bottom: 5px;
-	width: 40%;
+	width: 100%;
 	clear: both;
+	display: table-row;
 }
 #footer {
 	position: fixed;
