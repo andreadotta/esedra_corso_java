@@ -9,67 +9,69 @@
 <link rel="stylesheet" href="/css/app.css" />
 </head>
 <body>
-<div class="container">
-	<h1>User</h1>
-
-	<form id="user-form" action="http://localhost:8000/user/" method="post">
-
-		<div class="table">
-			<div class="row">
-				<div class="col-label">
-					<label for="id">ID</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="id" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-label">
-					<label for="name">Nome</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="name" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-label">
-					<label for="surname">Cognome</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="surname" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-label">
-					<label for="email">Email</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="email" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-label">
-					<label for="password">Password</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="password" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-label">
-					<label for="registration">Registrazione</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="registration" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<button id="submit-user" type="submit">Salva</button>
-			</div>
+	<div class="container">
+		<div class="header">
+		<h1>User</h1>
 		</div>
-		<div id="xhr-message"></div>
-	</form>
-	<div id="results"></div>
+		<form id="user-form" action="http://localhost:8000/user/"
+			method="post">
+
+			<div class="table">
+				<div class="row">
+					<div class="col-label">
+						<label for="id">ID</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="id" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-label">
+						<label for="name">Nome</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="name" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-label">
+						<label for="surname">Cognome</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="surname" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-label">
+						<label for="email">Email</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="email" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-label">
+						<label for="password">Password</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="password" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-label">
+						<label for="registration">Registrazione</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="registration" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<button id="submit-user" type="submit">Salva</button>
+				</div>
+			</div>
+			<div id="xhr-message"></div>
+		</form>
+		<div id="results"></div>
 	</div>
 </body>
 </html>

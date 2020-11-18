@@ -93,7 +93,6 @@ public class UserDao implements DaoInterface<User> {
 		User copy = null;
 
 		try {
-
 			if (userCheck != null) {
 				String sql = "UPDATE user SET name = ?, surname = ?, email = ?, password = ?, registration = ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
@@ -103,18 +102,15 @@ public class UserDao implements DaoInterface<User> {
 				stm.setString(3, user.getEmail());
 				stm.setString(4, user.getPassword());
 				stm.setString(5, user.getRegistration());
-
 				stm.setInt(6, user.getId());
 
 				if (stm.executeUpdate() > 0) {
-
-					copy = new UserBuilder().setId(user.getId()).setName(user.getName()).setSurname(user.getSurname())
-							.setEmail(user.getEmail()).setPassword(user.getPassword())
-							.setRegistration(user.getRegistration()).build();
+					stm.close();					
 				}
-
-				stm.close();
-
+				copy = new UserBuilder().setId(user.getId()).setName(user.getName()).setSurname(user.getSurname())
+						.setEmail(user.getEmail()).setPassword(user.getPassword())
+						.setRegistration(user.getRegistration()).build();
+				
 			} else {
 				String sql = "INSERT INTO user (name, surname, email, password, registration) VALUES (?, ?, ?, ?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
@@ -126,10 +122,8 @@ public class UserDao implements DaoInterface<User> {
 				stm.setString(5, user.getRegistration());
 
 				if (stm.executeUpdate() > 0) {
-
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
-
 						copy = new UserBuilder().setId(genKeys.getInt(1)).setName(user.getName())
 								.setSurname(user.getSurname()).setEmail(user.getEmail()).setPassword(user.getPassword())
 								.setRegistration(user.getRegistration()).build();
