@@ -1,26 +1,17 @@
 package it.esedra.corso.journal.http.handlers;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.StringReader;
 import java.net.URI;
-import java.sql.Connection;
 
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
 import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Video;
-import it.esedra.corso.journal.VideoBuilder;
-import it.esedra.corso.journal.dao.VideoDao;
-import it.esedra.corso.journal.db.JournalDbConnect;
 import it.esedra.corso.journal.execeptions.HandleRequestException;
 import it.esedra.corso.journal.service.VideoService;
 
@@ -30,9 +21,9 @@ public class VideoHandler extends Handler {
 		try {
 			URI url = httpExchange.getRequestURI();
 			switch (url.getPath()) {
-			case "/journal": {
+			case "/video": {
 				Collection<Video> videos = VideoService.getAll();
-				return null;
+				return JsonHelper.ok(videos.toJson()); //JsonHelper.ok(video.toJson());
 			}
 			default:
 				throw new HandleRequestException("Metodo non supportato");
@@ -41,7 +32,6 @@ public class VideoHandler extends Handler {
 			throw new HandleRequestException(e.getMessage(), e);
 		}
 	}
-
 	public JsonObject handlePostRequest(HttpExchange httpExchange) throws HandleRequestException {
 
 		Video video = null;

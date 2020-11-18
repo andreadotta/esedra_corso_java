@@ -66,3 +66,74 @@ var getall = function getAll() {
 	req.open("GET", "http://localhost:8000/" + "video");
 	req.send();
 }();
+
+function createRow(item) {
+	//creo una riga
+	let row = document.createElement("div");
+	row.className = "row";
+	//creo una colonna
+	let col = document.createElement("div");
+	col.className = "col-label";
+	col.innerHTML = item.id;
+	//aggiungo la colonna alla riga
+	row.appendChild(col);
+	//creo una colonna	
+	col = document.createElement("div");
+	col.className = "col";
+	col.innerHTML = item.name;
+	//aggiungo la colonna alla riga	
+	row.appendChild(col);
+	//creo una colonna	
+	col = document.createElement("div");
+	col.className = "col";
+	col.innerHTML = item.surname;
+	//aggiungo la colonna alla riga	
+	row.appendChild(col);
+	//creo una colonna	
+	col = document.createElement("div");
+	col.className = "col";
+	col.innerHTML = item.email;
+	//aggiungo la colonna alla riga	
+	row.appendChild(col);
+	//creo una colonna	
+	col = document.createElement("div");
+	col.className = "col";
+	col.innerHTML = item.password;
+	//aggiungo la colonna alla riga	
+	row.appendChild(col);
+	//creo una colonna	
+	col = document.createElement("div");
+	col.className = "col";
+	col.innerHTML = item.registration;
+	//aggiungo la colonna alla riga	
+	row.appendChild(col);
+	//creo una colonna		
+	col = document.createElement("div");
+	col.className = "col-btn";
+	//creo un tag A	Modifica	
+	let updBtn = document.createElement("a");
+	updBtn.setAttribute("data-id", item.id);
+	updBtn.className = "update-row";
+	updBtn.innerHTML="Modifica";
+	updBtn.setAttribute('href', "#");
+	//aggiungo il pulsante alla colonna	
+	col.appendChild(updBtn);	
+	//creo un tag A	Cancella	
+	let delBtn = document.createElement("a");
+	delBtn.setAttribute("data-id", item.id);
+	delBtn.className = "delete-row";
+	delBtn.innerHTML="Cancella";
+	delBtn.setAttribute('href', "#");
+	//aggiungo il pulsante alla colonna	
+	col.appendChild(delBtn);
+	//aggiungo la colonna alla riga	
+	row.appendChild(col);
+	return row;
+}
+
+function createRowListener() {
+	document.querySelector('.update-row').addEventListener('click', function(event) {
+		let formVideo = document.getElementById("video-form").elements;
+		formVideo["id"].value = this.getAttribute("data-id");
+	});
+}
