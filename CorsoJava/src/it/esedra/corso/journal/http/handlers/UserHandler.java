@@ -25,17 +25,21 @@ public class UserHandler extends Handler {
 	 * Deve restituire tutti i dati presenti in tabella qualora non sia valorizzato
 	 * uno dei campi in input.
 	 * 
-	 * /journal Ottengo tutti i journal presenti /journal/{id} Ottengo un Journal
-	 * per specifico ID /journal/{name} Ottengo un Journal per specifico Name
+	 * /user Ottengo tutti gli user presenti 
+	 * /user/{id} Ottengo un User per specifico ID 
+	 * /user/{surname} Ottengo un User per specifico Surname
+	 * /user/{email} Ottengo un User per specifico Email	
+	 * /user/{password} Ottengo un User per specifico Password
+	 * /user/{registration} Ottengo un User per specifico Registration
 	 */	
 	
 	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
 		try {
 			URI url = httpExchange.getRequestURI();
 			switch (url.getPath()) {
-			case "/journal": {
+			case "/user": {
 				Collection<User> users = UserService.getAll();
-				return null;//JsonHelper.ok(user.toJson());
+				return JsonHelper.ok(users.toJson()); //JsonHelper.ok(user.toJson());
 			}
 			default:
 				throw new HandleRequestException("Metodo non supportato");
