@@ -102,8 +102,8 @@ function createRow(item) {
  * @param row: elemento HTML che è la riga
  */
 function createRowElements(item, row) {
-	row.appendChild(createRowDataCell(item, "id", item.id)); //aggiungo la colonna alla riga
-	row.appendChild(createRowDataCell(item, "name", item.name)); //aggiungo la colonna alla riga
+	row.appendChild(createRowDataCell("id", item.id)); //aggiungo la colonna alla riga
+	row.appendChild(createRowDataCell("name", item.name)); //aggiungo la colonna alla riga
 
 	//creo una colonne BOTTONI
 	col = document.createElement("div");
