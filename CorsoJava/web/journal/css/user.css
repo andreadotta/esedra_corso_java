@@ -1,32 +1,7 @@
-.input-text {
-	border: 1px solid #CCC;
-}
-.table  {
-	padding: 20px 0px 30px 0px;
-}
 .col {
-	float: left;
 	padding-right: 30px;
 }
-.col-btn {
-	float: right;	
-}  
-.col-label, col-field {
-	float: left;
-}
-.col-label {
-	width: 100px;
-}
-.update-row {
-	padding-right: 15px;
-}
 .row {
-	padding-top: 5px;
-	padding-bottom: 5px;
 	width: 90%;
-	clear: both;
-}
-#footer {
-	position: fixed;
-	bottom: 0;
+	
 }
