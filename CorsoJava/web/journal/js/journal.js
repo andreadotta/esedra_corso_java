@@ -104,6 +104,7 @@ function createRow(item) {
 function createRowElements(item, row) {
 	row.appendChild(createRowDataCell(item, "id", item.id)); //aggiungo la colonna alla riga
 	row.appendChild(createRowDataCell(item, "name", item.name)); //aggiungo la colonna alla riga
+
 	//creo una colonne BOTTONI
 	col = document.createElement("div");
 	col.className = "col-btn";
