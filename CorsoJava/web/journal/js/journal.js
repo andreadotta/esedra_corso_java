@@ -140,11 +140,11 @@ function createRowElements(item, row) {
  * @param name: nome colonna
  * @param value: valore
  */
-function createRowDataCell(item, name, value) {
+function createRowDataCell(name, value) {
 	col = document.createElement("div");
 	col.className = "col";
 	col.setAttribute("data-" + name, value); //setta l'attributo data-name
-	col.innerHTML = item.name; //setta il contenuto visibile della cella
+	col.innerHTML = value; //setta il contenuto visibile della cella
 	return col;
 }
 
