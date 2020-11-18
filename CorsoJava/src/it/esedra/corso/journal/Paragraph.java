@@ -34,17 +34,9 @@ public class Paragraph implements DataObjectInterface  {
 		return text;
 	}
 	
-	public static Config loadProperties() throws IOException {
+	
 
-		Properties prop = new Properties();
-		prop.load(new FileInputStream("config.properties"));
-
-		Config config = new Config();
-		config.setDbpath(prop.getProperty("dbpath"));
-
-		return config;
-
-	}
+	
 	
 	public JsonObject toJson() {
 		return Json.createObjectBuilder().add("id", this.id).add("text", this.text).build();
