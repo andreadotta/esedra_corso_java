@@ -74,9 +74,10 @@ public class JournalDao implements DaoInterface<Journal> {
 				stm.setInt(2, journal.getId());
 
 				if (stm.executeUpdate() > 0) {
-
 					stm.close();
 				}
+				copy = new JournalBuilder().setId(journal.getId()).setName(journal.getName()).build();;
+
 			} else {
 				String sql = "INSERT INTO journal (name) VALUES (?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
