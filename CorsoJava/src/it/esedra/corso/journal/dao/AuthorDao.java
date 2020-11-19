@@ -10,6 +10,7 @@ import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.AuthorBuilder;
+import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
@@ -49,6 +50,9 @@ public class AuthorDao implements DaoInterface<Author> {
 					
 				}
 				stm.close();
+			
+				copy = new AuthorBuilder().setId(author.getId()).setName(author.getName()).setEmail(author.getEmail()).build();;
+			
 			}
 			else {
 				String sql = "INSERT INTO author ( name, email) VALUES ( ?, ?);";
