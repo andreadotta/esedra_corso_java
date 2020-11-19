@@ -39,7 +39,7 @@ public class ChapterHandler extends Handler {
 			switch (url.getPath()) {
 			case "/chapter": {
 				Collection<Chapter> chapters = ChapterService.getAll();
-				return null;//JsonHelper.ok(chapter.toJson());
+				return JsonHelper.ok(chapters.toJson());//JsonHelper.ok(chapter.toJson());
 			}
 			default:
 				throw new HandleRequestException("Metodo non supportato");
