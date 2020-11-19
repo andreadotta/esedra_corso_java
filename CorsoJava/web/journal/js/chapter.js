@@ -91,8 +91,9 @@ function createRow(item) {
  * @param row: elemento HTML che è la riga
  */
 function createRowElements(item, row) {
-	row.appendChild(createRowDataCell(item, "id", item.id)); //aggiungo la colonna alla riga
-	row.appendChild(createRowDataCell(item, "name", item.name)); //aggiungo la colonna alla riga
+	row.appendChild(createRowDataCell("id", item.id)); //aggiungo la colonna alla riga
+	row.appendChild(createRowDataCell("title", item.title)); //aggiungo la colonna alla riga
+	row.appendChild(createRowDataCell("date", item.date)); //aggiungo la colonna alla riga
 	//creo una colonne BOTTONI
 	col = document.createElement("div");
 	col.className = "col-btn";
@@ -104,10 +105,12 @@ function createRowElements(item, row) {
 	updBtn.setAttribute('href', "#");
 	updBtn.addEventListener("click", function () {
 		let targetRow = document.querySelector("[data-id='" + this.getAttribute("data-id") + "']");
-		let name =  targetRow.querySelector("[data-name]");
-		formJournal = document.getElementById("journal-form").elements;
-		formJournal["id"].value = this.getAttribute("data-id");
-		formJournal["name"].value = name.innerHTML;
+		let title =  targetRow.querySelector("[data-title]");
+		let date =  targetRow.querySelector("[data-date]");
+		formChapter = document.getElementById("chapter-form").elements;
+		formChapter["id"].value = this.getAttribute("data-id");
+		formChapter["title"].value = title.innerHTML;
+		formChapter["date"].value = date.innerHTML;
 	});
 	//aggiungo il pulsante alla colonna	
 	col.appendChild(updBtn);	

@@ -8,16 +8,16 @@ import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
+import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.collections.ChapterCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class ChapterDao implements DaoInterface<Chapter> {
 
 	private Chapter chapter;
-
 	private Connection conn;
 
-public ChapterDao() {
+    public ChapterDao() {
 		
 	}
 	
@@ -44,10 +44,11 @@ public ChapterDao() {
 				stm.setString(2, chapter.getDate());
 				stm.setInt(3, chapter.getId());
 				
-				if (stm.executeUpdate() > 0) {
-					
+				if (stm.executeUpdate() > 0) {	
 				stm.close();
-				} 		
+				} 
+				copy = new ChapterBuilder().setId(chapter.getId()).setTitle(chapter.getTitle()).setDate(chapter.getDate()).build();;
+
 			} else {
 				String sql = "INSERT INTO chapter ( title, date ) VALUES (?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
