@@ -82,7 +82,6 @@ var getall = function getAll() {
 					function(item) {
 						document.getElementById("results").appendChild(
 								createRow(item));
-						createRowListener();
 					});
 		} else {
 			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Authors";
@@ -155,4 +154,5 @@ function createRowDataCell(name, value) {
 	col.innerHTML = value; //setta il contenuto visibile della cella
 	return col;
 }
+//x
 
