@@ -70,52 +70,36 @@ var getall = function getAll() {
 function createRow(item) {
 	//creo una riga
 	let row = document.createElement("div");
-	row.className = "row";
-	//creo una colonna
-	let col = document.createElement("div");
-	col.className = "col-label";
-	col.innerHTML = item.id;
-	//aggiungo la colonna alla riga
-	row.appendChild(col);
-	//creo una colonna	
-	col = document.createElement("div");
-	col.className = "col";
-	col.innerHTML = item.name;
-	//aggiungo la colonna alla riga	
-	row.appendChild(col);
-	//creo una colonna	
-	col = document.createElement("div");
-	col.className = "col";
-	col.innerHTML = item.surname;
-	//aggiungo la colonna alla riga	
-	row.appendChild(col);
-	//creo una colonna	
-	col = document.createElement("div");
-	col.className = "col";
-	col.innerHTML = item.email;
-	//aggiungo la colonna alla riga	
-	row.appendChild(col);
-	//creo una colonna	
-	col = document.createElement("div");
-	col.className = "col";
-	col.innerHTML = item.password;
-	//aggiungo la colonna alla riga	
-	row.appendChild(col);
-	//creo una colonna	
-	col = document.createElement("div");
-	col.className = "col";
-	col.innerHTML = item.registration;
-	//aggiungo la colonna alla riga	
-	row.appendChild(col);
-	//creo una colonna		
+	row.className = "row"; //setto la classe
+	row.setAttribute("data-id", item.id); //setto l'attributo "data-id"
+	return createRowElements(item, row);
+}
+
+function createRowElements(item, row) {
+	row.appendChild(createRowDataCell("id", item.id)); //aggiungo la colonna alla riga
+	row.appendChild(createRowDataCell("src", item.src)); //aggiungo la colonna alla riga
+	row.appendChild(createRowDataCell("name", item.name)); //aggiungo la colonna alla riga
+	row.appendChild(createRowDataCell("title", item.title)); //aggiungo la colonna alla riga
+	//creo una colonna BOTTONI
 	col = document.createElement("div");
 	col.className = "col-btn";
-	//creo un tag A	Modifica	
+	//creo un tag A Modifica	
 	let updBtn = document.createElement("a");
-	updBtn.setAttribute("data-id", item.id);
 	updBtn.className = "update-row";
-	updBtn.innerHTML="Modifica";
+	updBtn.setAttribute("data-id", item.id);
+	updBtn.innerHTML="Seleziona";
 	updBtn.setAttribute('href', "#");
+	updBtn.addEventListener("click", function () {
+		let targetRow = document.querySelector("[data-id='" + this.getAttribute("data-id") + "']");
+		let src = targetRow.querySelector("[data-src]");
+		let name = targetRow.querySelector("[data-name]");
+		let title = targetRow.querySelector("[data-title]");
+		formVideo = document.getElementById("video-form").elements;
+		formVideo["id"].value = this.getAttribute("data-id");
+		formVideo["src"].value = src.innerHTML;
+		formVideo["name"].value = name.innerHTML;
+		formVideo["title"].value = title.innerHTML;
+	});
 	//aggiungo il pulsante alla colonna	
 	col.appendChild(updBtn);	
 	//creo un tag A	Cancella	

@@ -9,49 +9,52 @@
 <link rel="stylesheet" href="/css/app.css" />
 </head>
 <body>
-	<h1>Video</h1>
-
-	<form id="video-form" action="http://localhost:8000/video/" method="post">
-		<div class="table">
-		    <div class="row">
-				<div class="col-label">
-					<label for="id">Id</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="id" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-label">
-					<label for="src">Src</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="src" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-label">
-					<label for="name">Nome</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="name" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-label">
-					<label for="title">Title</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="title" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<button id="submit-video" type="submit">Salva</button>
-			</div>
+	<div class="container">
+		<div class="header">
+			<h1>Video</h1>
 		</div>
-
-        <div id="xhr-message"></div>
-	</form>
-	<div id="results"></div>
+		<form id="video-form" action="http://localhost:8000/video/"
+			method="post">
+			<div class="table">
+				<div class="row">
+					<div class="col-label">
+						<label for="id">Id</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="id" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-label">
+						<label for="src">Src</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="src" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-label">
+						<label for="name">Nome</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="name" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-label">
+						<label for="title">Title</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="title" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<button id="submit-video" type="submit">Salva</button>
+				</div>
+			</div>
+			<div id="xhr-message"></div>
+		</form>
+	    <div id="results"></div>
+	</div>
 </body>
 </html>
