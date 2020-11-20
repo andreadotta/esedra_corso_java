@@ -1,25 +1,21 @@
 package it.esedra.corso.journal.http.handlers;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.StringReader;
 import java.net.URI;
+import java.util.logging.Logger;
 
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
 import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Author;
-import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.execeptions.HandleRequestException;
 import it.esedra.corso.journal.service.AuthorService;
-import it.esedra.corso.journal.service.JournalService;
 
 public class AuthorHandler extends Handler {
 	
