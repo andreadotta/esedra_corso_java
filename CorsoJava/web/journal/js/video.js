@@ -115,9 +115,10 @@ function createRowElements(item, row) {
 	return row;
 }
 
-function createRowListener() {
-	document.querySelector('.update-row').addEventListener('click', function(event) {
-		let formVideo = document.getElementById("video-form").elements;
-		formVideo["id"].value = this.getAttribute("data-id");
-	});
+function createRowDataCell(name, value) {
+	col = document.createElement("div");
+	col.className = "col";
+	col.setAttribute("data-" + name, value); //setto l'attributo data-name
+	col.innerHTML = value; //setto il contenuto visibile della cella
+	return col;
 }
