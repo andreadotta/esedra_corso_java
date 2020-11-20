@@ -85,7 +85,7 @@ var getall = function getAll() {
 					function(item) {
 						document.getElementById("results").appendChild(
 								createRow(item));
-						createRowListener();
+						
 					});
 		} else {
 			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Paragraphs";
