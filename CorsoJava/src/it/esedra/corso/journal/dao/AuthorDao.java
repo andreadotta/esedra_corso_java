@@ -70,7 +70,7 @@ public class AuthorDao implements DaoInterface<Author> {
 				}
 
 				stm.close();
-			}
+			} 
 
 		} catch (SQLException e) {
 			throw new DaoException("Errore durante update Author", e);
