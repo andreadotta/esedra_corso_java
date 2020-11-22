@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		submitChapter(event);
 	});
 
+
 });
 
 function createChapter() {
