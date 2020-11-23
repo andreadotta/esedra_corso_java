@@ -143,7 +143,7 @@ function createRowElements(item, row) {
 function createRowDataCell(name, value) {
 	col = document.createElement("div");
 	col.className = "col";
-	col.setAttribute("data-" + title, + date, value);
+	col.setAttribute("data-" + name, value);
 	col.innerHTML = value; //setta il contenuto visibile della cella
 	return col;
 }
