@@ -5,7 +5,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.URI;
-
+import java.util.logging.Logger;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -32,6 +32,7 @@ public class UserHandler extends Handler {
 	 * /user/{password} Ottengo un User per specifico Password
 	 * /user/{registration} Ottengo un User per specifico Registration
 	 */	
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	
 	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
 		try {
@@ -65,7 +66,7 @@ public class UserHandler extends Handler {
 			user = UserService.update(userObject);
 
 		} catch (Exception e) {
-			throw new HandleRequestException(e.getMessage(), e);
+			LOGGER.severe(e.toString());
 		}
 		
 		if(user == null) {
