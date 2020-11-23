@@ -55,7 +55,7 @@ public class ImageService {
 					connection.close();
 				}
 			} catch (SQLException e) {
-				PrintHelper.out("Errore nella chiususa della connessione");
+				PrintHelper.out("Errore nella chiusura della connessione");
 			}
 		}
 		

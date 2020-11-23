@@ -1,9 +1,7 @@
 package it.esedra.corso.journal.http.handlers;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.StringReader;
 import java.net.URI;
 
@@ -12,10 +10,8 @@ import javax.json.JsonObject;
 import javax.json.JsonReader;
 
 import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Image;
 
 import it.esedra.corso.journal.execeptions.HandleRequestException;
@@ -23,13 +19,24 @@ import it.esedra.corso.journal.service.ImageService;
 
 
 public class ImageHandler extends Handler {
+	/**
+	 * Deve restituire tutti i dati presenti in tabella qualora non sia valorizzato
+	 * uno dei campi in input.
+	 * 
+	 * "
+	 * /journal Ottengo tutti i journal presenti 
+	 * /journal/{id} Ottengo un Journal per specifico ID 
+	 * /journal/{name} Ottengo un Journal per specifico Name
+	 * "
+	 * 
+	 */
 	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
 		try {
 			URI url = httpExchange.getRequestURI();
 			switch (url.getPath()) {
-			case "/journal": {
+			case "/image": {
 				Collection<Image> images = ImageService.getAll();
-				return null;
+				return JsonHelper.ok(images.toJson());
 			}
 			default:
 				throw new HandleRequestException("Metodo non supportato");
