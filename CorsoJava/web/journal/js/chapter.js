@@ -34,7 +34,8 @@ function createChapter() {
 				if (foundRow) { //se trovo un elemento con data-id
 					foundRow.innerHTML = "";//pulisco la riga che ho trovato e poi vado a inserire il contenuto
 					createRowElements(res.data, foundRow);
-					document.getElementById("results").appendChild(createRow(res.data));
+			    } else {
+					document.getElementById("results").appendChild(createRow(res.data));				
 			    }
 			} else {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";
