@@ -30,13 +30,14 @@ public class ParagraphTest {
 	public static int ID = 1;
 	public static final String TEXT = "il primo paragraph del diario";
 	public static final String PREFIX = "$$";
+	public static final int IDJOURNAL = 1;
 
 	@Test
 	public void testAUpdate() {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Paragraph paragraph = new ParagraphBuilder().setText(TEXT).build();
+			Paragraph paragraph = new ParagraphBuilder().setText(PREFIX + TEXT).setIdJournal(IDJOURNAL).build();
 
 			ParagraphDao paragraphDao = new ParagraphDao(paragraph);
 			paragraphDao.setConnection(connection);
@@ -46,7 +47,7 @@ public class ParagraphTest {
 
 			ID = paragraph.getId();
 
-			paragraph = new ParagraphBuilder().setId(ID).setText(PREFIX + TEXT).build();
+			paragraph = new ParagraphBuilder().setId(ID).setText(PREFIX + TEXT).setIdJournal(IDJOURNAL).build();
 
 			paragraphDao = new ParagraphDao(paragraph);
 			paragraphDao.setConnection(connection);
@@ -87,7 +88,7 @@ public class ParagraphTest {
 
 				Paragraph paragraph1 = paragraphIterator.next();
 
-				if (paragraph1.getId() == ID && paragraph1.getText().equals(PREFIX + TEXT)) {
+				if (paragraph1.getId() == ID && paragraph1.getText().equals(PREFIX + TEXT) && paragraph1.getIdJournal() == IDJOURNAL) {
 					found = true;
 					break;
 
@@ -127,7 +128,7 @@ public class ParagraphTest {
 			Paragraph paragraph = paragraphDao.get();
 			boolean found = false;
 
-			if (paragraph.getId() == ID && paragraph.getText().equals(PREFIX + TEXT)) {
+			if (paragraph.getId() == ID && paragraph.getText().equals(PREFIX + TEXT) && paragraph.getIdJournal() == IDJOURNAL) {
 				found = true;
 			}
 
