@@ -20,12 +20,14 @@ public class Chapter implements DataObjectInterface  {
 	private int id;
 	private  String title;
 	private  String date;
+	private int idJournal;
 
-	public Chapter(int id, String title, String date) {
+	public Chapter(int id, String title, String date, int idJournal) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.date = date;
+		this.idJournal = idJournal;
 
 	}
 
@@ -39,6 +41,10 @@ public class Chapter implements DataObjectInterface  {
 
 	public String getDate() {
 		return date;
+	}
+	
+	public int getIdJournal() {
+		return idJournal;
 	}
 	public static Config loadProperties() throws IOException {
 

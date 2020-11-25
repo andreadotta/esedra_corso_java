@@ -5,12 +5,14 @@ public class ChapterBuilder {
 	private int id;
 	private String title;
 	private String date;
+	private int idJournal;
 
-	public ChapterBuilder(int id, String title, String date) {
+	public ChapterBuilder(int id, String title, String date, int idJournal) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.date = date;
+		this.idJournal = idJournal;
 	}
 
 	public ChapterBuilder() {
@@ -18,7 +20,7 @@ public class ChapterBuilder {
 	}
 
 	public Chapter build() {
-		return new Chapter(id, title, date);
+		return new Chapter(id, title, date, idJournal);
 	}
 
 	public int getId() {
@@ -46,6 +48,15 @@ public class ChapterBuilder {
 
 	public String getDate() {
 		return date;
+	}
+
+	public int getIdJournal() {
+		return idJournal;
+	}
+
+	public ChapterBuilder setIdJournal(int idJournal) {
+		this.idJournal = idJournal;
+		return this;
 	}
 
 }

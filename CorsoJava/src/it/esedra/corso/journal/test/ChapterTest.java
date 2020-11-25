@@ -26,13 +26,14 @@ public class ChapterTest {
 	private static final String TITLE = "TITLE";
 	private static final String DATE = "25/07/1900";
 	public static final String PREFIX = "$$";
+	public static final int IDJOURNAL = 1;
 
 	@Test
 	public void testAUpdate() {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Chapter chapter = new ChapterBuilder().setTitle(PREFIX + TITLE).setDate(PREFIX + DATE).build();
+			Chapter chapter = new ChapterBuilder().setTitle(PREFIX + TITLE).setDate(PREFIX + DATE).setIdJournal(IDJOURNAL).build();
 
 			ChapterDao chapterDao = new ChapterDao(chapter);
 			chapterDao.setConnection(connection);
@@ -41,7 +42,7 @@ public class ChapterTest {
 			assertTrue(chapter != null);
 			ID = chapter.getId();
 
-			chapter = new ChapterBuilder().setId(ID).setTitle(PREFIX + TITLE).setDate(PREFIX + DATE).build();
+			chapter = new ChapterBuilder().setId(ID).setTitle(PREFIX + TITLE).setDate(PREFIX + DATE).setIdJournal(IDJOURNAL).build();
 
 			chapterDao = new ChapterDao(chapter);
 			chapterDao.setConnection(connection);
@@ -80,7 +81,7 @@ public class ChapterTest {
 				Chapter chapter1 = chapterIterator.next();
 
 				if (chapter1.getId() == ID && chapter1.getTitle().equals(PREFIX + TITLE)
-						&& chapter1.getDate().equals(PREFIX + DATE)) {
+						&& chapter1.getDate().equals(PREFIX + DATE) && chapter1.getIdJournal() == IDJOURNAL) {
 					found = true;
 					break;
 				}
@@ -117,7 +118,7 @@ public class ChapterTest {
 			boolean found = false;
 
 			if (chapter.getId() == ID && (chapter.getTitle().equals(PREFIX + TITLE)
-					&& chapter.getDate().equals(PREFIX + DATE ))) {
+					&& chapter.getDate().equals(PREFIX + DATE )) && chapter.getIdJournal() == IDJOURNAL) {
 				
 				found = true;
 				
