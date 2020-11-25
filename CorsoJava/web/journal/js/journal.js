@@ -35,7 +35,7 @@ function createJournal() {
 				} else { //non ho trovato nessun data-id corrispondente quindi si tratta di un nuvo record.
 					document.getElementById("results").appendChild(createRow(res.data)); //creo  una nuova riga e la appendo al result set
 				}
-
+ 
 			} else {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito"; //
 			}
