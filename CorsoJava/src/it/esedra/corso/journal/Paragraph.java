@@ -19,11 +19,13 @@ public class Paragraph implements DataObjectInterface  {
 
 	private  String text;
 	private  int id;
+	private int idJournal;
 
-	public Paragraph(int id, String text) {
+	public Paragraph(int id, String text,int idJournal) {
 		super();
 		this.id = id;
 		this.text = text;
+		this.idJournal=idJournal;
 	}
 
 	public   int getId() {
@@ -32,6 +34,9 @@ public class Paragraph implements DataObjectInterface  {
 
 	public String getText() {
 		return text;
+	}
+	public int getIdJournal() {
+		return idJournal;
 	}
 	
 	

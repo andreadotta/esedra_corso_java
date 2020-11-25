@@ -3,7 +3,9 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
@@ -13,6 +15,7 @@ import it.esedra.corso.journal.collections.VideoCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class VideoDao implements DaoInterface<Video> {
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	private Video video;
 	private Connection conn;
@@ -40,7 +43,7 @@ public class VideoDao implements DaoInterface<Video> {
 				success = true;
 			}
 		} catch (Exception e) {
-			throw new DaoException("Errore durante update Video ",e);
+			LOGGER.severe(e.toString());
 		}
 
 		return success;
@@ -63,7 +66,7 @@ public class VideoDao implements DaoInterface<Video> {
 			}
 			rs.close();
 		} catch (Exception e) {
-			throw new DaoException("Errore durante update Video ",e);
+			LOGGER.severe(e.toString());
 		}
 
 		return videos;
@@ -89,16 +92,18 @@ public class VideoDao implements DaoInterface<Video> {
 				stm.setString(1, video.getSrc());
 				stm.setString(2, video.getName());
 				stm.setString(3, video.getTitle());
-
 				stm.setInt(4, video.getId());
 
 				if (stm.executeUpdate() > 0) {
+					stm.close();
 
-					copy = new VideoBuilder().setId(video.getId()).setSrc(video.getSrc()).setName(video.getName())
-							.setTitle(video.getTitle()).build();
 				}
-
-				stm.close();
+				copy = new VideoBuilder()
+						.setId(video.getId())
+						.setSrc(video.getSrc())
+						.setName(video.getName())
+						.setTitle(video.getTitle())
+						.build();
 
 			} else {
 				String sql = "INSERT INTO video (src, name, title) VALUES (?,?,?);";
@@ -109,12 +114,14 @@ public class VideoDao implements DaoInterface<Video> {
 				stm.setString(3, video.getTitle());
 
 				if (stm.executeUpdate() > 0) {
-
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
-
-						copy = new VideoBuilder().setId(genKeys.getInt(1)).setSrc(video.getSrc())
-								.setName(video.getName()).setTitle(video.getTitle()).build();
+						copy = new VideoBuilder()
+								.setId(genKeys.getInt(1))
+								.setSrc(video.getSrc())
+								.setName(video.getName())
+								.setTitle(video.getTitle())
+								.build();
 					}
 				}
 
@@ -122,8 +129,7 @@ public class VideoDao implements DaoInterface<Video> {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			throw new DaoException("Errore durante update Video ",e);
+			LOGGER.severe(e.toString());
 		}
 
 		return copy;
@@ -145,13 +151,17 @@ public class VideoDao implements DaoInterface<Video> {
 
 			while (rs.next()) {
 
-				video = new VideoBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
-						.setName(rs.getString("name")).setTitle(rs.getString("title")).build();
+				video = new VideoBuilder()
+						.setId(rs.getInt("id"))
+						.setSrc(rs.getString("src"))
+						.setName(rs.getString("name"))
+						.setTitle(rs.getString("title"))
+						.build();
 
 			}
 			rs.close();
 		} catch (Exception e) {
-			throw new DaoException("Errore durante update Video ",e);
+			LOGGER.severe(e.toString());
 		}
 		return video;
 	}

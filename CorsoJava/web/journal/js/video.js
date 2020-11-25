@@ -24,19 +24,29 @@ function createVideo() {
 		var req = new XMLHttpRequest();
 		req.onload = function() {
 			res = JSON.parse(this.responseText);
-			if (res.status === "ok") {
-				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
-				formVideo["id"].value = res.data.id;
+			if (res.status === "ok") { //il backend ha risposto positivamente; quindi procedo ad aggiornare la pagina (DOM)
+				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito"; //imposto un messaggio di successo
+				//vado a cercare una riga che abbia data-id con valore uguale al valore del campo "id" dell'oggetto 
+				//restituito dal backend
+				let foundRow = document.querySelector("[data-id='" + res.data.id + "']"); //utilizzo query selector: mi rende il primo elemento trovato
+				if (foundRow) { //se trovo un elemento con data-id
+					foundRow.innerHTML = ""; //pulisco la riga che ho trovato...
+					createRowElements(res.data, foundRow); //...e poi vado a inserire il contenuto
+				} else { //non ho trovato nessun data-id corrispondente; quindi si tratta di un nuvo record
+					document.getElementById("results").appendChild(createRow(res.data)); //creo una nuova riga e la appendo al result set
+				}
 			} else {
-				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";				
+				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";
 			}
 		};
 		req.open("POST", "http://localhost:8000/" + "video");
+
 		req.send(JSON.stringify(video));
 
-	};
+	}
+
 	return video;
-}
+};
 
 function submitVideo(event) {
 	event.preventDefault();
@@ -58,7 +68,9 @@ var getall = function getAll() {
 	req.onload = function() {
 		res = JSON.parse(this.responseText);
 		if (res.status === "ok") {
-			console.log(res.data);
+			JSON.parse(res.data).forEach(function(item) {
+				document.getElementById("results").appendChild(createRow(item));
+		    });
 		} else {
 			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Journals";
 		}

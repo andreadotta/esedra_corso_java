@@ -84,7 +84,7 @@ public class ImageDao implements DaoInterface<Image> {
 		try {
 
 			if (imageCheck != null) {
-				String sql = "UPDATE image SET src= ?, name= ?   WHERE id = ? ;";
+				String sql = "UPDATE image SET src= ?, name= ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, image.getSrc());
@@ -92,9 +92,9 @@ public class ImageDao implements DaoInterface<Image> {
 				stm.setInt(3, image.getId());
 
 				if (stm.executeUpdate() > 0) {
-
 					stm.close();
 				}
+				copy = new ImageBuilder().setId(image.getId()).setSrc(image.getSrc()).setName(image.getName()).build();
 			} else {
 				String sql = "INSERT INTO image (src, name) VALUES (?,?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
@@ -116,7 +116,6 @@ public class ImageDao implements DaoInterface<Image> {
 
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new DaoException("Errore durante update Image ", e);
 		}
 

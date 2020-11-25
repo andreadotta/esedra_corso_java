@@ -4,6 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.logging.Logger;
+
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Chapter;
@@ -13,6 +16,7 @@ import it.esedra.corso.journal.collections.ChapterCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class ChapterDao implements DaoInterface<Chapter> {
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	private Chapter chapter;
 	private Connection conn;
@@ -30,31 +34,35 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	public Chapter update() throws DaoException {
 		
 		if (chapter == null) {
-			PrintHelper.out("chapter non può essere null.");
-			return null;
+			throw new DaoException("chapter non può essere null.");
+		}
+		if(chapter.getIdJournal() == 0) {
+			throw new DaoException("inserire un id_journal valido.");
 		}
 		Chapter chapterCheck = this.get();
 		Chapter copy = null;
 		try {
 			if ((chapterCheck != null)) {
-				String sql = "UPDATE chapter SET title = ?, date= ?  WHERE id = ? ;";
+				String sql = "UPDATE chapter SET title = ?, date= ?, id_journal= ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, chapter.getTitle());
 				stm.setString(2, chapter.getDate());
-				stm.setInt(3, chapter.getId());
+				stm.setInt(3, chapter.getIdJournal());
+				stm.setInt(4, chapter.getId());
 				
 				if (stm.executeUpdate() > 0) {	
 				stm.close();
 				} 
-				copy = new ChapterBuilder().setId(chapter.getId()).setTitle(chapter.getTitle()).setDate(chapter.getDate()).build();;
+				copy = new ChapterBuilder().setId(chapter.getId()).setTitle(chapter.getTitle()).setDate(chapter.getDate()).setIdJournal(chapter.getIdJournal()).build();
 
 			} else {
-				String sql = "INSERT INTO chapter ( title, date ) VALUES (?, ?);";
+				String sql = "INSERT INTO chapter ( title, date, id_journal ) VALUES (?, ?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, chapter.getTitle());
 				stm.setString(2, chapter.getDate());
+				stm.setInt(3, chapter.getIdJournal());
 
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
@@ -62,8 +70,9 @@ public class ChapterDao implements DaoInterface<Chapter> {
 
 						stm.setString(1, chapter.getTitle());
 						stm.setString(2, chapter.getDate());
+						stm.setInt(3, chapter.getIdJournal());
 						copy = new ChapterBuilder().setId(genKeys.getInt(1)).setTitle(chapter.getTitle())
-								.setDate(chapter.getDate()).build();
+								.setDate(chapter.getDate()).setIdJournal(chapter.getIdJournal()).build();
 				
 				}
 
@@ -73,7 +82,8 @@ public class ChapterDao implements DaoInterface<Chapter> {
 				
 			}
 		
-		} catch (SQLException e) {
+		} catch (Exception e) {
+			LOGGER.severe(Arrays.toString(e.getStackTrace()));
 			throw new DaoException("Errore durante Update Chapter", e);
 		}
 		return copy;
@@ -112,6 +122,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 						.setId(rs.getInt("id"))
 						.setTitle(rs.getString("title"))
 						.setDate(rs.getString("date"))
+						.setIdJournal(rs.getInt("id_journal"))
 						.build();
 
 				chapters.add(chapter);
@@ -145,6 +156,7 @@ public class ChapterDao implements DaoInterface<Chapter> {
 						.setId(rs.getInt("id"))
 						.setTitle(rs.getString("title"))
 						.setDate(rs.getString("date"))
+						.setIdJournal(rs.getInt("id_journal"))
 						.build();
 
 			}

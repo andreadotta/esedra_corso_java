@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
@@ -14,6 +15,7 @@ import it.esedra.corso.journal.collections.UserCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class UserDao implements DaoInterface<User> {
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	private User user;
 	private Connection conn;
@@ -44,7 +46,7 @@ public class UserDao implements DaoInterface<User> {
 			}
 
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante Delete User", e);
+			LOGGER.severe(e.toString());
 		}
 		// Restituisce l'oggetto
 		return success;
@@ -74,7 +76,7 @@ public class UserDao implements DaoInterface<User> {
 			// Chiude le connessioni e il result set
 			rs.close();
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante getAll User", e);
+			LOGGER.severe(e.toString());
 		}
 		// Restituisce la lista
 		return users;
@@ -134,7 +136,7 @@ public class UserDao implements DaoInterface<User> {
 			}
 
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante Update User", e);
+			LOGGER.severe(e.toString());
 		}
 
 		return copy;
@@ -173,7 +175,7 @@ public class UserDao implements DaoInterface<User> {
 			// Chiude le connessioni e il result set
 			rs.close();
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante Get User", e);
+			LOGGER.severe(e.toString());
 		}
 		// Restituisce l'oggetto
 		return user;

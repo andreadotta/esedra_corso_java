@@ -9,44 +9,45 @@
 <link rel="stylesheet" href="/css/app.css" />
 </head>
 <body>
-    <div class="container">
+	<div class="container">
 		<div class="header">
-		<h1>Chapter</h1>		
+			<h1>Chapter</h1>
 		</div>
-
-
-	<form id="chapter-form" action="http://localhost:8000/chapter/"
-		method="post">
-        <div class="table">
-			<div class="row">
-				<div class="col-label">
-					<label for="id">ID</label>
+		<form id="chapter-form" action="http://localhost:8000/chapter/"
+			method="post">
+			<div class="table">
+				<div class="row">
+					<div class="col-label">
+						<label for="id">ID</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="id" value="" />
+					</div>
 				</div>
-				<div class="col-field">
-					<input class="input-text" name="id" value="" />
+				<div class="row">
+					<div class="col-label">
+						<label for="title">Title</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="title" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-label">
+						<label for="date">Date</label>
+					</div>
+					<div class="col-field">
+						<input class="input-text" name="date" value="" />
+					</div>
+				</div>
+				<div class="row">
+					<button id="submit-chapter" type="submit">Save</button>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-label">
-					<label for="title">Title</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="title" value="" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-label">
-					<label for="date">Date</label>
-				</div>
-				<div class="col-field">
-					<input class="input-text" name="date" value="" />
-				</div>
-			</div>
-			<div class="row"> 
-			    <button id="submit-chapter" type="submit">Save</button>
-			</div>
-		</div>
-		<div id="xhr-message"></div>
-	</form>
+			<div id="xhr-message"></div>
+		</form>
+		<div id="results"></div>
+		
+	</div>
 </body>
 </html>

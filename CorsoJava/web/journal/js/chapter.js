@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		submitChapter(event);
 	});
 
+
 });
 
 function createChapter() {
@@ -26,8 +27,16 @@ function createChapter() {
 		req.onload = function() {
 			res = JSON.parse(this.responseText);
 			if (res.status === "ok") {
-				document.getElementById("xhr-message").innerHTML = "Salvataggio riuscito";
-				formChapter["id"].value = res.data.id;
+			//il backend ha risposto positivamente quindi procedo ad aggiornare la pagina (DOM) 
+			//vado a cercare una riga che abbia data-id con valore uguale al valore del campo "id" dell'oggetto 
+			//restituito dal backend
+				let foundRow = document.querySelector("[data-id='" + res.data.id + "']"); //utilizzo query selector: mi rende il primo elemento trovato
+				if (foundRow) { //se trovo un elemento con data-id
+					foundRow.innerHTML = "";//pulisco la riga che ho trovato e poi vado a inserire il contenuto
+					createRowElements(res.data, foundRow);
+			    } else {
+					document.getElementById("results").appendChild(createRow(res.data));				
+			    }
 			} else {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";
 			}
@@ -135,7 +144,7 @@ function createRowElements(item, row) {
 function createRowDataCell(name, value) {
 	col = document.createElement("div");
 	col.className = "col";
-	col.setAttribute("data-" + name, value); //setta l'attributo data-name
+	col.setAttribute("data-" + name, value);
 	col.innerHTML = value; //setta il contenuto visibile della cella
 	return col;
 }

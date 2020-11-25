@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Logger;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
@@ -14,6 +15,8 @@ import it.esedra.corso.journal.collections.ParagraphCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class ParagraphDao implements DaoInterface<Paragraph> {
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	
 
 	private Paragraph paragraph;
 	private Connection conn;
@@ -69,8 +72,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			}
 
 		} catch (Exception e) {
-			throw new DaoException("Errore durante delete Paragraph ", e);
-
+			LOGGER.severe(e.toString());
 		}
 
 		return copy;
@@ -97,8 +99,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 			rs.close();
 		} catch (Exception e) {
-			throw new DaoException("Errore durante delete Paragraph ", e);
-
+			LOGGER.severe(e.toString());
 		}
 
 		return paragraphs;
@@ -124,8 +125,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 				success = true;
 			}
 		} catch (Exception e) {
-			throw new DaoException("Errore durante delete Paragraph ", e);
-
+			LOGGER.severe(e.toString());
 		}
 
 		return success;
@@ -145,8 +145,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			}
 			rs.close();
 		} catch (Exception e) {
-			throw new DaoException("Errore durante delete Paragraph ", e);
-
+			LOGGER.severe(e.toString());
 		}
 		return paragraph;
 	}
