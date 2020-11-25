@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.io.StringReader;
 import java.net.URI;
 import java.sql.Connection;
+import java.util.logging.Logger;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -34,10 +35,12 @@ public class ParagraphHandler extends Handler {
 	 * Deve restituire tutti i dati presenti in tabella qualora non sia valorizzato
 	 * uno dei campi in input.
 	 * 
-	 * /journal Ottengo tutti i journal presenti /journal/{id} Ottengo un Journal
-	 * per specifico ID /journal/{name} Ottengo un Journal per specifico Name
+	 * /paragraph Ottengo tutti i paragraph presenti 
+	 *paragraph/{id} Ottenga un Paragraph per specifico ID 
+	 * /paragraph/{text} Ottengo un Paragraph per specifico Text
 	 */
 	
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	
 	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
 		
@@ -72,7 +75,7 @@ public class ParagraphHandler extends Handler {
 			paragraph = ParagraphService.update(paragraphObject);
 
 		} catch (Exception e) {
-			throw new HandleRequestException(e.getMessage(), e);
+			LOGGER.severe(e.toString());
 		}
 		
 		if(paragraph == null) {
