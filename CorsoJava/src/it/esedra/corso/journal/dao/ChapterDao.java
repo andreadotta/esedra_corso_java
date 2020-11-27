@@ -72,14 +72,10 @@ public class ChapterDao implements DaoInterface<Chapter> {
 						stm.setString(2, chapter.getDate());
 						stm.setInt(3, chapter.getIdJournal());
 						copy = new ChapterBuilder().setId(genKeys.getInt(1)).setTitle(chapter.getTitle())
-								.setDate(chapter.getDate()).setIdJournal(chapter.getIdJournal()).build();
-				
+								.setDate(chapter.getDate()).setIdJournal(chapter.getIdJournal()).build();				
 				}
-
-				stm.close();
-				
-				}
-				
+				stm.close();			
+				}			
 			}
 		
 		} catch (Exception e) {
@@ -87,7 +83,6 @@ public class ChapterDao implements DaoInterface<Chapter> {
 			throw new DaoException("Errore durante Update Chapter", e);
 		}
 		return copy;
-
 	}
 
 	@Override
@@ -105,7 +100,6 @@ public class ChapterDao implements DaoInterface<Chapter> {
 		} catch (SQLException e) {
 			throw new DaoException("Errore durante Delete Chapter", e);
 		}
-
 		return success;
 	}
 
@@ -127,15 +121,11 @@ public class ChapterDao implements DaoInterface<Chapter> {
 
 				chapters.add(chapter);
 			}
-
-			rs.close();
-			
+			rs.close();		
 		} catch (SQLException e) {
 			throw new DaoException("Errore durante GetAll Chapter", e);
 		}
-
 		return chapters;
-
 	}
 
 	@Override
@@ -158,14 +148,11 @@ public class ChapterDao implements DaoInterface<Chapter> {
 						.setDate(rs.getString("date"))
 						.setIdJournal(rs.getInt("id_journal"))
 						.build();
-
 			}
-
 			rs.close();
 		} catch (SQLException e) {
 			throw new DaoException("Errore durante Get Chapter", e);
 		}
 		return chapter;
 	}
-
 }

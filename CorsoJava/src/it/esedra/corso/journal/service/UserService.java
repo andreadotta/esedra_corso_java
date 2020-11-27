@@ -23,24 +23,23 @@ public class UserService {
 	 * @return User
 	 * @throws DaoException
 	 */
-	
+
 	public static User update(JsonObject json) throws DaoException {
-		
+
 		Connection connection = JournalDbConnect.connect();
 		User user = new UserBuilder().setId(json.getInt("id", -1)).setName(json.getString("name"))
 				.setSurname(json.getString("surname")).setEmail(json.getString("email"))
-				.setPassword(json.getString("password")).setRegistration(json.getString("registration"))
-				.build();
-		
+				.setPassword(json.getString("password")).setRegistration(json.getString("registration")).build();
+
 		UserDao userDao = new UserDao(user);
 		userDao.setConnection(connection);
-		
+
 		return userDao.update();
-		
 	}
-	
+
 	/**
 	 * Restituisce tutti gli oggetti user
+	 * 
 	 * @return Collection<User>
 	 * @throws DaoException
 	 */
@@ -53,10 +52,8 @@ public class UserService {
 			connection = JournalDbConnect.connect();
 			UserDao userDao = new UserDao();
 			userDao.setConnection(connection);
-
 			// Chiamata metodo getAll() sulla Collection creata
 			userCollection = userDao.getAll();
-
 		} finally {
 			try {
 				if (connection != null) {
@@ -66,8 +63,6 @@ public class UserService {
 				PrintHelper.out("Errore nella chiususa della connessione");
 			}
 		}
-		
 		return userCollection;
 	}
-
 }
