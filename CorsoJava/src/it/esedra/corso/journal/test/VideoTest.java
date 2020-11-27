@@ -31,6 +31,7 @@ public class VideoTest {
 	public static final String NAME = "VIDEO";
 	public static final String TITLE = "CIAO";
 	public static final String PREFIX = "$$";
+	public static final int IDJOURNAL = 1;
 
 	public VideoTest() {
 
@@ -42,7 +43,12 @@ public class VideoTest {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Video video = new VideoBuilder().setSrc(SRC).setName(NAME).setTitle(TITLE).build();
+			Video video = new VideoBuilder()
+					.setSrc(SRC)
+					.setName(NAME)
+					.setTitle(TITLE)
+					.setIdJournal(IDJOURNAL)
+					.build();
 
 			VideoDao videoDao = new VideoDao(video);
 			videoDao.setConnection(connection);
@@ -52,7 +58,12 @@ public class VideoTest {
 
 			ID = video.getId();
 
-			video = new VideoBuilder().setId(ID).setSrc(PREFIX + SRC).setName(PREFIX + NAME).setTitle(PREFIX + TITLE)
+			video = new VideoBuilder()
+					.setId(ID)
+					.setSrc(PREFIX + SRC)
+					.setName(PREFIX + NAME)
+					.setTitle(PREFIX + TITLE)
+					.setIdJournal(IDJOURNAL)
 					.build();
 
 			videoDao = new VideoDao(video);
@@ -89,8 +100,15 @@ public class VideoTest {
 
 				Video video = videoIterator.next();
 
-				if (video.getId() == ID && video.getSrc().equals(PREFIX + SRC) && video.getName().equals(PREFIX + NAME)
-						&& video.getTitle().equals(PREFIX + TITLE)) {
+				if (video.getId() == ID
+						&& video.getSrc()
+						.equals(PREFIX + SRC)
+						&& video.getName()
+						.equals(PREFIX + NAME)
+						&& video.getTitle()
+						.equals(PREFIX + TITLE)
+						&& video.getIdJournal()
+						== IDJOURNAL) {
 					found = true;
 					break;
 
@@ -143,8 +161,15 @@ public class VideoTest {
 			Video video = videoDao.get();
 
 			boolean found = false;
-			if (video.getId() == ID && video.getSrc().equals(PREFIX + SRC) && video.getName().equals(PREFIX + NAME)
-					&& video.getTitle().equals(PREFIX + TITLE)) {
+			if (video.getId() == ID
+					&& video.getSrc()
+					.equals(PREFIX + SRC)
+					&& video.getName()
+					.equals(PREFIX + NAME)
+					&& video.getTitle()
+					.equals(PREFIX + TITLE)
+					&& video.getIdJournal()
+					== IDJOURNAL) {
 				found = true;
 
 			}
