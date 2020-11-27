@@ -17,21 +17,28 @@ import it.esedra.corso.collections.interfaces.DataObjectInterface;
 public class Video extends MultimediaResource implements DataObjectInterface  {
 
 	private final String title;
-	private int idJournal;
+	private int idImage;
+	private int idParagraph;
 
-	public Video(int id, String src, String name, String title, int idJournal) {
+	public Video(int id, String src, String name, String title, int idImage, int idParagraph) {
 		super(id, src, name);
 		this.title = title;
-		this.idJournal = idJournal;
-
+		this.idImage = idImage;
+		this.idParagraph = idParagraph;
 	}
 
 	public String getTitle() {
 		return title;
 	}
-	public int getIdJournal() {
-		return idJournal;
+	
+	public int getIdImage() {
+		return idImage;
 	}
+	
+	public int getIdParagraph() {
+		return idParagraph;
+	}
+
 	public static Config loadProperties() throws IOException {
 
 		Properties prop = new Properties();

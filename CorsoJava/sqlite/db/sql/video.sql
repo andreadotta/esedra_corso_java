@@ -4,7 +4,9 @@ CREATE TABLE "video" (
 	"id"	INTEGER NOT NULL UNIQUE,
 	"src"	TEXT NOT NULL, 
 	"name"	TEXT NULL, 	
-	"id_journal" INTEGER NOT NULL,
+	"id_image" INTEGER NOT NULL,
+	"id_paragraph" INTEGER NOT NULL,
 	PRIMARY KEY("id" AUTOINCREMENT)
-	FOREIGN KEY("id_journal") REFERENCES journal("id")
+	FOREIGN KEY("id_image") REFERENCES image("id")
+	FOREIGN KEY("id_paragraph") REFERENCES paragraph("id")
 );
