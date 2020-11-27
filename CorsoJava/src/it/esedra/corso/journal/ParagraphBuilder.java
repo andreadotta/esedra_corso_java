@@ -3,22 +3,22 @@ package it.esedra.corso.journal;
 public class ParagraphBuilder {
 	private int id;
 	private String text;
-	private int idJournal;
+	private int idChapter;
 
 	public ParagraphBuilder() {
 
 	}
 
-	public ParagraphBuilder(int id, String text,int idJournal) {
+	public ParagraphBuilder(int id, String text,int idChapter) {
 		super();
 		this.id = id;
 		this.text = text;
-		this.idJournal= idJournal;
+		this.idChapter= idChapter;
 
 	}
 
 	public Paragraph build() {
-		return new Paragraph(id, text, idJournal);
+		return new Paragraph(id, text, idChapter);
 
 	}
 
@@ -40,12 +40,12 @@ public class ParagraphBuilder {
 		return this;
 	}
 	
-	public int getIdJournal() {
-		return idJournal;
+	public int getIdChapter() {
+		return idChapter;
 	}
 	
-	public ParagraphBuilder setIdJournal(int idJournal) {
-		this.idJournal = idJournal;
+	public ParagraphBuilder setIdJournal(int idChapter) {
+		this.idChapter = idChapter;
 		return this;
 	}
 

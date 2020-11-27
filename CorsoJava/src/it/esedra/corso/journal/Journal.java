@@ -14,6 +14,7 @@ public class Journal implements DataObjectInterface {
 
 	private int id;
 	private String name;
+	private int idAuthor;
 
 	public int getId() {
 		return id;
@@ -23,13 +24,18 @@ public class Journal implements DataObjectInterface {
 		return name;
 	}
 
-	public Journal(int id, String name) {
+	public Journal(int id, String name,int idAuthor) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.idAuthor = idAuthor;
 	}
 
 	
+	public int getIdAuthor() {
+		return idAuthor;
+	}
+
 	public JsonObject toJson() {
 		return Json.createObjectBuilder().add("id", this.id).add("name", this.name).build();
 	}

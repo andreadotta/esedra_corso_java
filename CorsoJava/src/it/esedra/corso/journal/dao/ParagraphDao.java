@@ -38,41 +38,42 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 			throw new DaoException("Paragraph non può essere null");
 			
 		}
-		if(paragraph.getIdJournal() == 0) {
-			throw new DaoException("inserire un id_journal valido.");
+		if(paragraph.getIdChapter() == 0) {
+			throw new DaoException("inserire un id_chapter valido.");
 		}
 		
 			Paragraph paragraphCheck = this.get();
 		Paragraph copy = null;
 		try {
 			if (paragraphCheck != null) {
-				String sql = "UPDATE paragraph SET text= ? , id_journal= ? WHERE id = ? ;";
+				String sql = "UPDATE paragraph SET text= ? , id_chapter= ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, paragraph.getText());
-				stm.setInt(2, paragraph.getIdJournal());
+				stm.setInt(2, paragraph.getIdChapter());
 				stm.setInt(3, paragraph.getId());
 
 				if (stm.executeUpdate() > 0) {
 
 					stm.close();
 				}
-				copy = new ParagraphBuilder().setId(paragraph.getId()).setText(paragraph.getText()).setIdJournal(paragraph.getIdJournal()).build();;
+				copy = new ParagraphBuilder().setId(paragraph.getId()).setText(paragraph.getText()).setIdJournal(paragraph.getIdChapter()).build();;
 
 			} else {
-				String sql = "INSERT INTO paragraph ( text, id_journal) VALUES (?,?) ;";
+				String sql = "INSERT INTO paragraph ( text, id_chapter) VALUES (?,?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
+			
 				stm.setString(1, paragraph.getText());
-				stm.setInt(2, paragraph.getIdJournal());
+				stm.setInt(2, paragraph.getIdChapter());
 
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
 						
 						stm.setString(1, paragraph.getText());
-						stm.setInt(2, paragraph.getIdJournal());	
+						stm.setInt(2, paragraph.getIdChapter());	
 
-						copy = new ParagraphBuilder().setId(genKeys.getInt(1)).setText(paragraph.getText()).setIdJournal(paragraph.getIdJournal()).build();
+						copy = new ParagraphBuilder().setId(genKeys.getInt(1)).setText(paragraph.getText()).setIdJournal(paragraph.getIdChapter()).build();
 					}
 
 				}
@@ -103,14 +104,14 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 			while (rs.next()) {
 				Paragraph paragraph = new ParagraphBuilder().setId(rs.getInt("id")).setText(rs.getString("text"))
-						.setIdJournal(rs.getInt("id_journal")).build();
+						.setIdJournal(rs.getInt("id_chapter")).build();
 
 				paragraphs.add(paragraph);
 			}
 
 			rs.close();
 		} catch (Exception e) {
-			LOGGER.severe(e.toString());
+			throw new DaoException("Errore durante GetAll Paragraph", e);
 		}
 
 		return paragraphs;
@@ -152,7 +153,7 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 
 			while (rs.next()) {
 				paragraph = new ParagraphBuilder().setId(rs.getInt("id")).setText(rs.getString("text"))
-						.setIdJournal(rs.getInt("id_journal")).build();
+						.setIdJournal(rs.getInt("id_chapter")).build();
 
 			}
 			rs.close();
