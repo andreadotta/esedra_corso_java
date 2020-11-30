@@ -93,7 +93,7 @@ public class ImageDao implements DaoInterface<Image> {
 		try {
 
 			if (imageCheck != null) {
-				String sql = "UPDATE image SET src= ?, name= ?, id_paragraph WHERE id = ? ;";
+				String sql = "UPDATE image SET src= ?, name= ?, id_paragraph= ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, image.getSrc());

@@ -96,7 +96,7 @@ public class VideoDao implements DaoInterface<Video> {
 		try {
 
 			if (videoCheck != null) {
-				String sql = "UPDATE video SET src= ?, name= ?, title= ?, id_paragraph  WHERE id = ? ;";
+				String sql = "UPDATE video SET src= ?, name= ?, title= ?, id_paragraph= ?  WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, video.getSrc());
