@@ -6,27 +6,25 @@ public class VideoBuilder {
 	private String src;
 	private String name;
 	private String title;
-	private int idImage;
 	private int idParagraph;
 
 	public VideoBuilder() {
 
 	}
 
-	public VideoBuilder(int id, String src, String name, String title, int idImage , int idParagraph) {
+	public VideoBuilder(int id, String src, String name, String title, int idParagraph) {
 		super();
 		this.id = id;
 		this.src = src;
 		this.name = name;
 		this.title = title;
-		this.idImage = idImage;
 		this.idParagraph = idParagraph;
 		
 
 	}
 
 	public Video build() {
-		return new Video(id, src, name, title, idImage, idParagraph);
+		return new Video(id, src, name, title, idParagraph);
 	}
 
 	public int getId() {
@@ -62,15 +60,6 @@ public class VideoBuilder {
 
 	public VideoBuilder setTitle(String title) {
 		this.title = title;
-		return this;
-	}
-	
-	public int getIdImage() {
-		return idImage;
-	}
-
-	public VideoBuilder setIdImage(int idImage) {
-		this.idImage = idImage;
 		return this;
 	}
 	

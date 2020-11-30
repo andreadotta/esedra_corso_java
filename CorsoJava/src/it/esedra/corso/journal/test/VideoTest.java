@@ -31,7 +31,6 @@ public class VideoTest {
 	public static final String NAME = "VIDEO";
 	public static final String TITLE = "CIAO";
 	public static final String PREFIX = "$$";
-	public static final int IDIMAGE = 1;
 	public static final int IDPARAGRAPH = 1;
 
 	public VideoTest() {
@@ -48,7 +47,6 @@ public class VideoTest {
 					.setSrc(SRC)
 					.setName(NAME)
 					.setTitle(TITLE)
-					.setIdImage(IDIMAGE)
 					.setIdParagraph(IDPARAGRAPH)
 					.build();
 
@@ -65,7 +63,6 @@ public class VideoTest {
 					.setSrc(PREFIX + SRC)
 					.setName(PREFIX + NAME)
 					.setTitle(PREFIX + TITLE)
-					.setIdImage(IDIMAGE)
 					.setIdParagraph(IDPARAGRAPH)
 					.build();
 
@@ -110,9 +107,6 @@ public class VideoTest {
 						.equals(PREFIX + NAME)
 						&& video.getTitle()
 						.equals(PREFIX + TITLE)
-						&& video
-						.getIdImage()
-						== IDIMAGE
 						&& video
 						.getIdParagraph() 
 						== IDPARAGRAPH) {
@@ -175,9 +169,6 @@ public class VideoTest {
 					.equals(PREFIX + NAME)
 					&& video.getTitle()
 					.equals(PREFIX + TITLE)
-					&& video
-					.getIdImage() 
-					== IDIMAGE
 					&& video
 					.getIdParagraph() 
 					== IDPARAGRAPH) {

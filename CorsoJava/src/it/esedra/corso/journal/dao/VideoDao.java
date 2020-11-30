@@ -65,8 +65,7 @@ public class VideoDao implements DaoInterface<Video> {
 						.setSrc(rs.getString("src"))
 						.setName(rs.getString("name"))
 						.setTitle(rs.getString("title"))
-						.setIdImage(rs.getInt("id_Image"))
-						.setIdParagraph(rs.getInt("id_Paragraph"))
+						.setIdParagraph(rs.getInt("id_paragraph"))
 						.build();
 
 				videos.add(video);
@@ -87,10 +86,6 @@ public class VideoDao implements DaoInterface<Video> {
 			throw new DaoException("video non può essere null.");
 		}
 		
-		if(video.getIdImage() == 0) {
-			throw new DaoException("inserire un id_image valido.");
-		}
-		
 		if(video.getIdParagraph() == 0) {
 			throw new DaoException("inserire un id_paragraph valido.");
 		}
@@ -101,15 +96,14 @@ public class VideoDao implements DaoInterface<Video> {
 		try {
 
 			if (videoCheck != null) {
-				String sql = "UPDATE video SET src= ?, name= ?, title= ?, id_image, id_paragraph  WHERE id = ? ;";
+				String sql = "UPDATE video SET src= ?, name= ?, title= ?, id_paragraph  WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, video.getSrc());
 				stm.setString(2, video.getName());
 				stm.setString(3, video.getTitle());
-				stm.setInt(4, video.getIdImage());
-				stm.setInt(5, video.getIdParagraph());
-				stm.setInt(6, video.getId());
+				stm.setInt(4, video.getIdParagraph());
+				stm.setInt(5, video.getId());
 
 				if (stm.executeUpdate() > 0) {
 					stm.close();
@@ -120,19 +114,17 @@ public class VideoDao implements DaoInterface<Video> {
 						.setSrc(video.getSrc())
 						.setName(video.getName())
 						.setTitle(video.getTitle())
-						.setIdImage(video.getIdImage())
 						.setIdParagraph(video.getIdParagraph())
 						.build();
 
 			} else {
-				String sql = "INSERT INTO video (src, name, title, id_image, id_paragraph) VALUES (?,?,?,?,?);";
+				String sql = "INSERT INTO video (src, name, title, id_paragraph) VALUES (?,?,?,?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, video.getSrc());
 				stm.setString(2, video.getName());
 				stm.setString(3, video.getTitle());
-				stm.setInt(4, video.getIdImage());
-				stm.setInt(5, video.getIdParagraph());
+				stm.setInt(4, video.getIdParagraph());
 				
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
@@ -141,15 +133,13 @@ public class VideoDao implements DaoInterface<Video> {
 						stm.setString(1, video.getSrc());
 						stm.setString(2, video.getName());
 						stm.setString(3, video.getTitle());
-						stm.setInt(4, video.getIdImage());
-						stm.setInt(5, video.getIdParagraph());
+						stm.setInt(4, video.getIdParagraph());
 						
 						copy = new VideoBuilder()
 								.setId(genKeys.getInt(1))
 								.setSrc(video.getSrc())
 								.setName(video.getName())
 								.setTitle(video.getTitle())
-								.setIdImage(video.getIdImage())
 								.setIdParagraph(video.getIdParagraph())
 								.build();
 					}
@@ -187,8 +177,7 @@ public class VideoDao implements DaoInterface<Video> {
 						.setSrc(rs.getString("src"))
 						.setName(rs.getString("name"))
 						.setTitle(rs.getString("title"))
-						.setIdImage(rs.getInt("id_Image"))
-						.setIdParagraph(rs.getInt("id_Paragraph"))
+						.setIdParagraph(rs.getInt("id_paragraph"))
 						.build();
 
 			}
