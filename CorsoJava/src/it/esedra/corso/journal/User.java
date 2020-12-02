@@ -31,7 +31,8 @@ public class User implements DataObjectInterface  {
 		this.registration = registration;
 
 	}
-
+	
+	// Getter di Id
 	public int getId() {
 		return id;
 	}
