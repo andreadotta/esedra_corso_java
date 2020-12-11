@@ -1,0 +1,60 @@
+
+P = numero x data x importo
+
+Q = {(001,21/12/2020,3000),
+     (002,01/01/2021,3500),
+     (003,03/02/2021,1500)}
+     
+     
+Numero |  Data      | Importo
+-------------------------------
+001    | 21/12/2020 | 3000
+002    | 01/01/2021 | 3500
+003    | 03/02/2021 | 1500
+
+
+Tabella contraria alla prima forma normale
+
+Cliente | Fattura
+----------------------
+127     | 31 | 68 | 52
+124     | 31 | 68 | 
+122     | 31 | 
+
+Non rispetta la seconda forma normale
+
+Fattura | Articolo | Sconto | Prezzo
+-------------------------------------
+127     | 31       |  10%    | 52,00
+127     | 32       |  20%    | 51,00
+
+Soluzione
+
+Fattura | Articolo | Sconto 
+-------------------------------------
+127     | 31       |  10%   
+127     | 32       |  20%   
+
+
+Articolo | Prezzo
+------------------------------------
+31       | 52,00
+127      | 51,00
+
+
+Fattura | Cliente  | Ragione Sociale        | Importo
+------------------------------------------------------
+127     | 31       |  Pinco ACME            | 52,00
+127     | 32       |  FIAT                  | 51,00
+
+SOLUZIONE
+
+Fattura | Cliente  | Importo
+------------------------------------------------------
+127     | 31       | 52,00
+127     | 32       | 51,00
+
+Cliente  | Ragione Sociale
+------------------------------------------------------
+31       |  Pinco ACME    
+32       |  FIAT          

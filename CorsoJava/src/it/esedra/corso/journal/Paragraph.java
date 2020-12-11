@@ -21,7 +21,7 @@ public class Paragraph implements DataObjectInterface  {
 	private  int id;
 	private int idJournal;
 
-	public Paragraph(int id, String text,int idJournal) {
+	public Paragraph(int id, String text) {
 		super();
 		this.id = id;
 		this.text = text;
