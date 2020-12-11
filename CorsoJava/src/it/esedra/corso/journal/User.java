@@ -31,11 +31,12 @@ public class User implements DataObjectInterface  {
 		this.registration = registration;
 
 	}
-
+	
+	// Getter di Id
 	public int getId() {
 		return id;
 	}
-
+	// Getter di Name
 	public String getName() {
 		return name;
 	}

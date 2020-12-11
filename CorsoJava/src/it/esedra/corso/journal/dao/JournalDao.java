@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.logging.Logger;
 import java.sql.SQLException;
 
 import it.esedra.corso.collections.interfaces.Collection;
@@ -14,14 +16,15 @@ import it.esedra.corso.journal.collections.JournalCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class JournalDao implements DaoInterface<Journal> {
+	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	private Journal journal;
 	private Connection conn;
 
 	public JournalDao() {
-		
+
 	}
-	
+
 	public JournalDao(Journal journal) {
 		super();
 		this.journal = journal;
@@ -41,7 +44,8 @@ public class JournalDao implements DaoInterface<Journal> {
 			// ottiene il result set
 			while (rs.next()) {
 				// e quindi per ogni tupla crea un oggetto di tipo Journal
-				Journal journal = new JournalBuilder().setId(rs.getInt("id")).setName(rs.getString("Name")).build();
+				Journal journal = new JournalBuilder().setId(rs.getInt("id")).setName(rs.getString("Name"))
+						.setIdAuthor(rs.getInt("id_author")).build();
 				// aggiunge l'oggetto alla lista
 				journals.add(journal);
 			}
@@ -59,48 +63,48 @@ public class JournalDao implements DaoInterface<Journal> {
 	public Journal update() throws DaoException {
 
 		if (journal == null) {
-			PrintHelper.out("journal non può essere null.");
-			return null;
+			throw new DaoException("journal non può essere null.");
+
+		}
+
+		if (journal.getIdAuthor() == 0) {
+			throw new DaoException("inserire un id_author valido.");
 		}
 
 		Journal journalCheck = this.get();
 		Journal copy = null;
+
 		try {
 			if (journalCheck != null) {
-				String sql = "UPDATE journal SET name = ? WHERE id = ? ;";
+				String sql = "UPDATE journal SET name = ? , id_author = ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
-
 				stm.setString(1, journal.getName());
-				stm.setInt(2, journal.getId());
-
+				stm.setInt(2, journal.getIdAuthor());
+				stm.setInt(3, journal.getId());
 				if (stm.executeUpdate() > 0) {
 					stm.close();
 				}
-				copy = new JournalBuilder().setId(journal.getId()).setName(journal.getName()).build();;
-
+				copy = new JournalBuilder().setId(journal.getId()).setName(journal.getName())
+						.setIdAuthor(journal.getIdAuthor()).build();
 			} else {
-				String sql = "INSERT INTO journal (name) VALUES (?) ;";
+				String sql = "INSERT INTO journal ( name, id_author) VALUES (?,?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
-
 				stm.setString(1, journal.getName());
-
+				stm.setInt(2, journal.getIdAuthor());
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
-						copy = new JournalBuilder().setId(genKeys.getInt(1)).setName(journal.getName()).build();
+						copy = new JournalBuilder().setId(genKeys.getInt(1)).setName(journal.getName())
+								.setIdAuthor(journal.getIdAuthor()).build();
 					}
 				}
-
 				stm.close();
-
 			}
-
 		} catch (SQLException e) {
-			throw new DaoException("Errore durante Update Journal", e);
+			LOGGER.severe(Arrays.toString(e.getStackTrace()));
+			throw new DaoException("Errore durante Update journal", e);
 		}
-
 		return copy;
-
 	}
 
 	@Override
@@ -122,7 +126,8 @@ public class JournalDao implements DaoInterface<Journal> {
 
 			while (rs.next()) {
 				// istanzia l'elemento Journal
-				journal = new JournalBuilder().setId(rs.getInt("id")).setName(rs.getString("Name")).build();
+				journal = new JournalBuilder().setId(rs.getInt("id")).setName(rs.getString("Name"))
+						.setIdAuthor(rs.getInt("id_author")).build();
 
 			}
 			// chiude le connessioni e il result set

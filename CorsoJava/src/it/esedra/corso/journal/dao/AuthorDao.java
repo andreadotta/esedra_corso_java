@@ -38,7 +38,7 @@ public class AuthorDao implements DaoInterface<Author> {
 		Author authorCheck = this.get();
 		Author copy = null;
 		try {
-
+			
 			if (authorCheck != null) {
 				String sql = "UPDATE author SET name = ?, email = ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);

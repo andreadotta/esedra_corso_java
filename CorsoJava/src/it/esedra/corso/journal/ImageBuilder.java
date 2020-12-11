@@ -5,21 +5,23 @@ public class ImageBuilder {
 	private int id;
 	private String src;
 	private String name;
+	private int idParagraph;
 
 	public ImageBuilder() {
 
 	}
 
-	public ImageBuilder(int id, String src, String name) {
+	public ImageBuilder(int id, String src, String name, int idParagraph) {
 		super();
 		this.id = id;
 		this.src = src;
 		this.name = name;
+		this.idParagraph = idParagraph;
 
 	}
 
 	public Image build() {
-		return new Image(id, src, name);
+		return new Image(id, src, name, idParagraph);
 	}
 
 	public int getId() {
@@ -46,6 +48,15 @@ public class ImageBuilder {
 
 	public ImageBuilder setName(String name) {
 		this.name = name;
+		return this;
+	}
+	
+	public int getIdParagraph() {
+		return idParagraph;
+	}
+
+	public ImageBuilder setIdParagraph(int idParagraph) {
+		this.idParagraph = idParagraph;
 		return this;
 	}
 

@@ -34,6 +34,7 @@ public class ImageTest {
 	public static final String NAME = "Gulia";
 
 	public static final String PREFIX = "$$";
+	public static final int IDPARAGRAPH = 1;
 
 	@Test
 	public void testAUpdate() {
@@ -41,7 +42,11 @@ public class ImageTest {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Image image = new ImageBuilder().setSrc(SRC).setName(NAME).build();
+			Image image = new ImageBuilder()
+					.setSrc(SRC)
+					.setName(NAME)
+					.setIdParagraph(IDPARAGRAPH)
+					.build();
 
 			ImageDao imageDao = new ImageDao(image);
 			imageDao.setConnection(connection);
@@ -50,7 +55,12 @@ public class ImageTest {
 
 			ID = image.getId();
 
-			image = new ImageBuilder().setId(ID).setSrc(PREFIX + SRC).setName(PREFIX + NAME).build();
+			image = new ImageBuilder()
+					.setId(ID)
+					.setSrc(PREFIX + SRC)
+					.setName(PREFIX + NAME)
+					.setIdParagraph(IDPARAGRAPH)
+					.build();
 
 			imageDao = new ImageDao(image);
 			imageDao.setConnection(connection);
@@ -86,8 +96,14 @@ public class ImageTest {
 
 				Image image = imageIterator.next();
 
-				if (image.getId() == ID && image.getSrc().equals(PREFIX + SRC)
-						&& image.getName().equals(PREFIX + NAME)) {
+				if (image.getId() == ID
+						&& image.getSrc()
+						.equals(PREFIX + SRC)
+						&& image.getName()
+						.equals(PREFIX + NAME)
+						&& image
+						.getIdParagraph() 
+						== IDPARAGRAPH) {
 					found = true;
 					break;
 
@@ -139,7 +155,14 @@ public class ImageTest {
 			Image image = imageDao.get();
 
 			boolean found = false;
-			if (image.getId() == ID && image.getSrc().equals(PREFIX + SRC) && image.getName().equals(PREFIX + NAME)) {
+			if (image.getId() == ID
+					&& image.getSrc()
+					.equals(PREFIX + SRC)
+					&& image.getName()
+					.equals(PREFIX + NAME)
+					&& image
+					.getIdParagraph() 
+					== IDPARAGRAPH) {
 				found = true;
 
 			}

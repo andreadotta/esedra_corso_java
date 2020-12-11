@@ -65,13 +65,12 @@ public class UserTest {
 			userDao.setConnection(connection);
 			user = userDao.update();
 			assertTrue(user != null);
-			
+
 			connection.close();
 
 		} catch (DaoException | SQLException e) {
 			fail(e.getMessage());
 		}
-
 	}
 
 	@Test
@@ -113,7 +112,6 @@ public class UserTest {
 					found = true;
 					break;
 				}
-
 			}
 
 			assertTrue(found);
@@ -129,7 +127,6 @@ public class UserTest {
 				fail(e.getMessage());
 			}
 		}
-
 	}
 
 	@Test
@@ -160,7 +157,6 @@ public class UserTest {
 		} catch (DaoException | SQLException e) {
 			fail(e.getMessage());
 		}
-
 	}
 
 	@Test
@@ -186,7 +182,6 @@ public class UserTest {
 		} catch (DaoException | SQLException e) {
 			fail(e.getMessage());
 		}
-
 	}
 
 	@BeforeClass
@@ -199,7 +194,5 @@ public class UserTest {
 
 			fail(e.getMessage());
 		}
-
 	}
-
 }

@@ -21,7 +21,7 @@ import it.esedra.corso.journal.execeptions.DaoException;
 public class ParagraphService {
 
 	/**
-	 * Gestisce la connessione dao-db dell'oggetto Json
+	 * Esempio di metodo gestito con transazione
 	 * 
 	 * @param json
 	 * @return Journal
@@ -31,14 +31,26 @@ public class ParagraphService {
 	
 	public static Paragraph update(JsonObject json) throws DaoException {
 		Connection connection = JournalDbConnect.connect();
-		Paragraph paragraph = new ParagraphBuilder().setId(json.getInt("id", -1)).setText(json.getString("text"))
-				.build();
+	try {
+		connection.setAutoCommit(false);
+		connection.setTransactionIsolation(connection.TRANSACTION_SERIALIZABLE); // isolamento totale		
+		Paragraph paragraph = new ParagraphBuilder().setId(json.getInt("id", -1))
+				.setText(json.getString("text")).build();
+				
 		ParagraphDao paragraphDao = new ParagraphDao(paragraph);
 		paragraphDao.setConnection(connection);
 
 		return paragraphDao.update();
+		} catch (Exception e) {
+	try {
+		connection.rollback();
+	} catch (SQLException e1) {
+		throw new DaoException("Paragraph Service Rollback Error.", e1);
 	}
-	
+	throw new DaoException("Paragraph Service Error.", e);
+	}
+		
+	}
 	/**
 	 * Restituisce tutti gli oggetti journal
 	 * @return Collection<Journal>

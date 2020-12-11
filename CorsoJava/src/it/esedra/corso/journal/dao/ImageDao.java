@@ -57,8 +57,12 @@ public class ImageDao implements DaoInterface<Image> {
 
 			while (rs.next()) {
 
-				Image image = new ImageBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
-						.setName(rs.getString("name")).build();
+				Image image = new ImageBuilder()
+						.setId(rs.getInt("id"))
+						.setSrc(rs.getString("src"))
+						.setName(rs.getString("name"))
+						.setIdParagraph(rs.getInt("id_paragraph"))
+						.build();
 
 				images.add(image);
 			}
@@ -78,37 +82,53 @@ public class ImageDao implements DaoInterface<Image> {
 			PrintHelper.out("image non può essere null.");
 			return null;
 		}
+		
+		if(image.getIdParagraph() == 0) {
+			throw new DaoException("inserire un id_paragraph valido.");
+		}
+		
 		Image imageCheck = this.get();
 		Image copy = null;
 
 		try {
 
 			if (imageCheck != null) {
-				String sql = "UPDATE image SET src= ?, name= ? WHERE id = ? ;";
+				String sql = "UPDATE image SET src= ?, name= ?, id_paragraph= ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, image.getSrc());
 				stm.setString(2, image.getName());
-				stm.setInt(3, image.getId());
+				stm.setInt(3, image.getIdParagraph());
+				stm.setInt(4, image.getId());
 
 				if (stm.executeUpdate() > 0) {
 					stm.close();
 				}
-				copy = new ImageBuilder().setId(image.getId()).setSrc(image.getSrc()).setName(image.getName()).build();
+				copy = new ImageBuilder()
+						.setId(image.getId())
+						.setSrc(image.getSrc())
+						.setName(image.getName())
+						.setIdParagraph(image.getIdParagraph())
+						.build();
 			} else {
-				String sql = "INSERT INTO image (src, name) VALUES (?,?);";
+				String sql = "INSERT INTO image (src, name, id_paragraph) VALUES (?,?,?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, image.getSrc());
 				stm.setString(2, image.getName());
+				stm.setInt(3, image.getIdParagraph());
 
 				if (stm.executeUpdate() > 0) {
 
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
 
-						copy = new ImageBuilder().setId(genKeys.getInt(1)).setSrc(image.getSrc())
-								.setName(image.getName()).build();
+						copy = new ImageBuilder()
+								.setId(genKeys.getInt(1))
+								.setSrc(image.getSrc())
+								.setName(image.getName())
+								.setIdParagraph(image.getIdParagraph())
+								.build();
 					}
 				}
 
@@ -138,8 +158,12 @@ public class ImageDao implements DaoInterface<Image> {
 
 			while (rs.next()) {
 
-				image = new ImageBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
-						.setName(rs.getString("name")).build();
+				image = new ImageBuilder()
+						.setId(rs.getInt("id"))
+						.setSrc(rs.getString("src"))
+						.setName(rs.getString("name"))
+						.setIdParagraph(rs.getInt("id_paragraph"))
+						.build();
 
 			}
 			rs.close();

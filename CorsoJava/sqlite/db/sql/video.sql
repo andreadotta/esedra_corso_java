@@ -4,5 +4,7 @@ CREATE TABLE "video" (
 	"id"	INTEGER NOT NULL UNIQUE,
 	"src"	TEXT NOT NULL, 
 	"name"	TEXT NULL, 	
+	"id_paragraph" INTEGER NOT NULL,
 	PRIMARY KEY("id" AUTOINCREMENT)
+	FOREIGN KEY("id_paragraph") REFERENCES paragraph("id")
 );

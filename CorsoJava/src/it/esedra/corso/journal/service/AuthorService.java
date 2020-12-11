@@ -20,24 +20,39 @@ import it.esedra.corso.journal.execeptions.DaoException;
 
 public class AuthorService {
 	/**
-	 * Gestisce la connessione dao-db dell'oggetto Json
+	 * Esempio di metodo gestito con transazione
 	 * 
 	 * @param json
 	 * @return Journal
 	 * @throws DaoException
 	 */
-	
 
 	public static Author update(JsonObject json) throws DaoException {
 		Connection connection = JournalDbConnect.connect();
-		Author author = new AuthorBuilder().setId(json.getInt("id", -1)).setName(json.getString("name")).setEmail(json.getString("email")).build();
-		AuthorDao authorDao = new AuthorDao(author);
-		authorDao.setConnection(connection);
+		try {
+			connection.setAutoCommit(false);
+			connection.setTransactionIsolation(connection.TRANSACTION_SERIALIZABLE); // isolamento totale
+			Author author = new AuthorBuilder().setId(json.getInt("id", -1)).setName(json.getString("name"))
+					.setEmail(json.getString("email")).build();
+			AuthorDao authorDao = new AuthorDao(author);
+			authorDao.setConnection(connection);
 
-		return authorDao.update();
+			Author updateAuthor = authorDao.update();
+			connection.commit();
+			return updateAuthor;
+		} catch (Exception e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				throw new DaoException("Author Service Rollback Error.", e1);
+			}
+			throw new DaoException("Author Service Error.", e);
+		}
 	}
+
 	/**
 	 * Restituisce tutti gli oggetti journal
+	 * 
 	 * @return Collection<Journal>
 	 * @throws DaoException
 	 */
@@ -63,7 +78,7 @@ public class AuthorService {
 				PrintHelper.out("Errore nella chiususa della connessione");
 			}
 		}
-		
+
 		return authorCollection;
 	}
 

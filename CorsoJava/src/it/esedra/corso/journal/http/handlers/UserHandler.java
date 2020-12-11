@@ -68,13 +68,11 @@ public class UserHandler extends Handler {
 		} catch (Exception e) {
 			LOGGER.severe(e.toString());
 		}
-		
 		if(user == null) {
 			throw new HandleRequestException("Insert Error.");
 		} else {
 			return JsonHelper.ok(user.toJson());
 		}
-
 	}
 
 	public JsonObject handlePutRequest(HttpExchange httpExchange) throws HandleRequestException {
@@ -83,6 +81,5 @@ public class UserHandler extends Handler {
 
 	public JsonObject handleDeleteRequest(HttpExchange httpExchange) throws HandleRequestException {
 		throw new HandleRequestException("Not Implemented Yet.");
-	}
-	
+	}	
 }

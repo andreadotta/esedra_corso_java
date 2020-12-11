@@ -30,13 +30,14 @@ public class JournalTest {
 	public static final String TEST_OK = "passed";
 	public static final String TEST_FAIL = "failed";
 	public static final String PREFIX = "$$";
+	public static final int IDAUTHOR = 1;
 
 	@Test
 	public void testAUpdate() {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Journal journal = new JournalBuilder().setName(NAME).build();
+			Journal journal = new JournalBuilder().setName(NAME).setIdAuthor(IDAUTHOR).build();
 
 			JournalDao journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
@@ -45,7 +46,7 @@ public class JournalTest {
 			assertTrue(journal != null);
 			ID = journal.getId();
 
-			journal = new JournalBuilder().setId(ID).setName(PREFIX + NAME).build();
+			journal = new JournalBuilder().setId(ID).setName(PREFIX + NAME).setIdAuthor( IDAUTHOR).build();
 			journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
 			journalDao.update();
@@ -91,9 +92,10 @@ public class JournalTest {
 
 				Journal journal = journalIterator.next();
 
-				if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME)) {
+				if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME) && journal.getIdAuthor() == IDAUTHOR) {
 					found = true;
 					break;
+				
 				}
 
 			}
@@ -128,7 +130,7 @@ public class JournalTest {
 			Journal journal = journalDao.get();
 			boolean found = false;
 
-			if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME)) {
+			if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME) && journal.getIdAuthor() == IDAUTHOR)  {
 				found = true;
 			}
 

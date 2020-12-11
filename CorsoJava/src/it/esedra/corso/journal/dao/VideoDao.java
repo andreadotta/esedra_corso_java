@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 import it.esedra.corso.collections.interfaces.Collection;
@@ -59,8 +60,13 @@ public class VideoDao implements DaoInterface<Video> {
 
 			while (rs.next()) {
 
-				Video video = new VideoBuilder().setId(rs.getInt("id")).setSrc(rs.getString("src"))
-						.setName(rs.getString("name")).setTitle(rs.getString("title")).build();
+				Video video = new VideoBuilder()
+						.setId(rs.getInt("id"))
+						.setSrc(rs.getString("src"))
+						.setName(rs.getString("name"))
+						.setTitle(rs.getString("title"))
+						.setIdParagraph(rs.getInt("id_paragraph"))
+						.build();
 
 				videos.add(video);
 			}
@@ -77,22 +83,27 @@ public class VideoDao implements DaoInterface<Video> {
 	public Video update() throws DaoException {
 
 		if (video == null) {
-			PrintHelper.out("video non può essere null.");
-			return null;
+			throw new DaoException("video non può essere null.");
 		}
+		
+		if(video.getIdParagraph() == 0) {
+			throw new DaoException("inserire un id_paragraph valido.");
+		}
+		
 		Video videoCheck = this.get();
 		Video copy = null;
 
 		try {
 
 			if (videoCheck != null) {
-				String sql = "UPDATE video SET src= ?, name= ?, title= ?  WHERE id = ? ;";
+				String sql = "UPDATE video SET src= ?, name= ?, title= ?, id_paragraph= ?  WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, video.getSrc());
 				stm.setString(2, video.getName());
 				stm.setString(3, video.getTitle());
-				stm.setInt(4, video.getId());
+				stm.setInt(4, video.getIdParagraph());
+				stm.setInt(5, video.getId());
 
 				if (stm.executeUpdate() > 0) {
 					stm.close();
@@ -103,24 +114,33 @@ public class VideoDao implements DaoInterface<Video> {
 						.setSrc(video.getSrc())
 						.setName(video.getName())
 						.setTitle(video.getTitle())
+						.setIdParagraph(video.getIdParagraph())
 						.build();
 
 			} else {
-				String sql = "INSERT INTO video (src, name, title) VALUES (?,?,?);";
+				String sql = "INSERT INTO video (src, name, title, id_paragraph) VALUES (?,?,?,?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 
 				stm.setString(1, video.getSrc());
 				stm.setString(2, video.getName());
 				stm.setString(3, video.getTitle());
-
+				stm.setInt(4, video.getIdParagraph());
+				
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
+						
+						stm.setString(1, video.getSrc());
+						stm.setString(2, video.getName());
+						stm.setString(3, video.getTitle());
+						stm.setInt(4, video.getIdParagraph());
+						
 						copy = new VideoBuilder()
 								.setId(genKeys.getInt(1))
 								.setSrc(video.getSrc())
 								.setName(video.getName())
 								.setTitle(video.getTitle())
+								.setIdParagraph(video.getIdParagraph())
 								.build();
 					}
 				}
@@ -129,7 +149,8 @@ public class VideoDao implements DaoInterface<Video> {
 
 			}
 		} catch (Exception e) {
-			LOGGER.severe(e.toString());
+			LOGGER.severe(Arrays.toString(e.getStackTrace()));
+			throw new DaoException("Errore durante Update Video", e);
 		}
 
 		return copy;
@@ -156,6 +177,7 @@ public class VideoDao implements DaoInterface<Video> {
 						.setSrc(rs.getString("src"))
 						.setName(rs.getString("name"))
 						.setTitle(rs.getString("title"))
+						.setIdParagraph(rs.getInt("id_paragraph"))
 						.build();
 
 			}

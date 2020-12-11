@@ -40,7 +40,7 @@ public class ParagraphHandler extends Handler {
 	 * /paragraph/{text} Ottengo un Paragraph per specifico Text
 	 */
 	
-	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	
 	
 	public JsonObject handleGetRequest(HttpExchange httpExchange) throws HandleRequestException {
 		
@@ -75,7 +75,7 @@ public class ParagraphHandler extends Handler {
 			paragraph = ParagraphService.update(paragraphObject);
 
 		} catch (Exception e) {
-			LOGGER.severe(e.toString());
+			throw new HandleRequestException(e.getMessage(), e);
 		}
 		
 		if(paragraph == null) {

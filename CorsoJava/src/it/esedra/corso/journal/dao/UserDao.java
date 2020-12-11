@@ -35,7 +35,6 @@ public class UserDao implements DaoInterface<User> {
 		boolean success = true;
 
 		try {
-
 			// Crea lo statement
 			Statement stm = this.conn.createStatement();
 			// Crea il result set al quale passa la query
@@ -44,7 +43,6 @@ public class UserDao implements DaoInterface<User> {
 			if (rs > 0) {
 				success = true;
 			}
-
 		} catch (SQLException e) {
 			LOGGER.severe(e.toString());
 		}
@@ -57,7 +55,6 @@ public class UserDao implements DaoInterface<User> {
 		// Istanzia una lista vuota di User
 		Collection<User> users = new UserCollection();
 		try {
-
 			// Crea lo statement
 			Statement stm = this.conn.createStatement();
 			// Crea il result set al quale passa la query
@@ -69,7 +66,6 @@ public class UserDao implements DaoInterface<User> {
 				User user = new UserBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
 						.setSurname(rs.getString("surname")).setEmail(rs.getString("email"))
 						.setPassword(rs.getString("password")).setRegistration(rs.getString("registration")).build();
-
 				// Aggiunge l'oggetto alla lista
 				users.add(user);
 			}
@@ -80,7 +76,6 @@ public class UserDao implements DaoInterface<User> {
 		}
 		// Restituisce la lista
 		return users;
-
 	}
 
 	@Override
@@ -90,10 +85,8 @@ public class UserDao implements DaoInterface<User> {
 			PrintHelper.out("user non può essere null.");
 			return null;
 		}
-
 		User userCheck = this.get();
 		User copy = null;
-
 		try {
 			if (userCheck != null) {
 				String sql = "UPDATE user SET name = ?, surname = ?, email = ?, password = ?, registration = ? WHERE id = ? ;";
@@ -107,12 +100,11 @@ public class UserDao implements DaoInterface<User> {
 				stm.setInt(6, user.getId());
 
 				if (stm.executeUpdate() > 0) {
-					stm.close();					
+					stm.close();
 				}
 				copy = new UserBuilder().setId(user.getId()).setName(user.getName()).setSurname(user.getSurname())
 						.setEmail(user.getEmail()).setPassword(user.getPassword())
 						.setRegistration(user.getRegistration()).build();
-				
 			} else {
 				String sql = "INSERT INTO user (name, surname, email, password, registration) VALUES (?, ?, ?, ?, ?);";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
@@ -131,16 +123,12 @@ public class UserDao implements DaoInterface<User> {
 								.setRegistration(user.getRegistration()).build();
 					}
 				}
-
 				stm.close();
 			}
-
 		} catch (SQLException e) {
 			LOGGER.severe(e.toString());
 		}
-
 		return copy;
-
 	}
 
 	@Override
@@ -162,14 +150,9 @@ public class UserDao implements DaoInterface<User> {
 
 			while (rs.next()) {
 				// Istanzia l'elemento User
-				user = new UserBuilder()
-						.setId(rs.getInt("id"))
-						.setName(rs.getString("name"))
-						.setSurname(rs.getString("surname"))
-						.setEmail(rs.getString("email"))
-						.setPassword(rs.getString("password"))
-						.setRegistration(rs.getString("registration"))
-						.build();
+				user = new UserBuilder().setId(rs.getInt("id")).setName(rs.getString("name"))
+						.setSurname(rs.getString("surname")).setEmail(rs.getString("email"))
+						.setPassword(rs.getString("password")).setRegistration(rs.getString("registration")).build();
 
 			}
 			// Chiude le connessioni e il result set

@@ -19,13 +19,17 @@ public class Paragraph implements DataObjectInterface  {
 
 	private  String text;
 	private  int id;
-	private int idJournal;
+	private int idChapter;
 
+<<<<<<< HEAD
 	public Paragraph(int id, String text) {
+=======
+	public Paragraph(int id, String text,int idChapter) {
+>>>>>>> branch 'master' of https://github.com/andreadotta/esedra_corso_java.git
 		super();
 		this.id = id;
 		this.text = text;
-		this.idJournal=idJournal;
+		this.idChapter=idChapter;
 	}
 
 	public   int getId() {
@@ -35,8 +39,8 @@ public class Paragraph implements DataObjectInterface  {
 	public String getText() {
 		return text;
 	}
-	public int getIdJournal() {
-		return idJournal;
+	public int getIdChapter() {
+		return idChapter;
 	}
 	
 	
