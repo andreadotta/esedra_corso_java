@@ -1,32 +1,19 @@
 package it.esedra.corso.journal.http.handlers;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.StringReader;
 import java.net.URI;
-import java.sql.Connection;
-import java.util.logging.Logger;
 
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 
 import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Journal;
-import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.Paragraph;
-import it.esedra.corso.journal.ParagraphBuilder;
-import it.esedra.corso.journal.dao.JournalDao;
-import it.esedra.corso.journal.dao.ParagraphDao;
-import it.esedra.corso.journal.db.JournalDbConnect;
 import it.esedra.corso.journal.execeptions.HandleRequestException;
-import it.esedra.corso.journal.service.JournalService;
 import it.esedra.corso.journal.service.ParagraphService;
 
 public class ParagraphHandler extends Handler {

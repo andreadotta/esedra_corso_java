@@ -2,10 +2,7 @@ package it.esedra.corso.oussein;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-
-import it.esedra.corso.collections.interfaces.Collection;
 
 public class MainToyTest {
 

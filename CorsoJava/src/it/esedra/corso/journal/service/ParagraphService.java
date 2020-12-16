@@ -7,13 +7,9 @@ import javax.json.JsonObject;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Journal;
-import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.ParagraphBuilder;
-import it.esedra.corso.journal.collections.JournalCollection;
 import it.esedra.corso.journal.collections.ParagraphCollection;
-import it.esedra.corso.journal.dao.JournalDao;
 import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.JournalDbConnect;
 import it.esedra.corso.journal.execeptions.DaoException;

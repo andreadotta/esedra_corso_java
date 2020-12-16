@@ -1,7 +1,5 @@
 package it.esedra.corso.marco.persona;
 
-import it.esedra.corso.helpers.*;
-
 public class Donna extends Persona implements StampaPersona, StampaIndirizzo {
 
 	public final String genere = "Femminile";

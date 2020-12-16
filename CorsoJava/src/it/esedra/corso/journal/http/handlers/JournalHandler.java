@@ -8,8 +8,6 @@ import java.net.URI;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
-import javax.json.JsonValue;
-
 import com.sun.net.httpserver.HttpExchange;
 
 import it.esedra.corso.collections.interfaces.Collection;

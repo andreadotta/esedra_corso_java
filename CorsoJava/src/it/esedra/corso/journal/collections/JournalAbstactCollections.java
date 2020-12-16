@@ -9,7 +9,7 @@ import javax.json.JsonArrayBuilder;
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.DataObjectInterface;
 import it.esedra.corso.collections.interfaces.Iterator;
-
+@Deprecated
 public abstract class JournalAbstactCollections<T extends DataObjectInterface> implements Collection<T> {
 
 	public final static int DEFAULT_SIZE = 10;

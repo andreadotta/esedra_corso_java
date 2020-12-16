@@ -7,10 +7,7 @@ import java.sql.Statement;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
-
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.ParagraphBuilder;
 import it.esedra.corso.journal.collections.ParagraphCollection;

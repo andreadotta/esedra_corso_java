@@ -3,13 +3,12 @@ package it.esedra.corso.journal.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
 import java.util.logging.Logger;
-import java.sql.SQLException;
 
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.collections.JournalCollection;
