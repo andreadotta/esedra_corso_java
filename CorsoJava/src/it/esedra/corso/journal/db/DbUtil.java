@@ -8,10 +8,6 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import it.esedra.corso.helpers.PrintHelper;
-import it.esedra.corso.journal.Journal;
 
 public class DbUtil {
 

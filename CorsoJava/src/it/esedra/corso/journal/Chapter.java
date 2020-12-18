@@ -2,7 +2,6 @@ package it.esedra.corso.journal;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Properties;
 
 import javax.json.Json;

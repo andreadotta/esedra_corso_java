@@ -1,9 +1,5 @@
 package it.esedra.corso;
 
-import it.esedra.corso.classiAstratte.Cane;
-
-import it.esedra.corso.classiAstratte.Gatto;
-
 public class Snippet0607 {
 
 	public static void main(String[] args) {

@@ -3,9 +3,6 @@ package it.esedra.corso.journal.http.handlers;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-
 import com.sun.net.httpserver.HttpExchange;
 
 public class ResponseHelper {

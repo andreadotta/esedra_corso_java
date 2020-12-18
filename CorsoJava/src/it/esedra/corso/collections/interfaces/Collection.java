@@ -1,6 +1,8 @@
 package it.esedra.corso.collections.interfaces;
 
 import javax.json.JsonArray;
+
+@Deprecated
 public interface Collection<T> {
 
 	/**

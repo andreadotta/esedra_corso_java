@@ -2,12 +2,7 @@ package it.esedra.corso.collections;
 
 import java.util.Arrays;
 
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonArrayBuilder;
-
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.DataObjectInterface;
 import it.esedra.corso.collections.interfaces.Iterator;
 
 public abstract class AbstactCollections<T> implements Collection<T> {

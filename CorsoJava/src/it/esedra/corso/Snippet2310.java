@@ -1,8 +1,5 @@
 package it.esedra.corso;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-
 import it.esedra.corso.helpers.PrintHelper;
 
 public class Snippet2310 {

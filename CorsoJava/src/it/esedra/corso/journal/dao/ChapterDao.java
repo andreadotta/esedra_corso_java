@@ -8,10 +8,8 @@ import java.util.Arrays;
 import java.util.logging.Logger;
 
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
-import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.collections.ChapterCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 

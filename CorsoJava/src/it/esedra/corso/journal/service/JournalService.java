@@ -1,15 +1,11 @@
 package it.esedra.corso.journal.service;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.json.JsonObject;
 
 import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.JournalBuilder;

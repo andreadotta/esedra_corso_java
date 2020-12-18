@@ -1,7 +1,5 @@
 package it.esedra.corso.marco.persona;
 
-import it.esedra.corso.helpers.PrintHelper;
-
 public class Indirizzo implements StampaIndirizzo {
 
 	private String via;
