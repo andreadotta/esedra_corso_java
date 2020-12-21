@@ -1,7 +1,5 @@
 package it.esedra.journal;
 
-import javax.json.Json;
-import javax.json.JsonObject;
 
 import it.esedra.corso.collections.interfaces.DataObjectInterface;
 
@@ -35,8 +33,6 @@ public class Author implements DataObjectInterface  {
 		return email;
 	}
 
-	public JsonObject toJson() {
-		return Json.createObjectBuilder().add("id", this.id).add("name", this.name).add("email", this.email).build();
-	}
+
 
 }
