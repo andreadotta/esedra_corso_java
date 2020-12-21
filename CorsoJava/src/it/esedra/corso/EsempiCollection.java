@@ -1,6 +1,10 @@
 package it.esedra.corso;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -37,9 +41,31 @@ public class EsempiCollection {
 		for(String nome:sortedTest) {
 			PrintHelper.out(nome);
 		}
-	
+		
+		//ArrayList e LinkedList
+		List<Integer> aNumbers = new ArrayList<>(10);
+		List<Integer> lNumbers = new LinkedList<>();
+		
+		for (int i = 0; i < 10; i++) {
+			aNumbers.add(i, new Random().nextInt(20));		
+		}
+		
+		PrintHelper.out("Numeri ArrayList: " + aNumbers);
+		
+		for (int i = 0; i < 10; i++) {
+			lNumbers.add(i, new Random().nextInt(20));
+		}
+		
+		PrintHelper.out("Numeri LinkedList: " + lNumbers);
+		
+		aNumbers.removeAll(lNumbers);
+		
+		PrintHelper.out("Numeri dopo la rimozione: " + aNumbers);
+
 	}
-	
-	
 
 }
+	
+
+	
+	

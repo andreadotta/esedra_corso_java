@@ -1,8 +1,8 @@
 package it.esedra.corso.journal.dao;
 
 import java.sql.Connection;
+import java.util.List;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 /**
@@ -43,7 +43,7 @@ public interface DaoInterface<T> {
 	 * 
 	 * @return T
 	 */
-	Collection<T> getAll() throws DaoException;
+	List<T> getAll() throws DaoException;
 
 	/**
 	 * Restituisce tutti i record della tabella

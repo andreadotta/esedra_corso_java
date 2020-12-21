@@ -5,13 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.UserBuilder;
-import it.esedra.corso.journal.collections.UserCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class UserDao implements DaoInterface<User> {
@@ -51,9 +51,9 @@ public class UserDao implements DaoInterface<User> {
 	}
 
 	@Override
-	public Collection<User> getAll() throws DaoException {
+	public List<User> getAll() throws DaoException {
 		// Istanzia una lista vuota di User
-		Collection<User> users = new UserCollection();
+		List<User> users = new ArrayList<>();
 		try {
 			// Crea lo statement
 			Statement stm = this.conn.createStatement();

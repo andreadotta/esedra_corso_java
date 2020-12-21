@@ -1,4 +1,4 @@
-package it.esedra.corso.journal;
+package it.esedra.journal;
 
 
 public class AuthorBuilder {

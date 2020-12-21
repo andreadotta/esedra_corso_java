@@ -30,7 +30,7 @@ public class FirstClassValues {
 			System.out.printf("%s", w);
 		});
 
-		// 3. ritorno di una fuunzione dalla applicazione di mult
+		// 3. ritorno di una funzione dalla applicazione di mult
 		Function<Integer, Integer> mul10 = mult(10);
 		result = mul10.apply(100);
 		PrintHelper.out(result);

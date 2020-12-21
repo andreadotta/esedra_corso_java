@@ -3,14 +3,14 @@ package it.esedra.corso.journal.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.json.JsonObject;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.UserBuilder;
-import it.esedra.corso.journal.collections.UserCollection;
 import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.JournalDbConnect;
 import it.esedra.corso.journal.execeptions.DaoException;
@@ -43,8 +43,8 @@ public class UserService {
 	 * @return Collection<User>
 	 * @throws DaoException
 	 */
-	public static Collection<User> getAll() throws DaoException {
-		Collection<User> userCollection = new UserCollection();
+	public static List<User> getAll() throws DaoException {
+		List<User> userCollection = new ArrayList<>();
 
 		Connection connection = null;
 		try {

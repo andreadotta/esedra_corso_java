@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -15,9 +17,12 @@ import org.junit.runners.MethodSorters;
 
 import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.collections.interfaces.Iterator;
+import it.esedra.corso.journal.Author;
+import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.collections.JournalCollection;
+import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.dao.JournalDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
@@ -27,17 +32,28 @@ import it.esedra.corso.journal.execeptions.DaoException;
 public class JournalTest {
 	public static int ID = 1;
 	public static final String NAME = "Claudio";
+	public static final String EMAIL = "cb@prova.it";
 	public static final String TEST_OK = "passed";
 	public static final String TEST_FAIL = "failed";
 	public static final String PREFIX = "$$";
 	public static final int IDAUTHOR = 1;
+	
+	public Author tempAuthor;
+	
+	private Author getAuthor() {
+		return tempAuthor;
+	}
+	
+	private void setAuthor(Author author) {
+		this.tempAuthor = author;
+	}
 
 	@Test
 	public void testAUpdate() {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Journal journal = new JournalBuilder().setName(NAME).setIdAuthor(IDAUTHOR).build();
+			Journal journal = new JournalBuilder().setName(NAME).setAuthor(getAuthor()).build();
 
 			JournalDao journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
@@ -46,7 +62,7 @@ public class JournalTest {
 			assertTrue(journal != null);
 			ID = journal.getId();
 
-			journal = new JournalBuilder().setId(ID).setName(PREFIX + NAME).setIdAuthor( IDAUTHOR).build();
+			journal = new JournalBuilder().setId(ID).setName(PREFIX + NAME).setAuthor(getAuthor()).build();
 			journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
 			journalDao.update();
@@ -92,7 +108,7 @@ public class JournalTest {
 
 				Journal journal = journalIterator.next();
 
-				if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME) && journal.getIdAuthor() == IDAUTHOR) {
+				if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME) && journal.getAuthor().getId() == getAuthor().getId()) {
 					found = true;
 					break;
 				
@@ -130,7 +146,7 @@ public class JournalTest {
 			Journal journal = journalDao.get();
 			boolean found = false;
 
-			if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME) && journal.getIdAuthor() == IDAUTHOR)  {
+			if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME) && journal.getAuthor() == getAuthor())  {
 				found = true;
 			}
 
@@ -143,7 +159,47 @@ public class JournalTest {
 		}
 
 	}
+	
+	@Before
+	public void init() {
+		try {
+			Connection connection = JournalDbConnect.connect();
+			
+			Author author = new AuthorBuilder().setName(NAME).setEmail(EMAIL).build();
 
+			AuthorDao authorDao = new AuthorDao(author);
+			authorDao.setConnection(connection);
+
+			setAuthor(authorDao.update());
+
+			connection.close();
+
+		} catch (SQLException | DaoException e) {
+			fail(e.getMessage());
+		}
+	}
+	
+	@After
+	public void finalize() {
+		try {
+
+			// Effettua la connessione al database
+
+			Connection connection = JournalDbConnect.connect();
+			
+			AuthorDao authorDao = new AuthorDao(getAuthor());
+			authorDao.setConnection(connection);
+			authorDao.delete();
+
+			connection.close();
+
+		} catch (DaoException | SQLException e) {
+
+			fail(e.getMessage());
+
+		}
+	}
+ 	
 	@BeforeClass
 	public static void setup() {
 
@@ -154,6 +210,8 @@ public class JournalTest {
 
 			fail(e.getMessage());
 		}
+		
+
 
 	}
 
@@ -165,6 +223,7 @@ public class JournalTest {
 			// Effettua la connessione al database
 
 			Connection connection = JournalDbConnect.connect();
+			
 			Journal journalMock = new JournalBuilder().setId(ID).build();
 			JournalDao journalDao = new JournalDao(journalMock);
 			journalDao.setConnection(connection);

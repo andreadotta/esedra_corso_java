@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.URI;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.json.Json;
@@ -13,8 +14,6 @@ import javax.json.JsonReader;
 
 import com.sun.net.httpserver.HttpExchange;
 
-
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.execeptions.HandleRequestException;
 
@@ -39,7 +38,7 @@ public class UserHandler extends Handler {
 			URI url = httpExchange.getRequestURI();
 			switch (url.getPath()) {
 			case "/user": {
-				Collection<User> users = UserService.getAll();
+				List<User> users = UserService.getAll();
 				return JsonHelper.ok(users.toJson()); //JsonHelper.ok(user.toJson());
 			}
 			default:

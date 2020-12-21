@@ -1,4 +1,4 @@
-package it.esedra.corso.journal;
+package it.esedra.journal;
 
 import javax.json.JsonObject;
 import javax.management.RuntimeErrorException;
