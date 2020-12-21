@@ -1,8 +1,5 @@
 package it.esedra.journal;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-
 import it.esedra.corso.collections.interfaces.DataObjectInterface;
 
 /**
@@ -55,11 +52,6 @@ public class User implements DataObjectInterface  {
 
 	public String getRegistration() {
 		return registration;
-	}
-
-	public JsonObject toJson() {
-		return Json.createObjectBuilder().add("id", this.id).add("name", this.name).add("surname", this.surname)
-				.add("email", this.email).add("password", this.password).add("registration", this.registration).build();
 	}
 
 }
