@@ -4,31 +4,31 @@ public class JournalBuilder {
 	
 	private int id;
 	private String name;
-	private Author author;
+	private int idAuthor;
 	
 	public JournalBuilder() {
 		
 	}
 	
-	public JournalBuilder(int id, String name, Author author) {
+	public JournalBuilder(int id, String name, int idAuthor ) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.author = author;
+		this.idAuthor = idAuthor;
 	}
 	
 	public Journal build() {
-		return new Journal(id, name, author);
+		return new Journal(id, name, idAuthor);
 	}
 	
 	
 
-	public Author getAuthor() {
-		return author;
+	public int getAuthor() {
+		return idAuthor;
 	}
 	
-	public JournalBuilder setAuthor(Author author) {
-		this.author = author;
+	public JournalBuilder setidAuthor( int idAuthor) {
+		this.idAuthor = idAuthor;
 		return this;
 	}
 

@@ -12,7 +12,7 @@ public class Journal implements DataObjectInterface, Cloneable {
 
 	private int id;
 	private String name;
-	private Author author;
+	private int idAuthor;
 
 	public int getId() {
 		return id;
@@ -22,15 +22,15 @@ public class Journal implements DataObjectInterface, Cloneable {
 		return name;
 	}
 
-	public Journal(int id, String name, Author author) {
+	public Journal(int id, String name, int idAuthor ) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.author = author;
+		this.idAuthor = idAuthor;
 	}
 
-	public Author getAuthor() {
-		return author;
+	public int getidAuthor() {
+		return idAuthor;
 	}
 
 	@Override
