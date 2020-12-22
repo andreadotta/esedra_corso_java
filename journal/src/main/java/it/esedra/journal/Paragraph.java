@@ -4,9 +4,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-
 import it.esedra.corso.collections.interfaces.DataObjectInterface;
 
 /**
@@ -21,11 +18,12 @@ public class Paragraph implements DataObjectInterface  {
 	private  int id;
 	private int idChapter;
 
-<<<<<<< HEAD
+
 	public Paragraph(int id, String text) {
-=======
+		
+	}
+
 	public Paragraph(int id, String text,int idChapter) {
->>>>>>> branch 'master' of https://github.com/andreadotta/esedra_corso_java.git
 		super();
 		this.id = id;
 		this.text = text;
@@ -41,15 +39,6 @@ public class Paragraph implements DataObjectInterface  {
 	}
 	public int getIdChapter() {
 		return idChapter;
-	}
-	
-	
-
-	
-	
-	public JsonObject toJson() {
-		return Json.createObjectBuilder().add("id", this.id).add("text", this.text).build();
-	}
-	
+	}	
 
 }

@@ -1,8 +1,5 @@
 package it.esedra.journal;
 
-import javax.json.JsonObject;
-import javax.management.RuntimeErrorException;
-
 import it.esedra.corso.collections.interfaces.DataObjectInterface;
 /**
  * Classe base dell'applicazione
@@ -34,10 +31,6 @@ public class Journal implements DataObjectInterface, Cloneable {
 	
 	public Author getAuthor() {
 		return author;
-	}
-
-	public JsonObject toJson() {
-		return null;
 	}
 	
 	@Override

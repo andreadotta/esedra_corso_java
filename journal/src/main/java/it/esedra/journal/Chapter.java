@@ -4,13 +4,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-
 import it.esedra.corso.collections.interfaces.DataObjectInterface;
 
 /**
- * Questa classe è un capitol del diario
+ * Questa classe è un capitolo del journal
  * 
  * 
  * 
@@ -55,10 +52,6 @@ public class Chapter implements DataObjectInterface  {
 
 		return config;
 
-	}
-	
-	public JsonObject toJson() {
-		return Json.createObjectBuilder().add("id", this.id).add("title", this.title).add("date",this.date).build();
 	}
 
 }

@@ -4,9 +4,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-
 import it.esedra.corso.collections.interfaces.DataObjectInterface;
 
 /**
@@ -43,15 +40,6 @@ public class Video extends MultimediaResource implements DataObjectInterface  {
 
 		return config;
 
-	}
-	
-	public JsonObject toJson() {
-		
-		return Json.createObjectBuilder()
-				.add("id", super.getId())
-				.add("src", super.getSrc())
-				.add("name", super.getName())
-				.add("title", this.title).build();
 	}
 
 }

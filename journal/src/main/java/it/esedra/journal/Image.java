@@ -4,9 +4,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-
 import it.esedra.corso.collections.interfaces.DataObjectInterface;
 
 /**
@@ -15,20 +12,20 @@ import it.esedra.corso.collections.interfaces.DataObjectInterface;
  * @author Nayem
  *
  */
-public class Image extends MultimediaResource implements DataObjectInterface  {
-	
+public class Image extends MultimediaResource implements DataObjectInterface {
+
 	private int idParagraph;
 
-	public Image(int id, String src, String name,  int idParagraph) {
+	public Image(int id, String src, String name, int idParagraph) {
 		super(id, src, name);
 		this.idParagraph = idParagraph;
 
 	}
-	
+
 	public int getIdParagraph() {
 		return idParagraph;
 	}
-	
+
 	public static Config loadProperties() throws IOException {
 
 		Properties prop = new Properties();
@@ -40,13 +37,5 @@ public class Image extends MultimediaResource implements DataObjectInterface  {
 		return config;
 
 	}
-	
-    public JsonObject toJson() {
-		
-		return Json.createObjectBuilder()
-				.add("id", super.getId())
-				.add("src", super.getSrc())
-				.add("name", super.getName()).build();
-	    }
 
-    }
+}
