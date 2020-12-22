@@ -7,18 +7,17 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.Iterator;
-
 import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.ParagraphBuilder;
-import it.esedra.corso.journal.collections.ParagraphCollection;
 
 import it.esedra.corso.journal.dao.ParagraphDao;
 import it.esedra.corso.journal.db.DbUtil;
@@ -65,7 +64,7 @@ public class ParagraphTest {
 	@Test
 	public void testGetAll() {
 
-		Collection<Paragraph> paragraphCollection = new ParagraphCollection();
+		List<Paragraph> paragraphCollection = new ArrayList<>();
 
 		Connection connection = null;
 		try {
@@ -78,7 +77,7 @@ public class ParagraphTest {
 			paragraphCollection = paragraphdao.getAll();
 
 			// Inizializzazione iterator per ciclare sulla Collection
-			Iterator<Paragraph> paragraphIterator = paragraphCollection.createIterator();
+			Iterator<Paragraph> paragraphIterator = paragraphCollection.iterator();
 
 			// cicla sugli elementi Paragraph della paragraphCollection e restituisce per
 			// ogni

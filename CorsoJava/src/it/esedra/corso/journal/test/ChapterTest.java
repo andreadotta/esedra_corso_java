@@ -5,15 +5,16 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
-import it.esedra.corso.journal.collections.ChapterCollection;
 import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
@@ -61,7 +62,7 @@ public class ChapterTest {
 	@Test
 	public void testGetAll() {
 
-		Collection<Chapter> chapterCollection = new ChapterCollection();
+		List<Chapter> chapterCollection = new ArrayList<>();
 
 		Connection connection = null;
 		try {
@@ -73,7 +74,7 @@ public class ChapterTest {
 
 			chapterCollection = chapterdao.getAll();
 
-			Iterator<Chapter> chapterIterator = chapterCollection.createIterator();
+			Iterator<Chapter> chapterIterator = chapterCollection.iterator();
 
 			boolean found = false;
 			while (chapterIterator.hasNext()) {

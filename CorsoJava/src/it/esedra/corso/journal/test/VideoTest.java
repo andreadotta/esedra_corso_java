@@ -7,17 +7,17 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.VideoBuilder;
-import it.esedra.corso.journal.collections.VideoCollection;
 import it.esedra.corso.journal.dao.VideoDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
@@ -82,7 +82,7 @@ public class VideoTest {
 	@Test
 	public void testGetAll() {
 
-		Collection<Video> videoCollection = new VideoCollection();
+		List<Video> videoCollection = new ArrayList<>();
 
 		Connection connection = null;
 		try {
@@ -93,7 +93,7 @@ public class VideoTest {
 
 			videoCollection = videoDao.getAll();
 
-			Iterator<Video> videoIterator = videoCollection.createIterator();
+			Iterator<Video> videoIterator = videoCollection.iterator();
 
 			boolean found = false;
 			while (videoIterator.hasNext()) {

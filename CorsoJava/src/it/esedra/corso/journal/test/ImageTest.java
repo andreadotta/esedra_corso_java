@@ -7,18 +7,17 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Image;
 import it.esedra.corso.journal.ImageBuilder;
-
-import it.esedra.corso.journal.collections.ImageCollection;
 
 import it.esedra.corso.journal.dao.ImageDao;
 
@@ -78,7 +77,7 @@ public class ImageTest {
 	@Test
 	public void testGetAll()  {
 
-		Collection<Image> imageCollection = new ImageCollection();
+		List<Image> imageCollection = new ArrayList<>();
 
 		Connection connection = null;
 		try {
@@ -89,7 +88,7 @@ public class ImageTest {
 
 			imageCollection = imageDao.getAll();
 
-			Iterator<Image> imageIterator = imageCollection.createIterator();
+			Iterator<Image> imageIterator = imageCollection.iterator();
 
 			boolean found = false;
 			while (imageIterator.hasNext()) {

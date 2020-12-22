@@ -7,17 +7,17 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.User;
 import it.esedra.corso.journal.UserBuilder;
-import it.esedra.corso.journal.collections.UserCollection;
 import it.esedra.corso.journal.dao.UserDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
@@ -76,7 +76,7 @@ public class UserTest {
 	@Test
 	public void testGetAll() {
 
-		Collection<User> userCollection = new UserCollection();
+		List<User> userCollection = new ArrayList<>();
 
 		Connection connection = null;
 		try {
@@ -89,7 +89,7 @@ public class UserTest {
 			userCollection = userDao.getAll();
 
 			// Inizializzazione iterator per ciclare sulla Collection
-			Iterator<User> userIterator = userCollection.createIterator();
+			Iterator<User> userIterator = userCollection.iterator();
 
 			/**
 			 * Cicla sugli elementi User della userCollection e restituisce per ogni

@@ -7,17 +7,17 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.AuthorBuilder;
-import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.db.DbUtil;
 import it.esedra.corso.journal.db.JournalDbConnect;
@@ -46,7 +46,7 @@ public class AuthorTest {
 	@Test
 	public void testGetAll() {
 
-		Collection<Author> authorCollection = new AuthorCollection();
+		List<Author> authorCollection = new ArrayList<>();
 
 		Connection connection = null;
 		try {
@@ -59,7 +59,7 @@ public class AuthorTest {
 			authorCollection = authordao.getAll();
 
 			//
-			Iterator<Author> authorIterator = authorCollection.createIterator();
+			Iterator<Author> authorIterator = authorCollection.iterator();
 
 			boolean found = false;
 			while (authorIterator.hasNext()) {
@@ -111,7 +111,7 @@ public class AuthorTest {
 			assertTrue(author != null);
 
 			connection.close();
-			
+
 		} catch (DaoException | SQLException e) {
 			fail(e.getMessage());
 		}
@@ -145,7 +145,7 @@ public class AuthorTest {
 
 			assertTrue(found);
 
-		} catch (DaoException | SQLException  e) {
+		} catch (DaoException | SQLException e) {
 
 			fail(e.getMessage());
 
@@ -173,7 +173,7 @@ public class AuthorTest {
 
 			connection.close();
 
-		} catch (DaoException  | SQLException  e) {
+		} catch (DaoException | SQLException e) {
 
 			fail(e.getMessage());
 

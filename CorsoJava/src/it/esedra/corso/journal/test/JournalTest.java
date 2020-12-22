@@ -7,6 +7,9 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,13 +18,10 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import it.esedra.corso.collections.interfaces.Collection;
-import it.esedra.corso.collections.interfaces.Iterator;
 import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.AuthorBuilder;
 import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.JournalBuilder;
-import it.esedra.corso.journal.collections.JournalCollection;
 import it.esedra.corso.journal.dao.AuthorDao;
 import it.esedra.corso.journal.dao.JournalDao;
 import it.esedra.corso.journal.db.DbUtil;
@@ -79,7 +79,7 @@ public class JournalTest {
 	@Test
 	public void testGetAll() {
 
-		Collection<Journal> journalCollection = new JournalCollection();
+		List<Journal> journalCollection = new ArrayList<>();
 		
 		Connection connection = null;
 		try {
@@ -92,7 +92,7 @@ public class JournalTest {
 			journalCollection = journalDao.getAll();
 
 			// Inizializzazione iterator per ciclare sulla Collection
-			Iterator<Journal> journalIterator = journalCollection.createIterator();
+			Iterator<Journal> journalIterator = journalCollection.iterator();
 
 			/**
 			 * Cicla sugli elementi Journal della journalCollection e restituisce per ogni
