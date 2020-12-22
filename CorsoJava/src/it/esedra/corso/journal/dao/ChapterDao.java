@@ -1,16 +1,17 @@
 package it.esedra.corso.journal.dao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
-import it.esedra.corso.journal.collections.ChapterCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class ChapterDao implements DaoInterface<Chapter> {
@@ -102,9 +103,8 @@ public class ChapterDao implements DaoInterface<Chapter> {
 	}
 
 	@Override
-	public Collection<Chapter> getAll() throws DaoException {
-
-		Collection<Chapter> chapters = new ChapterCollection();
+	public List<Chapter> getAll() throws DaoException {
+		List<Chapter> chapters = new ArrayList<>();
 		try {
 			Statement stm = this.conn.createStatement();
 			ResultSet rs = stm.executeQuery("SELECT * FROM chapter");

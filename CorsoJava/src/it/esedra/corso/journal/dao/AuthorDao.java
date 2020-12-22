@@ -5,12 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Author;
 import it.esedra.corso.journal.AuthorBuilder;
-import it.esedra.corso.journal.collections.AuthorCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class AuthorDao implements DaoInterface<Author> {
@@ -96,10 +96,9 @@ public class AuthorDao implements DaoInterface<Author> {
 	}
 
 	@Override
-	public Collection<Author> getAll() throws DaoException   {
-
+	public List<Author> getAll() throws DaoException   {
 		// istanzia una lista vuota di User
-		Collection<Author> authors = new AuthorCollection();
+		List<Author> authors = new ArrayList<>();
 		try {
 
 			// crea lo statement

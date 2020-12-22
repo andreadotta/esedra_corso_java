@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Paragraph;
 import it.esedra.corso.journal.ParagraphBuilder;
-import it.esedra.corso.journal.collections.ParagraphCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class ParagraphDao implements DaoInterface<Paragraph> {
@@ -90,8 +90,8 @@ public class ParagraphDao implements DaoInterface<Paragraph> {
 	}
 
 	@Override
-	public Collection<Paragraph> getAll() throws DaoException {
-		Collection<Paragraph> paragraphs = new ParagraphCollection();
+	public List<Paragraph> getAll() throws DaoException {
+		List<Paragraph> paragraphs = new ArrayList<>();
 
 		// List<Paragraph> paragraphs = new ArrayList<>();
 		try {

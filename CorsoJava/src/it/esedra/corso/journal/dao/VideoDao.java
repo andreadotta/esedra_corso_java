@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.VideoBuilder;
-import it.esedra.corso.journal.collections.VideoCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class VideoDao implements DaoInterface<Video> {
@@ -50,8 +50,8 @@ public class VideoDao implements DaoInterface<Video> {
 	}
 
 	@Override
-	public Collection<Video> getAll() throws DaoException {
-		Collection<Video> videos = new VideoCollection();
+	public List<Video> getAll() throws DaoException {
+		List<Video> videos = new ArrayList<>();
 		try {
 			Statement stm = this.conn.createStatement();
 			ResultSet rs = stm.executeQuery("SELECT * FROM video");

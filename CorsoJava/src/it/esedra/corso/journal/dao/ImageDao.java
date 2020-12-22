@@ -5,12 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Image;
 import it.esedra.corso.journal.ImageBuilder;
-import it.esedra.corso.journal.collections.ImageCollection;
 import it.esedra.corso.journal.execeptions.DaoException;
 
 public class ImageDao implements DaoInterface<Image> {
@@ -49,8 +49,8 @@ public class ImageDao implements DaoInterface<Image> {
 	}
 
 	@Override
-	public Collection<Image> getAll() throws DaoException {
-		Collection<Image> images = new ImageCollection();
+	public List<Image> getAll() throws DaoException {
+		List<Image> images = new ArrayList<>();
 		try {
 			Statement stm = this.conn.createStatement();
 			ResultSet rs = stm.executeQuery("SELECT * FROM image");

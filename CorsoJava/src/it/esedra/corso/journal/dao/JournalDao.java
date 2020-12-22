@@ -5,10 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.journal.Journal;
 import it.esedra.corso.journal.JournalBuilder;
 import it.esedra.corso.journal.collections.JournalCollection;
@@ -30,9 +31,9 @@ public class JournalDao implements DaoInterface<Journal> {
 	}
 
 	@Override
-	public Collection<Journal> getAll() throws DaoException {
+	public List<Journal> getAll() throws DaoException {
 		// istanzia una lista vuota di Journal
-		Collection<Journal> journals = new JournalCollection();
+		List<Journal> journals = new ArrayList<>();
 		try {
 
 			// crea lo statement

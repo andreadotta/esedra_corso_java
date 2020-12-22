@@ -15,41 +15,37 @@ import it.esedra.corso.collections.interfaces.DataObjectInterface;
  * @author Oussein
  * 
  */
-public class Paragraph implements DataObjectInterface  {
+public class Paragraph implements DataObjectInterface {
 
-	private  String text;
-	private  int id;
+	private String text;
+	private int id;
 	private int idChapter;
 
-<<<<<<< HEAD
 	public Paragraph(int id, String text) {
-=======
-	public Paragraph(int id, String text,int idChapter) {
->>>>>>> branch 'master' of https://github.com/andreadotta/esedra_corso_java.git
+
+	}
+
+	public Paragraph(int id, String text, int idChapter) {
 		super();
 		this.id = id;
 		this.text = text;
-		this.idChapter=idChapter;
+		this.idChapter = idChapter;
 	}
 
-	public   int getId() {
+	public int getId() {
 		return id;
 	}
 
 	public String getText() {
 		return text;
 	}
+
 	public int getIdChapter() {
 		return idChapter;
 	}
-	
-	
 
-	
-	
 	public JsonObject toJson() {
 		return Json.createObjectBuilder().add("id", this.id).add("text", this.text).build();
 	}
-	
 
 }
