@@ -19,7 +19,6 @@ public class VideoBuilder {
 		this.name = name;
 		this.title = title;
 		this.idParagraph = idParagraph;
-		
 
 	}
 
@@ -62,7 +61,7 @@ public class VideoBuilder {
 		this.title = title;
 		return this;
 	}
-	
+
 	public int getIdParagraph() {
 		return idParagraph;
 	}
@@ -71,6 +70,5 @@ public class VideoBuilder {
 		this.idParagraph = idParagraph;
 		return this;
 	}
-	
 
 }

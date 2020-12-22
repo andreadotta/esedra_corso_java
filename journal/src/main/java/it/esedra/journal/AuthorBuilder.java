@@ -1,6 +1,5 @@
 package it.esedra.journal;
 
-
 public class AuthorBuilder {
 
 	private Integer id;

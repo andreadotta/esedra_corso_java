@@ -12,10 +12,10 @@ import it.esedra.corso.collections.interfaces.DataObjectInterface;
  * 
  * 
  */
-public class Chapter implements DataObjectInterface  {
+public class Chapter implements DataObjectInterface {
 	private int id;
-	private  String title;
-	private  String date;
+	private String title;
+	private String date;
 	private int idJournal;
 
 	public Chapter(int id, String title, String date, int idJournal) {
@@ -38,10 +38,11 @@ public class Chapter implements DataObjectInterface  {
 	public String getDate() {
 		return date;
 	}
-	
+
 	public int getIdJournal() {
 		return idJournal;
 	}
+
 	public static Config loadProperties() throws IOException {
 
 		Properties prop = new Properties();
