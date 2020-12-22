@@ -2,14 +2,14 @@ package it.esedra.corso.journal.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.json.JsonObject;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Video;
 import it.esedra.corso.journal.VideoBuilder;
-import it.esedra.corso.journal.collections.VideoCollection;
 import it.esedra.corso.journal.dao.VideoDao;
 import it.esedra.corso.journal.db.JournalDbConnect;
 import it.esedra.corso.journal.execeptions.DaoException;
@@ -32,8 +32,8 @@ public class VideoService {
 		
 	}
 	
-	public static Collection<Video> getAll() throws DaoException {
-		Collection<Video> videoCollection = new VideoCollection();
+	public static List<Video> getAll() throws DaoException {
+		List<Video> videoCollection = new ArrayList<>();
 
 		Connection connection = null;
 		try {

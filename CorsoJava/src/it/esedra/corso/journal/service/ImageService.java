@@ -2,15 +2,15 @@ package it.esedra.corso.journal.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.json.JsonObject;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Image;
 import it.esedra.corso.journal.ImageBuilder;
 
-import it.esedra.corso.journal.collections.ImageCollection;
 import it.esedra.corso.journal.dao.ImageDao;
 
 import it.esedra.corso.journal.db.JournalDbConnect;
@@ -36,8 +36,8 @@ public class ImageService {
 		return imageDao.update();
 	}
 	
-	public static Collection<Image> getAll() throws DaoException {
-		Collection<Image> imageCollection = new ImageCollection();
+	public static List<Image> getAll() throws DaoException {
+		List<Image> imageCollection = new ArrayList<>();
 
 		Connection connection = null;
 		try {

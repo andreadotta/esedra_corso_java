@@ -2,14 +2,14 @@ package it.esedra.corso.journal.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.json.JsonObject;
 
-import it.esedra.corso.collections.interfaces.Collection;
 import it.esedra.corso.helpers.PrintHelper;
 import it.esedra.corso.journal.Chapter;
 import it.esedra.corso.journal.ChapterBuilder;
-import it.esedra.corso.journal.collections.ChapterCollection;
 import it.esedra.corso.journal.dao.ChapterDao;
 import it.esedra.corso.journal.db.JournalDbConnect;
 import it.esedra.corso.journal.execeptions.DaoException;
@@ -42,8 +42,8 @@ public class ChapterService {
 	 * @return Collection<Chapter>
 	 * @throws DaoException
 	 */
-	public static Collection<Chapter> getAll() throws DaoException {
-		Collection<Chapter> chapterCollection = new ChapterCollection();
+	public static List<Chapter> getAll() throws DaoException {
+		List<Chapter> chapterCollection = new ArrayList<>();
 
 		Connection connection = null;
 		try {
