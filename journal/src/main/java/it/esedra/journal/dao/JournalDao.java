@@ -66,7 +66,7 @@ public class JournalDao implements DaoInterface<Journal> {
 
 		}
 
-		if (journal.getIdAuthor() == 0) {
+		if (journal.getidAuthor() == 0) {
 			throw new DaoException("inserire un id_author valido.");
 		}
 
@@ -78,23 +78,23 @@ public class JournalDao implements DaoInterface<Journal> {
 				String sql = "UPDATE journal SET name = ? , id_author = ? WHERE id = ? ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 				stm.setString(1, journal.getName());
-				stm.setInt(2, journal.getIdAuthor());
+				stm.setInt(2, journal.getidAuthor());
 				stm.setInt(3, journal.getId());
 				if (stm.executeUpdate() > 0) {
 					stm.close();
 				}
 				copy = new JournalBuilder().setId(journal.getId()).setName(journal.getName())
-						.setIdAuthor(journal.getIdAuthor()).build();
+						.setidAuthor(journal.getidAuthor()).build();
 			} else {
 				String sql = "INSERT INTO journal ( name, id_author) VALUES (?,?) ;";
 				PreparedStatement stm = this.conn.prepareStatement(sql);
 				stm.setString(1, journal.getName());
-				stm.setInt(2, journal.getIdAuthor());
+				stm.setInt(2, journal.getidAuthor());
 				if (stm.executeUpdate() > 0) {
 					ResultSet genKeys = stm.getGeneratedKeys();
 					if (genKeys.next()) {
 						copy = new JournalBuilder().setId(genKeys.getInt(1)).setName(journal.getName())
-								.setIdAuthor(journal.getIdAuthor()).build();
+								.setidAuthor(journal.getidAuthor()).build();
 					}
 				}
 				stm.close();
@@ -126,7 +126,7 @@ public class JournalDao implements DaoInterface<Journal> {
 			while (rs.next()) {
 				// istanzia l'elemento Journal
 				journal = new JournalBuilder().setId(rs.getInt("id")).setName(rs.getString("Name"))
-						.setIdAuthor(rs.getInt("id_author")).build();
+						.setidAuthor(rs.getInt("id_author")).build();
 
 			}
 			// chiude le connessioni e il result set
