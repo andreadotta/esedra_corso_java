@@ -22,7 +22,7 @@ public class Journal implements DataObjectInterface, Cloneable {
 		return name;
 	}
 
-	public Journal(int id, String name, int idAuthor ) {
+	public Journal(int id, String name, int idAuthor) {
 		super();
 		this.id = id;
 		this.name = name;

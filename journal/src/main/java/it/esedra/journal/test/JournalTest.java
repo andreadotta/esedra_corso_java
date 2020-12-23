@@ -37,13 +37,13 @@ public class JournalTest {
 	public static final String TEST_FAIL = "failed";
 	public static final String PREFIX = "$$";
 	public static final int IDAUTHOR = 1;
-	
+
 	public Author tempAuthor;
-	
+
 	private Author getAuthor() {
 		return tempAuthor;
 	}
-	
+
 	private void setAuthor(Author author) {
 		this.tempAuthor = author;
 	}
@@ -67,7 +67,7 @@ public class JournalTest {
 			journalDao.setConnection(connection);
 			journalDao.update();
 			assertTrue(journal != null);
-			
+
 			connection.close();
 
 		} catch (SQLException | DaoException e) {
@@ -80,7 +80,7 @@ public class JournalTest {
 	public void testGetAll() {
 
 		List<Journal> journalCollection = new ArrayList<>();
-		
+
 		Connection connection = null;
 		try {
 			// Effettua la connessione al database
@@ -108,11 +108,11 @@ public class JournalTest {
 
 				Journal journal = journalIterator.next();
 
-				if (journal.getId() == ID && journal.getName()
-						.equals(PREFIX + NAME) && journal.getIdAuthor() == getAuthor().getId()) {
+				if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME)
+						&& journal.getIdAuthor() == getAuthor().getId()) {
 					found = true;
 					break;
-				
+
 				}
 
 			}
@@ -147,8 +147,8 @@ public class JournalTest {
 			Journal journal = journalDao.get();
 			boolean found = false;
 
-			if (journal.getId() == ID && journal.getName()
-					.equals(PREFIX + NAME) && journal.getIdAuthor() == getAuthor().getId())  {
+			if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME)
+					&& journal.getIdAuthor() == getAuthor().getId()) {
 				found = true;
 			}
 
@@ -161,12 +161,12 @@ public class JournalTest {
 		}
 
 	}
-	
+
 	@Before
 	public void init() {
 		try {
 			Connection connection = JournalDbConnect.connect();
-			
+
 			Author author = new AuthorBuilder().setName(NAME).setEmail(EMAIL).build();
 
 			AuthorDao authorDao = new AuthorDao(author);
@@ -180,7 +180,7 @@ public class JournalTest {
 			fail(e.getMessage());
 		}
 	}
-	
+
 	@After
 	public void finalize() {
 		try {
@@ -188,7 +188,7 @@ public class JournalTest {
 			// Effettua la connessione al database
 
 			Connection connection = JournalDbConnect.connect();
-			
+
 			AuthorDao authorDao = new AuthorDao(getAuthor());
 			authorDao.setConnection(connection);
 			authorDao.delete();
@@ -201,7 +201,7 @@ public class JournalTest {
 
 		}
 	}
- 	
+
 	@BeforeClass
 	public static void setup() {
 
@@ -212,8 +212,6 @@ public class JournalTest {
 
 			fail(e.getMessage());
 		}
-		
-
 
 	}
 
@@ -225,7 +223,7 @@ public class JournalTest {
 			// Effettua la connessione al database
 
 			Connection connection = JournalDbConnect.connect();
-			
+
 			Journal journalMock = new JournalBuilder().setId(ID).build();
 			JournalDao journalDao = new JournalDao(journalMock);
 			journalDao.setConnection(connection);
