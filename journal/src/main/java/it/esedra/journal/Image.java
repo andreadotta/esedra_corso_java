@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import it.esedra.corso.collections.interfaces.DataObjectInterface;
+import it.esedra.journal.collections.interfaces.DataObjectInterface;
 
 /**
  * Questa classe rappresenta una immagine presente nel capitolo
