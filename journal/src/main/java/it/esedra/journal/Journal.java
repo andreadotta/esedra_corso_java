@@ -1,6 +1,6 @@
 package it.esedra.journal;
 
-import it.esedra.corso.collections.interfaces.DataObjectInterface;
+import it.esedra.journal.collections.interfaces.DataObjectInterface;
 
 /**
  * Classe base dell'applicazione
