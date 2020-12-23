@@ -29,7 +29,7 @@ public class Journal implements DataObjectInterface, Cloneable {
 		this.idAuthor = idAuthor;
 	}
 
-	public int getidAuthor() {
+	public int getIdAuthor() {
 		return idAuthor;
 	}
 

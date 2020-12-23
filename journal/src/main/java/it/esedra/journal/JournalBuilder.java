@@ -23,11 +23,11 @@ public class JournalBuilder {
 	
 	
 
-	public int getAuthor() {
+	public int getIdAuthor() {
 		return idAuthor;
 	}
 	
-	public JournalBuilder setidAuthor( int idAuthor) {
+	public JournalBuilder setIdAuthor( int idAuthor) {
 		this.idAuthor = idAuthor;
 		return this;
 	}
