@@ -53,7 +53,7 @@ public class JournalTest {
 		try {
 			Connection connection = JournalDbConnect.connect();
 
-			Journal journal = new JournalBuilder().setName(NAME).setAuthor(getAuthor()).build();
+			Journal journal = new JournalBuilder().setName(NAME).setIdAuthor(getAuthor().getId()).build();
 
 			JournalDao journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
@@ -62,7 +62,7 @@ public class JournalTest {
 			assertTrue(journal != null);
 			ID = journal.getId();
 
-			journal = new JournalBuilder().setId(ID).setName(PREFIX + NAME).setAuthor(getAuthor()).build();
+			journal = new JournalBuilder().setId(ID).setName(PREFIX + NAME).setIdAuthor(getAuthor().getId()).build();
 			journalDao = new JournalDao(journal);
 			journalDao.setConnection(connection);
 			journalDao.update();
@@ -108,7 +108,8 @@ public class JournalTest {
 
 				Journal journal = journalIterator.next();
 
-				if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME) && journal.getAuthor().getId() == getAuthor().getId()) {
+				if (journal.getId() == ID && journal.getName()
+						.equals(PREFIX + NAME) && journal.getIdAuthor() == getAuthor().getId()) {
 					found = true;
 					break;
 				
@@ -146,7 +147,8 @@ public class JournalTest {
 			Journal journal = journalDao.get();
 			boolean found = false;
 
-			if (journal.getId() == ID && journal.getName().equals(PREFIX + NAME) && journal.getAuthor() == getAuthor())  {
+			if (journal.getId() == ID && journal.getName()
+					.equals(PREFIX + NAME) && journal.getIdAuthor() == getAuthor().getId())  {
 				found = true;
 			}
 
