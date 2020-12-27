@@ -13,6 +13,7 @@ public class Paragraph {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
 	private String text;
+	
 	private int id;
 	
 
