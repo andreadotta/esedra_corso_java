@@ -14,6 +14,7 @@ public class Paragraph {
 	private String text;
 
 	private int id;
+	
 
 	public int getId() {
 		return id;
