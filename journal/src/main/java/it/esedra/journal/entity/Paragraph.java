@@ -5,20 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-
 @Entity
 public class Paragraph {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
-	private String text;
-	
-	private int id;
-	
 
-	
+	private String text;
+
+	private int id;
 
 	public int getId() {
 		return id;
@@ -36,8 +31,4 @@ public class Paragraph {
 		this.id = id;
 	}
 
-	
-	}
-
-
-
+}
