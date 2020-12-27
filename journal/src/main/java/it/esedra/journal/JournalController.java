@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import it.esedra.journal.entity.Journal;
 import it.esedra.journal.repository.JournalRepository;
 
+
 @RestController
 @RequestMapping(path="/journal")
 public class JournalController {
