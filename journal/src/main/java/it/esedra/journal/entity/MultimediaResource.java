@@ -5,34 +5,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * 
- * @author Lynda, Samuel API http://localhost/journal/author/11
- */
 @Entity
-public class Author {
+public class MultimediaResource {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String name;
-	private String email;
+	private String src;
+	
 	public Integer getId() {
 		return id;
-	}
-	public String getName() {
-		return name;
-	}
-	public String getEmail() {
-		return email;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public String getName() {
+		return name;
+	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public void setEmail(String email) {
-		this.email = email;
-	}	
+	public String getSrc() {
+		return src;
+	}
+	public void setSrc(String src) {
+		this.src = src;
+	}
 
 }
