@@ -9,6 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Paragraph {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
