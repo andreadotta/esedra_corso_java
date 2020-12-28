@@ -23,6 +23,7 @@ public class Journal {
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}	
+	}
+	
 
 }
