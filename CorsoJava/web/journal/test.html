@@ -1,0 +1,33 @@
+<html>
+<body>
+<button onClick="foobar(this);">Just testing</button>
+<pre id=response></pre>
+<script>
+function foobar() {
+ const postOptions = {
+      mode: "cors",
+      method: "GET",
+      redirect: "follow",
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow", // manual, *follow, error
+    
+  };
+
+
+  fetch("http://localhost:8080/journals", postOptions)
+    .catch((e) => {
+      console.log(e);
+    })
+    .then((res) => {
+      
+        console.log(res);
+
+    });
+}
+</script>
+</body>
+</html>

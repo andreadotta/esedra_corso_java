@@ -19,6 +19,8 @@ import it.esedra.corso.helpers.PrintHelper;
 
 public class EsempiCollection {
 	
+	static int co = 0;
+	
 	public static void main (String[] args) {
 		
 		Set<String> setTest = new TreeSet<String>();
@@ -118,6 +120,25 @@ public class EsempiCollection {
 		for(Integer n:bNumbers) {
 			PrintHelper.out(n);
 		}
+		
+		List<Quadro> quadri = new ArrayList<Quadro>();
+		
+		quadri.add(new Quadro("Balla", 1, Colors.RED));
+		quadri.add(new Quadro("Boccioni", 2, Colors.BLACK));
+		quadri.add(new Quadro("Lippi", 3, Colors.BLUE));
+		quadri.add(new Quadro("Parmigianino", 4, Colors.BLACK));
+		
+		quadri.stream().forEach(quadro -> {
+			if(quadro.getColor() == Colors.BLACK) {
+				co++;
+			}
+		});
+		PrintHelper.out(co);
+		
+		
+		int sumCode = quadri.stream().mapToInt(cod -> cod.getCode()).reduce(0, (a, b) -> (a + b));
+		PrintHelper.out(sumCode);
+		
 	}
   
 }

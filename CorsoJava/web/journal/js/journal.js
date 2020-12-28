@@ -40,7 +40,7 @@ function createJournal() {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito"; //
 			}
 		};
-		req.open("POST", "http://localhost:8000/" + "journal");
+		req.open("POST", "http://localhost:8080/" + "journals");
 
 
 		req.send(JSON.stringify(journal));
@@ -82,7 +82,7 @@ var getall = function getAll() {
 			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Journals";
 		}
 	};
-	req.open("GET", "http://localhost:8000/" + "journal");
+	req.open("GET", "http://localhost:8080/" + "journals");
 	req.send();
 }();
 /**
