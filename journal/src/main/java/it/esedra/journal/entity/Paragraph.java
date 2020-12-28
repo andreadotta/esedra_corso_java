@@ -11,13 +11,18 @@ public class Paragraph {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 
-	private String text;
-
 	private int id;
+
+	private String text;
 
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	public String getText() {
 		return text;
@@ -27,8 +32,5 @@ public class Paragraph {
 		this.text = text;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	
 }
