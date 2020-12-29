@@ -12,12 +12,11 @@ import it.esedra.journal.repository.JournalRepository;
 
 
 @RestController
-@CrossOrigin(origins="http://localhost:9999", allowedHeaders="*")
 @RequestMapping(path="/journal")
 public class JournalController {
 	@Autowired // This means to get the bean called userRepository
 	private JournalRepository journalRepository;
-
+	
 	@GetMapping(path = "/all")
 	public @ResponseBody Iterable<Journal> getAllJournals() {
 		return journalRepository.findAll();
