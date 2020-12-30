@@ -54,7 +54,7 @@ function createParagraph() {
 			}
 
 		};
-		req.open("POST", "http://localhost:8000/" + "paragraph");
+		req.open("POST", "http://localhost:8080/" + "paragraphs");
 		req.send(JSON.stringify(paragraph));
 	};
 
@@ -91,7 +91,7 @@ var getall = function getAll() {
 			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Paragraphs";
 		}
 	};
-	req.open("GET", "http://localhost:8000/" + "paragraph");
+	req.open("GET", "http://localhost:8080/" + "paragraphs");
 	req.send();
 }();
 

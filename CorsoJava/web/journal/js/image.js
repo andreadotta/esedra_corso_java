@@ -37,7 +37,7 @@ function createImage() {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito"; 
 			}		
 		};
-		req.open("POST", "http://localhost:8000/" + "image");
+		req.open("POST", "http://localhost:8080/" + "images");
 		req.send(JSON.stringify(image));		
     };
 
@@ -67,7 +67,7 @@ var getall = function getAll() {
 			document.getElementById("xhr-message").innerHTML = "Errore nell'ottenere gli Images";
 		}
 	};
-	req.open("GET", "http://localhost:8000/" + "image");
+	req.open("GET", "http://localhost:8080/" + "images");
 	req.send();
 }();
 

@@ -41,7 +41,7 @@ function createChapter() {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";
 			}
 		};
-		req.open("POST", "http://localhost:8000/" + "chapter");
+		req.open("POST", "http://localhost:8080/" + "chapters");
 		
 		
 		req.send(JSON.stringify(chapter));
@@ -80,7 +80,7 @@ var getall = function getAll() {
 			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Chapters";
 		}
 	};
-	req.open("GET", "http://localhost:8000/" + "chapter");
+	req.open("GET", "http://localhost:8080/" + "chapters");
 	req.send();
 }();
 /**

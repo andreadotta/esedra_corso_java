@@ -47,7 +47,7 @@ function createAuthor() {
 
 		};
 
-		req.open("POST", "http://localhost:8000/" + "author");
+		req.open("POST", "http://localhost:8080/" + "authors");
 
 		req.send(JSON.stringify(author));
 
@@ -87,7 +87,7 @@ var getall = function getAll() {
 			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Authors";
 		}
 	};
-	req.open("GET", "http://localhost:8000/" + "author");
+	req.open("GET", "http://localhost:8080/" + "authors");
 	req.send();
 }();
 

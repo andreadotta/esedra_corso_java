@@ -43,7 +43,7 @@ function createUser() {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";
 			}
 		};
-		req.open("POST", "http://localhost:8000/" + "user");
+		req.open("POST", "http://localhost:8080/" + "users");
 
 		req.send(JSON.stringify(user));
 
@@ -83,7 +83,7 @@ var getall = function getAll() {
 			document.getElementById("xhr-message").innerHTML = "Errore nell'ottenere gli User";
 		}
 	};
-	req.open("GET", "http://localhost:8000/" + "user");
+	req.open("GET", "http://localhost:8080/" + "users");
 	req.send();
 }();
 /**
@@ -100,7 +100,7 @@ function createRow(item) {
 /**
  * Utilizzo questo metodo per creare gli elementi della riga
  * @param item: oggetto con i dati
- * @param row: elemento HTML che è la riga
+ * @param row: elemento HTML che ï¿½ la riga
  */
 function createRowElements(item, row) {
 	row.appendChild(createRowDataCell("id", item.id)); //aggiungo la colonna alla riga
@@ -148,7 +148,7 @@ function createRowElements(item, row) {
 	return row;
 }
 /**
- * creo una "data cell", cioè una cella contenente i dati
+ * creo una "data cell", cioï¿½ una cella contenente i dati
  * @param name: nome colonna
  * @param value: valore
  */

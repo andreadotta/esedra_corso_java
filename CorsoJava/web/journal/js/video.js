@@ -39,7 +39,7 @@ function createVideo() {
 				document.getElementById("xhr-message").innerHTML = "Salvataggio fallito";
 			}
 		};
-		req.open("POST", "http://localhost:8000/" + "video");
+		req.open("POST", "http://localhost:8080/" + "videos");
 
 		req.send(JSON.stringify(video));
 
@@ -75,7 +75,7 @@ var getall = function getAll() {
 			document.getElementById("xhr-message").innerHTML = "Errore nel ottenere i Journals";
 		}
 	};
-	req.open("GET", "http://localhost:8000/" + "video");
+	req.open("GET", "http://localhost:8080/" + "videos");
 	req.send();
 }();
 

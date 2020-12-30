@@ -20,11 +20,12 @@ public class JournalApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/all").allowedOrigins("http://localhost:8080")
+				registry.addMapping("/all")
+				 .allowedOrigins("http://localhost:8080")
 			     .allowedMethods("*")
 		         .allowedHeaders("*")
 		         .allowCredentials(false)
-		         .maxAge(48000);
+		         .maxAge(4800);
 			}
 		};
 	}
