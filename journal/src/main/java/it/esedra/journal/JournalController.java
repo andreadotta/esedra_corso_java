@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import it.esedra.journal.entity.Journal;
 import it.esedra.journal.repository.JournalRepository;
 
-
 @RestController
-@RequestMapping(path="/journal")
+//@RequestMapping(path="/journal")
 public class JournalController {
 	@Autowired // This means to get the bean called userRepository
 	private JournalRepository journalRepository;
 	
-	@GetMapping(path = "/all")
+	@GetMapping("/journals")
+	@CrossOrigin
 	public @ResponseBody Iterable<Journal> getAllJournals() {
 		return journalRepository.findAll();
 	}
