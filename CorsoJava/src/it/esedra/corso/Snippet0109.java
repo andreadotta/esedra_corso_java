@@ -1,5 +1,9 @@
 package it.esedra.corso;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import it.esedra.corso.helpers.PrintHelper;
 
 public class Snippet0109 {
@@ -26,6 +30,11 @@ public class Snippet0109 {
 		PrintHelper.out(System.getProperty("line.separator"));
 		//
 		PrintHelper.out(System.getProperty("java.home"));
+
+		List<String> h = new ArrayList<String>();
+		
+		Collection.sort(h);
+		
 	}
 
 }
